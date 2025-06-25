@@ -123,22 +123,22 @@ const Index = () => {
                 </ul>
               </div>
 
-              <div className="bg-primary text-white rounded-2xl p-8">
+              <div className="bg-white text-primary rounded-2xl p-8 shadow-lg border border-gray-200">
                 <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
                 <div className="space-y-4">
                   <div>
                     <p className="font-semibold mb-2">Ms June Lee</p>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 mr-3" />
+                    <Phone className="w-5 h-5 mr-3 text-primary" />
                     <span>(65) 9837 2670</span>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 mr-3" />
+                    <Mail className="w-5 h-5 mr-3 text-primary" />
                     <span>enquiry@theacademyofdance.sg</span>
                   </div>
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 mr-3 mt-1" />
+                    <MapPin className="w-5 h-5 mr-3 mt-1 text-primary" />
                     <div>
                       <p className="font-semibold">Tampines</p>
                       <p>510 Tampines Central 1, #02-250</p>
