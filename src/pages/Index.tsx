@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,13 +14,14 @@ const Index = () => {
     danceStyle: "",
     message: ""
   });
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Trial Class Request Submitted!",
-      description: "We'll contact you within 24 hours to schedule your trial.",
+      description: "We'll contact you within 24 hours to schedule your trial."
     });
     setFormData({
       name: "",
@@ -34,23 +32,18 @@ const Index = () => {
       message: ""
     });
   };
-
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img 
-                src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" 
-                alt="The Academy of Dance" 
-                className="h-12 w-auto"
-              />
+              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-12 w-auto" />
             </div>
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
@@ -145,7 +138,7 @@ const Index = () => {
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 mr-3 mt-1" />
                     <div>
-                      <p className="font-semibold">Location: Tampines</p>
+                      <p className="font-semibold">Tampines</p>
                       <p>510 Tampines Central 1, #02-250</p>
                       <p>Singapore 520510</p>
                     </div>
@@ -159,46 +152,33 @@ const Index = () => {
               <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    required
-                  />
-                  <Input
-                    type="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                  />
+                  <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
+                  ...formData,
+                  name: e.target.value
+                })} required />
+                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
+                  ...formData,
+                  email: e.target.value
+                })} required />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    type="tel"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    required
-                  />
-                  <Input
-                    placeholder="Age"
-                    value={formData.age}
-                    onChange={(e) => setFormData({...formData, age: e.target.value})}
-                    required
-                  />
+                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
+                  ...formData,
+                  phone: e.target.value
+                })} required />
+                  <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
+                  ...formData,
+                  age: e.target.value
+                })} required />
                 </div>
-                <Input
-                  placeholder="Preferred Dance Style"
-                  value={formData.danceStyle}
-                  onChange={(e) => setFormData({...formData, danceStyle: e.target.value})}
-                />
-                <Textarea
-                  placeholder="Tell us about your dance experience or any questions..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  rows={4}
-                />
+                <Input placeholder="Preferred Dance Style" value={formData.danceStyle} onChange={e => setFormData({
+                ...formData,
+                danceStyle: e.target.value
+              })} />
+                <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
+                ...formData,
+                message: e.target.value
+              })} rows={4} />
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book My Free Trial
@@ -222,27 +202,32 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png', title: 'Melbourne Dance Exchange 2023' },
-              { image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png', title: 'Ballet Class Excellence' },
-              { image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png', title: 'International Adventures' },
-              { image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png', title: 'Performance Ready' },
-              { image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png', title: 'Dance Community' },
-              { image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png', title: 'Young Performers' }
-            ].map((item, index) => (
-              <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-64 object-cover"
-                />
+            {[{
+            image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
+            title: 'Melbourne Dance Exchange 2023'
+          }, {
+            image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
+            title: 'Ballet Class Excellence'
+          }, {
+            image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png',
+            title: 'International Adventures'
+          }, {
+            image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
+            title: 'Performance Ready'
+          }, {
+            image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png',
+            title: 'Dance Community'
+          }, {
+            image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png',
+            title: 'Young Performers'
+          }].map((item, index) => <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
+                <img src={item.image} alt={item.title} className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-playfair text-lg font-semibold">{item.title}</h3>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -260,32 +245,25 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Chen",
-                role: "Parent of Emma, Age 8",
-                content: "The Academy of Dance has transformed my shy daughter into a confident performer. The teachers are exceptional and truly care about each child's progress.",
-                rating: 5
-              },
-              {
-                name: "Michael Tan",
-                role: "Parent of Lucas, Age 12",
-                content: "Outstanding instruction and facilities. My son has developed incredible discipline and artistry. The recitals are professionally produced and showcase real talent.",
-                rating: 5
-              },
-              {
-                name: "Priya Patel",
-                role: "Parent of Aria, Age 6",
-                content: "We've tried several dance schools, but none compare to the quality and care here. The trial class sold us immediately - it's worth every dollar.",
-                rating: 5
-              }
-            ].map((review, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
+            {[{
+            name: "Sarah Chen",
+            role: "Parent of Emma, Age 8",
+            content: "The Academy of Dance has transformed my shy daughter into a confident performer. The teachers are exceptional and truly care about each child's progress.",
+            rating: 5
+          }, {
+            name: "Michael Tan",
+            role: "Parent of Lucas, Age 12",
+            content: "Outstanding instruction and facilities. My son has developed incredible discipline and artistry. The recitals are professionally produced and showcase real talent.",
+            rating: 5
+          }, {
+            name: "Priya Patel",
+            role: "Parent of Aria, Age 6",
+            content: "We've tried several dance schools, but none compare to the quality and care here. The trial class sold us immediately - it's worth every dollar.",
+            rating: 5
+          }].map((review, index) => <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="space-y-4 p-0">
                   <div className="flex space-x-1">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
-                    ))}
+                    {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />)}
                   </div>
                   <p className="text-gray-700 italic">"{review.content}"</p>
                   <div>
@@ -293,8 +271,7 @@ const Index = () => {
                     <p className="text-sm text-gray-500">{review.role}</p>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -312,43 +289,33 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Ms June Lee",
-                specialty: "Founder",
-                credentials: "Started dancing at age 4",
-                experience: "Caring motivator and mentor to young teachers",
-                image: "https://images.unsplash.com/photo-1494790108755-2616c669552e?ixlib=rb-4.0.3"
-              },
-              {
-                name: "Ms Tan Jia Jia",
-                specialty: "Multi-Genre Specialist",
-                credentials: "24 years dancing experience",
-                experience: "13 years teaching experience - Competent in wide variety of dance genres",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3"
-              },
-              {
-                name: "Ms Jasmine Koh",
-                specialty: "Classical Ballet Expert",
-                credentials: "25 years dancing experience",
-                experience: "12 years teaching experience - Started Classical Ballet at age 4",
-                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3"
-              },
-              {
-                name: "Ms Annabelle Ong",
-                specialty: "Inspirational Educator",
-                credentials: "Started dance journey at age 17",
-                experience: "Completed RAD Intermediate ballet examination - Inspiring story of dedication and achievement",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3"
-              }
-            ].map((teacher, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            {[{
+            name: "Ms June Lee",
+            specialty: "Founder",
+            credentials: "Started dancing at age 4",
+            experience: "Caring motivator and mentor to young teachers",
+            image: "https://images.unsplash.com/photo-1494790108755-2616c669552e?ixlib=rb-4.0.3"
+          }, {
+            name: "Ms Tan Jia Jia",
+            specialty: "Multi-Genre Specialist",
+            credentials: "24 years dancing experience",
+            experience: "13 years teaching experience - Competent in wide variety of dance genres",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3"
+          }, {
+            name: "Ms Jasmine Koh",
+            specialty: "Classical Ballet Expert",
+            credentials: "25 years dancing experience",
+            experience: "12 years teaching experience - Started Classical Ballet at age 4",
+            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3"
+          }, {
+            name: "Ms Annabelle Ong",
+            specialty: "Inspirational Educator",
+            credentials: "Started dance journey at age 17",
+            experience: "Completed RAD Intermediate ballet examination - Inspiring story of dedication and achievement",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3"
+          }].map((teacher, index) => <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
-                  <img 
-                    src={teacher.image} 
-                    alt={teacher.name}
-                    className="w-full h-64 object-cover"
-                  />
+                  <img src={teacher.image} alt={teacher.name} className="w-full h-64 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <CardContent className="p-6">
@@ -357,8 +324,7 @@ const Index = () => {
                   <p className="text-gray-600 text-sm mb-1">{teacher.credentials}</p>
                   <p className="text-gray-500 text-sm">{teacher.experience}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -368,11 +334,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <img 
-                src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" 
-                alt="The Academy of Dance" 
-                className="h-16 w-auto"
-              />
+              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
             </div>
             <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
             <div className="flex justify-center space-x-8 text-sm">
@@ -386,9 +348,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
-
