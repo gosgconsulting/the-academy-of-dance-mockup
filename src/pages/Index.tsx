@@ -79,17 +79,14 @@ const Index = () => {
           <p className="font-inter text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Singapore's most prestigious dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
               Start Your Journey
-            </Button>
-            <Button onClick={() => scrollToSection('gallery')} variant="outline" size="lg" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-white">
-              Watch Our Students
             </Button>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection('trials')}>
           <ArrowDown className="w-6 h-6 text-primary" />
         </div>
       </section>
@@ -134,17 +131,24 @@ const Index = () => {
               <div className="bg-primary text-white rounded-2xl p-8">
                 <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
                 <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold mb-2">Ms June Lee</p>
+                  </div>
                   <div className="flex items-center">
                     <Phone className="w-5 h-5 mr-3" />
-                    <span>+65 6123 4567</span>
+                    <span>(65) 9837 2670</span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="w-5 h-5 mr-3" />
-                    <span>hello@academyofdance.sg</span>
+                    <span>enquiry@theacademyofdance.sg</span>
                   </div>
-                  <div className="flex items-center">
-                    <MapPin className="w-5 h-5 mr-3" />
-                    <span>123 Orchard Road, Singapore 238858</span>
+                  <div className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 mt-1" />
+                    <div>
+                      <p className="font-semibold">Location: Tampines</p>
+                      <p>510 Tampines Central 1, #02-250</p>
+                      <p>Singapore 520510</p>
+                    </div>
                   </div>
                 </div>
               </div>
