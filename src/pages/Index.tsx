@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -292,25 +293,25 @@ const Index = () => {
             specialty: "Founder",
             credentials: "Started dancing at age 4",
             experience: "Caring motivator and mentor to young teachers",
-            image: "https://images.unsplash.com/photo-1494790108755-2616c669552e?ixlib=rb-4.0.3"
+            image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png"
           }, {
             name: "Ms Tan Jia Jia",
             specialty: "Multi-Genre Specialist",
             credentials: "24 years dancing experience",
             experience: "13 years teaching experience - Competent in wide variety of dance genres",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3"
+            image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
           }, {
             name: "Ms Jasmine Koh",
             specialty: "Classical Ballet Expert",
             credentials: "25 years dancing experience",
             experience: "12 years teaching experience - Started Classical Ballet at age 4",
-            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3"
+            image: "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png"
           }, {
             name: "Ms Annabelle Ong",
             specialty: "Inspirational Educator",
             credentials: "Started dance journey at age 17",
             experience: "Completed RAD Intermediate ballet examination - Inspiring story of dedication and achievement",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3"
+            image: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png"
           }].map((teacher, index) => <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
                   <img src={teacher.image} alt={teacher.name} className="w-full h-64 object-cover" />
@@ -428,4 +429,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
