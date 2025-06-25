@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -306,28 +307,35 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "Isabella Rodriguez",
-                specialty: "Ballet & Contemporary",
-                credentials: "Royal Academy of Dance, London",
-                experience: "15+ years",
+                name: "Ms June Lee",
+                specialty: "Founder",
+                credentials: "Started dancing at age 4",
+                experience: "Caring motivator and mentor to young teachers",
                 image: "https://images.unsplash.com/photo-1494790108755-2616c669552e?ixlib=rb-4.0.3"
               },
               {
-                name: "Marcus Kim",
-                specialty: "Hip-Hop & Jazz",
-                credentials: "Broadway Dance Center, NYC",
-                experience: "12+ years",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3"
+                name: "Ms Tan Jia Jia",
+                specialty: "Multi-Genre Specialist",
+                credentials: "24 years dancing experience",
+                experience: "13 years teaching experience - Competent in wide variety of dance genres",
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3"
               },
               {
-                name: "Sophia Williams",
-                specialty: "Musical Theatre & Tap",
-                credentials: "Juilliard School Graduate",
-                experience: "18+ years",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3"
+                name: "Ms Jasmine Koh",
+                specialty: "Classical Ballet Expert",
+                credentials: "25 years dancing experience",
+                experience: "12 years teaching experience - Started Classical Ballet at age 4",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3"
+              },
+              {
+                name: "Ms Annabelle Ong",
+                specialty: "Inspirational Educator",
+                credentials: "Started dance journey at age 17",
+                experience: "Completed RAD Intermediate ballet examination - Inspiring story of dedication and achievement",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3"
               }
             ].map((teacher, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -343,7 +351,7 @@ const Index = () => {
                   <h3 className="font-playfair text-xl font-bold text-primary mb-2">{teacher.name}</h3>
                   <p className="text-secondary font-semibold mb-2">{teacher.specialty}</p>
                   <p className="text-gray-600 text-sm mb-1">{teacher.credentials}</p>
-                  <p className="text-gray-500 text-sm">{teacher.experience} teaching experience</p>
+                  <p className="text-gray-500 text-sm">{teacher.experience}</p>
                 </CardContent>
               </Card>
             ))}
@@ -379,3 +387,4 @@ const Index = () => {
 };
 
 export default Index;
+
