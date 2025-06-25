@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Star, ArrowDown, Calendar, Mail, Phone, MapPin } from "lucide-react";
+import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -37,7 +38,8 @@ const Index = () => {
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
@@ -332,22 +334,114 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Logo and Description */}
+            <div className="lg:col-span-1">
+              <div className="flex justify-start mb-4">
+                <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
+              </div>
+              <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
+              
+              {/* Social Media Icons */}
+              <div className="flex space-x-4">
+                <a 
+                  href="https://www.facebook.com/theacademyofdancesg" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/theacademyofdancesg/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
+                </a>
+              </div>
             </div>
-            <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
-            <div className="flex justify-center space-x-8 text-sm">
-              <span>+65 6123 4567</span>
-              <span>hello@academyofdance.sg</span>
-              <span>123 Orchard Road, Singapore</span>
+
+            {/* Tampines Location */}
+            <div>
+              <h3 className="font-playfair text-lg font-bold mb-4">Tampines</h3>
+              <div className="space-y-2 text-gray-300">
+                <div className="flex items-start">
+                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
+                  <div>
+                    <p>510 Tampines Central 1</p>
+                    <p>#02-250</p>
+                    <p>Singapore 520510</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2" />
+                  <span>(65) 9837 2670</span>
+                </div>
+              </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-700 text-gray-400 text-sm">
+
+            {/* Yishun Location */}
+            <div>
+              <h3 className="font-playfair text-lg font-bold mb-4">Yishun</h3>
+              <div className="space-y-2 text-gray-300">
+                <div className="flex items-start">
+                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
+                  <div>
+                    <p>Wisteria Mall</p>
+                    <p>598 Yishun Ring Road</p>
+                    <p>#01-35/36</p>
+                    <p>Singapore 768698</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2" />
+                  <span>(65) 9337 8605</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Punggol Location */}
+            <div>
+              <h3 className="font-playfair text-lg font-bold mb-4">Punggol</h3>
+              <div className="space-y-2 text-gray-300">
+                <div className="flex items-start">
+                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
+                  <div>
+                    <p>407 Northshore Drive</p>
+                    <p>#03-07, I Northshore Plaza</p>
+                    <p>Singapore 820407</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2" />
+                  <span>(65) 9837 2670</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Information */}
+          <div className="text-center border-t border-gray-700 pt-8">
+            <div className="flex justify-center space-x-8 text-sm mb-4">
+              <div className="flex items-center">
+                <Phone className="w-4 h-4 mr-2" />
+                <span>(65) 9837 2670</span>
+              </div>
+              <div className="flex items-center">
+                <Mail className="w-4 h-4 mr-2" />
+                <span>enquiry@theacademyofdance.sg</span>
+              </div>
+            </div>
+            <div className="text-gray-400 text-sm">
               © 2024 The Academy of Dance. All rights reserved.
             </div>
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
