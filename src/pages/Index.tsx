@@ -291,26 +291,26 @@ const Index = () => {
             {[{
             name: "Ms June Lee",
             specialty: "Founder",
-            credentials: "Started dancing at age 4",
-            experience: "Caring motivator and mentor to young teachers",
+            credentials: "35-year career veteran",
+            experience: "Ms. June Lee is a veteran dance educator and choreographer whose 35-year career has inspired students, earned international awards, and featured in prestigious global events.",
             image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png"
           }, {
             name: "Ms Tan Jia Jia",
             specialty: "Multi-Genre Specialist",
-            credentials: "24 years dancing experience",
-            experience: "13 years teaching experience - Competent in wide variety of dance genres",
+            credentials: "International exposure & competitive track record",
+            experience: "Ms. Tan Jia Jia is an experienced, versatile dance educator with international exposure and a strong competitive track record.",
             image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
           }, {
             name: "Ms Jasmine Koh",
             specialty: "Classical Ballet Expert",
-            credentials: "25 years dancing experience",
-            experience: "12 years teaching experience - Started Classical Ballet at age 4",
+            credentials: "25 years experience, RAD & CSTD certified",
+            experience: "Ms. Jasmine Koh is a passionate dancer and educator with 25 years of experience, trained in ballet, jazz, and tap, and certified under RAD and CSTD.",
             image: "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png"
           }, {
             name: "Ms Annabelle Ong",
             specialty: "Inspirational Educator",
-            credentials: "Started dance journey at age 17",
-            experience: "Completed RAD Intermediate ballet examination - Inspiring story of dedication and achievement",
+            credentials: "Started at 17, full-time design career",
+            experience: "Ms. Annabelle Ong is a dedicated dancer and teacher who, despite starting at 17, has performed widely and now inspires young dancers while balancing a full-time design career.",
             image: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png"
           }].map((teacher, index) => <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
@@ -320,7 +320,7 @@ const Index = () => {
                 <CardContent className="p-6">
                   <h3 className="font-playfair text-xl font-bold text-primary mb-2">{teacher.name}</h3>
                   <p className="text-secondary font-semibold mb-2">{teacher.specialty}</p>
-                  <p className="text-gray-600 text-sm mb-1">{teacher.credentials}</p>
+                  <p className="text-gray-600 text-sm mb-2">{teacher.credentials}</p>
                   <p className="text-gray-500 text-sm">{teacher.experience}</p>
                 </CardContent>
               </Card>)}
