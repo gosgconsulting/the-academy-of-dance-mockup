@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -38,8 +37,7 @@ const Index = () => {
       behavior: 'smooth'
     });
   };
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
@@ -282,9 +280,7 @@ const Index = () => {
       <section id="teachers" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-              World-Class Instructors
-            </h2>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Instructors</h2>
             <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
               Learn from internationally trained professionals who bring decades of experience and genuine passion for dance education.
             </p>
@@ -344,20 +340,10 @@ const Index = () => {
               
               {/* Social Media Icons */}
               <div className="flex space-x-4">
-                <a 
-                  href="https://www.facebook.com/theacademyofdancesg" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors"
-                >
+                <a href="https://www.facebook.com/theacademyofdancesg" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
                   <Facebook className="w-5 h-5 text-white" />
                 </a>
-                <a 
-                  href="https://www.instagram.com/theacademyofdancesg/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors"
-                >
+                <a href="https://www.instagram.com/theacademyofdancesg/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors">
                   <Instagram className="w-5 h-5 text-white" />
                 </a>
               </div>
@@ -440,8 +426,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
