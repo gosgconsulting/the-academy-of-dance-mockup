@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,20 +40,24 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="font-playfair text-2xl font-bold text-dance-purple">
-              The Academy of Dance
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" 
+                alt="The Academy of Dance" 
+                className="h-12 w-auto"
+              />
             </div>
             <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('hero')} className="text-gray-700 hover:text-dance-purple transition-colors">Home</button>
-              <button onClick={() => scrollToSection('trials')} className="text-gray-700 hover:text-dance-purple transition-colors">Trials</button>
-              <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-dance-purple transition-colors">Gallery</button>
-              <button onClick={() => scrollToSection('reviews')} className="text-gray-700 hover:text-dance-purple transition-colors">Reviews</button>
-              <button onClick={() => scrollToSection('teachers')} className="text-gray-700 hover:text-dance-purple transition-colors">Teachers</button>
+              <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
+              <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
+              <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
+              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
+              <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
             </div>
-            <Button onClick={() => scrollToSection('trials')} className="bg-dance-purple hover:bg-dance-purple/90">
+            <Button onClick={() => scrollToSection('trials')} className="bg-primary hover:bg-primary/90 text-white">
               Book Trial
             </Button>
           </div>
@@ -63,37 +66,37 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dance-purple/20 via-dance-rose/10 to-dance-gold/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20"></div>
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
         
         <div className="relative z-10 text-center px-6 animate-fade-up">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-dance-dark mb-6">
+          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary mb-6">
             Where Dreams
-            <span className="text-dance-purple block">Take Flight</span>
+            <span className="text-secondary block">Take Flight</span>
           </h1>
           <p className="font-inter text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Singapore's most prestigious dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-dance-purple hover:bg-dance-purple/90 text-lg px-8 py-6">
+            <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
               Start Your Journey
             </Button>
-            <Button onClick={() => scrollToSection('gallery')} variant="outline" size="lg" className="text-lg px-8 py-6 border-dance-purple text-dance-purple hover:bg-dance-purple hover:text-white">
+            <Button onClick={() => scrollToSection('gallery')} variant="outline" size="lg" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary hover:text-white">
               Watch Our Students
             </Button>
           </div>
         </div>
         
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-dance-purple" />
+          <ArrowDown className="w-6 h-6 text-primary" />
         </div>
       </section>
 
       {/* Trials & Contact Section */}
-      <section id="trials" className="py-20 bg-gradient-to-br from-dance-light to-white">
+      <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-dance-dark mb-6">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               Begin Your Dance Journey
             </h2>
             <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
@@ -105,28 +108,28 @@ const Index = () => {
             {/* Trial Info */}
             <div className="space-y-8">
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="font-playfair text-2xl font-bold text-dance-purple mb-4">Free Trial Classes</h3>
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Free Trial Classes</h3>
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-dance-gold rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                     Ballet, Contemporary, Jazz, Hip-Hop & More
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-dance-gold rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                     Professional instructors with international experience
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-dance-gold rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                     Small class sizes for personalized attention
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-dance-gold rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                     Ages 3 to adult - everyone welcome
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-dance-purple text-white rounded-2xl p-8">
+              <div className="bg-primary text-white rounded-2xl p-8">
                 <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-center">
@@ -147,7 +150,7 @@ const Index = () => {
 
             {/* Contact Form */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-playfair text-2xl font-bold text-dance-dark mb-6">Book Your Trial Class</h3>
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <Input
@@ -190,7 +193,7 @@ const Index = () => {
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   rows={4}
                 />
-                <Button type="submit" className="w-full bg-dance-purple hover:bg-dance-purple/90 text-lg py-6">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book My Free Trial
                 </Button>
@@ -201,7 +204,7 @@ const Index = () => {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-dance-dark">
+      <section id="gallery" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
@@ -239,10 +242,10 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-gradient-to-br from-dance-light to-white">
+      <section id="reviews" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-dance-dark mb-6">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               What Parents Say
             </h2>
             <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
@@ -275,12 +278,12 @@ const Index = () => {
                 <CardContent className="space-y-4 p-0">
                   <div className="flex space-x-1">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-dance-gold text-dance-gold" />
+                      <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
                     ))}
                   </div>
                   <p className="text-gray-700 italic">"{review.content}"</p>
                   <div>
-                    <p className="font-semibold text-dance-dark">{review.name}</p>
+                    <p className="font-semibold text-primary">{review.name}</p>
                     <p className="text-sm text-gray-500">{review.role}</p>
                   </div>
                 </CardContent>
@@ -294,7 +297,7 @@ const Index = () => {
       <section id="teachers" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-dance-dark mb-6">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               World-Class Instructors
             </h2>
             <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
@@ -336,8 +339,8 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-playfair text-xl font-bold text-dance-dark mb-2">{teacher.name}</h3>
-                  <p className="text-dance-purple font-semibold mb-2">{teacher.specialty}</p>
+                  <h3 className="font-playfair text-xl font-bold text-primary mb-2">{teacher.name}</h3>
+                  <p className="text-secondary font-semibold mb-2">{teacher.specialty}</p>
                   <p className="text-gray-600 text-sm mb-1">{teacher.credentials}</p>
                   <p className="text-gray-500 text-sm">{teacher.experience} teaching experience</p>
                 </CardContent>
@@ -348,11 +351,15 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dance-dark text-white py-12">
+      <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <div className="font-playfair text-3xl font-bold text-dance-gold mb-4">
-              The Academy of Dance
+            <div className="flex justify-center mb-4">
+              <img 
+                src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" 
+                alt="The Academy of Dance" 
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
             <div className="flex justify-center space-x-8 text-sm">
