@@ -412,7 +412,7 @@ const Index = () => {
             image: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png"
           }].map((teacher, index) => <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
-                  <img src={teacher.image} alt={teacher.name} className="w-full h-64 object-cover" />
+                  <img src={teacher.image} alt={teacher.name} className="w-full h-64 object-cover object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <CardContent className="p-6">
