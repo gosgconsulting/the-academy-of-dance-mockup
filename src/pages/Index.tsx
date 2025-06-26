@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -319,9 +318,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="text-center mt-12">
-            <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
-              Try Our Programmes - Book Your Trial Class
-            </Button>
+            
           </div>
         </div>
       </section>
@@ -727,5 +724,4 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </a>
     </div>;
 };
-
 export default Index;
