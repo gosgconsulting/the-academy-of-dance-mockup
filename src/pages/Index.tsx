@@ -283,7 +283,7 @@ const Index = () => {
               </div>
 
               <div className="mt-8 text-center">
-                <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">Book Now!</Button>
+                
               </div>
             </div>
           </div>
