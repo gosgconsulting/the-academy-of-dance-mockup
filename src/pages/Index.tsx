@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,8 +14,9 @@ const Index = () => {
     danceStyle: "",
     message: ""
   });
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -32,15 +32,12 @@ const Index = () => {
       message: ""
     });
   };
-  
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
@@ -156,49 +153,36 @@ const Index = () => {
 
             {/* Contact Form */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your $20 Trial Class</h3>
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input 
-                    placeholder="Full Name" 
-                    value={formData.name} 
-                    onChange={e => setFormData({ ...formData, name: e.target.value })} 
-                    required 
-                  />
-                  <Input 
-                    type="email" 
-                    placeholder="Email Address" 
-                    value={formData.email} 
-                    onChange={e => setFormData({ ...formData, email: e.target.value })} 
-                    required 
-                  />
+                  <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
+                  ...formData,
+                  name: e.target.value
+                })} required />
+                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
+                  ...formData,
+                  email: e.target.value
+                })} required />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input 
-                    type="tel" 
-                    placeholder="Phone Number" 
-                    value={formData.phone} 
-                    onChange={e => setFormData({ ...formData, phone: e.target.value })} 
-                    required 
-                  />
-                  <Input 
-                    placeholder="Age" 
-                    value={formData.age} 
-                    onChange={e => setFormData({ ...formData, age: e.target.value })} 
-                    required 
-                  />
+                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
+                  ...formData,
+                  phone: e.target.value
+                })} required />
+                  <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
+                  ...formData,
+                  age: e.target.value
+                })} required />
                 </div>
-                <Input 
-                  placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" 
-                  value={formData.danceStyle} 
-                  onChange={e => setFormData({ ...formData, danceStyle: e.target.value })} 
-                />
-                <Textarea 
-                  placeholder="Tell us about your dance experience or any questions..." 
-                  value={formData.message} 
-                  onChange={e => setFormData({ ...formData, message: e.target.value })} 
-                  rows={4} 
-                />
+                <Input placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" value={formData.danceStyle} onChange={e => setFormData({
+                ...formData,
+                danceStyle: e.target.value
+              })} />
+                <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
+                ...formData,
+                message: e.target.value
+              })} rows={4} />
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book My $20 Trial
@@ -427,8 +411,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
