@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -234,6 +234,65 @@ const Index = () => {
                   </div>
                 </div>
               </div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Competition Excellence Section */}
+      <section id="competitions" className="py-20 bg-gradient-to-br from-primary/10 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+              Competition Excellence
+            </h2>
+            <p className="font-inter text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              We don't just dance for fun (though we have TONS of that!) - we also dominate the competition scene! 
+              Our dancers bring home the gold and make us incredibly proud. ✨
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+              <div className="flex items-center justify-center mb-8">
+                <Trophy className="w-12 h-12 text-secondary mr-4" />
+                <h3 className="font-playfair text-3xl font-bold text-primary">Our Competition Classes</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
+                  <h4 className="font-playfair text-2xl font-bold text-primary mb-4 flex items-center">
+                    <div className="w-3 h-3 bg-secondary rounded-full mr-3"></div>
+                    Solo Program
+                  </h4>
+                  <p className="text-gray-700 text-lg">
+                    Perfect for dancers who want to shine in the spotlight! Our solo program develops individual artistry, 
+                    technical precision, and stage presence that judges absolutely love.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6">
+                  <h4 className="font-playfair text-2xl font-bold text-primary mb-4 flex items-center">
+                    <div className="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                    Dance Groups
+                  </h4>
+                  <p className="text-gray-700 text-lg mb-3">
+                    Our competitive troupes are where magic happens! These elite groups train together, compete together, 
+                    and WIN together. The bond they form is as strong as their performances are spectacular.
+                  </p>
+                  <p className="text-secondary font-semibold italic">
+                    (These are our competitive troupes - the cream of the crop!)
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <div className="bg-gradient-to-r from-secondary to-primary text-white rounded-xl p-6">
+                  <p className="font-inter text-lg font-semibold">
+                    Ready to join our winning team? Our competition classes are where champions are made! 🏆
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
