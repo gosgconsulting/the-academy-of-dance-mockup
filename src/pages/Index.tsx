@@ -272,7 +272,7 @@ const Index = () => {
                     <div className="w-3 h-3 bg-primary rounded-full mr-3"></div>
                     Dance Groups
                   </h4>
-                  <p className="text-gray-700 text-lg mb-3">
+                  <p className="text-gray-700 mb-3 text-base">
                     Our competitive troupes are where magic happens! These elite groups train together, compete together, 
                     and WIN together. The bond they form is as strong as their performances are spectacular.
                   </p>
