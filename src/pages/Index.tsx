@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -241,6 +242,93 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Our Events Section */}
+      <section id="events" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+              Our Events
+            </h2>
+            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+              Join us for exciting performances, competitions, and workshops throughout the year.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Carousel className="w-full">
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative">
+                      <img src="/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png" alt="Melbourne Dance Exchange 2023" className="w-full h-64 object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="mb-2">
+                        <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Competition</span>
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold text-primary mb-2">Melbourne Dance Exchange</h3>
+                      <p className="text-gray-600 text-sm mb-2">International Competition</p>
+                      <p className="text-gray-500 text-sm">Our students participated in the prestigious Melbourne Dance Exchange, showcasing their talent on an international stage.</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative">
+                      <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Annual Recital" className="w-full h-64 object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="mb-2">
+                        <span className="bg-secondary text-white px-3 py-1 rounded-full text-sm">Performance</span>
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold text-primary mb-2">Annual Recital</h3>
+                      <p className="text-gray-600 text-sm mb-2">December 2024</p>
+                      <p className="text-gray-500 text-sm">Our biggest event of the year where all our students showcase their progress and talent in a professional theater setting.</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative">
+                      <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Summer Dance Intensive" className="w-full h-64 object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="mb-2">
+                        <span className="bg-dance-purple text-white px-3 py-1 rounded-full text-sm">Workshop</span>
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold text-primary mb-2">Summer Dance Intensive</h3>
+                      <p className="text-gray-600 text-sm mb-2">June - July 2024</p>
+                      <p className="text-gray-500 text-sm">Intensive summer program for serious dancers looking to elevate their skills with masterclasses and guest instructors.</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative">
+                      <img src="/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png" alt="International Dance Festival" className="w-full h-64 object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="mb-2">
+                        <span className="bg-dance-rose text-white px-3 py-1 rounded-full text-sm">Festival</span>
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold text-primary mb-2">International Dance Festival</h3>
+                      <p className="text-gray-600 text-sm mb-2">March 2024</p>
+                      <p className="text-gray-500 text-sm">Participation in international dance festivals, giving our students exposure to global dance communities.</p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Section */}
       <section id="reviews" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
         <div className="container mx-auto px-6">
@@ -442,6 +530,25 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/6598372670"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        aria-label="Contact us on WhatsApp"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6"
+        >
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106"/>
+        </svg>
+      </a>
     </div>;
 };
 
