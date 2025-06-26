@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -100,15 +101,19 @@ const Index = () => {
             {/* Trial Info */}
             <div className="space-y-8">
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">$20 Trial Classes</h3>
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Join Our Trial Classes</h3>
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Ballet (our main specialty), Jazz, Lyrical & Contemporary
+                    Ballet, Jazz, Lyrical & Contemporary, Hip Hop, Tap
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Hip Hop, Tap & Tumbling classes available
+                    Tumbling classes are also available as our new course
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
+                    You can join our trail classes for just $20!
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
@@ -413,4 +418,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
