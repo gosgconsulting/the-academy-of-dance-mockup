@@ -349,6 +349,10 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Tampines Location */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/2085b60d-2383-47b3-9252-fea94e4cbbd5.png" alt="Tampines Location - Ballet Class" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
               <CardContent className="p-8">
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Tampines</h3>
                 <div className="space-y-4 text-gray-700">
@@ -370,6 +374,10 @@ const Index = () => {
 
             {/* Yishun Location */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/d4f04f67-dc1a-431b-a7f2-6f1ca3e927a0.png" alt="Yishun Location - Dance Performance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
               <CardContent className="p-8">
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Yishun</h3>
                 <div className="space-y-4 text-gray-700">
