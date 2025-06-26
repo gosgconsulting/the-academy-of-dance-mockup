@@ -379,7 +379,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
             {[{
             name: "Ms June Lee",
             specialty: "Founder",
@@ -404,6 +404,12 @@ const Index = () => {
             credentials: "Started at 17, full-time design career",
             experience: "Ms. Annabelle Ong is a dedicated dancer and teacher who, despite starting at 17, has performed widely and now inspires young dancers while balancing a full-time design career.",
             image: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png"
+          }, {
+            name: "Ms Jacqueline Macpherson",
+            specialty: "Award-Winning Performer",
+            credentials: "International performance experience",
+            experience: "Ms. Jacqueline Macpherson is an award-winning dancer with international performance experience who now aims to share her passion for dance through teaching.",
+            image: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png"
           }].map((teacher, index) => <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="relative">
                   <img src={teacher.image} alt={teacher.name} className="w-full h-64 object-cover" />
