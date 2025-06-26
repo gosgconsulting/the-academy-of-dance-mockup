@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,9 +16,9 @@ const Index = () => {
     danceStyle: "",
     message: ""
   });
-  const {
-    toast
-  } = useToast();
+
+  const { toast } = useToast();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -33,12 +34,15 @@ const Index = () => {
       message: ""
     });
   };
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-white">
+
+  return (
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
@@ -49,6 +53,7 @@ const Index = () => {
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
               <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
+              <button onClick={() => scrollToSection('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
               <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
               <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
               <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
@@ -188,6 +193,125 @@ const Index = () => {
                 </Button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Programmes Section */}
+      <section id="programmes" className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+              Our Programmes
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Discover the perfect dance style for you with our comprehensive range of programmes, 
+              each designed to nurture artistry and technical excellence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Ballet */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png" alt="Ballet Class" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Ballet</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  The foundation of all dance forms. Our ballet programme develops grace, strength, and discipline 
+                  through classical technique. From basic positions to advanced variations, students learn proper 
+                  alignment, musicality, and the artistry that makes ballet timeless.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Jazz */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Jazz Dance Performance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Jazz</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Dynamic and energetic, our jazz classes focus on sharp movements, isolations, and performance quality. 
+                  Students develop rhythm, coordination, and stage presence while learning classic jazz techniques 
+                  and contemporary commercial styles.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Lyrical & Contemporary */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Contemporary Dance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Lyrical & Contemporary</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Express emotion through movement in our lyrical and contemporary classes. Students explore 
+                  storytelling through dance, developing fluidity, breath, and emotional connection while 
+                  mastering floor work, contractions, and release techniques.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Hip Hop */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png" alt="Hip Hop Dance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Hip Hop</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Street-style dance that emphasizes personal expression and creativity. Our hip hop classes 
+                  teach foundational moves, freestyle techniques, and urban choreography while building 
+                  confidence, rhythm, and individual style.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Tap */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png" alt="Tap Dance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tap</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Create music with your feet! Our tap programme develops rhythm, coordination, and musicality 
+                  through traditional tap techniques. Students learn basic steps, combinations, and improvisation 
+                  while building strong rhythmic foundations.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Tumbling */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png" alt="Tumbling Class" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tumbling</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Our newest programme! Build strength, flexibility, and acrobatic skills in a safe, progressive 
+                  environment. Students learn rolls, cartwheels, handstands, and more advanced tumbling skills 
+                  that enhance their overall dance performance.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
+              Try Our Programmes - Book Your Trial Class
+            </Button>
           </div>
         </div>
       </section>
@@ -591,6 +715,8 @@ const Index = () => {
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106" />
         </svg>
       </a>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
