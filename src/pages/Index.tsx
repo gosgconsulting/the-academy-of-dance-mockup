@@ -215,11 +215,8 @@ const Index = () => {
               </div>
               <CardContent className="p-6">
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Ballet</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  The foundation of all dance forms. Our ballet programme develops grace, strength, and discipline 
-                  through classical technique. From basic positions to advanced variations, students learn proper 
-                  alignment, musicality, and the artistry that makes ballet timeless.
-                </p>
+                <p className="text-gray-700 text-sm leading-relaxed">Baby Gems is a magical first step into dance for little ones aged 3–4, created by Ms. June Lee to make learning fun and joyful.
+With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, creativity, and sets the stage for classical training.</p>
               </CardContent>
             </Card>
 
