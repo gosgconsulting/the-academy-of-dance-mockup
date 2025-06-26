@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -243,18 +244,34 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            {/* Lyrical & Contemporary */}
+            {/* Lyrical */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Lyrical Dance" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Lyrical</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  A beautiful fusion of ballet technique with emotional storytelling. Lyrical dance emphasizes 
+                  the connection between music and movement, allowing dancers to express deep emotions through 
+                  flowing, graceful choreography that tells a story.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Contemporary */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
                 <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Contemporary Dance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
-                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Lyrical & Contemporary</h3>
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Contemporary</h3>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Express emotion through movement in our lyrical and contemporary classes. Students explore 
-                  storytelling through dance, developing fluidity, breath, and emotional connection while 
-                  mastering floor work, contractions, and release techniques.
+                  Modern movement that breaks traditional dance boundaries. Contemporary dance incorporates 
+                  elements from various dance styles, focusing on versatility, creativity, and personal 
+                  expression through innovative choreography and technique.
                 </p>
               </CardContent>
             </Card>
