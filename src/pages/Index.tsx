@@ -299,8 +299,8 @@ const Index = () => {
             {[{
             name: "Ms June Lee",
             specialty: "Founder",
-            credentials: "35-year career veteran",
-            experience: "Ms. June Lee is a veteran dance educator and choreographer whose 35-year career has inspired students, earned international awards, and featured in prestigious global events.",
+            credentials: "41 years of experience",
+            experience: "Ms. June Lee is a veteran dance educator and choreographer whose 41-year career has inspired students, earned international awards, and featured in prestigious global events.",
             image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png"
           }, {
             name: "Ms Tan Jia Jia",
