@@ -336,64 +336,82 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Our Locations Section */}
+      <section id="locations" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Locations</h2>
+            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+              Visit us at our convenient locations across Singapore for world-class dance education.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Tampines Location */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-8">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Tampines</h3>
+                <div className="space-y-4 text-gray-700">
+                  <div className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0" />
+                    <div>
+                      <p>510 Tampines Central 1</p>
+                      <p>#02-250</p>
+                      <p>Singapore 520510</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="w-5 h-5 mr-3 text-primary" />
+                    <span>(65) 9837 2670</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Yishun Location */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-8">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Yishun</h3>
+                <div className="space-y-4 text-gray-700">
+                  <div className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0" />
+                    <div>
+                      <p>Wisteria Mall</p>
+                      <p>598 Yishun Ring Road</p>
+                      <p>#01-35/36</p>
+                      <p>Singapore 768698</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="w-5 h-5 mr-3 text-primary" />
+                    <span>(65) 9337 8605</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-1 gap-8 mb-8">
             {/* Logo and Description */}
-            <div className="lg:col-span-1">
-              <div className="flex justify-start mb-4">
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
                 <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
               </div>
               <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
               
               {/* Social Media Icons */}
-              <div className="flex space-x-4">
+              <div className="flex justify-center space-x-4">
                 <a href="https://www.facebook.com/theacademyofdancesg" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
                   <Facebook className="w-5 h-5 text-white" />
                 </a>
                 <a href="https://www.instagram.com/theacademyofdancesg/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors">
                   <Instagram className="w-5 h-5 text-white" />
                 </a>
-              </div>
-            </div>
-
-            {/* Tampines Location */}
-            <div>
-              <h3 className="font-playfair text-lg font-bold mb-4">Tampines</h3>
-              <div className="space-y-2 text-gray-300">
-                <div className="flex items-start">
-                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
-                  <div>
-                    <p>510 Tampines Central 1</p>
-                    <p>#02-250</p>
-                    <p>Singapore 520510</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span>(65) 9837 2670</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Yishun Location */}
-            <div>
-              <h3 className="font-playfair text-lg font-bold mb-4">Yishun</h3>
-              <div className="space-y-2 text-gray-300">
-                <div className="flex items-start">
-                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
-                  <div>
-                    <p>Wisteria Mall</p>
-                    <p>598 Yishun Ring Road</p>
-                    <p>#01-35/36</p>
-                    <p>Singapore 768698</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span>(65) 9337 8605</span>
-                </div>
               </div>
             </div>
           </div>
