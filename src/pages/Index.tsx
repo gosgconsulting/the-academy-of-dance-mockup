@@ -331,7 +331,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {/* Logo and Description */}
             <div className="lg:col-span-1">
               <div className="flex justify-start mb-4">
@@ -385,25 +385,6 @@ const Index = () => {
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
                   <span>(65) 9337 8605</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Punggol Location */}
-            <div>
-              <h3 className="font-playfair text-lg font-bold mb-4">Punggol</h3>
-              <div className="space-y-2 text-gray-300">
-                <div className="flex items-start">
-                  <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" />
-                  <div>
-                    <p>407 Northshore Drive</p>
-                    <p>#03-07, I Northshore Plaza</p>
-                    <p>Singapore 820407</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span>(65) 9837 2670</span>
                 </div>
               </div>
             </div>
