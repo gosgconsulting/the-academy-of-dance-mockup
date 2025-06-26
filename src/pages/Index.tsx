@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -210,7 +211,7 @@ const Index = () => {
             {/* Ballet */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png" alt="Ballet Class" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="Ballet Class" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -223,7 +224,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Jazz */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Jazz Dance Performance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png" alt="Jazz Dance Performance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -239,7 +240,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Lyrical */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Lyrical Dance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" alt="Lyrical Dance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -255,7 +256,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Contemporary */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Contemporary Dance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png" alt="Contemporary Dance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -271,7 +272,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Hip Hop */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png" alt="Hip Hop Dance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/3e19f9a6-1e4b-40f4-9c80-638142fb2bf5.png" alt="Hip Hop Dance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -287,7 +288,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Tap */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png" alt="Tap Dance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/026cddda-e890-486d-be1e-8052ff34515e.png" alt="Tap Dance" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -303,7 +304,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Tumbling */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png" alt="Tumbling Class" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/96dbee1c-cdd5-4735-a8ab-21e83d6f99c2.png" alt="Tumbling Class" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-6">
@@ -726,4 +727,5 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </a>
     </div>;
 };
+
 export default Index;
