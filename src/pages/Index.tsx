@@ -261,7 +261,7 @@ const Index = () => {
                     <div className="w-3 h-3 bg-secondary rounded-full mr-3"></div>
                     Solo Program
                   </h4>
-                  <p className="text-gray-700 text-lg">
+                  <p className="text-gray-700 text-base font-normal">
                     Perfect for dancers who want to shine in the spotlight! Our solo program develops individual artistry, 
                     technical precision, and stage presence that judges absolutely love.
                   </p>
