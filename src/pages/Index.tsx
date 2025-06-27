@@ -11,14 +11,18 @@ import TrialsSection from "@/components/TrialsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-white">
+
+  return (
+    <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
@@ -166,7 +170,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* RAD Ballet */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="RAD Ballet Examination" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/5c8d3ad4-fac2-4255-8c25-231c28b272da.png" alt="RAD Ballet Examination" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 left-4">
                   
@@ -193,7 +197,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* CSTD Tap and Jazz */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png" alt="CSTD Jazz and Tap Examination" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/7d91482b-17c3-45fc-9917-f502af760568.png" alt="CSTD Jazz and Tap Examination" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 left-4 space-x-2">
                   
@@ -681,6 +685,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       {/* WhatsApp Button */}
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
