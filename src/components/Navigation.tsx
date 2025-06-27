@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 
 interface NavigationProps {
@@ -6,7 +7,7 @@ interface NavigationProps {
 
 const Navigation = ({ scrollToSection }: NavigationProps) => {
   return (
-    <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
+    <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
