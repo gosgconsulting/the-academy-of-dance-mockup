@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -448,66 +449,90 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <Carousel className="w-full">
               <CarouselContent>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                     <div className="relative">
                       <img src="/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png" alt="Melbourne Dance Exchange 2023" className="w-full h-64 object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-2">
                         <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Competition</span>
                       </div>
                       <h3 className="font-playfair text-xl font-bold text-primary mb-2">Melbourne Dance Exchange</h3>
                       <p className="text-gray-600 text-sm mb-2">International Competition</p>
-                      <p className="text-gray-500 text-sm">Our students participated in the prestigious Melbourne Dance Exchange, showcasing their talent on an international stage.</p>
+                      <p className="text-gray-500 text-sm mb-4 flex-1">Our students participated in the prestigious Melbourne Dance Exchange, showcasing their talent on an international stage.</p>
+                      <Button 
+                        onClick={() => window.open('https://wa.me/6598372670', '_blank')} 
+                        className="bg-primary hover:bg-primary/90 text-white w-full"
+                      >
+                        Learn More
+                      </Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                     <div className="relative">
                       <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Annual Recital" className="w-full h-64 object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-2">
                         <span className="bg-secondary text-white px-3 py-1 rounded-full text-sm">Performance</span>
                       </div>
                       <h3 className="font-playfair text-xl font-bold text-primary mb-2">Annual Recital</h3>
                       <p className="text-gray-600 text-sm mb-2">December 2024</p>
-                      <p className="text-gray-500 text-sm">Our biggest event of the year where all our students showcase their progress and talent in a professional theater setting.</p>
+                      <p className="text-gray-500 text-sm mb-4 flex-1">Our biggest event of the year where all our students showcase their progress and talent in a professional theater setting.</p>
+                      <Button 
+                        onClick={() => window.open('https://wa.me/6598372670', '_blank')} 
+                        className="bg-primary hover:bg-primary/90 text-white w-full"
+                      >
+                        Learn More
+                      </Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                     <div className="relative">
                       <img src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" alt="Summer Dance Intensive" className="w-full h-64 object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-2">
                         <span className="bg-dance-purple text-white px-3 py-1 rounded-full text-sm">Workshop</span>
                       </div>
                       <h3 className="font-playfair text-xl font-bold text-primary mb-2">Summer Dance Intensive</h3>
                       <p className="text-gray-600 text-sm mb-2">June - July 2024</p>
-                      <p className="text-gray-500 text-sm">Intensive summer program for serious dancers looking to elevate their skills with masterclasses and guest instructors.</p>
+                      <p className="text-gray-500 text-sm mb-4 flex-1">Intensive summer program for serious dancers looking to elevate their skills with masterclasses and guest instructors.</p>
+                      <Button 
+                        onClick={() => window.open('https://wa.me/6598372670', '_blank')} 
+                        className="bg-primary hover:bg-primary/90 text-white w-full"
+                      >
+                        Learn More
+                      </Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                     <div className="relative">
                       <img src="/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png" alt="International Dance Festival" className="w-full h-64 object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-2">
                         <span className="bg-dance-rose text-white px-3 py-1 rounded-full text-sm">Festival</span>
                       </div>
                       <h3 className="font-playfair text-xl font-bold text-primary mb-2">International Dance Festival</h3>
                       <p className="text-gray-600 text-sm mb-2">March 2024</p>
-                      <p className="text-gray-500 text-sm">Participation in international dance festivals, giving our students exposure to global dance communities.</p>
+                      <p className="text-gray-500 text-sm mb-4 flex-1">Participation in international dance festivals, giving our students exposure to global dance communities.</p>
+                      <Button 
+                        onClick={() => window.open('https://wa.me/6598372670', '_blank')} 
+                        className="bg-primary hover:bg-primary/90 text-white w-full"
+                      >
+                        Learn More
+                      </Button>
                     </CardContent>
                   </Card>
                 </CarouselItem>
