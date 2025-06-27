@@ -1,17 +1,10 @@
 import { Trophy } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 const CompetitionExcellenceSection = () => {
-  return (
-    <section
-      id="competitions"
-      className="py-20 bg-gradient-to-br from-primary/10 to-white"
-    >
+  return <section id="competitions" className="py-20 bg-gradient-to-br from-primary/10 to-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Competition Excellence
-          </h2>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Competition Classes</h2>
           <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">
             We don't just dance for fun (though we have TONS of that!) - we
             also dominate the competition scene! Our dancers bring home the
@@ -37,11 +30,7 @@ const CompetitionExcellenceSection = () => {
               <TabsContent value="solo" className="mt-6">
                 <div className="grid md:grid-cols-2 gap-6 items-start">
                   <div className="relative">
-                    <img
-                      src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png"
-                      alt="Solo Performance"
-                      className="w-full h-64 object-cover rounded-xl"
-                    />
+                    <img src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" alt="Solo Performance" className="w-full h-64 object-cover rounded-xl" />
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-playfair text-primary text-2xl font-semibold">
@@ -60,11 +49,7 @@ const CompetitionExcellenceSection = () => {
               <TabsContent value="groups" className="mt-6">
                 <div className="grid md:grid-cols-2 gap-6 items-start">
                   <div className="relative">
-                    <img
-                      src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png"
-                      alt="Dance Group Performance"
-                      className="w-full h-64 object-cover rounded-xl"
-                    />
+                    <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Dance Group Performance" className="w-full h-64 object-cover rounded-xl" />
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-playfair text-primary text-2xl font-semibold">
@@ -87,8 +72,6 @@ const CompetitionExcellenceSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CompetitionExcellenceSection;
