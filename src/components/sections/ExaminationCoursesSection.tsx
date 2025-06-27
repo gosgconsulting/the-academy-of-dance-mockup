@@ -5,7 +5,7 @@ const ExaminationCoursesSection = () => {
   return (
     <section
       id="examinations"
-      className="py-20 bg-gradient-to-br from-primary/5 to-white"
+      className="pt-20 pb-20 bg-gradient-to-br from-primary/5 to-white"
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">

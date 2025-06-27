@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const VisionMissionSection = () => {
   return (
-    <section id="vision-mission" className="py-20 bg-white">
+    <section id="vision-mission" className="pb-20 bg-gradient-to-br from-primary/5 to-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
