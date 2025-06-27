@@ -169,7 +169,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="RAD Ballet Examination" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Ballet</span>
+                  
                 </div>
               </div>
               <CardContent className="p-8">
@@ -196,8 +196,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 <img src="/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png" alt="CSTD Jazz and Tap Examination" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute top-4 left-4 space-x-2">
-                  <span className="bg-secondary text-white px-3 py-1 rounded-full text-sm font-semibold">Jazz</span>
-                  <span className="bg-dance-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Tap</span>
+                  
+                  
                 </div>
               </div>
               <CardContent className="p-8">
@@ -220,28 +220,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="text-center mt-16">
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 max-w-3xl mx-auto">
-              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
-                Why Choose Examination Courses?
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <Trophy className="w-8 h-8 text-secondary mx-auto mb-3" />
-                  <h4 className="font-semibold text-primary mb-2">Recognition</h4>
-                  <p className="text-sm text-gray-600">Internationally recognized qualifications for portfolio building</p>
-                </div>
-                <div>
-                  <Star className="w-8 h-8 text-secondary mx-auto mb-3" />
-                  <h4 className="font-semibold text-primary mb-2">Excellence</h4>
-                  <p className="text-sm text-gray-600">Structured progression tracking technical and artistic development</p>
-                </div>
-                <div>
-                  <MapPin className="w-8 h-8 text-secondary mx-auto mb-3" />
-                  <h4 className="font-semibold text-primary mb-2">Pathway</h4>
-                  <p className="text-sm text-gray-600">Clear milestones and goals for serious dance students</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
