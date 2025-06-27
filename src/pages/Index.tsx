@@ -614,7 +614,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 specialty: "Founder",
                 credentials: "41 years of experience",
                 experience: "Ms. June Lee is a veteran dance educator and choreographer whose 41-year career has inspired students, earned international awards, and featured in prestigious global events.",
-                image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png"
+                image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png",
+                isFounder: true
               }, {
                 name: "Ms Tan Jia Jia",
                 specialty: "Multi-Genre Specialist",
@@ -642,7 +643,11 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
               }].map((teacher, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                       <div className="relative">
-                        <img src={teacher.image} alt={teacher.name} className="w-full h-72 object-cover object-[center_20%]" />
+                        <img 
+                          src={teacher.image} 
+                          alt={teacher.name} 
+                          className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_10%]' : 'object-[center_20%]'}`} 
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <CardContent className="p-6">
