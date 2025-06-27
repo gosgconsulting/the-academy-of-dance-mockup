@@ -39,8 +39,8 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold">Have a question? 
-Chat with us!</h3>
+            <h3 className="font-semibold">Have a question?</h3>
+            <p className="text-sm">Chat with us!</p>
           </div>
         </div>
         <button onClick={onClose} className="text-white hover:text-gray-200 transition-colors">
