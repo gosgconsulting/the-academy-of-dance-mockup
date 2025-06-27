@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Star, Trophy, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -150,6 +149,101 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Examination Courses Section */}
+      <section id="examinations" className="py-20 bg-gradient-to-br from-primary/5 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+              Examination Courses
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Achieve internationally recognized qualifications through our structured examination programmes, 
+              designed to validate technical skills and artistic development.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* RAD Ballet */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="RAD Ballet Examination" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">Ballet</span>
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                  Royal Academy of Dance (RAD) Ballet Examinations
+                </h3>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Internationally recognized ballet examinations that provide structured progression from 
+                  beginner to advanced levels. RAD qualifications are respected worldwide and offer students 
+                  clear milestones in their ballet journey, building technique, artistry, and confidence.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p>✓ Pre-Primary to Grade 8 levels</p>
+                  <p>✓ Vocational grading available</p>
+                  <p>✓ Internationally recognized certification</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* CSTD Tap and Jazz */}
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="relative">
+                <img src="/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png" alt="CSTD Jazz and Tap Examination" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute top-4 left-4 space-x-2">
+                  <span className="bg-secondary text-white px-3 py-1 rounded-full text-sm font-semibold">Jazz</span>
+                  <span className="bg-dance-purple text-white px-3 py-1 rounded-full text-sm font-semibold">Tap</span>
+                </div>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                  Commonwealth Society of Teachers of Dancing (CSTD) Examinations
+                </h3>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Comprehensive examination system for Tap and Jazz dance styles. CSTD examinations 
+                  focus on technical precision, musicality, and performance quality, providing students 
+                  with structured goals and professional recognition of their achievements.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p>✓ Primary to Advanced 2 levels</p>
+                  <p>✓ Separate Tap and Jazz syllabi</p>
+                  <p>✓ Commonwealth-recognized certification</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-16">
+            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 max-w-3xl mx-auto">
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                Why Choose Examination Courses?
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <Trophy className="w-8 h-8 text-secondary mx-auto mb-3" />
+                  <h4 className="font-semibold text-primary mb-2">Recognition</h4>
+                  <p className="text-sm text-gray-600">Internationally recognized qualifications for portfolio building</p>
+                </div>
+                <div>
+                  <Star className="w-8 h-8 text-secondary mx-auto mb-3" />
+                  <h4 className="font-semibold text-primary mb-2">Excellence</h4>
+                  <p className="text-sm text-gray-600">Structured progression tracking technical and artistic development</p>
+                </div>
+                <div>
+                  <MapPin className="w-8 h-8 text-secondary mx-auto mb-3" />
+                  <h4 className="font-semibold text-primary mb-2">Pathway</h4>
+                  <p className="text-sm text-gray-600">Clear milestones and goals for serious dance students</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
