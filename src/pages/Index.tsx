@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Star, Trophy, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -166,7 +167,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* RAD Ballet */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
@@ -181,14 +182,15 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   Royal Academy of Dance (RAD) Ballet Examinations
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Internationally recognized ballet examinations that provide structured progression from 
-                  beginner to advanced levels. RAD qualifications are respected worldwide and offer students 
-                  clear milestones in their ballet journey, building technique, artistry, and confidence.
+                  We're proud to offer the world-renowned RAD syllabus - one of the world's most influential dance education organizations from the UK. 
+                  Our passionate teachers guide dancers through each grade with a comprehensive, progressive approach that builds strong technique, 
+                  artistic expression, and a deep love for classical ballet.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
-                  <p>✓ Pre-Primary to Grade 8 levels</p>
-                  <p>✓ Vocational grading available</p>
-                  <p>✓ Internationally recognized certification</p>
+                  <p>✓ World-leading classical ballet education standards</p>
+                  <p>✓ Comprehensive progression for all ages and levels</p>
+                  <p>✓ Focus on technical foundation & artistic expression</p>
+                  <p>✓ Internationally recognized UK-based certification</p>
                 </div>
               </CardContent>
             </Card>
@@ -208,14 +210,15 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   Commonwealth Society of Teachers of Dancing (CSTD) Examinations
                 </h3>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Comprehensive examination system for Tap and Jazz dance styles. CSTD examinations 
-                  focus on technical precision, musicality, and performance quality, providing students 
-                  with structured goals and professional recognition of their achievements.
+                  We proudly offer CSTD syllabus from Australia - a world leader in holistic dance education! 
+                  Our Jazz and Tap programs combine rhythm, expression, and technique with pop and street music influences, 
+                  empowering dancers to reach their fullest potential as technically strong, versatile performers.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
-                  <p>✓ Primary to Advanced 2 levels</p>
-                  <p>✓ Separate Tap and Jazz syllabi</p>
-                  <p>✓ Commonwealth-recognized certification</p>
+                  <p>✓ World-leading Australian dance education system</p>
+                  <p>✓ Jazz & Tap syllabus with modern music influences</p>
+                  <p>✓ Holistic development focusing on versatility</p>
+                  <p>✓ Strong technique, performance skills & artistry</p>
                 </div>
               </CardContent>
             </Card>
