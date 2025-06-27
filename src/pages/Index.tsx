@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -709,7 +708,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                     <MapPin className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0" />
                     <div>
                       <p>Wisteria Mall, 598 Yishun Ring Road</p>
-                      <p>598 Yishun Ring Road</p>
+                      <p></p>
                       <p>#01-35/36</p>
                       <p>Singapore 768698</p>
                     </div>
