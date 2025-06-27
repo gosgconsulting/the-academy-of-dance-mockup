@@ -483,7 +483,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 isFounder: true
               }, {
                 name: "Ms Tan Jia Jia",
-                specialty: "Multi-Genre Specialist",
+                specialty: "Tampines Head",
                 credentials: "International exposure & competitive track record",
                 experience: "Ms. Tan Jia Jia is an experienced, versatile dance educator with international exposure and a strong competitive track record.",
                 image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
