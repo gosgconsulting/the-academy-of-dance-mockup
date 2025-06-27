@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Star, Trophy, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,14 +12,18 @@ import TrialsSection from "@/components/TrialsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-white">
+
+  return (
+    <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
@@ -536,7 +541,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Tampines Location */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/2085b60d-2383-47b3-9252-fea94e4cbbd5.png" alt="Tampines Location - Ballet Class" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/c30a6afd-4e61-4b4a-aa55-2a97f577433b.png" alt="Tampines Location - Reception Area" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-8">
@@ -567,7 +572,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             {/* Yishun Location */}
             <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img src="/lovable-uploads/d4f04f67-dc1a-431b-a7f2-6f1ca3e927a0.png" alt="Yishun Location - Dance Performance" className="w-full h-64 object-cover" />
+                <img src="/lovable-uploads/b035362d-9d9c-496a-b0b6-dcab5c996d55.png" alt="Yishun Location - Dance Studio" className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <CardContent className="p-8">
@@ -605,6 +610,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       {/* WhatsApp Button */}
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
