@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -453,7 +454,13 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <Carousel className="w-full">
+            <Carousel 
+              className="w-full"
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+            >
               <CarouselContent>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                   <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
@@ -594,7 +601,13 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Carousel className="w-full">
+            <Carousel 
+              className="w-full"
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+            >
               <CarouselContent>
                 {[{
                 name: "Ms June Lee",
@@ -772,4 +785,5 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
     </div>;
 };
+
 export default Index;
