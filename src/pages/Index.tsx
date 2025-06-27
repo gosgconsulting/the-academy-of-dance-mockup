@@ -255,9 +255,7 @@ const Index = () => {
               <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-secondary/10">
                 <CardContent className="p-8">
                   <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Mission</h3>
-                  <p className="text-gray-700 leading-relaxed text-base font-normal">
-                    To create a conducive, wholesome, enriching and loving environment to inspire and groom passionate dancers to be the best that they can be and to challenge themselves to be better people.
-                  </p>
+                  <p className="text-gray-700 leading-relaxed text-base font-normal">To create a conducive, wholesome, enriching and loving environment to inspire and groom passionate dancers to be the best that they can be and to challenge themselves to be better people</p>
                 </CardContent>
               </Card>
 
