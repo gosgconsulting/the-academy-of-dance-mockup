@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -137,7 +138,9 @@ const Index = () => {
                   </div>
                   <div className="flex items-center">
                     <Phone className="w-5 h-5 mr-3 text-primary" />
-                    <span>(65) 9837 2670</span>
+                    <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
+                      (65) 9837 2670
+                    </a>
                   </div>
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 mr-3 mt-1 text-primary" />
@@ -647,7 +650,9 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   </div>
                   <div className="flex items-center">
                     <Phone className="w-5 h-5 mr-3 text-primary" />
-                    <span>(65) 9837 2670</span>
+                    <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
+                      (65) 9837 2670
+                    </a>
                   </div>
                 </div>
                 <Button onClick={() => window.open('https://maps.google.com/maps?q=510+Tampines+Central+1+%2302-250+Singapore+520510', '_blank')} className="w-full bg-primary hover:bg-primary/90 text-white">
@@ -677,7 +682,9 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   </div>
                   <div className="flex items-center">
                     <Phone className="w-5 h-5 mr-3 text-primary" />
-                    <span>(65) 9337 8605</span>
+                    <a href="tel:+6593378605" className="hover:text-secondary transition-colors">
+                      (65) 9337 8605
+                    </a>
                   </div>
                 </div>
                 <Button onClick={() => window.open('https://maps.google.com/maps?q=Wisteria+Mall+598+Yishun+Ring+Road+%2301-35%2F36+Singapore+768698', '_blank')} className="w-full bg-primary hover:bg-primary/90 text-white">
@@ -718,7 +725,9 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <div className="flex justify-center space-x-8 text-sm mb-4">
               <div className="flex items-center">
                 <Phone className="w-4 h-4 mr-2" />
-                <span>(65) 9837 2670</span>
+                <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
+                  (65) 9837 2670
+                </a>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-2" />
@@ -740,4 +749,5 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </a>
     </div>;
 };
+
 export default Index;
