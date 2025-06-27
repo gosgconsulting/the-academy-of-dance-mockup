@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -68,6 +69,89 @@ const Index = () => {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
         
         <div className="relative z-10 text-center px-6 animate-fade-up">
+          {/* Featured Images Carousel */}
+          <div className="mb-12">
+            <Carousel className="w-full max-w-4xl mx-auto" opts={{
+              align: "center",
+              loop: true,
+            }}>
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/3">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" 
+                      alt="Ballet Excellence" 
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-playfair text-lg font-semibold">Ballet Excellence</h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png" 
+                      alt="International Recognition" 
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-playfair text-lg font-semibold">International Recognition</h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" 
+                      alt="Performance Ready" 
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-playfair text-lg font-semibold">Performance Ready</h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png" 
+                      alt="Dance Community" 
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-playfair text-lg font-semibold">Dance Community</h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/3">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src="/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png" 
+                      alt="International Adventures" 
+                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-playfair text-lg font-semibold">International Adventures</h3>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
+          </div>
+
           <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary mb-6">
             Where Dreams
             <span className="text-secondary block">Take Flight</span>
@@ -777,4 +861,5 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
     </div>;
 };
+
 export default Index;
