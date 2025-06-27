@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -18,9 +19,30 @@ const Index = () => {
     message: ""
   });
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const {
     toast
   } = useToast();
+
+  // Featured images for hero background carousel
+  const heroImages = [
+    '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
+    '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
+    '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
+    '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png'
+  ];
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % heroImages.length
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -62,17 +84,33 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Auto-sliding Background */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
+        {/* Background Images Carousel */}
+        <div className="absolute inset-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={image}
+                alt={`Dance performance ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40"></div>
+            </div>
+          ))}
+        </div>
         
         <div className="relative z-10 text-center px-6 animate-fade-up">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary mb-6">
+          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6">
             Where Dreams
             <span className="text-secondary block">Take Flight</span>
           </h1>
-          <p className="font-inter text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-inter text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Singapore's most prestigious ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
           </p>
           <div className="flex justify-center">
@@ -83,7 +121,20 @@ const Index = () => {
         </div>
         
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection('trials')}>
-          <ArrowDown className="w-6 h-6 text-primary" />
+          <ArrowDown className="w-6 h-6 text-white" />
+        </div>
+
+        {/* Image indicators */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+              }`}
+            />
+          ))}
         </div>
       </section>
 
@@ -161,33 +212,46 @@ const Index = () => {
               <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
-                  ...formData,
-                  name: e.target.value
-                })} required />
-                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
-                  ...formData,
-                  email: e.target.value
-                })} required />
+                  <Input
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                  />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
-                  ...formData,
-                  phone: e.target.value
-                })} required />
-                  <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
-                  ...formData,
-                  age: e.target.value
-                })} required />
+                  <Input
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                  />
+                  <Input
+                    placeholder="Age"
+                    value={formData.age}
+                    onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                    required
+                  />
                 </div>
-                <Input placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" value={formData.danceStyle} onChange={e => setFormData({
-                ...formData,
-                danceStyle: e.target.value
-              })} />
-                <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
-                ...formData,
-                message: e.target.value
-              })} rows={4} />
+                <Input
+                  placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)"
+                  value={formData.danceStyle}
+                  onChange={(e) => setFormData({ ...formData, danceStyle: e.target.value })}
+                />
+                <Textarea
+                  placeholder="Tell us about your dance experience or any questions..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows={4}
+                />
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Now!
@@ -344,32 +408,41 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[{
-            image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
-            title: 'Melbourne Dance Exchange 2023'
-          }, {
-            image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
-            title: 'Ballet Class Excellence'
-          }, {
-            image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png',
-            title: 'International Adventures'
-          }, {
-            image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
-            title: 'Performance Ready'
-          }, {
-            image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png',
-            title: 'Dance Community'
-          }, {
-            image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png',
-            title: 'Young Performers'
-          }].map((item, index) => <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
+            {[
+              {
+                image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
+                title: 'Melbourne Dance Exchange 2023'
+              },
+              {
+                image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
+                title: 'Ballet Class Excellence'
+              },
+              {
+                image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png',
+                title: 'International Adventures'
+              },
+              {
+                image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
+                title: 'Performance Ready'
+              },
+              {
+                image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png',
+                title: 'Dance Community'
+              },
+              {
+                image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png',
+                title: 'Young Performers'
+              }
+            ].map((item, index) => (
+              <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
                 <img src={item.image} alt={item.title} className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-playfair text-lg font-semibold">{item.title}</h3>
                   </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -553,25 +626,32 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[{
-            name: "Sarah Chen",
-            role: "Parent of Emma, Age 8",
-            content: "The Academy of Dance has transformed my shy daughter into a confident performer. The teachers are exceptional and truly care about each child's progress.",
-            rating: 5
-          }, {
-            name: "Michael Tan",
-            role: "Parent of Lucas, Age 12",
-            content: "Outstanding instruction and facilities. My son has developed incredible discipline and artistry. The recitals are professionally produced and showcase real talent.",
-            rating: 5
-          }, {
-            name: "Priya Patel",
-            role: "Parent of Aria, Age 6",
-            content: "We've tried several dance schools, but none compare to the quality and care here. The trial class sold us immediately - it's worth every dollar.",
-            rating: 5
-          }].map((review, index) => <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
+            {[
+              {
+                name: "Sarah Chen",
+                role: "Parent of Emma, Age 8",
+                content: "The Academy of Dance has transformed my shy daughter into a confident performer. The teachers are exceptional and truly care about each child's progress.",
+                rating: 5
+              },
+              {
+                name: "Michael Tan",
+                role: "Parent of Lucas, Age 12",
+                content: "Outstanding instruction and facilities. My son has developed incredible discipline and artistry. The recitals are professionally produced and showcase real talent.",
+                rating: 5
+              },
+              {
+                name: "Priya Patel",
+                role: "Parent of Aria, Age 6",
+                content: "We've tried several dance schools, but none compare to the quality and care here. The trial class sold us immediately - it's worth every dollar.",
+                rating: 5
+              }
+            ].map((review, index) => (
+              <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="space-y-4 p-0">
                   <div className="flex space-x-1">
-                    {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />)}
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
+                    ))}
                   </div>
                   <p className="text-gray-700 italic">"{review.content}"</p>
                   <div>
@@ -579,7 +659,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                     <p className="text-sm text-gray-500">{review.role}</p>
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -596,45 +677,56 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
 
           <div className="max-w-6xl mx-auto">
             <Carousel className="w-full" opts={{
-            align: "start",
-            loop: true
-          }}>
+              align: "start",
+              loop: true
+            }}>
               <CarouselContent>
-                {[{
-                name: "Ms June Lee",
-                specialty: "Founder",
-                credentials: "41 years of experience",
-                experience: "Ms. June Lee is a veteran dance educator and choreographer whose 41-year career has inspired students, earned international awards, and featured in prestigious global events.",
-                image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png",
-                isFounder: true
-              }, {
-                name: "Ms Tan Jia Jia",
-                specialty: "Multi-Genre Specialist",
-                credentials: "International exposure & competitive track record",
-                experience: "Ms. Tan Jia Jia is an experienced, versatile dance educator with international exposure and a strong competitive track record.",
-                image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
-              }, {
-                name: "Ms Jasmine Koh",
-                specialty: "Classical Ballet Expert",
-                credentials: "25 years experience, RAD & CSTD certified",
-                experience: "Ms. Jasmine Koh is a passionate dancer and educator with 25 years of experience, trained in ballet, jazz, and tap, and certified under RAD and CSTD.",
-                image: "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png"
-              }, {
-                name: "Ms Annabelle Ong",
-                specialty: "Inspirational Educator",
-                credentials: "Started at 17, full-time design career",
-                experience: "Ms. Annabelle Ong is a dedicated dancer and teacher who, despite starting at 17, has performed widely and now inspires young dancers while balancing a full-time design career.",
-                image: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png"
-              }, {
-                name: "Ms Jacqueline Macpherson",
-                specialty: "Award-Winning Performer",
-                credentials: "International performance experience",
-                experience: "Ms. Jacqueline Macpherson is an award-winning dancer with international performance experience who now aims to share her passion for dance through teaching.",
-                image: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png"
-              }].map((teacher, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                {[
+                  {
+                    name: "Ms June Lee",
+                    specialty: "Founder",
+                    credentials: "41 years of experience",
+                    experience: "Ms. June Lee is a veteran dance educator and choreographer whose 41-year career has inspired students, earned international awards, and featured in prestigious global events.",
+                    image: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png",
+                    isFounder: true
+                  },
+                  {
+                    name: "Ms Tan Jia Jia",
+                    specialty: "Multi-Genre Specialist",
+                    credentials: "International exposure & competitive track record",
+                    experience: "Ms. Tan Jia Jia is an experienced, versatile dance educator with international exposure and a strong competitive track record.",
+                    image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
+                  },
+                  {
+                    name: "Ms Jasmine Koh",
+                    specialty: "Classical Ballet Expert",
+                    credentials: "25 years experience, RAD & CSTD certified",
+                    experience: "Ms. Jasmine Koh is a passionate dancer and educator with 25 years of experience, trained in ballet, jazz, and tap, and certified under RAD and CSTD.",
+                    image: "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png"
+                  },
+                  {
+                    name: "Ms Annabelle Ong",
+                    specialty: "Inspirational Educator",
+                    credentials: "Started at 17, full-time design career",
+                    experience: "Ms. Annabelle Ong is a dedicated dancer and teacher who, despite starting at 17, has performed widely and now inspires young dancers while balancing a full-time design career.",
+                    image: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png"
+                  },
+                  {
+                    name: "Ms Jacqueline Macpherson",
+                    specialty: "Award-Winning Performer",
+                    credentials: "International performance experience",
+                    experience: "Ms. Jacqueline Macpherson is an award-winning dancer with international performance experience who now aims to share her passion for dance through teaching.",
+                    image: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png"
+                  }
+                ].map((teacher, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                       <div className="relative">
-                        <img src={teacher.image} alt={teacher.name} className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_30%]' : 'object-[center_20%]'}`} />
+                        <img
+                          src={teacher.image}
+                          alt={teacher.name}
+                          className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_30%]' : 'object-[center_20%]'}`}
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <CardContent className="p-6">
@@ -644,7 +736,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                         <p className="text-gray-500 text-sm">{teacher.experience}</p>
                       </CardContent>
                     </Card>
-                  </CarouselItem>)}
+                  </CarouselItem>
+                ))}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
@@ -767,7 +860,11 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </footer>
 
       {/* WhatsApp Button */}
-      <button onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110" aria-label="Contact us on WhatsApp">
+      <button
+        onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)}
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        aria-label="Contact us on WhatsApp"
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106" />
         </svg>
