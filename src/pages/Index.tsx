@@ -1,277 +1,31 @@
-import { useState, useEffect } from "react";
-import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
+import { useState } from "react";
+import { Star, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+import Navigation from "@/components/Navigation";
+import HeroSection from "@/components/HeroSection";
+import TrialsSection from "@/components/TrialsSection";
+import VisionMissionSection from "@/components/VisionMissionSection";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
 const Index = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    age: "",
-    danceStyle: "",
-    location: "",
-    message: ""
-  });
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const {
-    toast
-  } = useToast();
 
-  // Featured images for hero background carousel
-  const heroImages = ['/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png', '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png', '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png', '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png'];
-
-  // Auto-slide effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Trial Class Request Submitted!",
-      description: "We'll contact you within 24 hours to schedule your trial."
-    });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      age: "",
-      danceStyle: "",
-      location: "",
-      message: ""
-    });
-  };
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-12 w-auto" />
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
-              <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
-              <button onClick={() => scrollToSection('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
-              <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
-              <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
-              <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
-            </div>
-            <Button onClick={() => scrollToSection('trials')} className="bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
-          </div>
-        </div>
-      </nav>
 
-      {/* Hero Section with Auto-sliding Background */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Images Carousel */}
-        <div className="absolute inset-0">
-          {heroImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
-              <img src={image} alt={`Dance performance ${index + 1}`} className="w-full h-full object-cover" />
-            </div>)}
-          {/* Black overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-        
-        <div className="relative z-10 text-center px-6 animate-fade-up">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6">
-            Where Dreams
-            <span className="text-secondary block">Take Flight</span>
-          </h1>
-          <p className="font-inter text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Singapore's most prestigious ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
-          </p>
-          <div className="flex justify-center">
-            <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
-              Start Your Journey
-            </Button>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection('trials')}>
-          <ArrowDown className="w-6 h-6 text-white" />
-        </div>
-
-        {/* Image indicators */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {heroImages.map((_, index) => <button key={index} onClick={() => setCurrentImageIndex(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'}`} />)}
-        </div>
-      </section>
-
-      {/* Trials & Contact Section */}
-      <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-              Begin Your Dance Journey
-            </h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience our world-class instruction with a trial class for just $20. Discover the perfect dance style for you.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Trial Info */}
-            <div className="space-y-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Join Our Trial Classes</h3>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Ballet, Jazz, Lyrical & Contemporary, Hip Hop, Tap
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Tumbling classes are also available as our new course
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    You can join our trail classes for just $20!
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Professional instructors with international experience
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Small class sizes for personalized attention
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                    Ages 3 to adult - everyone welcome
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white text-primary rounded-2xl p-8 shadow-lg border border-gray-200">
-                <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-semibold mb-2">Ms June Lee</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Phone className="w-5 h-5 mr-3 text-primary" />
-                    <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
-                      (65) 9837 2670
-                    </a>
-                  </div>
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 mr-3 mt-1 text-primary" />
-                    <div>
-                      <p className="font-semibold">Tampines</p>
-                      <p>510 Tampines Central 1, #02-250</p>
-                      <p>Singapore 520510</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
-                  ...formData,
-                  name: e.target.value
-                })} required />
-                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
-                  ...formData,
-                  email: e.target.value
-                })} required />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
-                  ...formData,
-                  phone: e.target.value
-                })} required />
-                  <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
-                  ...formData,
-                  age: e.target.value
-                })} required />
-                </div>
-                <Select value={formData.location} onValueChange={value => setFormData({
-                ...formData,
-                location: value
-              })}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select Centre Location" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="tampines">Tampines</SelectItem>
-                    <SelectItem value="yishun">Yishun</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Input placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" value={formData.danceStyle} onChange={e => setFormData({
-                ...formData,
-                danceStyle: e.target.value
-              })} />
-                <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
-                ...formData,
-                message: e.target.value
-              })} rows={4} />
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book Now!
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision, Mission & Tagline Section */}
-      <section id="vision-mission" className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Our Vision */}
-              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
-                <CardContent className="p-8">
-                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Vision</h3>
-                  <p className="text-gray-700 leading-relaxed text-base">
-                    To nurture dancers with passion and compassion
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Our Mission */}
-              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-secondary/10">
-                <CardContent className="p-8">
-                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Mission</h3>
-                  <p className="text-gray-700 leading-relaxed text-base font-normal">To create a conducive, wholesome, enriching and loving environment to inspire and groom passionate dancers to be the best that they can be and to challenge themselves to be better people</p>
-                </CardContent>
-              </Card>
-
-              {/* Tagline */}
-              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
-                <CardContent className="p-8">
-                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tagline</h3>
-                  <p className="text-gray-700 leading-relaxed text-base font-normal">
-                    Our insatiable passion for dance
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
+  return (
+    <div className="min-h-screen bg-white">
+      <Navigation scrollToSection={scrollToSection} />
+      <HeroSection scrollToSection={scrollToSection} />
+      <TrialsSection />
 
       {/* Our Programmes Section */}
       <section id="programmes" className="py-20 bg-white">
@@ -393,15 +147,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   environment. Students learn rolls, cartwheels, handstands, and more advanced tumbling skills 
                   that enhance their overall dance performance.
                 </p>
-                <div className="mt-4">
-                  
-                </div>
               </CardContent>
             </Card>
-          </div>
-
-          <div className="text-center mt-12">
-            
           </div>
         </div>
       </section>
@@ -419,32 +166,23 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[{
-            image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
-            title: 'Melbourne Dance Exchange 2023'
-          }, {
-            image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
-            title: 'Ballet Class Excellence'
-          }, {
-            image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png',
-            title: 'International Adventures'
-          }, {
-            image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
-            title: 'Performance Ready'
-          }, {
-            image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png',
-            title: 'Dance Community'
-          }, {
-            image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png',
-            title: 'Young Performers'
-          }].map((item, index) => <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
+            {[
+              { image: '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png', title: 'Melbourne Dance Exchange 2023' },
+              { image: '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png', title: 'Ballet Class Excellence' },
+              { image: '/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png', title: 'International Adventures' },
+              { image: '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png', title: 'Performance Ready' },
+              { image: '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png', title: 'Dance Community' },
+              { image: '/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png', title: 'Young Performers' }
+            ].map((item, index) => (
+              <div key={index} className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300">
                 <img src={item.image} alt={item.title} className="w-full h-64 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-playfair text-lg font-semibold">{item.title}</h3>
                   </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -479,7 +217,6 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   <div className="grid md:grid-cols-2 gap-6 items-start">
                     <div className="relative">
                       <img src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" alt="Solo Performance" className="w-full h-64 object-cover rounded-xl" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
                     </div>
                     <div className="space-y-4">
                       <h4 className="font-playfair font-bold text-primary text-2xl">
@@ -497,7 +234,6 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   <div className="grid md:grid-cols-2 gap-6 items-start">
                     <div className="relative">
                       <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Dance Group Performance" className="w-full h-64 object-cover rounded-xl" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
                     </div>
                     <div className="space-y-4">
                       <h4 className="font-playfair font-bold text-primary text-2xl">
@@ -514,10 +250,6 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   </div>
                 </TabsContent>
               </Tabs>
-
-              <div className="mt-8 text-center">
-                
-              </div>
             </div>
           </div>
         </div>
@@ -863,50 +595,13 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-1 gap-8 mb-8">
-            {/* Logo and Description */}
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
-              </div>
-              <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
-              
-              {/* Social Media Icons */}
-              <div className="flex justify-center space-x-4">
-                <a href="https://www.facebook.com/theacademyofdancesg" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
-                  <Facebook className="w-5 h-5 text-white" />
-                </a>
-                <a href="https://www.instagram.com/theacademyofdancesg/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors">
-                  <Instagram className="w-5 h-5 text-white" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer Links */}
-          <div className="text-center border-t border-gray-700 pt-8">
-            <div className="flex justify-center space-x-8 text-sm mb-4">
-              <a href="#" className="hover:text-secondary transition-colors">Terms & Conditions</a>
-              <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
-            </div>
-            <div className="text-gray-400 text-sm">
-              © 2024 The Academy of Dance. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* WhatsApp Button */}
-      <button onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110" aria-label="Contact us on WhatsApp">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106" />
-        </svg>
-      </button>
-
-      {/* WhatsApp Chat Widget */}
+      <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
