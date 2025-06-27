@@ -265,7 +265,7 @@ const Index = () => {
               <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
                 <CardContent className="p-8">
                   <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tagline</h3>
-                  <p className="text-gray-700 leading-relaxed italic text-lg font-light">
+                  <p className="text-gray-700 leading-relaxed text-base font-normal">
                     Our insatiable passion for dance
                   </p>
                 </CardContent>
