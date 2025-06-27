@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -457,7 +456,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               Competition Excellence
             </h2>
-            <p className="font-inter text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">
               We don't just dance for fun (though we have TONS of that!) - we also dominate the competition scene! 
               Our dancers bring home the gold and make us incredibly proud. ✨
             </p>
@@ -479,11 +478,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 <TabsContent value="solo" className="mt-6">
                   <div className="grid md:grid-cols-2 gap-6 items-center">
                     <div className="relative">
-                      <img 
-                        src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" 
-                        alt="Solo Performance" 
-                        className="w-full h-64 object-cover rounded-xl"
-                      />
+                      <img src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" alt="Solo Performance" className="w-full h-64 object-cover rounded-xl" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
                     </div>
                     <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
@@ -501,11 +496,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 <TabsContent value="groups" className="mt-6">
                   <div className="grid md:grid-cols-2 gap-6 items-center">
                     <div className="relative">
-                      <img 
-                        src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" 
-                        alt="Dance Group Performance" 
-                        className="w-full h-64 object-cover rounded-xl"
-                      />
+                      <img src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" alt="Dance Group Performance" className="w-full h-64 object-cover rounded-xl" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
                     </div>
                     <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6">
@@ -554,9 +545,9 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 
                 <TabsContent value="past" className="mt-6">
                   <Carousel className="w-full" opts={{
-                    align: "start",
-                    loop: true
-                  }}>
+                  align: "start",
+                  loop: true
+                }}>
                     <CarouselContent>
                       <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                         <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
