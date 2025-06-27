@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from "react";
-import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy } from "lucide-react";
+import { Star, ArrowDown, Calendar, Mail, Phone, MapPin, Facebook, Instagram, Trophy, Heart, Target, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -248,6 +247,60 @@ const Index = () => {
                   Book Now!
                 </Button>
               </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vision, Mission & Tagline Section */}
+      <section id="vision-mission" className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Our Vision */}
+              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
+                <CardContent className="p-8">
+                  <div className="flex justify-center mb-6">
+                    <div className="bg-primary/10 p-4 rounded-full">
+                      <Heart className="w-8 h-8 text-primary" />
+                    </div>
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Vision</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    To nurture dancers with passion and compassion
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Our Mission */}
+              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-secondary/10">
+                <CardContent className="p-8">
+                  <div className="flex justify-center mb-6">
+                    <div className="bg-secondary/10 p-4 rounded-full">
+                      <Target className="w-8 h-8 text-secondary" />
+                    </div>
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Mission</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    To create a conducive, wholesome, enriching and loving environment to inspire and groom passionate dancers to be the best that they can be and to challenge themselves to be better people.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Tagline */}
+              <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
+                <CardContent className="p-8">
+                  <div className="flex justify-center mb-6">
+                    <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-4 rounded-full">
+                      <Sparkles className="w-8 h-8 text-primary" />
+                    </div>
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tagline</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed font-semibold italic">
+                    Our insatiable passion for dance
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
