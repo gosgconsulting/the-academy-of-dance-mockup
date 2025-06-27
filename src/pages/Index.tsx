@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -599,7 +600,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                       <div className="relative">
-                        <img src={teacher.image} alt={teacher.name} className="w-full h-80 object-cover object-center" />
+                        <img src={teacher.image} alt={teacher.name} className="w-full h-72 object-cover object-[center_20%]" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <CardContent className="p-6">
@@ -734,4 +735,5 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       </a>
     </div>;
 };
+
 export default Index;
