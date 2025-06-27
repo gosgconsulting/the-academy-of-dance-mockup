@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Star, Trophy, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -505,16 +506,16 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 experience: "Ms. Jacqueline Macpherson is an award-winning dancer with international performance experience who now aims to share her passion for dance through teaching.",
                 image: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png"
               }].map((teacher, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                       <div className="relative">
                         <img src={teacher.image} alt={teacher.name} className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_30%]' : 'object-[center_20%]'}`} />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
-                      <CardContent className="p-6">
+                      <CardContent className="p-6 flex-1 flex flex-col">
                         <h3 className="font-playfair text-xl font-bold text-primary mb-2">{teacher.name}</h3>
                         <p className="text-secondary font-semibold mb-2">{teacher.specialty}</p>
                         <p className="text-gray-600 text-sm mb-2">{teacher.credentials}</p>
-                        <p className="text-gray-500 text-sm">{teacher.experience}</p>
+                        <p className="text-gray-500 text-sm flex-1">{teacher.experience}</p>
                       </CardContent>
                     </Card>
                   </CarouselItem>)}
