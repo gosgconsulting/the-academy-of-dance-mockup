@@ -1,22 +1,18 @@
-
 import React, { useState } from 'react';
 import { X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-
 interface WhatsAppChatProps {
   isOpen: boolean;
   onClose: () => void;
   phoneNumber?: string;
 }
-
-const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ 
-  isOpen, 
-  onClose, 
-  phoneNumber = "6598372670" 
+const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
+  isOpen,
+  onClose,
+  phoneNumber = "6598372670"
 }) => {
   const [message, setMessage] = useState('');
-
   const handleSendMessage = () => {
     if (message.trim()) {
       const encodedMessage = encodeURIComponent(message);
@@ -26,18 +22,14 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
       onClose();
     }
   };
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
   };
-
   if (!isOpen) return null;
-
-  return (
-    <div className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-t-2xl shadow-2xl border border-gray-200 overflow-hidden">
+  return <div className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-t-2xl shadow-2xl border border-gray-200 overflow-hidden">
       {/* Header */}
       <div className="bg-green-500 text-white p-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -47,13 +39,11 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold">Have a question? Chat with us!</h3>
+            <h3 className="font-semibold">Have a question? 
+Chat with us!</h3>
           </div>
         </div>
-        <button 
-          onClick={onClose}
-          className="text-white hover:text-gray-200 transition-colors"
-        >
+        <button onClick={onClose} className="text-white hover:text-gray-200 transition-colors">
           <X className="w-5 h-5" />
         </button>
       </div>
@@ -70,26 +60,13 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
       <div className="p-4 bg-white border-t border-gray-200">
         <div className="flex items-end space-x-2">
           <div className="flex-1 relative">
-            <Textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Write your message..."
-              className="min-h-[40px] max-h-[120px] resize-none border-gray-300 rounded-full px-4 py-2 pr-10"
-              rows={1}
-            />
+            <Textarea value={message} onChange={e => setMessage(e.target.value)} onKeyPress={handleKeyPress} placeholder="Write your message..." className="min-h-[40px] max-h-[120px] resize-none border-gray-300 rounded-full px-4 py-2 pr-10" rows={1} />
           </div>
-          <Button
-            onClick={handleSendMessage}
-            disabled={!message.trim()}
-            className="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 h-10 w-10 flex items-center justify-center"
-          >
+          <Button onClick={handleSendMessage} disabled={!message.trim()} className="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 h-10 w-10 flex items-center justify-center">
             <Send className="w-4 h-4" />
           </Button>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default WhatsAppChat;
