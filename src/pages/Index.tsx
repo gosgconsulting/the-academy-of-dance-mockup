@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,24 +21,20 @@ const Index = () => {
   });
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
 
   // Featured images for hero background carousel
-  const heroImages = [
-    '/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png',
-    '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png',
-    '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png',
-    '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png'
-  ];
+  const heroImages = ['/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png', '/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png', '/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png', '/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png'];
 
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+      setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
     }, 3000);
     return () => clearInterval(interval);
   }, [heroImages.length]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -56,13 +51,12 @@ const Index = () => {
       message: ""
     });
   };
-
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50 border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
@@ -193,36 +187,29 @@ const Index = () => {
               <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input 
-                    placeholder="Full Name" 
-                    value={formData.name} 
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
-                    required 
-                  />
-                  <Input 
-                    type="email" 
-                    placeholder="Email Address" 
-                    value={formData.email} 
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
-                    required 
-                  />
+                  <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
+                  ...formData,
+                  name: e.target.value
+                })} required />
+                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
+                  ...formData,
+                  email: e.target.value
+                })} required />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input 
-                    type="tel" 
-                    placeholder="Phone Number" 
-                    value={formData.phone} 
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })} 
-                    required 
-                  />
-                  <Input 
-                    placeholder="Age" 
-                    value={formData.age} 
-                    onChange={(e) => setFormData({ ...formData, age: e.target.value })} 
-                    required 
-                  />
+                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
+                  ...formData,
+                  phone: e.target.value
+                })} required />
+                  <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
+                  ...formData,
+                  age: e.target.value
+                })} required />
                 </div>
-                <Select value={formData.location} onValueChange={(value) => setFormData({ ...formData, location: value })}>
+                <Select value={formData.location} onValueChange={value => setFormData({
+                ...formData,
+                location: value
+              })}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select Centre Location" />
                   </SelectTrigger>
@@ -231,17 +218,14 @@ const Index = () => {
                     <SelectItem value="yishun">Yishun</SelectItem>
                   </SelectContent>
                 </Select>
-                <Input 
-                  placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" 
-                  value={formData.danceStyle} 
-                  onChange={(e) => setFormData({ ...formData, danceStyle: e.target.value })} 
-                />
-                <Textarea 
-                  placeholder="Tell us about your dance experience or any questions..." 
-                  value={formData.message} 
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })} 
-                  rows={4} 
-                />
+                <Input placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" value={formData.danceStyle} onChange={e => setFormData({
+                ...formData,
+                danceStyle: e.target.value
+              })} />
+                <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
+                ...formData,
+                message: e.target.value
+              })} rows={4} />
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Now!
@@ -261,7 +245,7 @@ const Index = () => {
               <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
                 <CardContent className="p-8">
                   <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Vision</h3>
-                  <p className="text-gray-700 text-lg leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-base">
                     To nurture dancers with passion and compassion
                   </p>
                 </CardContent>
@@ -271,7 +255,7 @@ const Index = () => {
               <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-secondary/10">
                 <CardContent className="p-8">
                   <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Our Mission</h3>
-                  <p className="text-gray-700 text-lg leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-base font-normal">
                     To create a conducive, wholesome, enriching and loving environment to inspire and groom passionate dancers to be the best that they can be and to challenge themselves to be better people.
                   </p>
                 </CardContent>
@@ -281,7 +265,7 @@ const Index = () => {
               <Card className="text-center hover:shadow-xl transition-shadow duration-300 border-2 border-primary/10">
                 <CardContent className="p-8">
                   <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Tagline</h3>
-                  <p className="text-gray-700 text-lg leading-relaxed font-semibold italic">
+                  <p className="text-gray-700 leading-relaxed italic text-lg font-light">
                     Our insatiable passion for dance
                   </p>
                 </CardContent>
@@ -868,8 +852,6 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
 
       {/* WhatsApp Chat Widget */}
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
