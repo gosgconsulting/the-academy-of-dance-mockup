@@ -754,19 +754,11 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             </div>
           </div>
 
-          {/* Contact Information */}
+          {/* Footer Links */}
           <div className="text-center border-t border-gray-700 pt-8">
             <div className="flex justify-center space-x-8 text-sm mb-4">
-              <div className="flex items-center">
-                <Phone className="w-4 h-4 mr-2" />
-                <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
-                  (65) 9837 2670
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Mail className="w-4 h-4 mr-2" />
-                <span>enquiry@theacademyofdance.sg</span>
-              </div>
+              <a href="#" className="hover:text-secondary transition-colors">Terms & Conditions</a>
+              <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
             </div>
             <div className="text-gray-400 text-sm">
               © 2024 The Academy of Dance. All rights reserved.
