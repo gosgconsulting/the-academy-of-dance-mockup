@@ -87,7 +87,7 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
 
       {/* Full-screen image modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black/90 border-none">
+        <DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black/60 border-none">
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Close button */}
             <button
@@ -97,11 +97,11 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
               <X className="w-6 h-6 text-white" />
             </button>
 
-            {/* Main image - 70% of screen size */}
+            {/* Main image - 80% of screen size */}
             <img
               src={images[modalImageIndex]}
               alt={`${title} - Image ${modalImageIndex + 1}`}
-              className="max-w-[70%] max-h-[70%] object-contain"
+              className="max-w-[80%] max-h-[80%] object-contain"
             />
 
             {/* Navigation arrows - fixed positioning for consistent alignment */}
