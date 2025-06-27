@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -476,31 +477,49 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 </TabsList>
                 
                 <TabsContent value="solo" className="mt-6">
-                  <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
-                    <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
-                      
-                      Solo Program
-                    </h4>
-                    <p className="text-gray-700 text-base font-normal">
-                      Perfect for dancers who want to shine in the spotlight! Our solo program develops individual artistry, 
-                      technical precision, and stage presence that judges absolutely love.
-                    </p>
+                  <div className="grid md:grid-cols-2 gap-6 items-center">
+                    <div className="relative">
+                      <img 
+                        src="/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png" 
+                        alt="Solo Performance" 
+                        className="w-full h-64 object-cover rounded-xl"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
+                    </div>
+                    <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
+                      <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
+                        Solo Program
+                      </h4>
+                      <p className="text-gray-700 text-base font-normal">
+                        Perfect for dancers who want to shine in the spotlight! Our solo program develops individual artistry, 
+                        technical precision, and stage presence that judges absolutely love.
+                      </p>
+                    </div>
                   </div>
                 </TabsContent>
                 
                 <TabsContent value="groups" className="mt-6">
-                  <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6">
-                    <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
-                      
-                      Dance Groups
-                    </h4>
-                    <p className="text-gray-700 mb-3 text-base">
-                      Our competitive troupes are where magic happens! These elite groups train together, compete together, 
-                      and WIN together. The bond they form is as strong as their performances are spectacular.
-                    </p>
-                    <p className="text-secondary font-semibold italic">
-                      (These are our competitive troupes - the cream of the crop!)
-                    </p>
+                  <div className="grid md:grid-cols-2 gap-6 items-center">
+                    <div className="relative">
+                      <img 
+                        src="/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png" 
+                        alt="Dance Group Performance" 
+                        className="w-full h-64 object-cover rounded-xl"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
+                    </div>
+                    <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6">
+                      <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
+                        Dance Groups
+                      </h4>
+                      <p className="text-gray-700 mb-3 text-base">
+                        Our competitive troupes are where magic happens! These elite groups train together, compete together, 
+                        and WIN together. The bond they form is as strong as their performances are spectacular.
+                      </p>
+                      <p className="text-secondary font-semibold italic">
+                        (These are our competitive troupes - the cream of the crop!)
+                      </p>
+                    </div>
                   </div>
                 </TabsContent>
               </Tabs>
