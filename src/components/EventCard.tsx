@@ -87,7 +87,7 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
 
       {/* Full-screen image modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black/60 border-none">
+        <DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black/60 border-none flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Close button */}
             <button
@@ -97,32 +97,35 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
               <X className="w-6 h-6 text-white" />
             </button>
 
-            {/* Main image - 80% of screen size */}
-            <img
-              src={images[modalImageIndex]}
-              alt={`${title} - Image ${modalImageIndex + 1}`}
-              className="max-w-[80%] max-h-[80%] object-contain"
-            />
+            {/* Main image container - centered with proper aspect ratio */}
+            <div className="relative flex items-center justify-center w-full h-full px-16">
+              {/* Main image - 80% of screen size with proper centering */}
+              <img
+                src={images[modalImageIndex]}
+                alt={`${title} - Image ${modalImageIndex + 1}`}
+                className="max-w-[80%] max-h-[80%] object-contain"
+              />
 
-            {/* Navigation arrows - fixed positioning for consistent alignment */}
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={prevModalImage}
-                  className="fixed left-8 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors z-40"
-                >
-                  <ArrowLeft className="w-6 h-6 text-white" />
-                </button>
-                <button
-                  onClick={nextModalImage}
-                  className="fixed right-8 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors z-40"
-                >
-                  <ArrowRight className="w-6 h-6 text-white" />
-                </button>
-              </>
-            )}
+              {/* Navigation arrows - positioned relative to the image container */}
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevModalImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors z-40"
+                  >
+                    <ArrowLeft className="w-6 h-6 text-white" />
+                  </button>
+                  <button
+                    onClick={nextModalImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors z-40"
+                  >
+                    <ArrowRight className="w-6 h-6 text-white" />
+                  </button>
+                </>
+              )}
+            </div>
 
-            {/* Image counter */}
+            {/* Image counter - positioned at bottom center */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
               {modalImageIndex + 1} / {images.length}
             </div>
