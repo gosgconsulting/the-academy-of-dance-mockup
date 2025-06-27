@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
+
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
