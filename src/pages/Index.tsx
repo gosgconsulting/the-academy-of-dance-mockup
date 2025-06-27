@@ -646,7 +646,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                         <img 
                           src={teacher.image} 
                           alt={teacher.name} 
-                          className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_10%]' : 'object-[center_20%]'}`} 
+                          className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_5%]' : 'object-[center_20%]'}`} 
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
