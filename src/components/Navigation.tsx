@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 interface NavigationProps {
@@ -11,7 +10,11 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-12 w-auto" />
+            <img 
+              src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
+              alt="The Academy of Dance" 
+              className="h-8 md:h-12 w-auto object-contain" 
+            />
           </div>
           <div className="hidden md:flex space-x-8">
             <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>

@@ -1,4 +1,3 @@
-
 import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
@@ -8,7 +7,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-1 gap-8 mb-8">
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="The Academy of Dance" className="h-16 w-auto" />
+              <img 
+                src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
+                alt="The Academy of Dance" 
+                className="h-12 md:h-16 w-auto object-contain" 
+              />
             </div>
             <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
             
