@@ -417,8 +417,8 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 
                 <TabsContent value="groups" className="mt-6">
                   <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6">
-                    <h4 className="font-playfair text-2xl font-bold text-primary mb-4 flex items-center">
-                      <div className="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                    <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
+                      
                       Dance Groups
                     </h4>
                     <p className="text-gray-700 mb-3 text-base">
