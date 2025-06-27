@@ -404,7 +404,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 
                 <TabsContent value="solo" className="mt-6">
                   <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
-                    <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-xl">
+                    <h4 className="font-playfair font-bold text-primary mb-4 flex items-center text-2xl">
                       
                       Solo Program
                     </h4>
