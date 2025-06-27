@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -9,12 +9,14 @@ import { MapPin, Phone, Clock, Star, Users, Trophy, Heart, Sparkles, Music, Cale
 import WhatsAppChat from "@/components/WhatsAppChat";
 
 const Index = () => {
+  const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dance-light via-white to-purple-50">
-      <WhatsAppChat />
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+      <WhatsAppChat isOpen={isWhatsAppOpen} onClose={() => setIsWhatsAppOpen(false)} />
       
       {/* Header */}
-      <header className="bg-gradient-to-r from-dance-purple via-purple-600 to-dance-rose shadow-lg sticky top-0 z-50">
+      <header className="bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -38,18 +40,18 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-dance-purple/90 via-purple-600/80 to-dance-rose/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 via-purple-700/80 to-pink-600/90"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center">
             <div className="mb-8">
-              <Badge variant="secondary" className="bg-dance-gold/90 text-white border-0 px-4 py-2 text-sm font-medium">
+              <Badge variant="secondary" className="bg-yellow-500/90 text-white border-0 px-4 py-2 text-sm font-medium">
                 ✨ Award-Winning Academy
               </Badge>
             </div>
             <h2 className="text-6xl md:text-7xl font-bold text-white mb-6 font-playfair leading-tight">
               Where Dreams Take{" "}
-              <span className="bg-gradient-to-r from-dance-gold via-yellow-300 to-dance-gold bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent animate-pulse">
                 Flight
               </span>
             </h2>
@@ -58,11 +60,11 @@ const Index = () => {
               From graceful beginnings to professional excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-dance-gold to-yellow-500 hover:from-yellow-500 hover:to-dance-gold text-white font-semibold px-8 py-3 shadow-xl transform hover:scale-105 transition-all duration-300">
+              <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold px-8 py-3 shadow-xl transform hover:scale-105 transition-all duration-300">
                 <Calendar className="mr-2 h-5 w-5" />
                 Book Free Trial
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-dance-purple font-semibold px-8 py-3 shadow-xl transform hover:scale-105 transition-all duration-300">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold px-8 py-3 shadow-xl transform hover:scale-105 transition-all duration-300">
                 <Music className="mr-2 h-5 w-5" />
                 Watch Our Story
               </Button>
@@ -72,7 +74,7 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-dance-rose via-pink-500 to-purple-500">
+      <section className="py-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="text-white">
@@ -99,11 +101,11 @@ const Index = () => {
       <section id="about" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="border-dance-purple text-dance-purple mb-4">
+            <Badge variant="outline" className="border-purple-600 text-purple-600 mb-4">
               <Heart className="mr-2 h-4 w-4" />
               About Our Academy
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-dance-purple mb-6 font-playfair">
+            <h2 className="text-4xl md:text-5xl font-bold text-purple-600 mb-6 font-playfair">
               Nurturing Excellence Since 2008
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -115,10 +117,10 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-8 text-center bg-gradient-to-br from-white to-purple-50 border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-dance-purple to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Trophy className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-dance-purple mb-4">Award-Winning Excellence</h3>
+              <h3 className="text-xl font-semibold text-purple-600 mb-4">Award-Winning Excellence</h3>
               <p className="text-gray-600 leading-relaxed">
                 Our students consistently achieve top honors in international competitions, 
                 with over 50 awards in the past 5 years.
@@ -126,10 +128,10 @@ const Index = () => {
             </Card>
             
             <Card className="p-8 text-center bg-gradient-to-br from-white to-pink-50 border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-dance-rose to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Users className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-dance-rose mb-4">Supportive Community</h3>
+              <h3 className="text-xl font-semibold text-pink-600 mb-4">Supportive Community</h3>
               <p className="text-gray-600 leading-relaxed">
                 Join a family of passionate dancers where friendships bloom and 
                 everyone supports each other's journey to greatness.
@@ -137,10 +139,10 @@ const Index = () => {
             </Card>
             
             <Card className="p-8 text-center bg-gradient-to-br from-white to-yellow-50 border-yellow-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-dance-gold to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Globe className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-dance-gold mb-4">Global Opportunities</h3>
+              <h3 className="text-xl font-semibold text-yellow-600 mb-4">Global Opportunities</h3>
               <p className="text-gray-600 leading-relaxed">
                 Experience international performances and competitions, 
                 opening doors to prestigious dance institutions worldwide.
@@ -151,7 +153,7 @@ const Index = () => {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-20 bg-gradient-to-r from-dance-purple via-purple-600 to-dance-rose">
+      <section id="programs" className="py-20 bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="bg-white/90 text-dance-purple mb-4">
@@ -327,7 +329,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-r from-dance-dark via-gray-800 to-dance-purple">
+      <section id="contact" className="py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-purple-700">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="bg-dance-gold/90 text-white mb-4">
@@ -429,7 +431,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-dance-dark via-gray-900 to-dance-purple text-white py-12">
+      <footer className="bg-gradient-to-r from-gray-900 via-black to-purple-800 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
