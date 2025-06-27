@@ -45,15 +45,15 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
       
-      <div className="relative z-10 text-center px-6 animate-fade-up">
-        <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6">
+      <div className="relative z-10 text-center px-6 animate-fade-up flex flex-col items-center">
+        <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 text-center">
           Where Dreams
-          <span className="text-secondary block">Take Flight</span>
+          <span className="text-secondary block text-center">Take Flight</span>
         </h1>
-        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl">
+        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">
           Singapore's most prestigious ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
         </p>
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <Button
             onClick={() => scrollToSection('trials')}
             size="lg"
@@ -65,13 +65,13 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
       </div>
       
       <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer flex justify-center items-center"
         onClick={() => scrollToSection('trials')}
       >
         <ArrowDown className="w-6 h-6 text-white" />
       </div>
 
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2 justify-center items-center">
         {heroImages.map((_, index) => (
           <button
             key={index}
