@@ -31,6 +31,7 @@ const Index = () => {
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
       <ProgrammesSection />
+      <VisionMissionSection />
       <ExaminationCoursesSection />
       <GallerySection />
       <CompetitionExcellenceSection />
@@ -38,7 +39,6 @@ const Index = () => {
       <ReviewsSection />
       <TeachersSection />
       <LocationsSection />
-      <VisionMissionSection />
       <Footer />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
