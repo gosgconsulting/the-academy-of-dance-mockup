@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Calendar, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-
 const TrialsSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,9 +15,9 @@ const TrialsSection = () => {
     location: "",
     message: ""
   });
-
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -36,15 +34,13 @@ const TrialsSection = () => {
       message: ""
     });
   };
-
-  return (
-    <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
+  return <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             Begin Your Dance Journey
           </h2>
-          <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">
             Experience our world-class instruction with a trial class for just $20. Discover the perfect dance style for you.
           </p>
         </div>
@@ -109,39 +105,29 @@ const TrialsSection = () => {
             <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Book Your Trial Class</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
-                <Input
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
+                <Input placeholder="Full Name" value={formData.name} onChange={e => setFormData({
+                ...formData,
+                name: e.target.value
+              })} required />
+                <Input type="email" placeholder="Email Address" value={formData.email} onChange={e => setFormData({
+                ...formData,
+                email: e.target.value
+              })} required />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
-                <Input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                  required
-                />
-                <Input
-                  placeholder="Age"
-                  value={formData.age}
-                  onChange={e => setFormData({ ...formData, age: e.target.value })}
-                  required
-                />
+                <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={e => setFormData({
+                ...formData,
+                phone: e.target.value
+              })} required />
+                <Input placeholder="Age" value={formData.age} onChange={e => setFormData({
+                ...formData,
+                age: e.target.value
+              })} required />
               </div>
-              <Select
-                value={formData.location}
-                onValueChange={value => setFormData({ ...formData, location: value })}
-              >
+              <Select value={formData.location} onValueChange={value => setFormData({
+              ...formData,
+              location: value
+            })}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Centre Location" />
                 </SelectTrigger>
@@ -150,17 +136,14 @@ const TrialsSection = () => {
                   <SelectItem value="yishun">Yishun</SelectItem>
                 </SelectContent>
               </Select>
-              <Input
-                placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)"
-                value={formData.danceStyle}
-                onChange={e => setFormData({ ...formData, danceStyle: e.target.value })}
-              />
-              <Textarea
-                placeholder="Tell us about your dance experience or any questions..."
-                value={formData.message}
-                onChange={e => setFormData({ ...formData, message: e.target.value })}
-                rows={4}
-              />
+              <Input placeholder="Preferred Dance Style (Ballet, Jazz, Lyrical, Contemporary, Hip Hop, Tap, Tumbling)" value={formData.danceStyle} onChange={e => setFormData({
+              ...formData,
+              danceStyle: e.target.value
+            })} />
+              <Textarea placeholder="Tell us about your dance experience or any questions..." value={formData.message} onChange={e => setFormData({
+              ...formData,
+              message: e.target.value
+            })} rows={4} />
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Now!
@@ -169,8 +152,6 @@ const TrialsSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TrialsSection;

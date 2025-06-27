@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Star, Trophy, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,18 +11,14 @@ import TrialsSection from "@/components/TrialsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
-
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
@@ -35,7 +30,7 @@ const Index = () => {
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               Our Programmes
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Discover the perfect dance style for you with our comprehensive range of programmes, 
               each designed to nurture artistry and technical excellence.
             </p>
@@ -161,7 +156,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               Examination Courses
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Achieve internationally recognized qualifications through our structured examination programmes, 
               designed to validate technical skills and artistic development.
             </p>
@@ -181,7 +176,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
                   Royal Academy of Dance (RAD) Ballet Examinations
                 </h3>
-                <p className="text-gray-700 leading-relaxed mb-6">
+                <p className="text-gray-700 leading-relaxed mb-6 text-base">
                   We're proud to offer the world-renowned RAD syllabus - one of the world's most influential dance education organizations from the UK. 
                   Our passionate teachers guide dancers through each grade with a comprehensive, progressive approach that builds strong technique, 
                   artistic expression, and a deep love for classical ballet.
@@ -258,7 +253,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
               Our Students Shine
             </h2>
-            <p className="font-inter text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">
               Witness the artistry, passion, and technical excellence of our dancers across all disciplines.
             </p>
           </div>
@@ -369,7 +364,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               Our Events
             </h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
               Join us for exciting performances, competitions, and workshops throughout the year.
             </p>
           </div>
@@ -518,7 +513,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
               What Parents Say
             </h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
               Discover why families trust us with their children's dance education and artistic development.
             </p>
           </div>
@@ -560,7 +555,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Instructors</h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
               Learn from internationally trained professionals who bring decades of experience and genuine passion for dance education.
             </p>
           </div>
@@ -629,7 +624,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Locations</h2>
-            <p className="font-inter text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
               Visit us at our convenient locations across Singapore for world-class dance education.
             </p>
           </div>
@@ -707,8 +702,6 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       {/* WhatsApp Button */}
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
