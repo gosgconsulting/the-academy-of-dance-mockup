@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import WhatsAppChat from "@/components/WhatsAppChat";
-
 const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -320,9 +319,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   that enhance their overall dance performance.
                 </p>
                 <div className="mt-4">
-                  <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white">
-                    Learn More
-                  </Button>
+                  
                 </div>
               </CardContent>
             </Card>
@@ -454,13 +451,10 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <Carousel 
-              className="w-full"
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-            >
+            <Carousel className="w-full" opts={{
+            align: "start",
+            loop: true
+          }}>
               <CarouselContent>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                   <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
@@ -601,13 +595,10 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Carousel 
-              className="w-full"
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-            >
+            <Carousel className="w-full" opts={{
+            align: "start",
+            loop: true
+          }}>
               <CarouselContent>
                 {[{
                 name: "Ms June Lee",
@@ -643,11 +634,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
               }].map((teacher, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                       <div className="relative">
-                        <img 
-                          src={teacher.image} 
-                          alt={teacher.name} 
-                          className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_30%]' : 'object-[center_20%]'}`} 
-                        />
+                        <img src={teacher.image} alt={teacher.name} className={`w-full h-72 object-cover ${teacher.isFounder ? 'object-[center_30%]' : 'object-[center_20%]'}`} />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       </div>
                       <CardContent className="p-6">
@@ -790,5 +777,4 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
       <WhatsAppChat isOpen={isWhatsAppChatOpen} onClose={() => setIsWhatsAppChatOpen(false)} />
     </div>;
 };
-
 export default Index;
