@@ -639,7 +639,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
               </div>
               <CardContent className="p-8">
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Tampines</h3>
-                <div className="space-y-4 text-gray-700">
+                <div className="space-y-4 text-gray-700 mb-6">
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0" />
                     <div>
@@ -653,6 +653,13 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                     <span>(65) 9837 2670</span>
                   </div>
                 </div>
+                <Button 
+                  onClick={() => window.open('https://maps.google.com/maps?q=510+Tampines+Central+1+%2302-250+Singapore+520510', '_blank')}
+                  className="w-full bg-primary hover:bg-primary/90 text-white"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Visit Us
+                </Button>
               </CardContent>
             </Card>
 
@@ -664,7 +671,7 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
               </div>
               <CardContent className="p-8">
                 <h3 className="font-playfair text-2xl font-bold text-primary mb-6">Yishun</h3>
-                <div className="space-y-4 text-gray-700">
+                <div className="space-y-4 text-gray-700 mb-6">
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 mr-3 mt-1 text-primary flex-shrink-0" />
                     <div>
@@ -679,6 +686,13 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                     <span>(65) 9337 8605</span>
                   </div>
                 </div>
+                <Button 
+                  onClick={() => window.open('https://maps.google.com/maps?q=Wisteria+Mall+598+Yishun+Ring+Road+%2301-35%2F36+Singapore+768698', '_blank')}
+                  className="w-full bg-primary hover:bg-primary/90 text-white"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Visit Us
+                </Button>
               </CardContent>
             </Card>
           </div>
