@@ -316,6 +316,14 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   environment. Students learn rolls, cartwheels, handstands, and more advanced tumbling skills 
                   that enhance their overall dance performance.
                 </p>
+                <div className="mt-4">
+                  <Button 
+                    onClick={() => window.open('https://wa.me/6598372670', '_blank')} 
+                    className="bg-primary hover:bg-primary/90 text-white"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
