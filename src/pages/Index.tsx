@@ -100,9 +100,10 @@ const Index = () => {
                 alt={`Dance performance ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/40"></div>
             </div>
           ))}
+          {/* Black overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 animate-fade-up">
