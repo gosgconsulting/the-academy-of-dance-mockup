@@ -14,12 +14,7 @@ const CompetitionExcellenceSection = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <div className="flex flex-col items-center mb-8">
-              <Trophy className="w-12 h-12 text-secondary mb-4" />
-              <h3 className="font-playfair text-3xl font-bold text-primary text-center">
-                Our Competition Classes
-              </h3>
-            </div>
+            
 
             <Tabs defaultValue="solo" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
