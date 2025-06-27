@@ -625,57 +625,33 @@ With twirls to Disney tunes and skips to nursery rhymes, it builds confidence, c
                   <div className="grid md:grid-cols-2 gap-6">
                     <Card className="hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-6">
-                        <div className="mb-3">
-                          <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">Competition</span>
-                        </div>
                         <h3 className="font-playfair text-xl font-bold text-primary mb-2">Singapore Youth Festival</h3>
                         <p className="text-gray-600 text-sm mb-2">April 2025</p>
                         <p className="text-gray-500 text-sm mb-4">Our competitive teams will be participating in SYF Arts Presentation, showcasing contemporary and jazz pieces.</p>
-                        <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white w-full">
-                          Learn More
-                        </Button>
                       </CardContent>
                     </Card>
                     
                     <Card className="hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-6">
-                        <div className="mb-3">
-                          <span className="bg-secondary text-white px-3 py-1 rounded-full text-sm">Performance</span>
-                        </div>
                         <h3 className="font-playfair text-xl font-bold text-primary mb-2">Mid-Year Showcase</h3>
                         <p className="text-gray-600 text-sm mb-2">June 2025</p>
                         <p className="text-gray-500 text-sm mb-4">A special mid-year performance featuring our recreational and competitive students in various dance styles.</p>
-                        <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white w-full">
-                          Learn More
-                        </Button>
                       </CardContent>
                     </Card>
                     
                     <Card className="hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-6">
-                        <div className="mb-3">
-                          <span className="bg-dance-purple text-white px-3 py-1 rounded-full text-sm">Workshop</span>
-                        </div>
                         <h3 className="font-playfair text-xl font-bold text-primary mb-2">International Guest Teacher Workshop</h3>
                         <p className="text-gray-600 text-sm mb-2">August 2025</p>
                         <p className="text-gray-500 text-sm mb-4">Special masterclasses with renowned international dance instructors covering ballet, contemporary, and jazz techniques.</p>
-                        <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white w-full">
-                          Learn More
-                        </Button>
                       </CardContent>
                     </Card>
                     
                     <Card className="hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-6">
-                        <div className="mb-3">
-                          <span className="bg-dance-rose text-white px-3 py-1 rounded-full text-sm">Performance</span>
-                        </div>
                         <h3 className="font-playfair text-xl font-bold text-primary mb-2">Annual Recital 2025</h3>
                         <p className="text-gray-600 text-sm mb-2">December 2025</p>
                         <p className="text-gray-500 text-sm mb-4">Our grand finale of the year featuring all students in a spectacular theatrical production.</p>
-                        <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white w-full">
-                          Learn More
-                        </Button>
                       </CardContent>
                     </Card>
                   </div>
