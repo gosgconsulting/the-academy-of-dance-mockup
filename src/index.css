@@ -1,5 +1,4 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 30 46% 39%;
+    --primary: 25 74% 43%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 37 40% 58%;
@@ -65,7 +64,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 30 46% 39%;
+    --primary: 25 74% 43%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 37 40% 58%;
@@ -103,4 +102,3 @@
     @apply bg-background text-foreground;
   }
 }
-
