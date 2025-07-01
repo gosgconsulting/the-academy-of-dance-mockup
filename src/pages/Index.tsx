@@ -14,6 +14,7 @@ import CompetitionExcellenceSection from "@/components/sections/CompetitionExcel
 import EventsSection from "@/components/sections/EventsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
+import StatisticsSection from "@/components/sections/StatisticsSection";
 import LocationsSection from "@/components/sections/LocationsSection";
 
 const Index = () => {
@@ -38,6 +39,7 @@ const Index = () => {
       <EventsSection />
       <ReviewsSection />
       <TeachersSection />
+      <StatisticsSection />
       <LocationsSection />
       <Footer />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
