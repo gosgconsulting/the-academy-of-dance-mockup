@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -58,6 +57,25 @@ const TeachersSection = () => {
     },
   ];
 
+  const statistics = [
+    {
+      number: "500+",
+      label: "Students Trained",
+    },
+    {
+      number: "41",
+      label: "Years Experience",
+    },
+    {
+      number: "95%",
+      label: "Success Rate",
+    },
+    {
+      number: "120+",
+      label: "Awards Won",
+    },
+  ];
+
   return (
     <section id="teachers" className="py-20 bg-white">
       <div className="container mx-auto px-6">
@@ -69,6 +87,24 @@ const TeachersSection = () => {
             Learn from internationally trained professionals who bring decades
             of experience and genuine passion for dance education.
           </p>
+        </div>
+
+        {/* Statistics Section */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {statistics.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-gradient-to-br from-primary to-secondary p-6 rounded-lg mb-4">
+                  <h3 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-2">
+                    {stat.number}
+                  </h3>
+                </div>
+                <p className="font-inter text-gray-600 font-medium">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto">
