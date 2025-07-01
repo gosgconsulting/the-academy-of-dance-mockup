@@ -58,29 +58,6 @@ const TeachersSection = () => {
     },
   ];
 
-  const stats = [
-    {
-      number: "500+",
-      label: "Students Trained",
-      color: "text-dance-rose",
-    },
-    {
-      number: "15+",
-      label: "Years Experience",
-      color: "text-dance-purple",
-    },
-    {
-      number: "95%",
-      label: "Success Rate",
-      color: "text-dance-gold",
-    },
-    {
-      number: "20+",
-      label: "Awards Won",
-      color: "text-dance-rose",
-    },
-  ];
-
   return (
     <section id="teachers" className="py-20 bg-white">
       <div className="container mx-auto px-6">
@@ -92,26 +69,6 @@ const TeachersSection = () => {
             Learn from internationally trained professionals who bring decades
             of experience and genuine passion for dance education.
           </p>
-        </div>
-
-        {/* Statistics Section */}
-        <div className="mb-16">
-          <Card className="bg-white shadow-lg border-0">
-            <CardContent className="p-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className={`font-playfair text-4xl md:text-5xl font-bold mb-2 ${stat.color}`}>
-                      {stat.number}
-                    </div>
-                    <div className="font-inter text-gray-600 text-sm md:text-base">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         <div className="max-w-6xl mx-auto">
