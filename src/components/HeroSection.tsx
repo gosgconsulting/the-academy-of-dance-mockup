@@ -28,9 +28,7 @@ const HeroSection = ({
           Where Dreams
           <span className="text-secondary block text-center">Take Flight</span>
         </h1>
-        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">
-          Singapore's most prestigious ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
-        </p>
+        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">Singapore’s premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.</p>
         <div className="flex justify-center items-center">
           <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
             Start Your Journey
