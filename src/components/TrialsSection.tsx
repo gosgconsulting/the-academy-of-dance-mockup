@@ -151,6 +151,46 @@ const TrialsSection = () => {
             </form>
           </div>
         </div>
+
+        {/* Statistics Section */}
+        <div className="max-w-6xl mx-auto mt-16">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                  10,000+
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Students Trained
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-purple-500">
+                  40
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Years Experience
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-yellow-500">
+                  95%
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Success Rate
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                  +1000
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Awards Won
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>;
 };
