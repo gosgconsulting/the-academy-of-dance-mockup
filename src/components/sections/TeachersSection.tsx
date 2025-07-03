@@ -11,12 +11,12 @@ import {
 const TeachersSection = () => {
   const statistics = [
     {
-      number: "500+",
+      number: "10,000+",
       label: "Students Trained",
       color: "text-pink-500",
     },
     {
-      number: "15+",
+      number: "40",
       label: "Years Experience",
       color: "text-purple-500",
     },
@@ -26,7 +26,7 @@ const TeachersSection = () => {
       color: "text-yellow-500",
     },
     {
-      number: "20+",
+      number: "+1000",
       label: "Awards Won",
       color: "text-pink-500",
     },
