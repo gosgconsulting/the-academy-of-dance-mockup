@@ -20,10 +20,30 @@ const TrialsSection = () => {
   } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `*Trial Class Booking Request*
+
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Age:* ${formData.age}
+*Preferred Location:* ${formData.location}
+*Dance Style:* ${formData.danceStyle || "Not specified"}
+*Message:* ${formData.message || "No additional message"}
+
+Please contact me to schedule my trial class. Thank you!`;
+
+    // Send to WhatsApp
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/6598372670?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Trial Class Request Submitted!",
-      description: "We'll contact you within 24 hours to schedule your trial."
+      title: "Redirecting to WhatsApp!",
+      description: "Your trial class request is being sent via WhatsApp."
     });
+    
     setFormData({
       name: "",
       email: "",
