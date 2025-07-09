@@ -12,7 +12,10 @@ const AboutUsSection = () => {
           <div className="space-y-6">
             <h3 className="font-playfair text-3xl font-bold text-primary mb-4">Our Story</h3>
             <p className="text-gray-700 leading-relaxed">
-              Established in 2019, TAD has since emerged as one of the most renowned dance schools in Singapore.
+              At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
+              truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion. At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
+              the soul and a vital journey of self-discovery and improvement. Established in 2019, TAD has since 
+              emerged as one of the most renowned dance schools in Singapore.
             </p>
             <p className="text-gray-700 leading-relaxed">
               What distinguishes us is our devoted team of teachers who not only have extensive experience in their respective genres but 
