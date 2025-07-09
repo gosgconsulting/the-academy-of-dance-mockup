@@ -7,8 +7,8 @@ const AboutUsSection = () => {
             About Us
           </h2>
           <p className="font-inter text-gray-600 max-w-3xl mx-auto text-xl leading-relaxed">
-            For over 40 years, The Academy of Dance has been nurturing artistic excellence and inspiring dancers of all ages. 
-            Our passion for dance education has shaped thousands of students into confident performers and lifelong lovers of the arts.
+            At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
+            truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion.
           </p>
         </div>
 
@@ -16,17 +16,19 @@ const AboutUsSection = () => {
           <div className="space-y-6">
             <h3 className="font-playfair text-3xl font-bold text-primary mb-4">Our Story</h3>
             <p className="text-gray-700 leading-relaxed">
-              Founded in 1984, The Academy of Dance began with a simple vision: to create a nurturing environment 
-              where students could explore their passion for dance while developing discipline, creativity, and confidence. 
-              What started as a small studio has grown into one of Singapore's most respected dance institutions.
+              At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
+              the soul and a vital journey of self-discovery and improvement. Established in 2019, TAD has since 
+              emerged as one of the most renowned dance schools in Singapore.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Under the guidance of our founder Ms June Lee, we have maintained our commitment to excellence in dance 
-              education while adapting to modern teaching methods and incorporating diverse dance styles from around the world.
+              What distinguishes us is our devoted team of teachers who not only have extensive experience in their respective genres but 
+              also possess a profound passion for sharing the love of dance and providing a comprehensive education for dancers.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Today, we continue to honor our legacy while embracing innovation, ensuring that every student receives 
-              the highest quality dance education in a supportive and inspiring environment.
+              At TAD, our teachers foster an encouraging environment for everyone, from beginners taking their first steps to seasoned 
+              dancers gracing the stage. We prioritize our students' progress to ensure every dancer achieves their fullest potential. Whether your aim is to pursue a 
+              professional dance career, maintain fitness, or simply enjoy moving to the rhythm, we are here to support you in reaching 
+              your goals.
             </p>
           </div>
 
