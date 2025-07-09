@@ -54,6 +54,46 @@ Please contact me to schedule my trial class. Thank you!`;
   };
   return <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
       <div className="container mx-auto px-6">
+        {/* Statistics Section */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                  10,000+
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Students Trained
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-purple-500">
+                  40
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Years Experience
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-yellow-500">
+                  95%
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Success Rate
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                  +1000
+                </div>
+                <div className="text-gray-600 font-medium text-sm md:text-base">
+                  Awards Won
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             Begin Your Dance Journey
@@ -165,46 +205,6 @@ Please contact me to schedule my trial class. Thank you!`;
                 Book Now!
               </Button>
             </form>
-          </div>
-        </div>
-
-        {/* Statistics Section */}
-        <div className="max-w-6xl mx-auto mt-16">
-          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
-                  10,000+
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Students Trained
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-purple-500">
-                  40
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Years Experience
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-yellow-500">
-                  95%
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Success Rate
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
-                  +1000
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Awards Won
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
