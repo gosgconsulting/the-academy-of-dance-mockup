@@ -6,17 +6,14 @@ const AboutUsSection = () => {
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             About Us
           </h2>
-          <p className="font-inter text-gray-600 max-w-3xl mx-auto text-xl leading-relaxed">
-            At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
-            truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
           <div className="space-y-6">
             <h3 className="font-playfair text-3xl font-bold text-primary mb-4">Our Story</h3>
             <p className="text-gray-700 leading-relaxed">
-              At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
+              At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
+              truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion. At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
               the soul and a vital journey of self-discovery and improvement. Established in 2019, TAD has since 
               emerged as one of the most renowned dance schools in Singapore.
             </p>
