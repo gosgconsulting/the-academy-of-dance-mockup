@@ -55,6 +55,11 @@ Please contact me to schedule my trial class. Thank you!`;
   return <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
+          <p className="font-inter text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed mb-8">
+            At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
+            truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion. At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
+            the soul and a vital journey of self-discovery and improvement.
+          </p>
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             Begin Your Dance Journey
           </h2>
