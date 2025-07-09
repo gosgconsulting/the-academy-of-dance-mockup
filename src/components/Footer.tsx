@@ -1,4 +1,4 @@
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import TikTokIcon from "./TikTokIcon";
 
 const Footer = () => {
@@ -22,6 +22,9 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/theacademyofdancesg/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-2 rounded-full transition-colors">
                 <Instagram className="w-5 h-5 text-white" />
+              </a>
+              <a href="https://youtube.com/@theacademyofdancesg?si=2MnmNVoLWYiZXRwP" target="_blank" rel="noopener noreferrer" className="bg-red-600 hover:bg-red-700 p-2 rounded-full transition-colors">
+                <Youtube className="w-5 h-5 text-white" />
               </a>
               <a href="https://www.tiktok.com/@theacademyofdance?_t=ZS-8xi8hlguC0Y&_r=1" target="_blank" rel="noopener noreferrer" className="bg-black hover:bg-gray-800 p-2 rounded-full transition-colors border border-white">
                 <TikTokIcon className="w-5 h-5 text-white" />
