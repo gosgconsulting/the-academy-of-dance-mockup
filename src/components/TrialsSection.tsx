@@ -76,7 +76,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  You can join our trail classes for just $20!
+                  You can join our trial classes for just $20!
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
