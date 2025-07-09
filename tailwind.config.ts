@@ -73,7 +73,8 @@ export default {
 					gold: '#F59E0B',
 					rose: '#F43F5E',
 					dark: '#1F2937',
-					light: '#F8FAFC'
+					light: '#F8FAFC',
+					bronze: '#A8733E'
 				}
 			},
 			borderRadius: {

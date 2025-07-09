@@ -59,7 +59,7 @@ Please contact me to schedule my trial class. Thank you!`;
           <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
                   10,000+
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -67,7 +67,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-purple-500">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
                   40
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -75,7 +75,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-yellow-500">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
                   95%
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -83,7 +83,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-pink-500">
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
                   +1000
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
