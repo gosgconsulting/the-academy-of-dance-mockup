@@ -24,28 +24,9 @@ const ProgrammesSection = () => {
               <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
                 Ballet
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                Classical ballet technique forms the foundation of all dance
-                styles. Our ballet classes develop proper posture, flexibility,
-                coordination, and grace while teaching students the
-                fundamental positions and movements of this timeless art form.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Baby Gems */}
-          <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div className="relative">
-              <img src="/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png" alt="Baby Gems Program" className="w-full h-64 object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
-            <CardContent className="p-6">
-              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
-                Baby Gems
-              </h3>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                A program like no other, our Baby Gems program is created for our youngest dancers, aged 3 to 4 years old, to develop musicality, coordination and basic dance fundamentals using nursery rhymes and timeless Disney classics. Promoting the use of their imagination, it takes the child to a land of make believe, something critical to their dance training. TAD prides herself in her very own Baby Gems program, which was carefully written and curated by our Principal Ms June Lee. It is a one-year dance program comprising a series of exercises that are both enjoyable and technically beneficial to children aged 3-4 years old.
-              </p>
+              <p className="text-gray-700 text-sm leading-relaxed">At TAD, ballet is taught with a strong foundation in classical technique, combined with a deep respect for each dancer’s unique journey. Our approach emphasizes both discipline and encouragement, creating an environment where students feel supported as they grow in strength, grace, and confidence. 
+We follow a structured syllabus that builds progressively from beginner to advanced levels, ensuring that students develop proper alignment, musicality, coordination, and artistry at every stage. Classes are tailored to age and ability, with clear goals and consistent feedback to help each dancer reach their personal best. 
+Our experienced instructors bring passion and professionalism to every class, fostering a love for ballet while also instilling valuable life skills like perseverance, focus, and self-expression. Whether a student dreams of a professional career or simply wants to experience the beauty of ballet, we aim to nurture both the dancer and the individual.</p>
             </CardContent>
           </Card>
 
