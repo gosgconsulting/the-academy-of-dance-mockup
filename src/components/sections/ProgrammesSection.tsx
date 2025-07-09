@@ -183,7 +183,7 @@ Come move, stretch, and smile with us—ballet has no age limit!
           {/* Direct School Admission (DSA) */}
           <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative">
-              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="Direct School Admission Program" className="w-full h-64 object-cover" />
+              <img src="/lovable-uploads/7a4ccb94-8ec9-4b6d-b752-7c91c6c547c4.png" alt="Direct School Admission Program" className="w-full h-64 object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
             <CardContent className="p-6">
