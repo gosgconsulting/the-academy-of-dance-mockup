@@ -1,11 +1,24 @@
 
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
 }
 
 const Navigation = ({ scrollToSection }: NavigationProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleMobileNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50">
       <div className="container mx-auto px-6 py-4">
@@ -17,6 +30,8 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
               className="h-8 md:h-12 w-auto object-contain" 
             />
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
             <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
@@ -25,8 +40,33 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
             <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
             <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
           </div>
-          <Button onClick={() => scrollToSection('trials')} className="bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
+          
+          {/* Desktop Book Now Button */}
+          <Button onClick={() => scrollToSection('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMobileMenu}
+            className="md:hidden text-white p-2"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4">
+            <div className="flex flex-col space-y-4">
+              <button onClick={() => handleMobileNavClick('hero')} className="text-white hover:text-secondary transition-colors text-left">Home</button>
+              <button onClick={() => handleMobileNavClick('trials')} className="text-white hover:text-secondary transition-colors text-left">Trials</button>
+              <button onClick={() => handleMobileNavClick('programmes')} className="text-white hover:text-secondary transition-colors text-left">Programmes</button>
+              <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
+              <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
+              <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
