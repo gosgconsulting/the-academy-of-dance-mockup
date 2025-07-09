@@ -1,8 +1,6 @@
 import { Users, Heart, Award, Target } from "lucide-react";
-
 const AboutUsSection = () => {
-  return (
-    <section id="about" className="py-20 bg-white">
+  return <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
@@ -60,43 +58,8 @@ const AboutUsSection = () => {
         </div>
 
         {/* Values Section */}
-        <div className="mt-20">
-          <h3 className="font-playfair text-3xl font-bold text-primary text-center mb-12">Our Core Values</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">E</span>
-              </div>
-              <h4 className="font-playfair text-xl font-bold text-primary mb-3">Excellence</h4>
-              <p className="text-gray-600">
-                We strive for the highest standards in everything we do, from our teaching methods to our student performances.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">I</span>
-              </div>
-              <h4 className="font-playfair text-xl font-bold text-primary mb-3">Inspiration</h4>
-              <p className="text-gray-600">
-                We inspire our students to discover their potential and pursue their dreams with confidence and creativity.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">C</span>
-              </div>
-              <h4 className="font-playfair text-xl font-bold text-primary mb-3">Community</h4>
-              <p className="text-gray-600">
-                We foster a supportive community where dancers of all levels feel welcomed, valued, and encouraged to grow.
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutUsSection;
