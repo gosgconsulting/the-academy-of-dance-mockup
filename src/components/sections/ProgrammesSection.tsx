@@ -25,11 +25,26 @@ const ProgrammesSection = () => {
                 Ballet
               </h3>
               <p className="text-gray-700 text-sm leading-relaxed">
-                Baby Gems is a magical first step into dance for little ones
-                aged 3–4, created by Ms. June Lee to make learning fun and
-                joyful. With twirls to Disney tunes and skips to nursery
-                rhymes, it builds confidence, creativity, and sets the stage
-                for classical training.
+                Classical ballet technique forms the foundation of all dance
+                styles. Our ballet classes develop proper posture, flexibility,
+                coordination, and grace while teaching students the
+                fundamental positions and movements of this timeless art form.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Baby Gems */}
+          <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div className="relative">
+              <img src="/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png" alt="Baby Gems Program" className="w-full h-64 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+            <CardContent className="p-6">
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                Baby Gems
+              </h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                A program like no other, our Baby Gems program is created for our youngest dancers, aged 3 to 4 years old, to develop musicality, coordination and basic dance fundamentals using nursery rhymes and timeless Disney classics. Promoting the use of their imagination, it takes the child to a land of make believe, something critical to their dance training. TAD prides herself in her very own Baby Gems program, which was carefully written and curated by our Principal Ms June Lee. It is a one-year dance program comprising a series of exercises that are both enjoyable and technically beneficial to children aged 3-4 years old.
               </p>
             </CardContent>
           </Card>
