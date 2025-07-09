@@ -24,12 +24,11 @@ const ProgrammesSection = () => {
               <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
                 Ballet
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                Classical ballet technique forms the foundation of all dance
-                styles. Our ballet classes develop proper posture, flexibility,
-                coordination, and grace while teaching students the
-                fundamental positions and movements of this timeless art form.
-              </p>
+              <p className="text-gray-700 text-sm leading-relaxed">At TAD, ballet is taught with a strong foundation in classical technique, combined with a deep respect for each dancer’s unique journey. Our approach emphasizes both discipline and encouragement, creating an environment where students feel supported as they grow in strength, grace, and confidence.
+
+We follow a structured syllabus that builds progressively from beginner to advanced levels, ensuring that students develop proper alignment, musicality, coordination, and artistry at every stage. Classes are tailored to age and ability, with clear goals and consistent feedback to help each dancer reach their personal best.
+
+Our experienced instructors bring passion and professionalism to every class, fostering a love for ballet while also instilling valuable life skills like perseverance, focus, and self-expression. Whether a student dreams of a professional career or simply wants to experience the beauty of ballet, we aim to nurture both the dancer and the individual.</p>
             </CardContent>
           </Card>
 
