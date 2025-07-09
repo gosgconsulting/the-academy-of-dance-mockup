@@ -179,6 +179,24 @@ Come move, stretch, and smile with us—ballet has no age limit!
               </p>
             </CardContent>
           </Card>
+
+          {/* Direct School Admission (DSA) */}
+          <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div className="relative">
+              <img src="/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png" alt="Direct School Admission Program" className="w-full h-64 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+            <CardContent className="p-6">
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                Direct School Admission (DSA)
+              </h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                We take pride in preparing students for the Direct School Admission (DSA) scheme, offering a unique pathway for young talents to gain direct entry into esteemed Secondary Schools and Junior Colleges.
+Through specialized training, mentorship, guiding them for interviews and their portfolios, we equip our dancers with the skills and confidence needed to excel in auditions and interviews.
+95% of our students have successfully gained admission to their desired secondary schools. This accomplishment serves as evidence of our dedication to excellence and our proficiency in nurturing talent.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>;
