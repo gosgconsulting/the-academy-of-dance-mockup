@@ -51,7 +51,7 @@ Our experienced instructors bring passion and professionalism to every class, fo
           {/* Adult fitness/Ballet Classes */}
           <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative">
-              <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="Adult Fitness Ballet Classes" className="w-full h-64 object-cover" />
+              <img src="/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png" alt="Adult Fitness Ballet Classes" className="w-full h-64 object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
             <CardContent className="p-6">
