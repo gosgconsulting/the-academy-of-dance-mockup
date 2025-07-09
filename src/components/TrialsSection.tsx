@@ -20,7 +20,7 @@ const TrialsSection = () => {
   } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Format the message for WhatsApp
     const whatsappMessage = `*Trial Class Booking Request*
 
@@ -38,12 +38,10 @@ Please contact me to schedule my trial class. Thank you!`;
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappUrl = `https://wa.me/6598372670?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
-    
     toast({
       title: "Redirecting to WhatsApp!",
       description: "Your trial class request is being sent via WhatsApp."
     });
-    
     setFormData({
       name: "",
       email: "",
@@ -60,9 +58,7 @@ Please contact me to schedule my trial class. Thank you!`;
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             Begin Your Dance Journey
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">
-            Experience our world-class instruction with a trial class for just $20. Discover the perfect dance style for you.
-          </p>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">Jump into dance with a $20 trial class! Experience top-tier instruction and find your perfect style.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
