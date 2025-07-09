@@ -4,6 +4,7 @@ import WhatsAppChat from "@/components/WhatsAppChat";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import TrialsSection from "@/components/TrialsSection";
+import AboutUsSection from "@/components/sections/AboutUsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -32,6 +33,7 @@ const Index = () => {
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
+      <AboutUsSection />
       <ProgrammesSection />
       <ExaminationCoursesSection />
       <VisionMissionSection />

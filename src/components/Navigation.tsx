@@ -35,6 +35,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
           <div className="hidden md:flex space-x-8">
             <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
             <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
+            <button onClick={() => scrollToSection('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
             <button onClick={() => scrollToSection('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
             <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
             <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
@@ -60,6 +61,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
             <div className="flex flex-col space-y-4">
               <button onClick={() => handleMobileNavClick('hero')} className="text-white hover:text-secondary transition-colors text-left">Home</button>
               <button onClick={() => handleMobileNavClick('trials')} className="text-white hover:text-secondary transition-colors text-left">Trials</button>
+              <button onClick={() => handleMobileNavClick('about')} className="text-white hover:text-secondary transition-colors text-left">About Us</button>
               <button onClick={() => handleMobileNavClick('programmes')} className="text-white hover:text-secondary transition-colors text-left">Programmes</button>
               <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
               <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
