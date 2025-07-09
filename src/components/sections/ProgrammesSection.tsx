@@ -48,6 +48,25 @@ Our experienced instructors bring passion and professionalism to every class, fo
             </CardContent>
           </Card>
 
+          {/* Adult fitness/Ballet Classes */}
+          <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div className="relative">
+              <img src="/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png" alt="Adult Fitness Ballet Classes" className="w-full h-64 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+            <CardContent className="p-6">
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                Adult fitness/Ballet Classes
+              </h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Our Adult Keep Fit Ballet classes at The Academy of Dance are the perfect blend of elegance, fitness, and fun—no previous dance experience required!
+These classes are designed to improve posture, flexibility, core strength, and overall body tone, all while enjoying the grace and discipline of classical ballet. Set to beautiful music, each session offers a gentle yet effective workout that leaves you feeling energized, uplifted, and more connected to your body.
+Whether you're returning to dance or trying ballet for the first time, our welcoming and supportive environment ensures everyone feels comfortable. It's a wonderful way to stay active, reduce stress, and enjoy a bit of "me time" in the midst of a busy week.
+Come move, stretch, and smile with us—ballet has no age limit!
+              </p>
+            </CardContent>
+          </Card>
+
           {/* Jazz */}
           <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative">
