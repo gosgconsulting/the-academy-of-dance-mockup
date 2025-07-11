@@ -84,7 +84,7 @@ Please contact me to schedule my trial class. Thank you!`;
               </div>
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
-                  +1000
+                  2000+
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
                   Awards Won
