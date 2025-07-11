@@ -37,7 +37,6 @@ const Index = () => {
       <ProgrammesSection />
       <ExaminationCoursesSection />
       <VisionMissionSection />
-      <GallerySection />
       <CompetitionExcellenceSection />
       <EventsSection />
       <AchievementsSection />
@@ -45,6 +44,7 @@ const Index = () => {
       <TeachersSection />
       <ClassSchedulesSection />
       <LocationsSection />
+      <GallerySection />
       <Footer />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
