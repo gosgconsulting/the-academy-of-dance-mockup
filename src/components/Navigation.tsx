@@ -37,9 +37,9 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
             <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
             <button onClick={() => scrollToSection('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
             <button onClick={() => scrollToSection('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
-            <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
             <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
             <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
+            <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
           </div>
           
           {/* Desktop Book Now Button */}
@@ -63,9 +63,9 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
               <button onClick={() => handleMobileNavClick('trials')} className="text-white hover:text-secondary transition-colors text-left">Trials</button>
               <button onClick={() => handleMobileNavClick('about')} className="text-white hover:text-secondary transition-colors text-left">About Us</button>
               <button onClick={() => handleMobileNavClick('programmes')} className="text-white hover:text-secondary transition-colors text-left">Programmes</button>
-              <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
               <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
               <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
+              <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
             </div>
           </div>
         )}
