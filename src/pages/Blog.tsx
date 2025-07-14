@@ -41,7 +41,7 @@ const blogPosts = [{
   readTime: "7 min read",
   category: "Contemporary",
   tags: ["Expression", "Modern", "Emotion"],
-  image: "/lovable-uploads/b1840e0a-3045-4279-8d7b-b44020841ba0.png"
+  image: "/lovable-uploads/80e4bd9a-27a2-46c2-879c-2384503deb4a.png"
 }, {
   id: 4,
   slug: "competition-preparation",
@@ -53,7 +53,7 @@ const blogPosts = [{
   readTime: "10 min read",
   category: "Competition",
   tags: ["Training", "Performance", "Mindset"],
-  image: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png"
+  image: "/lovable-uploads/787ef26d-968d-4441-a7e6-d177b26e1dc1.png"
 }, {
   id: 5,
   slug: "dance-nutrition",
