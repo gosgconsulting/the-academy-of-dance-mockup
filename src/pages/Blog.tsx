@@ -119,8 +119,8 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-12">
         <div className="container mx-auto px-4 text-center text-foreground">
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
-          <p className="text-lg md:text-xl mb-0 text-muted-foreground max-w-2xl mx-auto font-inter">
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0 text-dance-bronze">Our Blogs</h1>
+          <p className="text-lg md:text-xl mb-0 max-w-2xl mx-auto font-inter text-gray-600">
             Insights, Tips, and Stories from the World of Dance
           </p>
         </div>
@@ -155,12 +155,12 @@ export default function Blog() {
                     </div>
                     
                     <Link to={`/blog/${post.slug}`}>
-                      <CardTitle className="text-2xl font-playfair hover:text-primary transition-colors cursor-pointer">
+                      <CardTitle className="text-2xl font-playfair hover:text-primary transition-colors cursor-pointer text-dance-bronze">
                         {post.title}
                       </CardTitle>
                     </Link>
                     
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-4 text-sm text-gray-600">
                       <Link to={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`} className="flex items-center gap-1 cursor-pointer hover:text-primary">
                         <User className="w-4 h-4" />
                         {post.author}
@@ -177,7 +177,7 @@ export default function Blog() {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-muted-foreground mb-4 font-inter">{post.excerpt}</p>
+                    <p className="mb-4 font-inter text-gray-600">{post.excerpt}</p>
                     <Link to={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors font-inter">
                       Read More →
                     </Link>
@@ -191,13 +191,13 @@ export default function Blog() {
               {/* Categories */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 font-playfair">
+                  <CardTitle className="flex items-center gap-2 font-playfair text-dance-bronze">
                     
                     Categories
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {categories.map(category => <Link key={category.name} to={`/blog/category/${category.name.toLowerCase()}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
+                  {categories.map(category => <Link key={category.name} to={`/blog/category/${category.name.toLowerCase()}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors text-gray-600">
                       <span>{category.name}</span>
                       <Badge variant="secondary">{category.count}</Badge>
                     </Link>)}
@@ -207,7 +207,7 @@ export default function Blog() {
               {/* Tags */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 font-playfair">
+                  <CardTitle className="flex items-center gap-2 font-playfair text-dance-bronze">
                     <Tag className="w-5 h-5" />
                     Tags
                   </CardTitle>
@@ -226,13 +226,13 @@ export default function Blog() {
               {/* Authors */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 font-playfair">
+                  <CardTitle className="flex items-center gap-2 font-playfair text-dance-bronze">
                     <User className="w-5 h-5" />
                     Authors
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {authors.map(author => <Link key={author.name} to={`/blog/author/${author.name.toLowerCase().replace(' ', '-')}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
+                  {authors.map(author => <Link key={author.name} to={`/blog/author/${author.name.toLowerCase().replace(' ', '-')}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors text-gray-600">
                       <span>{author.name}</span>
                       <Badge variant="secondary">{author.posts} posts</Badge>
                     </Link>)}
@@ -242,10 +242,10 @@ export default function Blog() {
               {/* Newsletter Signup */}
               <Card className="bg-gradient-to-br from-primary/5 to-secondary/5">
                 <CardHeader>
-                  <CardTitle className="font-playfair">Newsletter</CardTitle>
+                  <CardTitle className="font-playfair text-dance-bronze">Newsletter</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4 font-inter">
+                  <p className="text-sm mb-4 font-inter text-gray-600">
                     Subscribe to our newsletter for the latest dance tips, trends, and stories.
                   </p>
                   <div className="space-y-3">
