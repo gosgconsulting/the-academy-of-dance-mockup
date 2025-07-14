@@ -117,10 +117,10 @@ export default function Blog() {
       <Navigation scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
-      <section className="bg-white pt-32 pb-16">
+      <section className="bg-white pt-24 pb-12">
         <div className="container mx-auto px-4 text-center text-foreground">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
-          <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
+          <p className="text-lg md:text-xl mb-0 text-muted-foreground max-w-2xl mx-auto">
             Insights, Tips, and Stories from the World of Dance
           </p>
         </div>
