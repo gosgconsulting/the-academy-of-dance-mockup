@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
@@ -10,13 +10,24 @@ interface NavigationProps {
 
 const Navigation = ({ scrollToSection }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleNavigation = (sectionId: string) => {
+    if (isHomePage) {
+      scrollToSection(sectionId);
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } });
+    }
+  };
+
   const handleMobileNavClick = (sectionId: string) => {
-    scrollToSection(sectionId);
+    handleNavigation(sectionId);
     setIsMobileMenuOpen(false);
   };
 
@@ -25,27 +36,28 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
-              alt="The Academy of Dance" 
-              className="h-8 md:h-12 w-auto object-contain" 
-            />
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
+                alt="The Academy of Dance" 
+                className="h-8 md:h-12 w-auto object-contain hover:opacity-80 transition-opacity" 
+              />
+            </Link>
           </div>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
-            <button onClick={() => scrollToSection('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
-            <button onClick={() => scrollToSection('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
-            <button onClick={() => scrollToSection('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
-            <button onClick={() => scrollToSection('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
-            <button onClick={() => scrollToSection('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
-            <button onClick={() => scrollToSection('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
+            <button onClick={() => handleNavigation('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
+            <button onClick={() => handleNavigation('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
+            <button onClick={() => handleNavigation('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
+            <button onClick={() => handleNavigation('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
+            <button onClick={() => handleNavigation('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
+            <button onClick={() => handleNavigation('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
+            <button onClick={() => handleNavigation('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
             <Link to="/blog" className="text-white hover:text-secondary transition-colors">Blog</Link>
           </div>
           
           {/* Desktop Book Now Button */}
-          <Button onClick={() => scrollToSection('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
+          <Button onClick={() => handleNavigation('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
           
           {/* Mobile Menu Button */}
           <button 

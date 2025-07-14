@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import WhatsAppChat from "@/components/WhatsAppChat";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -21,12 +22,26 @@ import LocationsSection from "@/components/sections/LocationsSection";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
+  const location = useLocation();
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: "smooth",
     });
   };
+
+  // Handle navigation from other pages with scroll target
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const timer = setTimeout(() => {
+        scrollToSection(location.state.scrollTo);
+        // Clear the state to prevent re-scrolling on future renders
+        window.history.replaceState({}, document.title);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-white">
