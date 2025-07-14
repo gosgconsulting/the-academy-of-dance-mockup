@@ -168,7 +168,7 @@ const blogPosts = [
     readTime: "5 min read",
     category: "Health",
     tags: ["Nutrition", "Performance", "Wellness"],
-    image: "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhbHRoeSUyMGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
+    image: "/lovable-uploads/9b23aa52-1bb4-4e41-b2c0-f26892b6aa20.png"
   }
 ];
 
