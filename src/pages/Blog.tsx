@@ -113,7 +113,7 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-20 pb-16">
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Dance Blog</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 mx-[4px] my-0">Dance Blog</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90">
             Insights, Tips, and Stories from the World of Dance
           </p>
@@ -191,10 +191,7 @@ export default function Blog() {
               {/* Tags */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    
-                    Popular Tags
-                  </CardTitle>
+                  <CardTitle className="flex items-center gap-2">Tags</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
@@ -208,10 +205,7 @@ export default function Blog() {
               {/* Authors */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    
-                    Featured Authors
-                  </CardTitle>
+                  <CardTitle className="flex items-center gap-2">Authors</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {authors.map(author => <div key={author.name} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
