@@ -194,11 +194,7 @@ export default function Blog() {
                   <CardTitle className="flex items-center gap-2">Tags</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {tags.map(tag => <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors">
-                        {tag}
-                      </Badge>)}
-                  </div>
+                  
                 </CardContent>
               </Card>
 
@@ -217,9 +213,7 @@ export default function Blog() {
 
               {/* Newsletter Signup */}
               <Card className="bg-gradient-to-br from-primary/5 to-secondary/5">
-                <CardHeader>
-                  <CardTitle>Stay Updated</CardTitle>
-                </CardHeader>
+                
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
                     Subscribe to our newsletter for the latest dance tips, trends, and stories.
