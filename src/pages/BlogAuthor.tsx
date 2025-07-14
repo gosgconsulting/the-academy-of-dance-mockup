@@ -101,7 +101,7 @@ export default function BlogAuthor() {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Posts by {authorName}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90">
+          <p className="text-xl md:text-2xl mb-8 text-white/90 font-inter">
             All blog posts written by {authorName}
           </p>
           <Badge variant="secondary" className="bg-white/20 text-white">
@@ -116,12 +116,12 @@ export default function BlogAuthor() {
           {filteredPosts.length === 0 ? (
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-4">No posts found</h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 font-inter">
                 There are no blog posts by "{authorName}" yet.
               </p>
               <Link 
                 to="/blog"
-                className="text-primary hover:text-primary/80 font-medium"
+                className="text-primary hover:text-primary/80 font-medium font-inter"
               >
                 ← Back to all posts
               </Link>
@@ -162,7 +162,7 @@ export default function BlogAuthor() {
                       </CardTitle>
                     </Link>
                     
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground font-inter">
                       <div className="flex items-center gap-1 text-primary font-medium">
                         <User className="w-4 h-4" />
                         {post.author}
@@ -179,10 +179,10 @@ export default function BlogAuthor() {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                    <p className="text-muted-foreground mb-4 font-inter">{post.excerpt}</p>
                     <Link 
                       to={`/blog/${post.slug}`}
-                      className="text-primary hover:text-primary/80 font-medium transition-colors"
+                      className="text-primary hover:text-primary/80 font-medium transition-colors font-inter"
                     >
                       Read More →
                     </Link>
