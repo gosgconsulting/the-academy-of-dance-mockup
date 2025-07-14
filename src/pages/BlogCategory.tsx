@@ -158,13 +158,6 @@ export default function BlogCategory() {
                     </Link>
                     
                     <div className="flex items-center gap-4 text-sm text-muted-foreground font-inter">
-                      <Link 
-                        to={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`}
-                        className="flex items-center gap-1 hover:text-primary"
-                      >
-                        <User className="w-4 h-4" />
-                        {post.author}
-                      </Link>
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {new Date(post.date).toLocaleDateString()}

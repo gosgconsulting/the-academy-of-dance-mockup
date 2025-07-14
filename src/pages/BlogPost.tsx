@@ -230,10 +230,6 @@ export default function BlogPost() {
             
             <div className="flex items-center justify-center gap-6 text-white/90 mb-8">
               <div className="flex items-center gap-2">
-                <User className="w-5 h-5" />
-                {post.author}
-              </div>
-              <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
                 {new Date(post.date).toLocaleDateString()}
               </div>
