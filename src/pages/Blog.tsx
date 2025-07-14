@@ -127,14 +127,13 @@ export default function Blog() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-[5px]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Blog Posts - Left Side */}
             <div className="lg:col-span-2 space-y-8">
-              {blogPosts.map(post => (
-                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+              {blogPosts.map(post => <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <Link to={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
                       <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
@@ -148,13 +147,11 @@ export default function Blog() {
                           {post.category}
                         </Badge>
                       </Link>
-                      {post.tags.map(tag => (
-                        <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                      {post.tags.map(tag => <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
                           <Badge variant="outline" className="text-xs cursor-pointer hover:bg-muted">
                             {tag}
                           </Badge>
-                        </Link>
-                      ))}
+                        </Link>)}
                     </div>
                     
                     <Link to={`/blog/${post.slug}`}>
@@ -164,10 +161,7 @@ export default function Blog() {
                     </Link>
                     
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <Link 
-                        to={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`}
-                        className="flex items-center gap-1 cursor-pointer hover:text-primary"
-                      >
+                      <Link to={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`} className="flex items-center gap-1 cursor-pointer hover:text-primary">
                         <User className="w-4 h-4" />
                         {post.author}
                       </Link>
@@ -184,15 +178,11 @@ export default function Blog() {
                   
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="text-primary hover:text-primary/80 font-medium transition-colors"
-                    >
+                    <Link to={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors">
                       Read More →
                     </Link>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
 
             {/* Sidebar - Right Side */}
@@ -207,16 +197,10 @@ export default function Blog() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {categories.map(category => (
-                    <Link 
-                      key={category.name} 
-                      to={`/blog/category/${category.name.toLowerCase()}`}
-                      className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors"
-                    >
+                  {categories.map(category => <Link key={category.name} to={`/blog/category/${category.name.toLowerCase()}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
                       <span>{category.name}</span>
                       <Badge variant="secondary">{category.count}</Badge>
-                    </Link>
-                  ))}
+                    </Link>)}
                 </CardContent>
               </Card>
 
@@ -230,16 +214,11 @@ export default function Blog() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {tags.map(tag => (
-                      <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
-                        <Badge 
-                          variant="outline" 
-                          className="cursor-pointer hover:bg-muted"
-                        >
+                    {tags.map(tag => <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                        <Badge variant="outline" className="cursor-pointer hover:bg-muted">
                           {tag}
                         </Badge>
-                      </Link>
-                    ))}
+                      </Link>)}
                   </div>
                 </CardContent>
               </Card>
@@ -253,16 +232,10 @@ export default function Blog() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {authors.map(author => (
-                    <Link 
-                      key={author.name} 
-                      to={`/blog/author/${author.name.toLowerCase().replace(' ', '-')}`}
-                      className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors"
-                    >
+                  {authors.map(author => <Link key={author.name} to={`/blog/author/${author.name.toLowerCase().replace(' ', '-')}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
                       <span>{author.name}</span>
                       <Badge variant="secondary">{author.posts} posts</Badge>
-                    </Link>
-                  ))}
+                    </Link>)}
                 </CardContent>
               </Card>
 
