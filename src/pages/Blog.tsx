@@ -111,7 +111,7 @@ export default function Blog() {
       <Navigation scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-20 pb-16">
+      <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
         <div className="container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90">
