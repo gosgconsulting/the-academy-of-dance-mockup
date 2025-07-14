@@ -119,8 +119,8 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-12">
         <div className="container mx-auto px-4 text-center text-foreground">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
-          <p className="text-lg md:text-xl mb-0 text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0">Our Blogs</h1>
+          <p className="text-lg md:text-xl mb-0 text-muted-foreground max-w-2xl mx-auto font-inter">
             Insights, Tips, and Stories from the World of Dance
           </p>
         </div>
@@ -155,7 +155,7 @@ export default function Blog() {
                     </div>
                     
                     <Link to={`/blog/${post.slug}`}>
-                      <CardTitle className="text-2xl hover:text-primary transition-colors cursor-pointer">
+                      <CardTitle className="text-2xl font-playfair hover:text-primary transition-colors cursor-pointer">
                         {post.title}
                       </CardTitle>
                     </Link>
@@ -177,8 +177,8 @@ export default function Blog() {
                   </CardHeader>
                   
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                    <Link to={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors">
+                    <p className="text-muted-foreground mb-4 font-inter">{post.excerpt}</p>
+                    <Link to={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors font-inter">
                       Read More →
                     </Link>
                   </CardContent>
@@ -191,7 +191,7 @@ export default function Blog() {
               {/* Categories */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 font-playfair">
                     
                     Categories
                   </CardTitle>
@@ -207,7 +207,7 @@ export default function Blog() {
               {/* Tags */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 font-playfair">
                     <Tag className="w-5 h-5" />
                     Tags
                   </CardTitle>
@@ -226,7 +226,7 @@ export default function Blog() {
               {/* Authors */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 font-playfair">
                     <User className="w-5 h-5" />
                     Authors
                   </CardTitle>
@@ -242,15 +242,15 @@ export default function Blog() {
               {/* Newsletter Signup */}
               <Card className="bg-gradient-to-br from-primary/5 to-secondary/5">
                 <CardHeader>
-                  <CardTitle>Newsletter</CardTitle>
+                  <CardTitle className="font-playfair">Newsletter</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-sm text-muted-foreground mb-4 font-inter">
                     Subscribe to our newsletter for the latest dance tips, trends, and stories.
                   </p>
                   <div className="space-y-3">
                     <input type="email" placeholder="Enter your email" className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20" />
-                    <button className="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/90 transition-colors">
+                    <button className="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/90 transition-colors font-inter">
                       Subscribe
                     </button>
                   </div>
