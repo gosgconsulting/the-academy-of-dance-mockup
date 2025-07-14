@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -105,11 +104,6 @@ const authors = [{
   posts: 6
 }];
 export default function Blog() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const categoryFilter = searchParams.get('category');
-  const tagFilter = searchParams.get('tag');
-  const authorFilter = searchParams.get('author');
-
   const handleScrollToSection = (sectionId: string) => {
     // For blog page, just scroll to top or handle differently
     if (sectionId === 'hero') {
@@ -119,30 +113,6 @@ export default function Blog() {
       });
     }
   };
-
-  const handleFilterChange = (type: string, value: string) => {
-    const newParams = new URLSearchParams(searchParams);
-    
-    // Clear all filters first
-    newParams.delete('category');
-    newParams.delete('tag');
-    newParams.delete('author');
-    
-    // Set the new filter
-    newParams.set(type, value);
-    setSearchParams(newParams);
-  };
-
-  const clearFilters = () => {
-    setSearchParams({});
-  };
-
-  const filteredPosts = blogPosts.filter(post => {
-    if (categoryFilter && post.category !== categoryFilter) return false;
-    if (tagFilter && !post.tags.includes(tagFilter)) return false;
-    if (authorFilter && post.author !== authorFilter) return false;
-    return true;
-  });
   return <div className="min-h-screen bg-background">
       <Navigation scrollToSection={handleScrollToSection} />
       
@@ -153,33 +123,6 @@ export default function Blog() {
           <p className="text-xl md:text-2xl mb-8 text-white/90">
             Insights, Tips, and Stories from the World of Dance
           </p>
-          
-          {/* Active Filters */}
-          {(categoryFilter || tagFilter || authorFilter) && (
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
-              {categoryFilter && (
-                <Badge variant="secondary" className="bg-white/20 text-white">
-                  Category: {categoryFilter}
-                </Badge>
-              )}
-              {tagFilter && (
-                <Badge variant="secondary" className="bg-white/20 text-white">
-                  Tag: {tagFilter}
-                </Badge>
-              )}
-              {authorFilter && (
-                <Badge variant="secondary" className="bg-white/20 text-white">
-                  Author: {authorFilter}
-                </Badge>
-              )}
-              <button 
-                onClick={clearFilters}
-                className="text-white/80 hover:text-white underline text-sm"
-              >
-                Clear all filters
-              </button>
-            </div>
-          )}
         </div>
       </section>
 
@@ -190,85 +133,66 @@ export default function Blog() {
             
             {/* Blog Posts - Left Side */}
             <div className="lg:col-span-2 space-y-8">
-              {filteredPosts.length === 0 ? (
-                <Card>
-                  <CardContent className="p-8 text-center">
-                    <p className="text-muted-foreground">No blog posts found matching your filters.</p>
-                    <button 
-                      onClick={clearFilters}
-                      className="text-primary hover:text-primary/80 font-medium mt-2"
-                    >
-                      Clear filters
-                    </button>
-                  </CardContent>
-                </Card>
-              ) : (
-                filteredPosts.map(post => (
-                  <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    <Link to={`/blog/${post.slug}`}>
-                      <div className="aspect-video overflow-hidden">
-                        <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-                      </div>
-                    </Link>
-                    
-                    <CardHeader>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <Badge 
-                          variant="secondary" 
-                          className="cursor-pointer hover:bg-secondary/80"
-                          onClick={() => handleFilterChange('category', post.category)}
-                        >
+              {blogPosts.map(post => (
+                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <Link to={`/blog/${post.slug}`}>
+                    <div className="aspect-video overflow-hidden">
+                      <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                  </Link>
+                  
+                  <CardHeader>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      <Link to={`/blog/category/${post.category.toLowerCase()}`}>
+                        <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
                           {post.category}
                         </Badge>
-                        {post.tags.map(tag => (
-                          <Badge 
-                            key={tag} 
-                            variant="outline" 
-                            className="text-xs cursor-pointer hover:bg-muted"
-                            onClick={() => handleFilterChange('tag', tag)}
-                          >
+                      </Link>
+                      {post.tags.map(tag => (
+                        <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                          <Badge variant="outline" className="text-xs cursor-pointer hover:bg-muted">
                             {tag}
                           </Badge>
-                        ))}
-                      </div>
-                      
-                      <Link to={`/blog/${post.slug}`}>
-                        <CardTitle className="text-2xl hover:text-primary transition-colors cursor-pointer">
-                          {post.title}
-                        </CardTitle>
-                      </Link>
-                      
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div 
-                          className="flex items-center gap-1 cursor-pointer hover:text-primary"
-                          onClick={() => handleFilterChange('author', post.author)}
-                        >
-                          <User className="w-4 h-4" />
-                          {post.author}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(post.date).toLocaleDateString()}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {post.readTime}
-                        </div>
-                      </div>
-                    </CardHeader>
+                        </Link>
+                      ))}
+                    </div>
                     
-                    <CardContent>
-                      <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                    <Link to={`/blog/${post.slug}`}>
+                      <CardTitle className="text-2xl hover:text-primary transition-colors cursor-pointer">
+                        {post.title}
+                      </CardTitle>
+                    </Link>
+                    
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <Link 
-                        to={`/blog/${post.slug}`}
-                        className="text-primary hover:text-primary/80 font-medium transition-colors"
+                        to={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`}
+                        className="flex items-center gap-1 cursor-pointer hover:text-primary"
                       >
-                        Read More →
+                        <User className="w-4 h-4" />
+                        {post.author}
                       </Link>
-                    </CardContent>
-                  </Card>
-                ))
-              )}
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(post.date).toLocaleDateString()}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {post.readTime}
+                      </div>
+                    </div>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                    <Link 
+                      to={`/blog/${post.slug}`}
+                      className="text-primary hover:text-primary/80 font-medium transition-colors"
+                    >
+                      Read More →
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             {/* Sidebar - Right Side */}
@@ -284,14 +208,14 @@ export default function Blog() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {categories.map(category => (
-                    <div 
+                    <Link 
                       key={category.name} 
+                      to={`/blog/category/${category.name.toLowerCase()}`}
                       className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors"
-                      onClick={() => handleFilterChange('category', category.name)}
                     >
                       <span>{category.name}</span>
                       <Badge variant="secondary">{category.count}</Badge>
-                    </div>
+                    </Link>
                   ))}
                 </CardContent>
               </Card>
@@ -307,14 +231,14 @@ export default function Blog() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {tags.map(tag => (
-                      <Badge 
-                        key={tag} 
-                        variant="outline" 
-                        className="cursor-pointer hover:bg-muted"
-                        onClick={() => handleFilterChange('tag', tag)}
-                      >
-                        {tag}
-                      </Badge>
+                      <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                        <Badge 
+                          variant="outline" 
+                          className="cursor-pointer hover:bg-muted"
+                        >
+                          {tag}
+                        </Badge>
+                      </Link>
                     ))}
                   </div>
                 </CardContent>
@@ -330,14 +254,14 @@ export default function Blog() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {authors.map(author => (
-                    <div 
+                    <Link 
                       key={author.name} 
+                      to={`/blog/author/${author.name.toLowerCase().replace(' ', '-')}`}
                       className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors"
-                      onClick={() => handleFilterChange('author', author.name)}
                     >
                       <span>{author.name}</span>
                       <Badge variant="secondary">{author.posts} posts</Badge>
-                    </div>
+                    </Link>
                   ))}
                 </CardContent>
               </Card>
