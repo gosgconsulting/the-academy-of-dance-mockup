@@ -205,17 +205,17 @@ export default function BlogPost() {
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-center">
           <button 
             onClick={() => navigate('/blog')}
-            className="flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
           </button>
           
-          <div className="max-w-4xl">
-            <div className="flex flex-wrap gap-2 mb-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
               <Badge variant="secondary">{post.category}</Badge>
               {post.tags.map(tag => (
                 <Badge key={tag} variant="outline" className="text-white border-white/20">
@@ -228,7 +228,7 @@ export default function BlogPost() {
               {post.title}
             </h1>
             
-            <div className="flex items-center gap-6 text-white/90 mb-8">
+            <div className="flex items-center justify-center gap-6 text-white/90 mb-8">
               <div className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 {post.author}
