@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -71,6 +72,11 @@ const blogPosts = [
 
 export default function BlogCategory() {
   const { category } = useParams();
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   const filteredPosts = blogPosts.filter(post => 
     post.category.toLowerCase() === category?.toLowerCase()
