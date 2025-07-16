@@ -1,43 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MapPin, FileText } from "lucide-react";
 
 const ClassSchedulesSection = () => {
-  const schedules = [
+  const locations = [
     {
       location: "Tampines",
       address: "Tampines Mall #04-32",
-      classes: [
-        { day: "Monday", time: "4:00 PM - 5:00 PM", class: "Ballet (Ages 4-6)" },
-        { day: "Monday", time: "5:00 PM - 6:00 PM", class: "Jazz (Ages 7-9)" },
-        { day: "Tuesday", time: "4:00 PM - 5:00 PM", class: "Contemporary (Ages 10-12)" },
-        { day: "Tuesday", time: "5:00 PM - 6:00 PM", class: "Hip Hop (Ages 8-10)" },
-        { day: "Wednesday", time: "4:00 PM - 5:00 PM", class: "Ballet (Ages 7-9)" },
-        { day: "Wednesday", time: "5:00 PM - 6:00 PM", class: "Modern (Ages 11-13)" },
-        { day: "Thursday", time: "4:00 PM - 5:00 PM", class: "Tap (Ages 6-8)" },
-        { day: "Thursday", time: "5:00 PM - 6:00 PM", class: "Jazz (Ages 10-12)" },
-        { day: "Friday", time: "4:00 PM - 5:00 PM", class: "Hip Hop (Ages 6-8)" },
-        { day: "Friday", time: "5:00 PM - 6:00 PM", class: "Ballet (Ages 8-10)" },
-        { day: "Saturday", time: "10:00 AM - 11:00 AM", class: "Contemporary (Ages 6-8)" },
-        { day: "Saturday", time: "11:00 AM - 12:00 PM", class: "Musical Theatre (Ages 9-11)" },
-      ]
     },
     {
-      location: "Wisteria",
-      address: "Wisteria Mall #03-15",
-      classes: [
-        { day: "Monday", time: "3:30 PM - 4:30 PM", class: "Ballet (Ages 3-5)" },
-        { day: "Monday", time: "4:30 PM - 5:30 PM", class: "Creative Movement (Ages 5-7)" },
-        { day: "Tuesday", time: "3:30 PM - 4:30 PM", class: "Jazz (Ages 6-8)" },
-        { day: "Tuesday", time: "4:30 PM - 5:30 PM", class: "Contemporary (Ages 9-11)" },
-        { day: "Wednesday", time: "3:30 PM - 4:30 PM", class: "Hip Hop (Ages 7-9)" },
-        { day: "Wednesday", time: "4:30 PM - 5:30 PM", class: "Ballet (Ages 8-10)" },
-        { day: "Thursday", time: "3:30 PM - 4:30 PM", class: "Modern (Ages 6-8)" },
-        { day: "Thursday", time: "4:30 PM - 5:30 PM", class: "Tap (Ages 9-11)" },
-        { day: "Friday", time: "3:30 PM - 4:30 PM", class: "Ballet (Ages 6-8)" },
-        { day: "Friday", time: "4:30 PM - 5:30 PM", class: "Jazz (Ages 10-12)" },
-        { day: "Saturday", time: "9:00 AM - 10:00 AM", class: "Family Dance (Ages 2-4 with parent)" },
-        { day: "Saturday", time: "10:00 AM - 11:00 AM", class: "Musical Theatre (Ages 8-10)" },
-      ]
+      location: "Yishun",
+      address: "Yishun Mall #03-15",
     }
   ];
 
@@ -54,8 +27,8 @@ const ClassSchedulesSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {schedules.map((location, index) => (
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {locations.map((location, index) => (
             <Card key={index} className="overflow-hidden shadow-lg">
               <CardHeader className="bg-primary text-white">
                 <CardTitle className="flex items-center gap-3 font-playfair text-2xl">
@@ -66,35 +39,19 @@ const ClassSchedulesSection = () => {
                   {location.address}
                 </p>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  {location.classes.map((classItem, classIndex) => (
-                    <div 
-                      key={classIndex} 
-                      className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                    >
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-primary mb-1">
-                          {classItem.class}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-medium">
-                          {classItem.day}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2 text-secondary font-medium">
-                        <Clock className="w-4 h-4" />
-                        {classItem.time}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="mt-6 p-4 bg-primary/5 rounded-lg">
-                  <p className="text-sm text-gray-600 text-center">
-                    <strong>Note:</strong> Schedule may vary during school holidays. 
-                    Please contact us for the most up-to-date information.
-                  </p>
-                </div>
+              <CardContent className="p-8 text-center">
+                <p className="text-gray-600 mb-6 font-inter">
+                  View our detailed class schedule for {location.location}
+                </p>
+                <Button 
+                  variant="default" 
+                  size="lg"
+                  className="w-full"
+                  onClick={() => window.open('#', '_blank')}
+                >
+                  <FileText className="w-5 h-5 mr-2" />
+                  View {location.location} Schedule PDF
+                </Button>
               </CardContent>
             </Card>
           ))}
