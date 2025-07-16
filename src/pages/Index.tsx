@@ -49,14 +49,14 @@ const Index = () => {
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
       <AboutUsSection />
+      <VisionMissionSection />
       <ProgrammesSection />
       <ExaminationCoursesSection />
-      <VisionMissionSection />
       <CompetitionExcellenceSection />
       <EventsSection />
       <AchievementsSection />
-      <ReviewsSection />
       <TeachersSection />
+      <ReviewsSection />
       <ClassSchedulesSection />
       <LocationsSection />
       <GallerySection />
