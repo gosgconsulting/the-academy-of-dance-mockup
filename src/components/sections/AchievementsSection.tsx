@@ -81,6 +81,35 @@ const AchievementsSection = () => {
       ]
     },
     {
+      icon: Star,
+      title: "Chingay Parade Performances",
+      highlights: [
+        "Most Lively Contingent Award Winner (2020)",
+        "Consistent annual participation since 2020",
+        "Showcasing Singapore's cultural diversity"
+      ],
+      results: [
+        { name: "2020 Performance", placement: "Most Lively Contingent Award", category: "Special Recognition" },
+        { name: "2021 Performance", placement: "Performed", category: "Cultural Showcase" },
+        { name: "2022 Performance", placement: "Performed", category: "Cultural Showcase" },
+        { name: "2023 Performance", placement: "Performed", category: "Cultural Showcase" }
+      ]
+    },
+    {
+      icon: Award,
+      title: "National Day Parade & Recent Performances",
+      highlights: [
+        "Selected for National Day Parade 2025",
+        "Chingay Parade 2024 & 2025 Performances",
+        "Prestigious national platform representation"
+      ],
+      results: [
+        { name: "2025 National Day Parade", placement: "Performing", category: "National Celebration" },
+        { name: "2024 Chingay Parade", placement: "Performed", category: "Cultural Showcase" },
+        { name: "2025 Chingay Parade", placement: "Performed", category: "Cultural Showcase" }
+      ]
+    },
+    {
       icon: Users,
       title: "Outstanding Achievements Summary",
       highlights: [
