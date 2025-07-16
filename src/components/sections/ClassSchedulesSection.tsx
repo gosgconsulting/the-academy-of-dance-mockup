@@ -30,8 +30,8 @@ const ClassSchedulesSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {locations.map((location, index) => (
             <Card key={index} className="overflow-hidden shadow-lg">
-              <CardHeader className="bg-primary text-white">
-                <CardTitle className="flex items-center gap-3 font-playfair text-2xl">
+              <CardHeader className="bg-primary text-white text-center">
+                <CardTitle className="flex items-center justify-center gap-3 font-playfair text-2xl">
                   <MapPin className="w-6 h-6" />
                   {location.location}
                 </CardTitle>
