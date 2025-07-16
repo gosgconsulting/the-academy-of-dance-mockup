@@ -35,8 +35,8 @@ const Footer = () => {
 
         <div className="text-center border-t border-gray-700 pt-8">
           <div className="flex justify-center space-x-8 text-sm mb-4">
-            <a href="#" className="hover:text-secondary transition-colors">Terms & Conditions</a>
-            <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
+            <a href="/terms-conditions" className="hover:text-secondary transition-colors">Terms & Conditions</a>
+            <a href="/privacy-policy" className="hover:text-secondary transition-colors">Privacy Policy</a>
           </div>
           <div className="text-gray-400 text-sm">
             © 2024 The Academy of Dance. All rights reserved.
