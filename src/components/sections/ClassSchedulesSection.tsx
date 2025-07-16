@@ -30,12 +30,12 @@ const ClassSchedulesSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {locations.map((location, index) => (
             <Card key={index} className="overflow-hidden shadow-lg">
-              <CardHeader className="bg-primary text-white text-center">
-                <CardTitle className="flex items-center justify-center gap-3 font-playfair text-2xl">
-                  <MapPin className="w-6 h-6" />
+              <CardHeader className="bg-white text-center border-b">
+                <CardTitle className="flex items-center justify-center gap-3 font-playfair text-2xl" style={{ color: '#A8733E' }}>
+                  <MapPin className="w-6 h-6" style={{ color: '#A8733E' }} />
                   {location.location}
                 </CardTitle>
-                <p className="text-primary-foreground/90 font-inter">
+                <p className="font-inter" style={{ color: '#A8733E' }}>
                   {location.address}
                 </p>
               </CardHeader>
