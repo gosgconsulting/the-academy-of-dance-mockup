@@ -73,7 +73,7 @@ const AchievementsSection = () => {
         { name: "Group Any Other Style 8&U", placement: "2nd", category: "Group Competition" },
         { name: "Group Any Other Style 12&U", placement: "Judges Choice Award", category: "Special Award" },
         { name: "Group Any Other Style 12&U", placement: "Gala Finalist", category: "Special Award" },
-        { name: "Group Any Other Style 12&U", placement: "Judges Award for Choreography", category: "Special Award" },
+        { name: "Group Any Other Style 12&U", placement: <>Judges Award<br/>for Choreography</>, category: "Special Award" },
         { name: "Melanie Ng", placement: "4th", category: "Intermediate Ballet Solo 15&U" },
         { name: "Elysia Low", placement: "1st", category: "Intermediate Tap Solo 13&U" },
         { name: "Juliet Lee", placement: "2nd", category: "Intermediate Tap Solo 15&U" },
