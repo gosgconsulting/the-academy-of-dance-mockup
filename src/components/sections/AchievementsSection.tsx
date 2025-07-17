@@ -1,7 +1,18 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Trophy, Award, Medal, Star, Calendar, Users } from "lucide-react";
+import { Trophy, Award, Medal, Star, Calendar, Users, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 const AchievementsSection = () => {
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
+  
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
   const competitions = [
     {
       icon: Trophy,
@@ -197,6 +208,13 @@ const AchievementsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {competitions.map((competition, index) => {
             const IconComponent = competition.icon;
+            const isExpanded = expandedCards.includes(index);
+            const initialDisplayCount = 4; // Show first 4 awards initially
+            const displayedResults = isExpanded 
+              ? competition.results 
+              : competition.results.slice(0, initialDisplayCount);
+            const hasMoreResults = competition.results.length > initialDisplayCount;
+
             return (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
                 <CardContent className="p-6">
@@ -207,8 +225,8 @@ const AchievementsSection = () => {
                     {competition.title}
                   </h3>
                   
-                  <div className="space-y-2 max-h-96 overflow-y-auto">
-                    {competition.results.map((result, idx) => (
+                  <div className="space-y-2">
+                    {displayedResults.map((result, idx) => (
                       <div key={idx} className="text-sm border-b border-gray-100 pb-2">
                         <div className="flex justify-between items-start">
                           <span className="font-medium text-primary">{result.placement}</span>
@@ -220,6 +238,27 @@ const AchievementsSection = () => {
                       </div>
                     ))}
                   </div>
+
+                  {hasMoreResults && (
+                    <div className="mt-4 flex justify-center">
+                      <button
+                        onClick={() => toggleCard(index)}
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:text-primary/80 hover:bg-primary/5 rounded-lg transition-colors duration-200"
+                      >
+                        {isExpanded ? (
+                          <>
+                            Show Less
+                            <ChevronUp className="w-4 h-4" />
+                          </>
+                        ) : (
+                          <>
+                            Show More ({competition.results.length - initialDisplayCount} more)
+                            <ChevronDown className="w-4 h-4" />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             );
