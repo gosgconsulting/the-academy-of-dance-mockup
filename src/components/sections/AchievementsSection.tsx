@@ -69,7 +69,7 @@ const AchievementsSection = () => {
         { name: "Hot Chocolate", placement: "3rd", category: "Group Open Age Classical Large" },
         { name: "Bastion", placement: "3rd", category: "Group Open Age Any Other Style Large" },
         { name: "Candyman", placement: "3rd", category: "Group Open Age Jazz Large" },
-        { name: "Nakshathra Sandilya", placement: "Outstanding Group Dancer Award", category: "Special Recognition" }
+        { name: "Nakshathra Sandilya", placement: <>Outstanding Group<br/>Dancer Award</>, category: "Special Recognition" }
       ]
     },
     {
