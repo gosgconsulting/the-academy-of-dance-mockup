@@ -150,7 +150,7 @@ const AchievementsSection = () => {
         { name: "Group (Open Any Other Style)", placement: "1st", category: "Group Competition" },
         { name: "Special Award", placement: "Judges Choice Award", category: "Recognition" },
         { name: "Special Award", placement: "Gala Finalist", category: "Recognition" },
-        { name: "Special Award", placement: "Judges Award for Musicality and Performance", category: "Recognition" },
+        { name: "Special Award", placement: <>Judges Award for<br/>Musicality and Performance</>, category: "Recognition" },
         { name: "Group (Open Lyrical)", placement: "3rd", category: "Group Competition" }
       ]
     },
