@@ -229,7 +229,16 @@ const AchievementsSection = () => {
                     {displayedResults.map((result, idx) => (
                       <div key={idx} className="text-sm border-b border-gray-100 pb-2">
                         <div className="flex justify-between items-start">
-                          <span className="font-medium text-primary">{result.placement}</span>
+                          <span className="font-medium text-primary">
+                            {typeof result.placement === 'string' && result.placement === 'Honorable Mention' ? (
+                              <>
+                                <span className="md:hidden">Honorable Mention</span>
+                                <span className="hidden md:block">Honorable<br/>Mention</span>
+                              </>
+                            ) : (
+                              result.placement
+                            )}
+                          </span>
                           <span className="text-gray-600 flex-1 ml-2">{result.name}</span>
                         </div>
                         {result.category && (
