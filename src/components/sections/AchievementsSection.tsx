@@ -252,7 +252,7 @@ const AchievementsSection = () => {
                           </>
                         ) : (
                           <>
-                            Show More ({competition.results.length - initialDisplayCount} more)
+                            Show More
                             <ChevronDown className="w-4 h-4" />
                           </>
                         )}
