@@ -193,7 +193,8 @@ const ProgrammesAndExamsSection = () => {
             </TabsContent>
             
             <TabsContent value="examinations" className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Desktop grid layout */}
+              <div className="hidden md:grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {/* RAD Ballet */}
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="relative">
@@ -305,6 +306,120 @@ const ProgrammesAndExamsSection = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+
+              {/* Mobile carousel layout */}
+              <div className="md:hidden">
+                <Carousel className="w-full max-w-sm mx-auto">
+                  <CarouselContent>
+                    {/* RAD Ballet Card */}
+                    <CarouselItem>
+                      <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div className="relative">
+                          <div className="relative h-48 overflow-hidden">
+                            {radImages.map((image, index) => (
+                              <img
+                                key={index}
+                                src={image}
+                                alt={`RAD Ballet Examination - Image ${index + 1}`}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
+                                  index === radImageIndex ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                onClick={() => openModal(radImages, index, 'RAD Ballet Examination')}
+                              />
+                            ))}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                          </div>
+                          
+                          {/* Pagination dots */}
+                          {radImages.length > 1 && (
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                              {radImages.map((_, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => goToRadImage(index)}
+                                  className={`w-2 h-2 rounded-full transition-colors ${
+                                    index === radImageIndex 
+                                      ? 'bg-white' 
+                                      : 'bg-white/50 hover:bg-white/70'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <CardContent className="p-4">
+                          <h3 className="font-playfair text-lg font-bold text-primary mb-3">
+                            RAD Ballet Examinations
+                          </h3>
+                          <p className="text-gray-700 leading-relaxed mb-4 text-xs line-clamp-3">
+                            We're proud to offer the world-renowned RAD syllabus - one of
+                            the world's most influential dance education organizations
+                            from the UK.
+                          </p>
+                          <div className="space-y-1 text-xs text-gray-600">
+                            <p>✓ World-leading classical ballet standards</p>
+                            <p>✓ UK-based certification</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+
+                    {/* CSTD Card */}
+                    <CarouselItem>
+                      <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div className="relative">
+                          <div className="relative h-48 overflow-hidden">
+                            {cstdImages.map((image, index) => (
+                              <img
+                                key={index}
+                                src={image}
+                                alt={`CSTD Jazz and Tap Examination - Image ${index + 1}`}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
+                                  index === cstdImageIndex ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                onClick={() => openModal(cstdImages, index, 'CSTD Jazz and Tap Examination')}
+                              />
+                            ))}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                          </div>
+                          
+                          {/* Pagination dots */}
+                          {cstdImages.length > 1 && (
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                              {cstdImages.map((_, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => goToCstdImage(index)}
+                                  className={`w-2 h-2 rounded-full transition-colors ${
+                                    index === cstdImageIndex 
+                                      ? 'bg-white' 
+                                      : 'bg-white/50 hover:bg-white/70'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <CardContent className="p-4">
+                          <h3 className="font-playfair text-lg font-bold text-primary mb-3">
+                            CSTD Examinations
+                          </h3>
+                          <p className="text-gray-700 leading-relaxed mb-4 text-xs line-clamp-3">
+                            We proudly offer CSTD syllabus from Australia - a world leader
+                            in holistic dance education with Jazz and Tap programs.
+                          </p>
+                          <div className="space-y-1 text-xs text-gray-600">
+                            <p>✓ Australian dance education system</p>
+                            <p>✓ Jazz & Tap with modern influences</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </div>
             </TabsContent>
           </Tabs>
