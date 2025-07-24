@@ -13,181 +13,147 @@ const AchievementsSection = () => {
     );
   };
 
-  const competitions = [
+  const achievements = [
     {
       icon: Trophy,
-      title: "Get The Beat (GTB) 2025",
+      title: "1st Place Awards",
       results: [
-        { name: "Grace Khaw", placement: "4th", category: "My First Solo Classical (Ballet + Demi) Pre Junior (9-10)" },
-        { name: "Vanessa Yew", placement: "4th", category: "Intermediate Jazz Solo (14&U)" },
-        { name: "Sasha Lai", placement: "3rd", category: "My First Solo Slow Modern (Lyrical + Contemporary) Teen (13-14)" },
-        { name: "Abigail Lim", placement: "5th", category: "My First Solo Slow Modern (Lyrical + Contemporary) Teen (13-14)" },
-        { name: "Clarabelle Lim", placement: "5th", category: "My First Solo Slow Modern (Lyrical + Contemporary) Senior (15-19)" },
-        { name: "Julia Ong", placement: "Honorable Mention", category: "My First Solo Slow Modern (Lyrical + Contemporary) Senior (15-19)" },
-        { name: "Wai Ting", placement: "5th", category: "My First Solo Commercial (Jazz + Hip-Hop) Petite (7-8)" },
-        { name: "Edna Chew", placement: "4th", category: "My First Solo Commercial (Jazz + Hip-Hop) Mini (0-6)" },
-        { name: "Xin En", placement: "1st", category: "My First Solo Commercial (Jazz + Hip-Hop) Teen (13-14)" },
-        { name: "Leocadie Pochat", placement: "5th", category: "Beginner Slow Modern (Lyrical + Contemporary) Solo Pre Junior (9-10)" },
-        { name: "Tessa Lam", placement: "5th", category: "Beginner Slow Modern (Lyrical + Contemporary) Solo Teen (13-14)" },
-        { name: "Gretchen Lee", placement: "5th", category: "Beginner Slow Modern (Lyrical + Contemporary) Solo Junior (11-12)" },
-        { name: "Ashleigh Zhan", placement: "2nd", category: "Intermediate Open Solo (14&U)" },
-        { name: "Elysia Low", placement: "1st", category: "Intermediate Any Style of Tap Solo (14&U)" },
-        { name: "Leocadie Pochat", placement: "1st", category: "Beginner Theatrical (Musical Theatre, Tap, Song&Dance, Broadway Jazz, Acro) Solo Pre Junior (9-10)" },
-        { name: "Sasha Lai", placement: "2nd", category: "Beginner Theatrical (Musical Theatre, Tap, Song&Dance, Broadway Jazz, Acro) Solo Teen (13-14)" },
-        { name: "Juliet Yap", placement: "1st", category: "Intermediate Demi Character Solo (10&U)" },
-        { name: "Kayla Soo", placement: "1st", category: "Intermediate Demi Character Solo (15&U)" },
-        { name: "Ally Patt", placement: "2nd", category: "Intermediate Demi Character Solo (15&U)" },
-        { name: "Lyra Goh", placement: "1st", category: "Intermediate Demi Character Solo (13&U)" },
-        { name: "Caley Toh", placement: "1st", category: "Intermediate Demi Character Solo (16-20)" },
-        { name: "Julia Ong", placement: "3rd", category: "Beginner Classical (Ballet + Demi) Solo Senior (15-19)" },
-        { name: "Sophia Choudhury", placement: "5th", category: "Beginner Classical (Ballet + Demi) Solo Teen (13-14)" },
-        { name: "Abigail Lim", placement: "2nd", category: "Beginner Classical (Ballet + Demi) Solo Teen (13-14)" },
-        { name: "Shanice Tan", placement: "3rd", category: "Beginner Classical (Ballet + Demi) Solo Teen (13-14)" },
-        { name: "Gretchen Lee", placement: "5th", category: "Beginner Classical (Ballet + Demi) Solo Junior (11-12)" },
-        { name: "Eliana Goh", placement: "1st", category: "Intermediate Ballet Solo (15&U)" },
-        { name: "Dora Lam", placement: "5th", category: "Intermediate Ballet Solo (16-20)" },
-        { name: "Ella Toh", placement: "5th", category: "Intermediate Ballet Solo (12&U)" },
-        { name: "Precia Kum", placement: "4th", category: "Intermediate Ballet Solo (11&U)" },
-        { name: "Shermaine Lee + Cheyanne Lim", placement: "3rd", category: "Duo/Trio Any Other Styles Senior (15-19)" },
-        { name: "Summer Palace", placement: "1st", category: "Group 12&U Any Other Style Large" },
-        { name: "Salute", placement: "1st", category: "Group 12&U Tap Large" },
-        { name: "Minions", placement: "3rd", category: "Group 6&U Jazz Small" },
-        { name: "Jessie", placement: "4th", category: "Group 6&U Jazz Small" },
-        { name: "Mini Mouse", placement: "2nd & Gala", category: "Group 6&U Jazz Large" },
-        { name: "Sweets", placement: "3rd", category: "Group 6&U Jazz Large" },
-        { name: "Spoonful of Sugar", placement: "2nd", category: "Group 8&U Any Other Style Large" },
-        { name: "Beauty and the Beast", placement: "2nd", category: "Group 8&U Classical Large" },
-        { name: "Love the Memory", placement: "3rd", category: "Group 10&U Lyrical Large" },
-        { name: "Dolls", placement: "1st & Gala", category: "Group 10&U Classical Large" },
-        { name: "Chinese Tea", placement: "1st", category: "Group 15&U Tap Large" },
-        { name: "Found Tonight", placement: "3rd", category: "Group 15&U Lyrical Small" },
-        { name: "Arabian", placement: "1st & Gala", category: "Group 15&U Any Other Style Large" },
-        { name: "Mai Pen Rai", placement: "2nd", category: "Group 15&U Any Other Style Large" },
-        { name: "Learning to Fly", placement: "3rd", category: "Group Open Age Lyrical Small" },
-        { name: "Snowflakes", placement: "1st", category: "Group Open Age Classical Large" },
-        { name: "Waltz of the Flowers", placement: "2nd", category: "Group Open Age Classical Large" },
-        { name: "Hot Chocolate", placement: "3rd", category: "Group Open Age Classical Large" },
-        { name: "Bastion", placement: "3rd", category: "Group Open Age Any Other Style Large" },
-        { name: "Candyman", placement: "3rd", category: "Group Open Age Jazz Large" },
-        { name: "Nakshathra Sandilya", placement: <>Outstanding Group<br/>Dancer Award</>, category: "Special Recognition" }
+        { name: "Xin En", placement: "1st", category: "My First Solo Commercial (Jazz + Hip-Hop) Teen (13-14) - GTB 2025" },
+        { name: "Elysia Low", placement: "1st", category: "Intermediate Any Style of Tap Solo (14&U) - GTB 2025" },
+        { name: "Leocadie Pochat", placement: "1st", category: "Beginner Theatrical Solo Pre Junior (9-10) - GTB 2025" },
+        { name: "Juliet Yap", placement: "1st", category: "Intermediate Demi Character Solo (10&U) - GTB 2025" },
+        { name: "Kayla Soo", placement: "1st", category: "Intermediate Demi Character Solo (15&U) - GTB 2025" },
+        { name: "Lyra Goh", placement: "1st", category: "Intermediate Demi Character Solo (13&U) - GTB 2025" },
+        { name: "Caley Toh", placement: "1st", category: "Intermediate Demi Character Solo (16-20) - GTB 2025" },
+        { name: "Eliana Goh", placement: "1st", category: "Intermediate Ballet Solo (15&U) - GTB 2025" },
+        { name: "Summer Palace", placement: "1st", category: "Group 12&U Any Other Style Large - GTB 2025" },
+        { name: "Salute", placement: "1st", category: "Group 12&U Tap Large - GTB 2025" },
+        { name: "Dolls", placement: "1st & Gala", category: "Group 10&U Classical Large - GTB 2025" },
+        { name: "Chinese Tea", placement: "1st", category: "Group 15&U Tap Large - GTB 2025" },
+        { name: "Arabian", placement: "1st & Gala", category: "Group 15&U Any Other Style Large - GTB 2025" },
+        { name: "Snowflakes", placement: "1st", category: "Group Open Age Classical Large - GTB 2025" },
+        { name: "Group Any Other Style (6&U)", placement: "1st", category: "Group Competition - GTB 2024" },
+        { name: "Melanie Ng", placement: "1st", category: "Intermediate Open Solo (15&U) - GTB 2024" },
+        { name: "Elysia Low", placement: "1st", category: "Intermediate Tap Solo 13&U - GTB 2024" },
+        { name: "Group Classical Big Group Open", placement: "1st", category: "Group Competition - GTB 2024" },
+        { name: "Group Any Other Style 13&U", placement: "1st", category: "Group Competition - SRC CSTD 2024" },
+        { name: "Group Acrobatics, Tap, Musical Theatre Open", placement: "1st", category: "Group Competition - SRC CSTD 2024" },
+        { name: "Group (Open Age Classical)", placement: "1st", category: "Group Competition - GTB 2023" },
+        { name: "Groups 13&U Jazz", placement: "1st", category: "Group Competition - SRC CSTD 2023" },
+        { name: "Alexandria", placement: "1st", category: "Lyrical Solo Novice 15&U - SRC CSTD 2023" },
+        { name: "Group (12&U Jazz)", placement: "1st", category: "Group Competition - GTB 2022" },
+        { name: "Group (Open Any Other Style)", placement: "1st", category: "Group Competition - GTB 2022" },
+        { name: "Group Open Age Lyrical", placement: "1st", category: "Group Competition - Singapore Cup Challenge 2022" }
       ]
     },
     {
       icon: Medal,
-      title: "Get The Beat (GTB) 2024",
+      title: "2nd Place Awards",
       results: [
-        { name: "Gretchen Lee", placement: "4th", category: "My First Solo Junior (11-12)" },
-        { name: "Group Any Other Style (6&U)", placement: "1st", category: "Group Competition" },
-        { name: "Melanie Ng", placement: "1st", category: "Intermediate Open Solo (15&U)" },
-        { name: "Claire Lee", placement: "5th", category: "Beginner Theatrical (Musical Theatre/Tap/Song&Dance/Broadway Jazz/Acro) Jun 11-12" },
-        { name: "Dora Lam", placement: "5th", category: "Intermediate Open Solo (16-20)" },
-        { name: "Group Any Other Style 8&U", placement: "2nd", category: "Group Competition" },
-        { name: "Group Any Other Style 12&U", placement: "Judges Choice Award", category: "Special Award" },
-        { name: "Group Any Other Style 12&U", placement: "Gala Finalist", category: "Special Award" },
-        { name: "Group Any Other Style 12&U", placement: <>Judges Award<br/>for Choreography</>, category: "Special Award" },
-        { name: "Melanie Ng", placement: "4th", category: "Intermediate Ballet Solo 15&U" },
-        { name: "Elysia Low", placement: "1st", category: "Intermediate Tap Solo 13&U" },
-        { name: "Juliet Lee", placement: "2nd", category: "Intermediate Tap Solo 15&U" },
-        { name: "Group Classical Big Group Open", placement: "1st", category: "Group Competition" },
-        { name: "Group Any Other Style Open", placement: "5th", category: "Group Competition" }
+        { name: "Ashleigh Zhan", placement: "2nd", category: "Intermediate Open Solo (14&U) - GTB 2025" },
+        { name: "Sasha Lai", placement: "2nd", category: "Beginner Theatrical Solo Teen (13-14) - GTB 2025" },
+        { name: "Ally Patt", placement: "2nd", category: "Intermediate Demi Character Solo (15&U) - GTB 2025" },
+        { name: "Abigail Lim", placement: "2nd", category: "Beginner Classical Solo Teen (13-14) - GTB 2025" },
+        { name: "Mini Mouse", placement: "2nd & Gala", category: "Group 6&U Jazz Large - GTB 2025" },
+        { name: "Spoonful of Sugar", placement: "2nd", category: "Group 8&U Any Other Style Large - GTB 2025" },
+        { name: "Beauty and the Beast", placement: "2nd", category: "Group 8&U Classical Large - GTB 2025" },
+        { name: "Mai Pen Rai", placement: "2nd", category: "Group 15&U Any Other Style Large - GTB 2025" },
+        { name: "Waltz of the Flowers", placement: "2nd", category: "Group Open Age Classical Large - GTB 2025" },
+        { name: "Group Any Other Style 8&U", placement: "2nd", category: "Group Competition - GTB 2024" },
+        { name: "Juliet Lee", placement: "2nd", category: "Intermediate Tap Solo 15&U - GTB 2024" },
+        { name: "Group 6&U", placement: "2nd", category: "Group Competition - APDC Bangkok 2024" },
+        { name: "Group 8&U Jazz", placement: "2nd", category: "Group Competition - APDC Bangkok 2024" },
+        { name: "Group Open Lyrical/Ballet", placement: "2nd", category: "Group Competition - APDC Bangkok 2024" },
+        { name: "Group Classical/Lyrical Open", placement: "2nd", category: "Group Competition - SRC CSTD 2024" },
+        { name: "Group (Open Age Classical)", placement: "2nd", category: "Group Competition - GTB 2023" },
+        { name: "Groups (Open Age Lyrical)", placement: "2nd", category: "Group Competition - GTB 2023" },
+        { name: "Groups Open Age Lyrical and Classical", placement: "2nd", category: "Group Competition - SRC CSTD 2023" },
+        { name: "Ashleigh Zhan", placement: "2nd", category: "National Solo 11&U - SRC CSTD 2023" },
+        { name: "Eliana Goh", placement: "2nd", category: "Lyrical Solo Novice 15&U - SRC CSTD 2023" },
+        { name: "Angela Yang", placement: "2nd", category: "My First Solo (20+ yrs Open) - GTB 2022" }
       ]
     },
     {
       icon: Award,
-      title: "Asia Pacific Dance Competition (APDC) Bangkok 2024",
+      title: "3rd Place Awards",
       results: [
-        { name: "Group 6&U", placement: "2nd", category: "Group Competition" },
-        { name: "Group Open Contemporary", placement: "Honorable Mention", category: "Group Competition" },
-        { name: "Group 8&U Jazz", placement: "2nd", category: "Group Competition" },
-        { name: "Group 8&U Jazz", placement: "Honorable Mention", category: "Group Competition" },
-        { name: "Group Open Lyrical/Ballet", placement: "2nd", category: "Group Competition" }
+        { name: "Sasha Lai", placement: "3rd", category: "My First Solo Slow Modern Teen (13-14) - GTB 2025" },
+        { name: "Julia Ong", placement: "3rd", category: "Beginner Classical Solo Senior (15-19) - GTB 2025" },
+        { name: "Shanice Tan", placement: "3rd", category: "Beginner Classical Solo Teen (13-14) - GTB 2025" },
+        { name: "Shermaine Lee + Cheyanne Lim", placement: "3rd", category: "Duo/Trio Any Other Styles Senior (15-19) - GTB 2025" },
+        { name: "Minions", placement: "3rd", category: "Group 6&U Jazz Small - GTB 2025" },
+        { name: "Sweets", placement: "3rd", category: "Group 6&U Jazz Large - GTB 2025" },
+        { name: "Love the Memory", placement: "3rd", category: "Group 10&U Lyrical Large - GTB 2025" },
+        { name: "Found Tonight", placement: "3rd", category: "Group 15&U Lyrical Small - GTB 2025" },
+        { name: "Learning to Fly", placement: "3rd", category: "Group Open Age Lyrical Small - GTB 2025" },
+        { name: "Hot Chocolate", placement: "3rd", category: "Group Open Age Classical Large - GTB 2025" },
+        { name: "Bastion", placement: "3rd", category: "Group Open Age Any Other Style Large - GTB 2025" },
+        { name: "Candyman", placement: "3rd", category: "Group Open Age Jazz Large - GTB 2025" },
+        { name: "Group 6&U Jazz", placement: "3rd", category: "Group Competition - SRC CSTD 2024" },
+        { name: "Elysia Low", placement: "3rd", category: "Tap Novice Solo 14&U - SRC CSTD 2024" },
+        { name: "Kayla Soo", placement: "3rd", category: "Demi Character Novice Solo 15&U - SRC CSTD 2024" },
+        { name: "Groups (8&U Jazz)", placement: "3rd", category: "Group Competition - GTB 2023" },
+        { name: "Groups (15&U Jazz)", placement: "3rd", category: "Group Competition - GTB 2023" },
+        { name: "Shann Cheng", placement: "3rd", category: "Open Age Open Solo - GTB 2023" },
+        { name: "Juliet Yap", placement: "3rd", category: "Solo (9&U Jazz) - GTB 2023" },
+        { name: "Groups 7&U Jazz", placement: "3rd", category: "Group Competition - SRC CSTD 2023" },
+        { name: "Shann Cheng", placement: "3rd", category: "Solo (14&U Open) - GTB 2022" },
+        { name: "Chloe and Jade", placement: "3rd", category: "Duo/Trio Open Age Lyrical/Contemporary - GTB 2022" },
+        { name: "Group 8&U Any Other Style", placement: "3rd", category: "Group Competition - GTB 2022" },
+        { name: "Group 12&U Any Other Style", placement: "3rd", category: "Group Competition - GTB 2022" },
+        { name: "Group (15&U Lyrical)", placement: "3rd", category: "Group Competition - GTB 2022" },
+        { name: "Group (Open Lyrical)", placement: "3rd", category: "Group Competition - GTB 2022" }
       ]
     },
     {
       icon: Star,
-      title: "Singapore Regional Competitions (SRC) CSTD 2024",
+      title: "4th & 5th Place Awards",
       results: [
-        { name: "Group Any Other Style 13&U", placement: "1st", category: "Group Competition" },
-        { name: "Group Acrobatics, Tap, Musical Theatre Open", placement: "1st", category: "Group Competition" },
-        { name: "Group 6&U Jazz", placement: "3rd", category: "Group Competition" },
-        { name: "Group Classical/Lyrical Open", placement: "2nd", category: "Group Competition" },
-        { name: "Group 13&U Jazz", placement: "Honorable Mention", category: "Group Competition" },
-        { name: "Juliet Yap", placement: "Honorable Mention", category: "Jazz Novice Solo 10&U" },
-        { name: "Elysia Low", placement: "3rd", category: "Tap Novice Solo 14&U" },
-        { name: "Kayla Soo", placement: "3rd", category: "Demi Character Novice Solo 15&U" }
-      ]
-    },
-    {
-      icon: Calendar,
-      title: "Get The Beat (GTB) 2023",
-      results: [
-        { name: "Group (Open Age Classical)", placement: "1st", category: "Group Competition" },
-        { name: "Group (Open Age Classical)", placement: "2nd", category: "Group Competition" },
-        { name: "Groups (Open Age Lyrical)", placement: "2nd", category: "Group Competition" },
-        { name: "Groups (8&U Jazz)", placement: "3rd", category: "Group Competition" },
-        { name: "Groups (7&U Jazz)", placement: "4th", category: "Group Competition" },
-        { name: "Groups (15&U Jazz)", placement: "3rd", category: "Group Competition" },
-        { name: "Shann Cheng", placement: "3rd", category: "Open Age Open Solo" },
-        { name: "Juliet Yap", placement: "3rd", category: "Solo (9&U Jazz)" }
+        { name: "Grace Khaw", placement: "4th", category: "My First Solo Classical Pre Junior (9-10) - GTB 2025" },
+        { name: "Vanessa Yew", placement: "4th", category: "Intermediate Jazz Solo (14&U) - GTB 2025" },
+        { name: "Edna Chew", placement: "4th", category: "My First Solo Commercial Mini (0-6) - GTB 2025" },
+        { name: "Precia Kum", placement: "4th", category: "Intermediate Ballet Solo (11&U) - GTB 2025" },
+        { name: "Jessie", placement: "4th", category: "Group 6&U Jazz Small - GTB 2025" },
+        { name: "Abigail Lim", placement: "5th", category: "My First Solo Slow Modern Teen (13-14) - GTB 2025" },
+        { name: "Clarabelle Lim", placement: "5th", category: "My First Solo Slow Modern Senior (15-19) - GTB 2025" },
+        { name: "Wai Ting", placement: "5th", category: "My First Solo Commercial Petite (7-8) - GTB 2025" },
+        { name: "Leocadie Pochat", placement: "5th", category: "Beginner Slow Modern Solo Pre Junior (9-10) - GTB 2025" },
+        { name: "Tessa Lam", placement: "5th", category: "Beginner Slow Modern Solo Teen (13-14) - GTB 2025" },
+        { name: "Gretchen Lee", placement: "5th", category: "Beginner Slow Modern Solo Junior (11-12) - GTB 2025" },
+        { name: "Sophia Choudhury", placement: "5th", category: "Beginner Classical Solo Teen (13-14) - GTB 2025" },
+        { name: "Gretchen Lee", placement: "5th", category: "Beginner Classical Solo Junior (11-12) - GTB 2025" },
+        { name: "Dora Lam", placement: "5th", category: "Intermediate Ballet Solo (16-20) - GTB 2025" },
+        { name: "Ella Toh", placement: "5th", category: "Intermediate Ballet Solo (12&U) - GTB 2025" },
+        { name: "Gretchen Lee", placement: "4th", category: "My First Solo Junior (11-12) - GTB 2024" },
+        { name: "Claire Lee", placement: "5th", category: "Beginner Theatrical Jun 11-12 - GTB 2024" },
+        { name: "Dora Lam", placement: "5th", category: "Intermediate Open Solo (16-20) - GTB 2024" },
+        { name: "Melanie Ng", placement: "4th", category: "Intermediate Ballet Solo 15&U - GTB 2024" },
+        { name: "Group Any Other Style Open", placement: "5th", category: "Group Competition - GTB 2024" },
+        { name: "Groups (7&U Jazz)", placement: "4th", category: "Group Competition - GTB 2023" },
+        { name: "Groups 7&U Jazz", placement: "4th", category: "Group Competition - SRC CSTD 2023" },
+        { name: "Ashley Tan", placement: "5th", category: "My First Solo Teen (13-14) - GTB 2022" },
+        { name: "Ashleigh Zhan", placement: "5th", category: "Solo (11&U Open) - GTB 2022" },
+        { name: "Eliana Goh", placement: "4th", category: "Solo (12&U Lyrical) - GTB 2022" }
       ]
     },
     {
       icon: Users,
-      title: "Singapore Regional Competitions (SRC) CSTD 2023",
+      title: "Special Recognition & Awards",
       results: [
-        { name: "Groups 13&U Jazz", placement: "1st", category: "Group Competition" },
-        { name: "Groups Open Age Lyrical and Classical", placement: "2nd", category: "Group Competition" },
-        { name: "Ashleigh Zhan", placement: "2nd", category: "National Solo 11&U" },
-        { name: "Alexandria", placement: "1st", category: "Lyrical Solo Novice 15&U" },
-        { name: "Eliana Goh", placement: "2nd", category: "Lyrical Solo Novice 15&U" },
-        { name: "Groups 7&U Jazz", placement: "3rd", category: "Group Competition" },
-        { name: "Groups 7&U Jazz", placement: "4th", category: "Group Competition" }
-      ]
-    },
-    {
-      icon: Trophy,
-      title: "Get The Beat (GTB) 2022",
-      results: [
-        { name: "Ashley Tan", placement: "5th", category: "My First Solo Teen (13-14)" },
-        { name: "Angela Yang", placement: "2nd", category: "My First Solo (20+ yrs Open)" },
-        { name: "Shann Cheng", placement: "3rd", category: "Solo (14&U Open)" },
-        { name: "Chloe and Jade", placement: "3rd", category: "Duo/Trio Open Age Lyrical/Contemporary" },
-        { name: "Ashleigh Zhan", placement: "5th", category: "Solo (11&U Open)" },
-        { name: "Group 8&U Any Other Style", placement: "3rd", category: "Group Competition" },
-        { name: "Eliana Goh", placement: "4th", category: "Solo (12&U Lyrical)" },
-        { name: "Group 12&U Any Other Style", placement: "3rd", category: "Group Competition" },
-        { name: "Group (12&U Jazz)", placement: "1st", category: "Group Competition" },
-        { name: "Group (15&U Lyrical)", placement: "3rd", category: "Group Competition" },
-        { name: "Group (Open Any Other Style)", placement: "1st", category: "Group Competition" },
-        { name: "Special Award", placement: "Judges Choice Award", category: "Recognition" },
-        { name: "Special Award", placement: "Gala Finalist", category: "Recognition" },
-        { name: "Special Award", placement: <>Judges Award for<br/>Musicality and Performance</>, category: "Recognition" },
-        { name: "Group (Open Lyrical)", placement: "3rd", category: "Group Competition" }
-      ]
-    },
-    {
-      icon: Award,
-      title: "Singapore Cup Challenge 2022",
-      results: [
-        { name: "Group Open Age Lyrical", placement: "1st", category: "Group Competition" }
-      ]
-    },
-    {
-      icon: Star,
-      title: "Chingay Parade Performances",
-      results: [
-        { name: "2020 Performance", placement: "Most Lively Contingent Award", category: "Special Recognition" },
-        { name: "2021 Performance", placement: "Performed", category: "Cultural Showcase" },
-        { name: "2022 Performance", placement: "Performed", category: "Cultural Showcase" },
-        { name: "2023 Performance", placement: "Performed", category: "Cultural Showcase" },
-        { name: "2024 Performance", placement: "Performed", category: "Cultural Showcase" },
-        { name: "2025 Performance", placement: "Performed", category: "Cultural Showcase" }
-      ]
-    },
-    {
-      icon: Medal,
-      title: "National Day Parade (NDP)",
-      results: [
+        { name: "Nakshathra Sandilya", placement: <>Outstanding Group<br/>Dancer Award</>, category: "GTB 2025" },
+        { name: "Julia Ong", placement: "Honorable Mention", category: "My First Solo Slow Modern Senior (15-19) - GTB 2025" },
+        { name: "Group Any Other Style 12&U", placement: "Judges Choice Award", category: "GTB 2024" },
+        { name: "Group Any Other Style 12&U", placement: "Gala Finalist", category: "GTB 2024" },
+        { name: "Group Any Other Style 12&U", placement: <>Judges Award<br/>for Choreography</>, category: "GTB 2024" },
+        { name: "Group Open Contemporary", placement: "Honorable Mention", category: "APDC Bangkok 2024" },
+        { name: "Group 8&U Jazz", placement: "Honorable Mention", category: "APDC Bangkok 2024" },
+        { name: "Group 13&U Jazz", placement: "Honorable Mention", category: "SRC CSTD 2024" },
+        { name: "Juliet Yap", placement: "Honorable Mention", category: "Jazz Novice Solo 10&U - SRC CSTD 2024" },
+        { name: "Special Award", placement: "Judges Choice Award", category: "GTB 2022" },
+        { name: "Special Award", placement: "Gala Finalist", category: "GTB 2022" },
+        { name: "Special Award", placement: <>Judges Award for<br/>Musicality and Performance</>, category: "GTB 2022" },
+        { name: "2020 Chingay", placement: "Most Lively Contingent Award", category: "Cultural Showcase" },
+        { name: "2021-2025 Chingay", placement: "Annual Performances", category: "Cultural Showcase" },
         { name: "2025 National Day Parade", placement: "Performing", category: "National Celebration" }
       ]
     }
@@ -206,14 +172,14 @@ const AchievementsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {competitions.map((competition, index) => {
-            const IconComponent = competition.icon;
+          {achievements.map((achievement, index) => {
+            const IconComponent = achievement.icon;
             const isExpanded = expandedCards.includes(index);
             const initialDisplayCount = 4; // Show first 4 awards initially
             const displayedResults = isExpanded 
-              ? competition.results 
-              : competition.results.slice(0, initialDisplayCount);
-            const hasMoreResults = competition.results.length > initialDisplayCount;
+              ? achievement.results 
+              : achievement.results.slice(0, initialDisplayCount);
+            const hasMoreResults = achievement.results.length > initialDisplayCount;
 
             return (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
@@ -222,7 +188,7 @@ const AchievementsSection = () => {
                     <IconComponent className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="font-playfair text-xl font-bold text-primary mb-4 text-center">
-                    {competition.title}
+                    {achievement.title}
                   </h3>
                   
                   <div className="space-y-2">
