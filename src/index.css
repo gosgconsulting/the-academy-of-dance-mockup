@@ -37,6 +37,12 @@
 
     --radius: 0.5rem;
 
+    /* Vibrant statistic colors */
+    --stats-purple: 271 100% 71%;
+    --stats-emerald: 154 89% 54%;
+    --stats-orange: 31 100% 60%;
+    --stats-pink: 336 100% 66%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;

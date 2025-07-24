@@ -75,6 +75,12 @@ export default {
 					dark: '#1F2937',
 					light: '#F8FAFC',
 					bronze: '#A8733E'
+				},
+				stats: {
+					purple: 'hsl(var(--stats-purple))',
+					emerald: 'hsl(var(--stats-emerald))',
+					orange: 'hsl(var(--stats-orange))',
+					pink: 'hsl(var(--stats-pink))'
 				}
 			},
 			borderRadius: {
