@@ -9,12 +9,11 @@ import AboutUsSection from "@/components/sections/AboutUsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ProgrammesSection from "@/components/sections/ProgrammesSection";
-import ExaminationCoursesSection from "@/components/sections/ExaminationCoursesSection";
+import ProgrammesExamsSection from "@/components/sections/ProgrammesExamsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import CompetitionExcellenceSection from "@/components/sections/CompetitionExcellenceSection";
 import EventsSection from "@/components/sections/EventsSection";
-import AchievementsSection from "@/components/sections/AchievementsSection";
+import ReorganizedAchievementsSection from "@/components/sections/ReorganizedAchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import ClassSchedulesSection from "@/components/sections/ClassSchedulesSection";
@@ -50,11 +49,10 @@ const Index = () => {
       <TrialsSection />
       <AboutUsSection />
       <VisionMissionSection />
-      <ProgrammesSection />
-      <ExaminationCoursesSection />
+      <ProgrammesExamsSection />
       <CompetitionExcellenceSection />
       <EventsSection />
-      <AchievementsSection />
+      <ReorganizedAchievementsSection />
       <TeachersSection />
       <ReviewsSection />
       <ClassSchedulesSection />
