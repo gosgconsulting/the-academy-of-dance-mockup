@@ -59,7 +59,7 @@ Please contact me to schedule my trial class. Thank you!`;
           <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-amber-500 drop-shadow-lg mb-4">
+                <div className="text-4xl md:text-5xl font-bold text-stats-gold1 drop-shadow-lg mb-4">
                   10,000+
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -67,7 +67,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-yellow-600 drop-shadow-lg mb-4">
+                <div className="text-4xl md:text-5xl font-bold text-stats-gold2 drop-shadow-lg mb-4">
                   40
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -75,7 +75,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-orange-600 drop-shadow-lg mb-4">
+                <div className="text-4xl md:text-5xl font-bold text-stats-gold3 drop-shadow-lg mb-4">
                   95%
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -83,7 +83,7 @@ Please contact me to schedule my trial class. Thank you!`;
                 </div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-amber-600 drop-shadow-lg mb-4">
+                <div className="text-4xl md:text-5xl font-bold text-stats-gold4 drop-shadow-lg mb-4">
                   2000+
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">

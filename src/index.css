@@ -37,12 +37,11 @@
 
     --radius: 0.5rem;
 
-    /* Vibrant statistic colors */
-    --stats-purple: 271 100% 71%;
-    --stats-emerald: 154 89% 54%;
-    --stats-orange: 31 100% 60%;
-    --stats-pink: 336 100% 66%;
-    --stats-blue: 210 100% 65%;
+    /* Gold theme statistics colors */
+    --stats-gold-1: 45 93% 47%;
+    --stats-gold-2: 39 85% 45%;
+    --stats-gold-3: 33 75% 43%;
+    --stats-gold-4: 27 78% 44%;
 
     --sidebar-background: 0 0% 98%;
 

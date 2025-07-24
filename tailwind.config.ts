@@ -77,10 +77,10 @@ export default {
 					bronze: '#A8733E'
 				},
 				stats: {
-					purple: 'hsl(var(--stats-purple))',
-					emerald: 'hsl(var(--stats-emerald))',
-					orange: 'hsl(var(--stats-orange))',
-					pink: 'hsl(var(--stats-pink))'
+					gold1: 'hsl(var(--stats-gold-1))',
+					gold2: 'hsl(var(--stats-gold-2))',
+					gold3: 'hsl(var(--stats-gold-3))',
+					gold4: 'hsl(var(--stats-gold-4))'
 				}
 			},
 			borderRadius: {
