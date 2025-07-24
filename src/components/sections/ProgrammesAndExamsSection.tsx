@@ -129,9 +129,19 @@ const ProgrammesAndExamsSection = () => {
           </div>
 
           <Tabs defaultValue="programmes" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="programmes" className="text-lg">Programmes</TabsTrigger>
-              <TabsTrigger value="examinations" className="text-lg">Examinations</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 mb-8 bg-gray-100 p-1 rounded-lg">
+              <TabsTrigger 
+                value="programmes" 
+                className="text-lg px-6 py-3 rounded-md transition-all duration-200 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:text-gray-800"
+              >
+                Programmes
+              </TabsTrigger>
+              <TabsTrigger 
+                value="examinations" 
+                className="text-lg px-6 py-3 rounded-md transition-all duration-200 data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:text-gray-800"
+              >
+                Examinations
+              </TabsTrigger>
             </TabsList>
             
             <TabsContent value="programmes" className="space-y-8">
