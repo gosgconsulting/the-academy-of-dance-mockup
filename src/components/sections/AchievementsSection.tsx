@@ -206,14 +206,14 @@ const AchievementsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {competitions.map((competition, index) => {
-            const IconComponent = competition.icon;
+          {competitions.map((comp, index) => {
+            const IconComponent = comp.icon;
             const isExpanded = expandedCards.includes(index);
             const initialDisplayCount = 4; // Show first 4 awards initially
             const displayedResults = isExpanded 
-              ? competition.results 
-              : competition.results.slice(0, initialDisplayCount);
-            const hasMoreResults = competition.results.length > initialDisplayCount;
+              ? comp.results 
+              : comp.results.slice(0, initialDisplayCount);
+            const hasMoreResults = comp.results.length > initialDisplayCount;
 
             return (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
@@ -222,7 +222,7 @@ const AchievementsSection = () => {
                     <IconComponent className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="font-playfair text-xl font-bold text-primary mb-4 text-center">
-                    {competition.title}
+                    {comp.title}
                   </h3>
                   
                   <div className="space-y-2">
