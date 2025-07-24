@@ -36,7 +36,7 @@ const StatisticsSection = () => {
               {statistics.map((stat, index) => (
                 <div key={index} className="text-center group">
                   <div className={`relative inline-block p-4 rounded-2xl ${stat.bgGlow} transition-all duration-300 group-hover:scale-105 mb-4`}>
-                    <div className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg`}>
+                    <div className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg !important`} style={{color: stat.color === 'text-violet-500' ? '#8b5cf6' : stat.color === 'text-emerald-500' ? '#10b981' : stat.color === 'text-orange-500' ? '#f97316' : '#f43f5e'}}>
                       {stat.number}
                     </div>
                   </div>

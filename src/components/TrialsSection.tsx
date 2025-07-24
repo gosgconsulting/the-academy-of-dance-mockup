@@ -58,33 +58,41 @@ Please contact me to schedule my trial class. Thank you!`;
         <div className="max-w-6xl mx-auto mb-16">
           <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
-                  10,000+
+              <div className="text-center group">
+                <div className="relative inline-block p-4 rounded-2xl bg-violet-100 transition-all duration-300 group-hover:scale-105 mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-violet-500 drop-shadow-lg">
+                    10,000+
+                  </div>
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
                   Students Trained
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
-                  40
+              <div className="text-center group">
+                <div className="relative inline-block p-4 rounded-2xl bg-emerald-100 transition-all duration-300 group-hover:scale-105 mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-emerald-500 drop-shadow-lg">
+                    40
+                  </div>
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
                   Years Experience
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
-                  95%
+              <div className="text-center group">
+                <div className="relative inline-block p-4 rounded-2xl bg-orange-100 transition-all duration-300 group-hover:scale-105 mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-orange-500 drop-shadow-lg">
+                    95%
+                  </div>
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
                   Success Rate
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-dance-bronze">
-                  2000+
+              <div className="text-center group">
+                <div className="relative inline-block p-4 rounded-2xl bg-rose-100 transition-all duration-300 group-hover:scale-105 mb-4">
+                  <div className="text-4xl md:text-5xl font-bold text-rose-500 drop-shadow-lg">
+                    2000+
+                  </div>
                 </div>
                 <div className="text-gray-600 font-medium text-sm md:text-base">
                   Awards Won
