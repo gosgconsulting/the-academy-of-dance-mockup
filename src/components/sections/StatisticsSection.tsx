@@ -9,17 +9,17 @@ const StatisticsSection = () => {
     {
       number: "15+",
       label: "Years Experience",
-      color: "text-blue-500",
+      color: "text-purple-500",
     },
     {
       number: "95%",
       label: "Success Rate",
-      color: "text-emerald-500",
+      color: "text-yellow-500",
     },
     {
       number: "20+",
       label: "Awards Won",
-      color: "text-orange-500",
+      color: "text-pink-500",
     },
   ];
 
