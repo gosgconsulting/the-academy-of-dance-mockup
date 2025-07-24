@@ -68,19 +68,25 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				dance: {
-					purple: '#6B46C1',
-					gold: '#F59E0B',
-					rose: '#F43F5E',
-					dark: '#1F2937',
-					light: '#F8FAFC',
-					bronze: '#A8733E'
+				/* Enhanced vibrant color palette based on white, black, gold */
+				vibrant: {
+					gold: 'hsl(var(--vibrant-gold))',
+					amber: 'hsl(var(--vibrant-amber))',
+					bronze: 'hsl(var(--vibrant-bronze))',
+					champagne: 'hsl(var(--vibrant-champagne))',
+				},
+				elegant: {
+					charcoal: 'hsl(var(--deep-charcoal))',
+					black: 'hsl(var(--warm-black))',
+					white: 'hsl(var(--soft-white))',
+					cream: 'hsl(var(--cream))',
 				},
 				stats: {
-					purple: 'hsl(var(--stats-purple))',
-					emerald: 'hsl(var(--stats-emerald))',
-					orange: 'hsl(var(--stats-orange))',
-					pink: 'hsl(var(--stats-pink))'
+					gold: 'hsl(var(--stats-gold))',
+					bronze: 'hsl(var(--stats-bronze))',
+					amber: 'hsl(var(--stats-amber))',
+					champagne: 'hsl(var(--stats-champagne))',
+					royal: 'hsl(var(--stats-royal-gold))',
 				}
 			},
 			borderRadius: {
