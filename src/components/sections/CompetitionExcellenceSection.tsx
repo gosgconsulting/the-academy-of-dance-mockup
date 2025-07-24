@@ -44,9 +44,19 @@ const CompetitionExcellenceSection = () => {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
               <Tabs defaultValue="solo" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="solo">Solo Program</TabsTrigger>
-                  <TabsTrigger value="groups">Dance Groups</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-2 mb-8 bg-gray-50 p-1 rounded-xl h-14 max-w-md mx-auto">
+                  <TabsTrigger 
+                    value="solo"
+                    className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
+                  >
+                    Solo Program
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="groups"
+                    className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
+                  >
+                    Dance Groups
+                  </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="solo" className="mt-6">

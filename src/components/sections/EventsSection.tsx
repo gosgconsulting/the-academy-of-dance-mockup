@@ -30,9 +30,19 @@ const EventsSection = () => {
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
             <Tabs defaultValue="past" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="past">Past Events</TabsTrigger>
-                <TabsTrigger value="upcoming">Upcoming Events</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 mb-8 bg-gray-50 p-1 rounded-xl h-14 max-w-md mx-auto">
+                <TabsTrigger 
+                  value="past"
+                  className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
+                >
+                  Past Events
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="upcoming"
+                  className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
+                >
+                  Upcoming Events
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="past" className="mt-6">
