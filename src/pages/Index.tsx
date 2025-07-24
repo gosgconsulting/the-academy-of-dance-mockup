@@ -9,8 +9,7 @@ import AboutUsSection from "@/components/sections/AboutUsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ProgrammesSection from "@/components/sections/ProgrammesSection";
-import ExaminationCoursesSection from "@/components/sections/ExaminationCoursesSection";
+import ProgrammesAndExamsSection from "@/components/sections/ProgrammesAndExamsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import CompetitionExcellenceSection from "@/components/sections/CompetitionExcellenceSection";
 import EventsSection from "@/components/sections/EventsSection";
@@ -50,8 +49,7 @@ const Index = () => {
       <TrialsSection />
       <AboutUsSection />
       <VisionMissionSection />
-      <ProgrammesSection />
-      <ExaminationCoursesSection />
+      <ProgrammesAndExamsSection />
       <CompetitionExcellenceSection />
       <EventsSection />
       <AchievementsSection />
