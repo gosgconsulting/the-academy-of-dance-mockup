@@ -130,8 +130,8 @@ const ProgrammesAndExamsSection = () => {
 
           <Tabs defaultValue="programmes" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="programmes" className="text-lg">Our Programmes</TabsTrigger>
-              <TabsTrigger value="examinations" className="text-lg">Examination Courses</TabsTrigger>
+              <TabsTrigger value="programmes" className="text-lg">Programmes</TabsTrigger>
+              <TabsTrigger value="examinations" className="text-lg">Examinations</TabsTrigger>
             </TabsList>
             
             <TabsContent value="programmes" className="space-y-8">
