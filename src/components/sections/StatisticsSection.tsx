@@ -4,26 +4,26 @@ const StatisticsSection = () => {
     {
       number: "500+",
       label: "Students Trained",
-      color: "text-stats-purple",
-      bgGlow: "bg-stats-purple/10",
+      color: "text-violet-500",
+      bgGlow: "bg-violet-100",
     },
     {
       number: "15+",
       label: "Years Experience",
-      color: "text-stats-emerald",
-      bgGlow: "bg-stats-emerald/10",
+      color: "text-emerald-500",
+      bgGlow: "bg-emerald-100",
     },
     {
       number: "95%",
       label: "Success Rate",
-      color: "text-stats-orange",
-      bgGlow: "bg-stats-orange/10",
+      color: "text-orange-500",
+      bgGlow: "bg-orange-100",
     },
     {
       number: "20+",
       label: "Awards Won",
-      color: "text-stats-pink",
-      bgGlow: "bg-stats-pink/10",
+      color: "text-rose-500",
+      bgGlow: "bg-rose-100",
     },
   ];
 
