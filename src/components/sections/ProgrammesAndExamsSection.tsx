@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
 const ProgrammesAndExamsSection = () => {
@@ -134,7 +135,8 @@ const ProgrammesAndExamsSection = () => {
             </TabsList>
             
             <TabsContent value="programmes" className="space-y-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Desktop grid layout */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {programmes.map((programme) => (
                   <Card key={programme.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div className="relative">
@@ -155,6 +157,38 @@ const ProgrammesAndExamsSection = () => {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+
+              {/* Mobile carousel layout */}
+              <div className="md:hidden">
+                <Carousel className="w-full max-w-sm mx-auto">
+                  <CarouselContent>
+                    {programmes.map((programme) => (
+                      <CarouselItem key={programme.id}>
+                        <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                          <div className="relative">
+                            <img 
+                              src={programme.image} 
+                              alt={programme.title} 
+                              className="w-full h-48 object-cover" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                          </div>
+                          <CardContent className="p-4">
+                            <h3 className="font-playfair text-xl font-bold text-primary mb-3">
+                              {programme.title}
+                            </h3>
+                            <p className="text-gray-700 text-xs leading-relaxed line-clamp-4">
+                              {programme.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </div>
             </TabsContent>
             
