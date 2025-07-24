@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,28 +12,21 @@
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-    --card-vibrant: 335 45% 98%;
-    --card-hover: 335 25% 96%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 335 78% 42%;
+    --primary: 30 46% 45%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 280 100% 70%;
+    --secondary: 34 35% 53%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 45 90% 60%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --stat-1: 330 81% 60%;
-    --stat-2: 260 84% 57%;
-    --stat-3: 158 64% 52%;
-    --stat-4: 25 95% 53%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
