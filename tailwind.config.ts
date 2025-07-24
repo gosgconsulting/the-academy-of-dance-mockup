@@ -56,7 +56,15 @@ export default {
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					foreground: 'hsl(var(--card-foreground))',
+					vibrant: 'hsl(var(--card-vibrant))',
+					hover: 'hsl(var(--card-hover))'
+				},
+				stat: {
+					'1': 'hsl(var(--stat-1))',
+					'2': 'hsl(var(--stat-2))',
+					'3': 'hsl(var(--stat-3))',
+					'4': 'hsl(var(--stat-4))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
