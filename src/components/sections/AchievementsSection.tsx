@@ -193,6 +193,30 @@ const AchievementsSection = () => {
     }
   ];
 
+  // Function to sort results by placement order
+  const sortResultsByPlacement = (results: any[]) => {
+    return [...results].sort((a, b) => {
+      const getPlacementValue = (placement: any) => {
+        if (typeof placement === 'string') {
+          const match = placement.match(/(\d+)/);
+          if (match) {
+            return parseInt(match[1]);
+          }
+          // Handle special cases
+          if (placement.includes('Honorable Mention')) return 1000;
+          if (placement.includes('Gala')) return 1001;
+          if (placement.includes('Judges')) return 1002;
+          if (placement.includes('Outstanding')) return 1003;
+          if (placement.includes('Performed') || placement.includes('Performing')) return 1004;
+          return 1005;
+        }
+        return 1006; // JSX elements go last
+      };
+      
+      return getPlacementValue(a.placement) - getPlacementValue(b.placement);
+    });
+  };
+
   return (
     <section id="achievements" className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container mx-auto px-6">
@@ -210,10 +234,11 @@ const AchievementsSection = () => {
             const IconComponent = comp.icon;
             const isExpanded = expandedCards.includes(index);
             const initialDisplayCount = 4; // Show first 4 awards initially
+            const sortedResults = sortResultsByPlacement(comp.results);
             const displayedResults = isExpanded 
-              ? comp.results 
-              : comp.results.slice(0, initialDisplayCount);
-            const hasMoreResults = comp.results.length > initialDisplayCount;
+              ? sortedResults 
+              : sortedResults.slice(0, initialDisplayCount);
+            const hasMoreResults = sortedResults.length > initialDisplayCount;
 
             return (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
