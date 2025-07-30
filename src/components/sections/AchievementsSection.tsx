@@ -230,11 +230,11 @@ const AchievementsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {(showAllCompetitions ? competitions : competitions.slice(0, 6)).map((comp, index) => {
             const IconComponent = comp.icon;
             const isExpanded = expandedCards.includes(index);
-            const initialDisplayCount = 3; // Show first 3 awards initially
+            const initialDisplayCount = 2; // Show first 2 awards initially on mobile
             const sortedResults = sortResultsByPlacement(comp.results);
             const displayedResults = isExpanded 
               ? sortedResults 
