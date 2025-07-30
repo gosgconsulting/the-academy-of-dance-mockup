@@ -251,28 +251,30 @@ const AchievementsSection = () => {
                     {comp.title}
                   </h3>
                   
-                  <div className="space-y-2">
-                    {displayedResults.map((result, idx) => (
-                      <div key={idx} className="text-sm border-b border-gray-100 pb-2">
-                        <div className="flex justify-between items-start">
-                          <span className="font-medium text-primary">
-                            {typeof result.placement === 'string' && result.placement === 'Honorable Mention' ? (
-                              <>
-                                <span className="md:hidden">Honorable Mention</span>
-                                <span className="hidden md:block">Honorable<br/>Mention</span>
-                              </>
-                            ) : (
-                              result.placement
-                            )}
-                          </span>
-                          <span className="text-gray-600 flex-1 ml-2">{result.name}</span>
-                        </div>
-                        {result.category && (
-                          <div className="text-xs text-gray-500 mt-1">{result.category}</div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                   <div className={`space-y-2 ${isExpanded ? 'max-h-96 overflow-y-auto pr-2' : ''}`}>
+                     {displayedResults.map((result, idx) => (
+                       <div key={idx} className="text-sm border-b border-gray-100 pb-2 last:border-b-0">
+                         <div className="flex justify-between items-start gap-2">
+                           <span className="font-medium text-primary shrink-0 text-xs">
+                             {typeof result.placement === 'string' && result.placement === 'Honorable Mention' ? (
+                               'Hon. Mention'
+                             ) : (
+                               result.placement
+                             )}
+                           </span>
+                           <span className="text-gray-600 flex-1 text-xs leading-relaxed">{result.name}</span>
+                         </div>
+                         {result.category && (
+                           <div className="text-xs text-gray-500 mt-1 line-clamp-2">{result.category}</div>
+                         )}
+                       </div>
+                     ))}
+                     {isExpanded && sortedResults.length > 8 && (
+                       <div className="text-xs text-gray-400 text-center pt-2 border-t border-gray-100">
+                         Showing {sortedResults.length} total results
+                       </div>
+                     )}
+                   </div>
 
                   {hasMoreResults && (
                     <div className="mt-4 flex justify-center">
@@ -308,12 +310,12 @@ const AchievementsSection = () => {
             >
               {showAllCompetitions ? (
                 <>
-                  Show Less Competitions
+                  Show Less
                   <ChevronUp className="w-4 h-4" />
                 </>
               ) : (
                 <>
-                  View All Competitions
+                  View All Achievements
                   <ChevronDown className="w-4 h-4" />
                 </>
               )}
