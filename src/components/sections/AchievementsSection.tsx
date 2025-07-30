@@ -310,7 +310,7 @@ const AchievementsSection = () => {
             >
               {showAllCompetitions ? (
                 <>
-                  Show Less
+                  Show Less Achievements
                   <ChevronUp className="w-4 h-4" />
                 </>
               ) : (
