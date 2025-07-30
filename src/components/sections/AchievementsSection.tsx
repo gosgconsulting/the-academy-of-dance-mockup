@@ -4,6 +4,7 @@ import { Trophy, Award, Medal, Star, Calendar, Users, ChevronDown, ChevronUp } f
 import { useState } from "react";
 
 const AchievementsSection = () => {
+  console.log('AchievementsSection rendering'); // Debug log
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
   
   const toggleCard = (index: number) => {
