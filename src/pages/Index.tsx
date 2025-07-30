@@ -16,7 +16,6 @@ import EventsSection from "@/components/sections/EventsSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
-import ClassSchedulesSection from "@/components/sections/ClassSchedulesSection";
 import LocationsSection from "@/components/sections/LocationsSection";
 
 const Index = () => {
@@ -55,7 +54,6 @@ const Index = () => {
       <AchievementsSection />
       <TeachersSection />
       <ReviewsSection />
-      <ClassSchedulesSection />
       <LocationsSection />
       <GallerySection />
       <Footer />
