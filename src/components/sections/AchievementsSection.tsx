@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Trophy, Award, Medal, Star, Calendar, Users, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
@@ -230,77 +231,83 @@ const AchievementsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {(showAllCompetitions ? competitions : competitions.slice(0, 6)).map((comp, index) => {
-            const IconComponent = comp.icon;
-            const isExpanded = expandedCards.includes(index);
-            const initialDisplayCount = 2; // Show first 2 awards initially on mobile
-            const sortedResults = sortResultsByPlacement(comp.results);
-            const displayedResults = isExpanded 
-              ? sortedResults 
-              : sortedResults.slice(0, initialDisplayCount);
-            const hasMoreResults = sortedResults.length > initialDisplayCount;
+        <Carousel className="w-full max-w-7xl mx-auto" opts={{ align: "start", loop: false }}>
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {(showAllCompetitions ? competitions : competitions.slice(0, 6)).map((comp, index) => {
+              const IconComponent = comp.icon;
+              const isExpanded = expandedCards.includes(index);
+              const initialDisplayCount = 3; // Show first 3 awards initially
+              const sortedResults = sortResultsByPlacement(comp.results);
+              const displayedResults = isExpanded 
+                ? sortedResults 
+                : sortedResults.slice(0, initialDisplayCount);
+              const hasMoreResults = sortedResults.length > initialDisplayCount;
 
-            return (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="font-playfair text-xl font-bold text-primary mb-4 text-center">
-                    {comp.title}
-                  </h3>
-                  
-                   <div className={`space-y-2 ${isExpanded ? 'max-h-96 overflow-y-auto pr-2' : ''}`}>
-                     {displayedResults.map((result, idx) => (
-                       <div key={idx} className="text-sm border-b border-gray-100 pb-2 last:border-b-0">
-                         <div className="flex justify-between items-start gap-2">
-                           <span className="font-medium text-primary shrink-0 text-xs">
-                             {typeof result.placement === 'string' && result.placement === 'Honorable Mention' ? (
-                               'Hon. Mention'
-                             ) : (
-                               result.placement
-                             )}
-                           </span>
-                           <span className="text-gray-600 flex-1 text-xs leading-relaxed">{result.name}</span>
-                         </div>
-                         {result.category && (
-                           <div className="text-xs text-gray-500 mt-1 line-clamp-2">{result.category}</div>
-                         )}
-                       </div>
-                     ))}
-                     {isExpanded && sortedResults.length > 8 && (
-                       <div className="text-xs text-gray-400 text-center pt-2 border-t border-gray-100">
-                         Showing {sortedResults.length} total results
-                       </div>
-                     )}
-                   </div>
-
-                  {hasMoreResults && (
-                    <div className="mt-4 flex justify-center">
-                      <button
-                        onClick={() => toggleCard(index)}
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:text-primary/80 hover:bg-primary/5 rounded-lg transition-colors duration-200"
-                      >
-                        {isExpanded ? (
-                          <>
-                            Show Less
-                            <ChevronUp className="w-4 h-4" />
-                          </>
-                        ) : (
-                          <>
-                            Show More
-                            <ChevronDown className="w-4 h-4" />
-                          </>
+              return (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-[280px] md:basis-[320px]">
+                  <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200">
+                    <CardContent className="p-6 h-full flex flex-col">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <IconComponent className="w-8 h-8 text-primary" />
+                      </div>
+                      <h3 className="font-playfair text-lg font-bold text-primary mb-4 text-center">
+                        {comp.title}
+                      </h3>
+                      
+                      <div className={`space-y-2 flex-1 ${isExpanded ? 'max-h-80 overflow-y-auto pr-2' : ''}`}>
+                        {displayedResults.map((result, idx) => (
+                          <div key={idx} className="text-sm border-b border-gray-100 pb-2 last:border-b-0">
+                            <div className="flex justify-between items-start gap-2">
+                              <span className="font-medium text-primary shrink-0 text-xs">
+                                {typeof result.placement === 'string' && result.placement === 'Honorable Mention' ? (
+                                  'Hon. Mention'
+                                ) : (
+                                  result.placement
+                                )}
+                              </span>
+                              <span className="text-gray-600 flex-1 text-xs leading-relaxed">{result.name}</span>
+                            </div>
+                            {result.category && (
+                              <div className="text-xs text-gray-500 mt-1 line-clamp-2">{result.category}</div>
+                            )}
+                          </div>
+                        ))}
+                        {isExpanded && sortedResults.length > 8 && (
+                          <div className="text-xs text-gray-400 text-center pt-2 border-t border-gray-100">
+                            Showing {sortedResults.length} total results
+                          </div>
                         )}
-                      </button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                      </div>
+
+                      {hasMoreResults && (
+                        <div className="mt-4 flex justify-center">
+                          <button
+                            onClick={() => toggleCard(index)}
+                            className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-primary/80 hover:bg-primary/5 rounded-lg transition-colors duration-200"
+                          >
+                            {isExpanded ? (
+                              <>
+                                Show Less
+                                <ChevronUp className="w-4 h-4" />
+                              </>
+                            ) : (
+                              <>
+                                Show More
+                                <ChevronDown className="w-4 h-4" />
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
         
         {competitions.length > 6 && (
           <div className="text-center mt-12">
