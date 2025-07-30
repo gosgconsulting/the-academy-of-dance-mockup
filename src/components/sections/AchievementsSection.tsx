@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const AchievementsSection = () => {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
-  const [showAllCompetitions, setShowAllCompetitions] = useState(false);
   
   const toggleCard = (index: number) => {
     setExpandedCards(prev => 
@@ -233,7 +232,7 @@ const AchievementsSection = () => {
 
         <Carousel className="w-full max-w-7xl mx-auto" opts={{ align: "start", loop: false }}>
           <CarouselContent className="-ml-2 md:-ml-4">
-            {(showAllCompetitions ? competitions : competitions.slice(0, 6)).map((comp, index) => {
+            {competitions.map((comp, index) => {
               const IconComponent = comp.icon;
               const isExpanded = expandedCards.includes(index);
               const initialDisplayCount = 3; // Show first 3 awards initially
@@ -308,27 +307,6 @@ const AchievementsSection = () => {
           <CarouselPrevious className="hidden md:flex" />
           <CarouselNext className="hidden md:flex" />
         </Carousel>
-        
-        {competitions.length > 6 && (
-          <div className="text-center mt-12">
-            <button
-              onClick={() => setShowAllCompetitions(!showAllCompetitions)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200"
-            >
-              {showAllCompetitions ? (
-                <>
-                  Show Less Achievements
-                  <ChevronUp className="w-4 h-4" />
-                </>
-              ) : (
-                <>
-                  View All Achievements
-                  <ChevronDown className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
