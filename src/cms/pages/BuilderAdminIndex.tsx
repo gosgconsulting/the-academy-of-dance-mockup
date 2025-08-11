@@ -189,7 +189,7 @@ export default function BuilderAdminIndex() {
                           size="sm"
                           className="flex-1"
                           onClick={() => {
-                            const builderUrl = `https://builder.io/models/${model.value}`
+                            const builderUrl = `https://builder.io/`
                             window.open(builderUrl, '_blank', 'noopener,noreferrer')
                           }}
                         >
@@ -200,7 +200,7 @@ export default function BuilderAdminIndex() {
                           variant="outline"
                           size="sm"
                           onClick={() => {
-                            const url = `https://builder.io/models`
+                            const url = `https://builder.io/`
                             window.open(url, '_blank', 'noopener,noreferrer')
                           }}
                         >
