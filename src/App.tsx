@@ -61,15 +61,16 @@ const App = () => {
               <Route path="/terms-conditions" element={<TermsConditions />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/admin" element={<BuilderAdminIndex />} />
-                <Route path="/admin/traditional" element={<AdminIndex />} />
-                <Route path="/admin/content/:slug" element={<ContentEditor />} />
-                <Route path="/admin/:slug" element={<ContentEditor />} />
-                <Route path="/AdminIndex" element={<BuilderAdminIndex />} />
-              </Route>
+              {/* Login/Signup routes - deactivated for direct dashboard access */}
+              {/* <Route path="/login" element={<Login />} /> */}
+              {/* <Route path="/signup" element={<Signup />} /> */}
+
+              {/* Admin routes - now accessible without authentication */}
+              <Route path="/admin" element={<BuilderAdminIndex />} />
+              <Route path="/admin/traditional" element={<AdminIndex />} />
+              <Route path="/admin/content/:slug" element={<ContentEditor />} />
+              <Route path="/admin/:slug" element={<ContentEditor />} />
+              <Route path="/AdminIndex" element={<BuilderAdminIndex />} />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
