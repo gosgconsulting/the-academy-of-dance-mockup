@@ -189,7 +189,7 @@ export default function BuilderAdminIndex() {
                           size="sm"
                           className="flex-1"
                           onClick={() => {
-                            const builderUrl = `https://builder.io/content?model=${model.value}&apiKey=2c61eb265eb24a048e03efd907356cec`
+                            const builderUrl = `https://builder.io/models/${model.value}`
                             window.open(builderUrl, '_blank', 'noopener,noreferrer')
                           }}
                         >
@@ -200,7 +200,7 @@ export default function BuilderAdminIndex() {
                           variant="outline"
                           size="sm"
                           onClick={() => {
-                            const url = `https://builder.io/content?model=${model.value}&apiKey=2c61eb265eb24a048e03efd907356cec`
+                            const url = `https://builder.io/models`
                             window.open(url, '_blank', 'noopener,noreferrer')
                           }}
                         >
