@@ -275,6 +275,7 @@ export const registerBuilderComponents = () => {
   })
 }
 
+// Export all components
 export {
   HeroSection,
   TestimonialCard,
