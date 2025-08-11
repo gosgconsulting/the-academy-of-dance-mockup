@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, useFieldArray, FormProvider } from 'react-hook-form'
 import { ZodTypeAny, ZodObject, ZodArray, ZodString, ZodNumber, ZodBoolean, ZodEnum, ZodOptional, ZodDefault, ZodEffects } from 'zod'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Trash2 } from 'lucide-react'
 import { registry } from '@/cms/content/registry'
 import { usePageContent } from '@/cms/usePageContent'
 
@@ -86,30 +88,71 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
   if (t instanceof ZodArray) {
     const el = (t as ZodArray<any>).element
     const arr = useFieldArray({ control: methods.control, name: namePrefix as any })
+    // Use accordion for array of objects. For arrays of primitives, keep simple list.
+    const childIsObject = unwrap(el) instanceof ZodObject
+    if (!childIsObject) {
+      return (
+        <div className="space-y-3">
+          <div className="text-right">
+            <button type="button" className="px-3 py-1.5 border rounded bg-white hover:bg-gray-50" onClick={() => arr.append({} as any)}>Add item</button>
+          </div>
+          {arr.fields.map((f, idx) => (
+            <div key={f.id} className="border rounded-lg p-4 bg-white shadow-sm">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-sm font-medium text-gray-600">Item {idx + 1}</div>
+                <button type="button" className="text-red-600 text-sm" onClick={() => arr.remove(idx)}>Remove</button>
+              </div>
+              <FieldRenderer
+                schema={el}
+                namePrefix={`${namePrefix ? namePrefix + '.' : ''}${idx}`}
+                methods={methods}
+              />
+            </div>
+          ))}
+        </div>
+      )
+    }
+
     return (
       <div className="space-y-3">
-        <div className="text-right">
+        <div className="flex items-center justify-between">
+          <div className="text-sm font-medium text-gray-600">Items ({arr.fields.length})</div>
           <button type="button" className="px-3 py-1.5 border rounded bg-white hover:bg-gray-50" onClick={() => arr.append({} as any)}>Add item</button>
         </div>
-        {arr.fields.map((f, idx) => (
-          <div key={f.id} className="border rounded-lg p-4 bg-white shadow-sm">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-medium text-gray-600">Item {idx + 1}</div>
-              <button type="button" className="text-red-600 text-sm" onClick={() => arr.remove(idx)}>Remove</button>
-            </div>
-            <FieldRenderer
-              schema={el}
-              namePrefix={`${namePrefix ? namePrefix + '.' : ''}${idx}`}
-              methods={methods}
-            />
-          </div>
-        ))}
+        <Accordion type="single" collapsible className="w-full">
+          {arr.fields.map((f, idx) => (
+            <AccordionItem key={f.id} value={`item-${idx}`}>
+              <AccordionTrigger>
+                <div className="flex items-center justify-between w-full pr-8">
+                  <span className="text-sm">Item {idx + 1}</span>
+                  <button
+                    type="button"
+                    className="ml-6 inline-flex items-center gap-1 text-red-600 hover:text-red-700"
+                    onClick={(e) => { e.preventDefault(); arr.remove(idx) }}
+                    aria-label={`Remove item ${idx + 1}`}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="p-2 border rounded-md bg-white">
+                  <FieldRenderer
+                    schema={el}
+                    namePrefix={`${namePrefix ? namePrefix + '.' : ''}${idx}`}
+                    methods={methods}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     )
   }
 
   if (t instanceof ZodString) {
-    const isLong = /description|excerpt|intro|content|html/i.test(namePrefix)
+    const isLong = /description|excerpt|content|html|body|contentHtml/i.test(namePrefix)
     const registerName = namePrefix as any
     if (isLong) {
       const current = methods.watch(registerName) as string
