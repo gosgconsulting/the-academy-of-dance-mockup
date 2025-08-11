@@ -67,6 +67,8 @@ const App = () => {
                 <Route path="/admin" element={<BuilderAdminIndex />} />
                 <Route path="/admin/traditional" element={<AdminIndex />} />
                 <Route path="/admin/content/:slug" element={<ContentEditor />} />
+                <Route path="/admin/:slug" element={<ContentEditor />} />
+                <Route path="/AdminIndex" element={<BuilderAdminIndex />} />
               </Route>
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
