@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const location = useLocation()
-  const from = (location.state as any)?.from || '/admin/migrate'
+  const from = (location.state as any)?.from || '/admin'
 
   if (session && !loading) return <Navigate to={from} replace />
 
