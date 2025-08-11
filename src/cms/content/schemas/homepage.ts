@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const HomepageContent = z.object({
   hero: z.object({
-    images: z.array(z.string()).default([]),
+    images: z.array(z.union([z.string(), z.instanceof(File)])).default([]),
     title: z.string(),
     subtitle: z.string(),
     ctaText: z.string().default('Start Your Journey')

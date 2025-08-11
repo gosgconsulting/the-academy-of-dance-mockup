@@ -7,7 +7,7 @@ export const NavLink = z.object({
 })
 
 export const HeaderContent = z.object({
-  logoSrc: z.string().default('/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png'),
+  logoSrc: z.union([z.string(), z.instanceof(File)]).default('/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png'),
   links: z.array(NavLink),
   primaryCta: z.object({ label: z.string(), sectionId: z.string().optional(), href: z.string().optional() })
 })
@@ -17,7 +17,7 @@ export const SocialIcon = z.enum(['facebook','instagram','youtube','tiktok'])
 export const SocialLink = z.object({ icon: SocialIcon, href: z.string() })
 
 export const FooterContent = z.object({
-  logoSrc: z.string().default('/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png'),
+  logoSrc: z.union([z.string(), z.instanceof(File)]).default('/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png'),
   tagline: z.string(),
   socials: z.array(SocialLink),
   policyLinks: z.array(z.object({ label: z.string(), href: z.string() })),

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const Image = z.object({ src: z.string(), alt: z.string().optional() })
+export const Image = z.object({ src: z.union([z.string(), z.instanceof(File)]), alt: z.string().optional() })
 
 export const BlogPost = z.object({
   id: z.number(),
