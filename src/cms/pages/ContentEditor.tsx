@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, useFieldArray, FormProvider } from 'react-hook-form'
@@ -21,6 +21,45 @@ function labelize(key: string) {
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/[_.-]+/g, ' ')
     .replace(/^\w/, c => c.toUpperCase())
+}
+
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import './editor.css'
+
+function HtmlEditor({ value, onChange, placeholder }: { value: string; onChange: (html: string) => void; placeholder?: string }) {
+  const modules = {
+    toolbar: [
+      [{ header: [2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'clean']
+    ]
+  }
+  const [mode, setMode] = React.useState<'design' | 'html'>('design')
+  return (
+    <div className="border rounded overflow-hidden editor-prose">
+      <div className="flex items-center gap-2 border-b bg-gray-50 px-2 py-1">
+        <div className="text-xs text-gray-600">Mode:</div>
+        <div className="flex gap-1">
+          <button type="button" onClick={() => setMode('design')} className={`px-2 py-1 text-xs border rounded ${mode==='design' ? 'bg-white shadow' : ''}`}>Design</button>
+        
+          <button type="button" onClick={() => setMode('html')} className={`px-2 py-1 text-xs border rounded ${mode==='html' ? 'bg-white shadow' : ''}`}>HTML</button>
+        </div>
+      </div>
+      {mode === 'design' ? (
+        <ReactQuill theme="snow" value={value} onChange={onChange} placeholder={placeholder} modules={modules} />
+      ) : (
+        <textarea
+          className="w-full min-h-[200px] p-3 outline-none font-mono text-sm"
+          value={value || ''}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          spellCheck={false}
+        />
+      )}
+    </div>
+  )
 }
 
 function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, namePrefix: string, methods: ReturnType<typeof useForm> }) {
@@ -70,11 +109,22 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
   }
 
   if (t instanceof ZodString) {
-    const isLong = /description|excerpt|intro|content/i.test(namePrefix)
+    const isLong = /description|excerpt|intro|content|html/i.test(namePrefix)
     const registerName = namePrefix as any
-    return isLong ? (
-      <textarea className="border px-3 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-gray-300" {...methods.register(registerName)} />
-    ) : (
+    if (isLong) {
+      const current = methods.watch(registerName) as string
+      if (methods.getFieldState(registerName).isDirty === undefined) {
+        methods.register(registerName)
+      }
+      return (
+        <HtmlEditor
+          value={current || ''}
+          onChange={(html) => methods.setValue(registerName, html, { shouldDirty: true, shouldTouch: true })}
+          placeholder="Enter content..."
+        />
+      )
+    }
+    return (
       <input className="border px-3 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-gray-300" {...methods.register(registerName)} />
     )
   }
