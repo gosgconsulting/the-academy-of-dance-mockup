@@ -11,12 +11,13 @@ function createId() {
 }
 
 function buildTemplate() {
-  const order = [
-    'Header', 'Hero', 'Trials', 'About', 'Vision', 'Programs', 'Competitions',
-    'Events', 'Achievements', 'Teachers', 'Reviews', 'Locations', 'Gallery', 'Footer'
+  // Homepage blocks only (Header/Footer are handled globally by SiteLayout)
+  const homepageOrder = [
+    'Hero', 'Trials', 'About', 'Vision', 'Programs', 'Competitions',
+    'Events', 'Achievements', 'Teachers', 'Reviews', 'Locations', 'Gallery'
   ].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
   return {
-    content: order.map((t) => ({ id: createId(), type: t, props: puckConfig.components[t].defaultProps }))
+    content: homepageOrder.map((t) => ({ id: createId(), type: t, props: puckConfig.components[t].defaultProps }))
   }
 }
 

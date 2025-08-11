@@ -90,7 +90,11 @@ const Index = () => {
           )
         }
         const data = JSON.parse(puckRaw)
-        return <Render config={puckConfig} data={data} />
+        const filtered = {
+          ...data,
+          content: (data?.content || []).filter((b: any) => b?.type !== 'Header' && b?.type !== 'Footer')
+        }
+        return <Render config={puckConfig} data={filtered} />
       })()}
       
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
