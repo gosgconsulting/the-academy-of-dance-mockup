@@ -185,19 +185,22 @@ export default function BuilderAdminIndex() {
                     </CardHeader>
                     <CardContent className="pt-0 space-y-3">
                       <div className="flex items-center gap-2">
-                        <Button 
-                          size="sm" 
+                        <Button
+                          size="sm"
                           className="flex-1"
-                          onClick={() => setSelectedModel(model.value)}
+                          onClick={() => {
+                            const builderUrl = `https://builder.io/content?model=${model.value}&apiKey=2c61eb265eb24a048e03efd907356cec`
+                            window.open(builderUrl, '_blank', 'noopener,noreferrer')
+                          }}
                         >
                           <Palette className="h-4 w-4 mr-1" />
                           Create/Edit
                         </Button>
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           size="sm"
                           onClick={() => {
-                            const url = `https://builder.io/content?model=${model.value}`
+                            const url = `https://builder.io/content?model=${model.value}&apiKey=2c61eb265eb24a048e03efd907356cec`
                             window.open(url, '_blank', 'noopener,noreferrer')
                           }}
                         >
