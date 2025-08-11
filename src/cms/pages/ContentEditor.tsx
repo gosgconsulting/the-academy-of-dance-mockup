@@ -33,7 +33,11 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
         {Object.entries(shape).map(([key, child]) => (
           <div key={key} className="space-y-2">
             <label className="block text-sm font-medium text-gray-700">{labelize(key)}</label>
-            <FieldRenderer schema={child as ZodTypeAny} namePrefix={`${namePrefix}${key}`} methods={methods} />
+            <FieldRenderer
+              schema={child as ZodTypeAny}
+              namePrefix={`${namePrefix ? namePrefix + '.' : ''}${key}`}
+              methods={methods}
+            />
           </div>
         ))}
       </div>
@@ -54,7 +58,11 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
               <div className="text-sm font-medium text-gray-600">Item {idx + 1}</div>
               <button type="button" className="text-red-600 text-sm" onClick={() => arr.remove(idx)}>Remove</button>
             </div>
-            <FieldRenderer schema={el} namePrefix={`${namePrefix}.${idx}.`} methods={methods} />
+            <FieldRenderer
+              schema={el}
+              namePrefix={`${namePrefix ? namePrefix + '.' : ''}${idx}`}
+              methods={methods}
+            />
           </div>
         ))}
       </div>
