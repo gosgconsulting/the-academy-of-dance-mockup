@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, Tag } from "lucide-react";
@@ -31,7 +29,6 @@ export default function Blog() {
   }, [blogPosts])
 
   return <div className="min-h-screen bg-background">
-      <Navigation scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-12">
@@ -144,6 +141,6 @@ export default function Blog() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>;
 }

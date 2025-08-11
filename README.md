@@ -4,6 +4,40 @@
 
 **URL**: https://lovable.dev/projects/e611c053-474f-4d53-90eb-5fb6e3d41280
 
+## Local Development Setup
+
+### Quick Start
+```sh
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The site will be available at `http://localhost:8081` (or the next available port).
+
+### Admin Panel Access
+
+The admin panel is now configured to work locally without Supabase:
+
+1. **Access Admin**: Go to `http://localhost:8081/admin`
+2. **Login**: You'll be redirected to the login page
+3. **Token**: For local development, enter any non-empty token (e.g., "admin" or "local")
+4. **Edit Content**: You can now edit all page content through the CMS interface
+
+### Content Management
+
+- **Local Storage**: All content is saved to browser localStorage
+- **No Database Required**: Works completely offline for development
+- **Real-time Preview**: Changes are immediately visible on the site
+
+### Production Setup
+
+For production deployment, you can optionally:
+1. Set `VITE_CMS_TOKEN` environment variable for secure admin access
+2. Configure Supabase for persistent content storage
+
 ## How can I edit this code?
 
 There are several ways of editing your application.

@@ -7,15 +7,35 @@ const EXPECTED = import.meta.env.VITE_CMS_TOKEN
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [authed, setAuthed] = useState(!!localStorage.getItem('cms:auth'))
+  
   const login = (token: string) => {
-    if (EXPECTED && token === EXPECTED) {
-      localStorage.setItem('cms:auth', '1'); setAuthed(true); return true
+    // For local development, if no expected token is set, accept any non-empty token
+    if (!EXPECTED) {
+      if (token.trim()) {
+        localStorage.setItem('cms:auth', '1')
+        setAuthed(true)
+        return true
+      }
+      return false
+    }
+    
+    // For production, check against expected token
+    if (token === EXPECTED) {
+      localStorage.setItem('cms:auth', '1')
+      setAuthed(true)
+      return true
     }
     return false
   }
-  const logout = () => { localStorage.removeItem('cms:auth'); setAuthed(false) }
+  
+  const logout = () => { 
+    localStorage.removeItem('cms:auth')
+    setAuthed(false) 
+  }
+  
   return <Ctx.Provider value={{ authed, login, logout }}>{children}</Ctx.Provider>
 }
+
 export const useAuth = () => useContext(Ctx)
 
 

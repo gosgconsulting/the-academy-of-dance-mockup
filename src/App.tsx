@@ -17,8 +17,9 @@ import ContentEditor from "@/cms/pages/ContentEditor";
 import Login from "@/cms/pages/Login";
 import Signup from "@/cms/pages/Signup";
 import ProtectedRoute from "@/cms/auth/ProtectedRoute";
-import { SupabaseAuthProvider } from "@/cms/auth/supabaseAuth";
 import { AuthProvider } from "@/cms/auth/auth";
+import PuckNative from "@/cms/pages/PuckNative";
+import SiteLayout from "@/layouts/SiteLayout";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +28,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SupabaseAuthProvider>
-        <AuthProvider>
-          <BrowserRouter>
-            <Routes>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<SiteLayout />}>
               <Route path="/" element={<Index />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
@@ -39,20 +40,21 @@ const App = () => (
               <Route path="/blog/author/:author" element={<BlogAuthor />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            </Route>
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/admin" element={<AdminIndex />} />
-                <Route path="/admin/:slug" element={<ContentEditor />} />
-              </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/edit" element={<PuckNative />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminIndex />} />
+              <Route path="/admin/:slug" element={<ContentEditor />} />
+            </Route>
 
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
-      </SupabaseAuthProvider>
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

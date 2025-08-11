@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Trash2 } from 'lucide-react'
 import { registry } from '@/cms/content/registry'
 import { usePageContent } from '@/cms/usePageContent'
+import { useAuth } from '@/cms/auth/auth'
 
 function unwrap(type: ZodTypeAny): ZodTypeAny {
   // unwrap optional/default/effects
@@ -252,6 +253,7 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
 export default function ContentEditor() {
   const { slug = 'homepage' } = useParams()
   const navigate = useNavigate()
+  const { logout } = useAuth()
   const entry = (registry as any)[slug]
   const schema = entry?.schema
   const defaults = entry?.defaults
@@ -288,9 +290,17 @@ export default function ContentEditor() {
               <div className="text-xs text-gray-500">{exists ? 'Existing content' : 'New content (will be created)'}</div>
             </div>
           </div>
-          <button className="px-4 py-2 bg-black text-white rounded" onClick={methods.handleSubmit(onSubmit)}>
-            {exists ? 'Update' : 'Create'}
-          </button>
+          <div className="flex items-center gap-2">
+            <button className="px-4 py-2 bg-black text-white rounded" onClick={methods.handleSubmit(onSubmit)}>
+              {exists ? 'Update' : 'Create'}
+            </button>
+            <button 
+              onClick={logout}
+              className="px-3 py-1.5 text-sm border rounded hover:bg-gray-50"
+            >
+              Logout
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-6">
           <div className="bg-white border rounded-lg p-6 shadow-sm">
