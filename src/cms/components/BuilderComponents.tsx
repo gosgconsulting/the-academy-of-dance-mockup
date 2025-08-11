@@ -14,7 +14,7 @@ interface HeroSectionProps {
   overlayOpacity?: number
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({
+const HeroSection: React.FC<HeroSectionProps> = ({
   title = "Where Dreams Take Flight",
   subtitle = "Singapore's premium ballet and dance academy",
   ctaText = "Start Your Journey",
@@ -54,7 +54,7 @@ interface TestimonialCardProps {
   image?: string
 }
 
-export const TestimonialCard: React.FC<TestimonialCardProps> = ({
+const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name = "Parent Name",
   role = "Parent of Student",
   content = "Amazing experience at this dance academy!",
@@ -98,7 +98,7 @@ interface ProgrammeCardProps {
   level?: string
 }
 
-export const ProgrammeCard: React.FC<ProgrammeCardProps> = ({
+const ProgrammeCard: React.FC<ProgrammeCardProps> = ({
   title = "Dance Programme",
   description = "Learn the fundamentals of dance in a supportive environment.",
   image = "/placeholder.svg",
@@ -138,7 +138,7 @@ interface StatCardProps {
   color?: 'gold' | 'bronze' | 'amber' | 'champagne'
 }
 
-export const StatCard: React.FC<StatCardProps> = ({
+const StatCard: React.FC<StatCardProps> = ({
   value = "100+",
   label = "Happy Students",
   icon = "👥",
@@ -170,7 +170,7 @@ interface CTASectionProps {
   backgroundImage?: string
 }
 
-export const CTASection: React.FC<CTASectionProps> = ({
+const CTASection: React.FC<CTASectionProps> = ({
   title = "Ready to Start Dancing?",
   description = "Join our community of passionate dancers and discover your potential.",
   primaryButtonText = "Book Trial Class",
@@ -209,7 +209,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
 }
 
 // Register components with Builder.io
-export const registerBuilderComponents = () => {
+const registerBuilderComponents = () => {
   builder.register('component', {
     name: 'Hero Section',
     component: HeroSection,
@@ -281,5 +281,6 @@ export {
   TestimonialCard,
   ProgrammeCard,
   StatCard,
-  CTASection
+  CTASection,
+  registerBuilderComponents
 }
