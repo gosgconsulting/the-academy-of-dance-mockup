@@ -2,38 +2,13 @@
 import { useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import type { GallerySection as GalleryData } from "@/cms/content/schemas/sections";
 
-interface GalleryHeaderProps { title: string; subtitle: string }
-const GallerySection = ({ title, subtitle }: GalleryHeaderProps) => {
+const GallerySection = ({ data }: { data: GalleryData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
-  const galleryItems = [
-    {
-      image: "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
-      title: "Melbourne Dance Exchange 2023",
-    },
-    {
-      image: "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png",
-      title: "Ballet Class Excellence",
-    },
-    {
-      image: "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png",
-      title: "International Adventures",
-    },
-    {
-      image: "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png",
-      title: "Performance Ready",
-    },
-    {
-      image: "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png",
-      title: "Dance Community",
-    },
-    {
-      image: "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png",
-      title: "Young Performers",
-    },
-  ];
+  const galleryItems = data.items
 
   const openModal = (imageIndex: number) => {
     setModalImageIndex(imageIndex);
@@ -57,8 +32,10 @@ const GallerySection = ({ title, subtitle }: GalleryHeaderProps) => {
       <section id="gallery" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">{title}</h2>
-            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">{subtitle}</p>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">{data.header.title}</h2>
+            {data.header.subtitle && (
+              <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">{data.header.subtitle}</p>
+            )}
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -69,7 +46,7 @@ const GallerySection = ({ title, subtitle }: GalleryHeaderProps) => {
                 onClick={() => openModal(index)}
               >
                 <img
-                  src={item.image}
+                  src={typeof item.image === 'string' ? item.image : ''}
                   alt={item.title}
                   className="w-full h-64 object-cover"
                 />
@@ -102,7 +79,7 @@ const GallerySection = ({ title, subtitle }: GalleryHeaderProps) => {
             <div className="relative flex items-center justify-center w-full h-full px-16">
               {/* Main image - 80% of screen size with proper centering */}
               <img
-                src={galleryItems[modalImageIndex].image}
+                src={typeof galleryItems[modalImageIndex].image === 'string' ? galleryItems[modalImageIndex].image : ''}
                 alt={galleryItems[modalImageIndex].title}
                 className="max-w-[80%] max-h-[80%] object-contain"
               />

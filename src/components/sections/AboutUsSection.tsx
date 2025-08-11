@@ -1,20 +1,19 @@
 import { Users, Heart, Award, Target } from "lucide-react";
-interface AboutContentProps {
-  title: string
-  storyTitle: string
-  storyParagraphs: string[]
-}
-const AboutUsSection = ({ title, storyTitle, storyParagraphs }: AboutContentProps) => {
+import type { AboutUsSection as AboutUsData } from "@/cms/content/schemas/sections";
+const AboutUsSection = ({ data }: { data: AboutUsData }) => {
   return <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{data.header.title}</h2>
+          {data.header.subtitle && (
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">{data.header.subtitle}</p>
+          )}
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
           <div className="space-y-6">
-            <h3 className="font-playfair text-3xl font-bold text-primary mb-4">{storyTitle}</h3>
-            {storyParagraphs.map((p, i) => (
+            <h3 className="font-playfair text-3xl font-bold text-primary mb-4">{data.storyTitle}</h3>
+            {data.storyParagraphs.map((p, i) => (
               <p key={i} className="text-gray-700 leading-relaxed">{p}</p>
             ))}
           </div>

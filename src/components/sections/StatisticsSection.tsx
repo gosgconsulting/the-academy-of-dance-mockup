@@ -1,31 +1,7 @@
 
-const StatisticsSection = () => {
-  const statistics = [
-    {
-      number: "500+",
-      label: "Students Trained",
-      color: "text-violet-500",
-      bgGlow: "bg-violet-100",
-    },
-    {
-      number: "15+",
-      label: "Years Experience",
-      color: "text-emerald-500",
-      bgGlow: "bg-emerald-100",
-    },
-    {
-      number: "95%",
-      label: "Success Rate",
-      color: "text-orange-500",
-      bgGlow: "bg-orange-100",
-    },
-    {
-      number: "20+",
-      label: "Awards Won",
-      color: "text-rose-500",
-      bgGlow: "bg-rose-100",
-    },
-  ];
+import type { StatisticsSection as StatisticsData } from "@/cms/content/schemas/sections";
+const StatisticsSection = ({ data }: { data: StatisticsData }) => {
+  const statistics = data.stats
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -35,8 +11,8 @@ const StatisticsSection = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {statistics.map((stat, index) => (
                 <div key={index} className="text-center group">
-                  <div className={`relative inline-block p-4 rounded-2xl ${stat.bgGlow} transition-all duration-300 group-hover:scale-105 mb-4`}>
-                    <div className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg !important`} style={{color: stat.color === 'text-violet-500' ? '#8b5cf6' : stat.color === 'text-emerald-500' ? '#10b981' : stat.color === 'text-orange-500' ? '#f97316' : '#f43f5e'}}>
+                  <div className={`relative inline-block p-4 rounded-2xl transition-all duration-300 group-hover:scale-105 mb-4`} style={{ backgroundColor: stat.bgHex || 'rgba(139,92,246,0.1)' }}>
+                    <div className={`text-4xl md:text-5xl font-bold drop-shadow-lg !important`} style={{color: stat.colorHex || '#8b5cf6'}}>
                       {stat.number}
                     </div>
                   </div>

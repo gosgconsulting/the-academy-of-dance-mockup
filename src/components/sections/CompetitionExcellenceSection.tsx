@@ -3,16 +3,17 @@ import { Trophy } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-interface CompetitionsHeaderProps { title: string; subtitle: string }
-const CompetitionExcellenceSection = ({ title, subtitle }: CompetitionsHeaderProps) => {
+import type { CompetitionExcellenceSection as CompData } from "@/cms/content/schemas/sections";
+
+const CompetitionExcellenceSection = ({ data }: { data: CompData }) => {
   const [soloImageIndex, setSoloImageIndex] = useState(0);
   const [groupImageIndex, setGroupImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [modalTitle, setModalTitle] = useState('');
-  const soloImages = ["/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png", "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png", "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png"];
-  const groupImages = ["/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png", "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png", "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png"];
+  const soloImages = data.solo.images.map(img => typeof img === 'string' ? img : '')
+  const groupImages = data.groups.images.map(img => typeof img === 'string' ? img : '')
   const openModal = (images: string[], imageIndex: number, title: string) => {
     setModalImages(images);
     setModalImageIndex(imageIndex);
@@ -38,8 +39,10 @@ const CompetitionExcellenceSection = ({ title, subtitle }: CompetitionsHeaderPro
       <section id="competitions" className="py-20 bg-gradient-to-br from-primary/10 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
-            <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">{subtitle}</p>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{data.header.title}</h2>
+            {data.header.subtitle && (
+              <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">{data.header.subtitle}</p>
+            )}
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -74,15 +77,12 @@ const CompetitionExcellenceSection = ({ title, subtitle }: CompetitionsHeaderPro
                         </div>}
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-playfair text-primary text-2xl font-semibold">
-                        Solo Program
-                      </h4>
-                      <p className="text-gray-700 text-base font-normal">
-                        Perfect for dancers who want to shine in the spotlight!
-                        Our solo program develops individual artistry, technical
-                        precision, and stage presence that judges absolutely
-                        love.
-                      </p>
+                       <h4 className="font-playfair text-primary text-2xl font-semibold">
+                        {data.solo.title}
+                       </h4>
+                       {data.solo.paragraphs.map((p, i) => (
+                         <p key={i} className="text-gray-700 text-base font-normal">{p}</p>
+                       ))}
                     </div>
                   </div>
                 </TabsContent>
@@ -101,19 +101,15 @@ const CompetitionExcellenceSection = ({ title, subtitle }: CompetitionsHeaderPro
                         </div>}
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-playfair text-primary text-2xl font-semibold">
-                        Dance Groups
-                      </h4>
-                      <p className="text-gray-700 mb-3 text-base">
-                        Our competitive troupes are where magic happens! These
-                        elite groups train together, compete together, and WIN
-                        together. The bond they form is as strong as their
-                        performances are spectacular.
-                      </p>
-                      <p className="text-secondary font-semibold italic">
-                        (These are our competitive troupes - the cream of the
-                        crop!)
-                      </p>
+                       <h4 className="font-playfair text-primary text-2xl font-semibold">
+                        {data.groups.title}
+                       </h4>
+                       {data.groups.paragraphs.map((p, i) => (
+                         <p key={i} className="text-gray-700 mb-3 text-base">{p}</p>
+                       ))}
+                       {data.groups.note && (
+                         <p className="text-secondary font-semibold italic">{data.groups.note}</p>
+                       )}
                     </div>
                   </div>
                 </TabsContent>

@@ -1,30 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, FileText } from "lucide-react";
+import type { ClassSchedulesSection as ClassSchedulesData } from "@/cms/content/schemas/sections";
 
-const ClassSchedulesSection = () => {
-  const locations = [
-    {
-      location: "Tampines",
-      address: "Tampines Mall #04-32",
-    },
-    {
-      location: "Yishun",
-      address: "Yishun Mall #03-15",
-    }
-  ];
+type Props = { data: ClassSchedulesData }
+
+const ClassSchedulesSection = ({ data }: Props) => {
+  const locations = data.locations
 
   return (
     <section id="schedules" className="py-20 bg-gradient-to-br from-secondary/5 to-primary/5">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Class Schedules
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Find the perfect class time for your child at either of our convenient locations.
-            All classes are designed to nurture creativity and build confidence.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{data.header.title}</h2>
+          {data.header.subtitle && (
+            <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{data.header.subtitle}</p>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -47,7 +38,7 @@ const ClassSchedulesSection = () => {
                   variant="default" 
                   size="lg"
                   className="w-full"
-                  onClick={() => window.open('#', '_blank')}
+                  onClick={() => window.open(location.pdfUrl || '#', '_blank')}
                 >
                   <FileText className="w-5 h-5 mr-2" />
                   View {location.location} Schedule PDF

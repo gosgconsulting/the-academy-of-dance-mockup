@@ -69,6 +69,31 @@ function FieldRenderer({ schema, namePrefix, methods }: { schema: ZodTypeAny, na
 
   if (t instanceof ZodObject) {
     const shape = (t as ZodObject<any>).shape
+    // Special handling: For homepage sections object, render each section in an accordion
+    if (namePrefix === 'sections') {
+      const entries = Object.entries(shape)
+      return (
+        <Accordion type="single" collapsible className="w-full">
+          {entries.map(([key, child]) => (
+            <AccordionItem key={key} value={key}>
+              <AccordionTrigger>
+                <span className="text-sm font-medium">{labelize(key)}</span>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="p-2 border rounded-md bg-white space-y-2">
+                  <FieldRenderer
+                    schema={child as ZodTypeAny}
+                    namePrefix={`${namePrefix ? namePrefix + '.' : ''}${key}`}
+                    methods={methods}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      )
+    }
+
     return (
       <div className="space-y-4">
         {Object.entries(shape).map(([key, child]) => (

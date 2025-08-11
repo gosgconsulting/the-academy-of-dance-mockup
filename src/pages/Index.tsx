@@ -52,7 +52,7 @@ const Index = () => {
           <>
             <HeroSection
               scrollToSection={scrollToSection}
-              images={data.hero.images}
+              images={data.hero.images.map(img => typeof img === 'string' ? img : '')}
               title={data.hero.title}
               subtitle={data.hero.subtitle}
               ctaText={data.hero.ctaText}
@@ -65,48 +65,20 @@ const Index = () => {
               contactPhone={data.sections.trials.contactPhone}
               bookButtonText={data.sections.trials.bookButtonText}
             />
-            <AboutUsSection
-              title={data.sections.about.title}
-              storyTitle={data.sections.about.storyTitle}
-              storyParagraphs={data.sections.about.storyParagraphs}
-            />
+            <AboutUsSection data={data.sections.about} />
             <VisionMissionSection
               vision={data.sections.visionMission.vision}
               mission={data.sections.visionMission.mission}
               tagline={data.sections.visionMission.tagline}
             />
-            <ProgrammesAndExamsSection
-              title={data.sections.programmes.title}
-              subtitle={data.sections.programmes.subtitle}
-            />
-            <CompetitionExcellenceSection
-              title="Our Competition Classes"
-              subtitle="Our elite competition team classes are designed to prepare dancers for high-level performance opportunities at regional and national competitions. We offer both solo and group competition classes, tailored to suit individual goals and team development."
-            />
-            <EventsSection
-              title={data.sections.events.title}
-              subtitle={data.sections.events.subtitle}
-            />
-            <AchievementsSection
-              title={data.sections.achievements.title}
-              subtitle={data.sections.achievements.subtitle}
-            />
-            <TeachersSection
-              title={data.sections.teachers.title}
-              subtitle={data.sections.teachers.subtitle}
-            />
-            <ReviewsSection
-              title={data.sections.reviews.title}
-              subtitle={data.sections.reviews.subtitle}
-            />
-            <LocationsSection
-              title={data.sections.locations.title}
-              subtitle={data.sections.locations.subtitle}
-            />
-            <GallerySection
-              title={data.sections.gallery.title}
-              subtitle={data.sections.gallery.subtitle}
-            />
+            <ProgrammesAndExamsSection data={data.sections.programmes} />
+            <CompetitionExcellenceSection data={data.sections.competitionExcellence} />
+            <EventsSection data={data.sections.events} />
+            <AchievementsSection data={data.sections.achievements} />
+            <TeachersSection data={data.sections.teachers} />
+            <ReviewsSection data={data.sections.reviews} />
+            <LocationsSection data={data.sections.locations} />
+            <GallerySection data={data.sections.gallery} />
           </>
         )
       })()}
