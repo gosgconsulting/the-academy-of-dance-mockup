@@ -31,8 +31,15 @@ const App = () => {
   useEffect(() => {
     // Initialize Builder.io if API key is available
     if (BUILDER_API_KEY && BUILDER_API_KEY !== 'YOUR_BUILDER_API_KEY_HERE') {
-      builder.init(BUILDER_API_KEY);
-      registerBuilderComponents();
+      try {
+        builder.init(BUILDER_API_KEY);
+        // Delay component registration to ensure builder is fully initialized
+        setTimeout(() => {
+          registerBuilderComponents();
+        }, 100);
+      } catch (error) {
+        console.warn('Failed to initialize Builder.io:', error);
+      }
     }
   }, []);
 
