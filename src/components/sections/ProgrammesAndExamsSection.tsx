@@ -5,7 +5,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
-const ProgrammesAndExamsSection = () => {
+interface ProgrammeHeaderProps { title: string; subtitle: string }
+const ProgrammesAndExamsSection = ({ title, subtitle }: ProgrammeHeaderProps) => {
   const [radImageIndex, setRadImageIndex] = useState(0);
   const [cstdImageIndex, setCstdImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -120,12 +121,8 @@ const ProgrammesAndExamsSection = () => {
       <section id="programmes" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-              Programmes & Examinations
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Discover our comprehensive dance programmes and internationally recognized examination courses designed to nurture artistry and technical excellence.
-            </p>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
           </div>
 
           <Tabs defaultValue="programmes" className="w-full">

@@ -10,7 +10,8 @@ import {
 } from "@/components/ui/carousel";
 import EventCard from "@/components/EventCard";
 
-const EventsSection = () => {
+interface EventsHeaderProps { title: string; subtitle: string }
+const EventsSection = ({ title, subtitle }: EventsHeaderProps) => {
   return (
     <section
       id="events"
@@ -18,13 +19,8 @@ const EventsSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Events
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Join us for exciting performances, competitions, and workshops
-            throughout the year.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
         </div>
 
         <div className="max-w-5xl mx-auto">

@@ -8,7 +8,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const TeachersSection = () => {
+interface TeachersHeaderProps { title: string; subtitle: string }
+const TeachersSection = ({ title, subtitle }: TeachersHeaderProps) => {
 
   const teachers = [
     {
@@ -64,13 +65,8 @@ const TeachersSection = () => {
       <div className="container mx-auto px-6">
         {/* Teachers Section */}
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Instructors
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Learn from internationally trained professionals who bring decades
-            of experience and genuine passion for dance education.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
         </div>
 
         <div className="max-w-6xl mx-auto mb-16">

@@ -3,7 +3,8 @@ import { Trophy } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-const CompetitionExcellenceSection = () => {
+interface CompetitionsHeaderProps { title: string; subtitle: string }
+const CompetitionExcellenceSection = ({ title, subtitle }: CompetitionsHeaderProps) => {
   const [soloImageIndex, setSoloImageIndex] = useState(0);
   const [groupImageIndex, setGroupImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,8 +38,8 @@ const CompetitionExcellenceSection = () => {
       <section id="competitions" className="py-20 bg-gradient-to-br from-primary/10 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">Our Competition Classes</h2>
-            <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">Our elite competition team classes are designed to prepare dancers for high-level performance opportunities at regional and national competitions. We offer both solo and group competition classes, tailored to suit individual goals and team development.</p>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+            <p className="font-inter text-gray-600 max-w-3xl mx-auto mb-8 text-lg">{subtitle}</p>
           </div>
 
           <div className="max-w-4xl mx-auto">

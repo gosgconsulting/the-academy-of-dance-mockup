@@ -3,106 +3,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, User, Clock, Tag, Folder } from "lucide-react";
-
-// Demo blog data
-const blogPosts = [{
-  id: 1,
-  slug: "mastering-ballet-fundamentals",
-  title: "Mastering Ballet Fundamentals: A Beginner's Journey",
-  excerpt: "Discover the essential techniques and positions that form the foundation of classical ballet. From plié to grand jeté, learn how to build strength and grace.",
-  content: "Ballet is the foundation of all dance forms, requiring discipline, grace, and years of dedicated practice. In this comprehensive guide, we'll explore the fundamental positions and movements that every aspiring dancer must master...",
-  author: "Sarah Chen",
-  date: "2024-01-15",
-  readTime: "8 min read",
-  category: "Ballet",
-  tags: ["Beginner", "Technique", "Classical"],
-  image: "/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png"
-}, {
-  id: 2,
-  slug: "hip-hop-evolution",
-  title: "Hip-Hop Evolution: From Streets to Studio",
-  excerpt: "Explore the rich history of hip-hop dance and how it has evolved from urban street culture to mainstream dance studios worldwide.",
-  content: "Hip-hop dance emerged from the streets of New York City in the 1970s, becoming a powerful form of cultural expression. Today, it continues to evolve and inspire dancers around the globe...",
-  author: "Marcus Williams",
-  date: "2024-01-12",
-  readTime: "6 min read",
-  category: "Hip-Hop",
-  tags: ["History", "Urban", "Culture"],
-  image: "/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png"
-}, {
-  id: 3,
-  slug: "contemporary-dance-expression",
-  title: "Contemporary Dance: Expressing Emotion Through Movement",
-  excerpt: "Learn how contemporary dance combines elements from various genres to create powerful emotional storytelling through fluid, expressive movements.",
-  content: "Contemporary dance is a genre that emerged in the mid-20th century, blending elements of classical ballet, modern dance, and jazz. It emphasizes emotional expression and storytelling...",
-  author: "Elena Rodriguez",
-  date: "2024-01-10",
-  readTime: "7 min read",
-  category: "Contemporary",
-  tags: ["Expression", "Modern", "Emotion"],
-  image: "/lovable-uploads/80e4bd9a-27a2-46c2-879c-2384503deb4a.png"
-}, {
-  id: 4,
-  slug: "competition-preparation",
-  title: "Competition Preparation: Mental and Physical Training",
-  excerpt: "Discover the secrets to successful dance competition preparation, from physical conditioning to mental resilience and performance confidence.",
-  content: "Preparing for dance competitions requires more than just perfecting choreography. Mental preparation, physical conditioning, and developing stage presence are equally important...",
-  author: "David Kim",
-  date: "2024-01-08",
-  readTime: "10 min read",
-  category: "Competition",
-  tags: ["Training", "Performance", "Mindset"],
-  image: "/lovable-uploads/787ef26d-968d-4441-a7e6-d177b26e1dc1.png"
-}, {
-  id: 5,
-  slug: "dance-nutrition",
-  title: "Dance Nutrition: Fueling Your Performance",
-  excerpt: "Understanding proper nutrition for dancers is crucial for maintaining energy, preventing injuries, and optimizing performance throughout training and competitions.",
-  content: "Dancers are athletes who require proper nutrition to fuel their demanding training schedules and performances. Understanding what to eat and when can make a significant difference...",
-  author: "Dr. Amy Thompson",
-  date: "2024-01-05",
-  readTime: "5 min read",
-  category: "Health",
-  tags: ["Nutrition", "Performance", "Wellness"],
-  image: "/lovable-uploads/9b23aa52-1bb4-4e41-b2c0-f26892b6aa20.png"
-}];
-const categories = [{
-  name: "Ballet",
-  count: 8
-}, {
-  name: "Hip-Hop",
-  count: 12
-}, {
-  name: "Contemporary",
-  count: 6
-}, {
-  name: "Jazz",
-  count: 5
-}, {
-  name: "Competition",
-  count: 10
-}, {
-  name: "Health",
-  count: 4
-}];
-const tags = ["Beginner", "Technique", "Performance", "Training", "History", "Culture", "Nutrition", "Mindset", "Expression", "Classical"];
-const authors = [{
-  name: "Sarah Chen",
-  posts: 15
-}, {
-  name: "Marcus Williams",
-  posts: 12
-}, {
-  name: "Elena Rodriguez",
-  posts: 8
-}, {
-  name: "David Kim",
-  posts: 10
-}, {
-  name: "Dr. Amy Thompson",
-  posts: 6
-}];
+import { Calendar, Clock, Tag } from "lucide-react";
+import { useMemo } from "react";
+import { usePageContent } from "@/cms/usePageContent";
+import { blogDefaults, type BlogContent } from "@/cms/content/schemas/blog";
 export default function Blog() {
   const handleScrollToSection = (sectionId: string) => {
     // For blog page, just scroll to top or handle differently
@@ -113,15 +17,30 @@ export default function Blog() {
       });
     }
   };
+  const { data } = usePageContent<BlogContent>('blog', blogDefaults)
+  const blogPosts = data.posts
+  const categories = useMemo(() => {
+    const map = new Map<string, number>()
+    blogPosts.forEach(p => map.set(p.category, (map.get(p.category) ?? 0) + 1))
+    return Array.from(map.entries()).map(([name, count]) => ({ name, count }))
+  }, [blogPosts])
+  const tags = useMemo(() => {
+    const set = new Set<string>()
+    blogPosts.forEach(p => p.tags.forEach(t => set.add(t)))
+    return Array.from(set)
+  }, [blogPosts])
+
   return <div className="min-h-screen bg-background">
       <Navigation scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-12">
         <div className="container mx-auto px-4 text-center text-foreground">
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0 text-dance-bronze">Our Blogs</h1>
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0 text-dance-bronze">
+            {data.title}
+          </h1>
           <p className="text-lg md:text-xl mb-0 max-w-2xl mx-auto font-inter text-gray-600">
-            Insights, Tips, and Stories from the World of Dance
+            {data.intro}
           </p>
         </div>
       </section>
@@ -136,7 +55,7 @@ export default function Blog() {
               {blogPosts.map(post => <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <Link to={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
-                      <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src={post.image.src} alt={post.image.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                   </Link>
                   
@@ -167,7 +86,7 @@ export default function Blog() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
-                        {post.readTime}
+                         {post.readTime}
                       </div>
                     </div>
                   </CardHeader>

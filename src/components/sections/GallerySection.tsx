@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
-const GallerySection = () => {
+interface GalleryHeaderProps { title: string; subtitle: string }
+const GallerySection = ({ title, subtitle }: GalleryHeaderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
@@ -56,13 +57,8 @@ const GallerySection = () => {
       <section id="gallery" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
-              Our Students Shine
-            </h2>
-            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">
-              Witness the artistry, passion, and technical excellence of our
-              dancers across all disciplines.
-            </p>
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">{title}</h2>
+            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">{subtitle}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">

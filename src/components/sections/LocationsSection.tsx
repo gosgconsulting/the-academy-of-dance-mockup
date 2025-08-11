@@ -3,7 +3,8 @@ import { MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-const LocationsSection = () => {
+interface LocationsHeaderProps { title: string; subtitle: string }
+const LocationsSection = ({ title, subtitle }: LocationsHeaderProps) => {
   return (
     <section
       id="locations"
@@ -11,13 +12,8 @@ const LocationsSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Locations
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Visit us at our convenient locations across Singapore for
-            world-class dance education.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

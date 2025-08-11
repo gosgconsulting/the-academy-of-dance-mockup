@@ -9,7 +9,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const ReviewsSection = () => {
+interface ReviewsHeaderProps { title: string; subtitle: string }
+const ReviewsSection = ({ title, subtitle }: ReviewsHeaderProps) => {
   const reviews = [
     {
       name: "Sarah Chen",
@@ -76,13 +77,8 @@ const ReviewsSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            What Parents Say
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Discover why families trust us with their children's dance
-            education and artistic development.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
         </div>
 
         <div className="max-w-6xl mx-auto">

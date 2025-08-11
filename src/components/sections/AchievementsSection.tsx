@@ -3,7 +3,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Trophy, Award, Medal, Star, Calendar, Users, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
-const AchievementsSection = () => {
+interface AchievementsHeaderProps { title: string; subtitle: string }
+const AchievementsSection = ({ title, subtitle }: AchievementsHeaderProps) => {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
   const [showAllCompetitions, setShowAllCompetitions] = useState(false);
   
@@ -223,12 +224,8 @@ const AchievementsSection = () => {
     <section id="achievements" className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Dance Competition Achievements
-          </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Celebrating our students' excellence and remarkable success in prestigious dance competitions across Asia.
-          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">{subtitle}</p>
         </div>
 
         {/* Desktop: Grid Layout with View All/Show Less buttons */}

@@ -17,6 +17,8 @@ import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
+import { usePageContent } from "@/cms/usePageContent";
+import { homepageDefaults, type HomepageContent } from "@/cms/content/schemas/homepage";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
@@ -44,18 +46,70 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
-      <HeroSection scrollToSection={scrollToSection} />
-      <TrialsSection />
-      <AboutUsSection />
-      <VisionMissionSection />
-      <ProgrammesAndExamsSection />
-      <CompetitionExcellenceSection />
-      <EventsSection />
-      <AchievementsSection />
-      <TeachersSection />
-      <ReviewsSection />
-      <LocationsSection />
-      <GallerySection />
+      {(() => {
+        const { data } = usePageContent<HomepageContent>('homepage', homepageDefaults)
+        return (
+          <>
+            <HeroSection
+              scrollToSection={scrollToSection}
+              images={data.hero.images}
+              title={data.hero.title}
+              subtitle={data.hero.subtitle}
+              ctaText={data.hero.ctaText}
+            />
+            <TrialsSection
+              title={data.sections.trials.title}
+              subtitle={data.sections.trials.subtitle}
+              joinTitle={data.sections.trials.joinTitle}
+              contactName={data.sections.trials.contactName}
+              contactPhone={data.sections.trials.contactPhone}
+              bookButtonText={data.sections.trials.bookButtonText}
+            />
+            <AboutUsSection
+              title={data.sections.about.title}
+              storyTitle={data.sections.about.storyTitle}
+              storyParagraphs={data.sections.about.storyParagraphs}
+            />
+            <VisionMissionSection
+              vision={data.sections.visionMission.vision}
+              mission={data.sections.visionMission.mission}
+              tagline={data.sections.visionMission.tagline}
+            />
+            <ProgrammesAndExamsSection
+              title={data.sections.programmes.title}
+              subtitle={data.sections.programmes.subtitle}
+            />
+            <CompetitionExcellenceSection
+              title="Our Competition Classes"
+              subtitle="Our elite competition team classes are designed to prepare dancers for high-level performance opportunities at regional and national competitions. We offer both solo and group competition classes, tailored to suit individual goals and team development."
+            />
+            <EventsSection
+              title={data.sections.events.title}
+              subtitle={data.sections.events.subtitle}
+            />
+            <AchievementsSection
+              title={data.sections.achievements.title}
+              subtitle={data.sections.achievements.subtitle}
+            />
+            <TeachersSection
+              title={data.sections.teachers.title}
+              subtitle={data.sections.teachers.subtitle}
+            />
+            <ReviewsSection
+              title={data.sections.reviews.title}
+              subtitle={data.sections.reviews.subtitle}
+            />
+            <LocationsSection
+              title={data.sections.locations.title}
+              subtitle={data.sections.locations.subtitle}
+            />
+            <GallerySection
+              title={data.sections.gallery.title}
+              subtitle={data.sections.gallery.subtitle}
+            />
+          </>
+        )
+      })()}
       <Footer />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
