@@ -3,8 +3,7 @@ import { builder } from '@builder.io/react'
 // Builder.io Configuration
 export const BUILDER_API_KEY = import.meta.env.VITE_BUILDER_API_KEY || 'YOUR_BUILDER_API_KEY_HERE'
 
-// Initialize Builder.io
-builder.init(BUILDER_API_KEY)
+// Note: Builder.io is initialized in App.tsx to avoid duplicate initialization
 
 // Builder.io Models Configuration
 export const BUILDER_MODELS = {
