@@ -166,21 +166,76 @@ const Admin = () => {
           </div>
         </div>
 
+        {/* Recreation Instructions */}
+        <Card className="bg-red-50 border-red-200">
+          <CardHeader>
+            <CardTitle className="text-red-900">🚨 Content Needs Recreation</CardTitle>
+          </CardHeader>
+          <CardContent className="text-red-800 space-y-4">
+            <p className="font-medium">Your pages were deleted. Follow these steps to recreate them:</p>
+
+            <div className="bg-red-100 p-4 rounded-lg">
+              <h3 className="font-semibold mb-3">Step-by-Step Recreation:</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                <li>Click "Create This Page" on each page above</li>
+                <li>In Builder.io, set the page name and URL path</li>
+                <li>Add the suggested components from the component menu</li>
+                <li>Fill in the provided title and description</li>
+                <li>Publish each page when complete</li>
+              </ol>
+            </div>
+
+            <div className="bg-red-100 p-4 rounded-lg">
+              <h3 className="font-semibold mb-3">Available Components:</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                <div className="bg-white p-2 rounded">• Hero</div>
+                <div className="bg-white p-2 rounded">• PageHeader</div>
+                <div className="bg-white p-2 rounded">• Programs</div>
+                <div className="bg-white p-2 rounded">• ClassSchedule</div>
+                <div className="bg-white p-2 rounded">• MissionVision</div>
+              </div>
+            </div>
+
+            <div className="bg-red-100 p-4 rounded-lg">
+              <h3 className="font-semibold mb-3">Preview URLs to Set:</h3>
+              <p className="text-sm mb-2">In Builder.io model settings, set:</p>
+              <code className="text-xs bg-white p-2 rounded block">
+                Preview URL: {window.location.origin}/builder-preview
+              </code>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Instructions */}
         <Card className="bg-blue-50 border-blue-200">
           <CardHeader>
-            <CardTitle className="text-blue-900">How to Edit Content</CardTitle>
+            <CardTitle className="text-blue-900">📚 Content Templates</CardTitle>
           </CardHeader>
-          <CardContent className="text-blue-800">
-            <ol className="list-decimal list-inside space-y-2">
-              <li>Click "Edit in Builder.io" on any page above</li>
-              <li>Login to Builder.io (or create an account if needed)</li>
-              <li>Use the visual editor to modify content</li>
-              <li>Click "Publish" to make changes live on your website</li>
-              <li>Changes appear on your website instantly</li>
-            </ol>
-            <div className="mt-4 p-3 bg-blue-100 rounded-lg">
-              <p className="text-sm font-medium">💡 Tip: Bookmark the editor links for quick access!</p>
+          <CardContent className="text-blue-800 space-y-4">
+            <div className="space-y-3">
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <h4 className="font-semibold">Homepage Content:</h4>
+                <ul className="text-sm mt-2 space-y-1">
+                  <li>• Hero: "Elite Dance Academy" + "Where Passion Meets Excellence"</li>
+                  <li>• Programs: Ballet, Contemporary, Hip Hop, Jazz</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <h4 className="font-semibold">About Us Content:</h4>
+                <ul className="text-sm mt-2 space-y-1">
+                  <li>• PageHeader: "About Us" + "Our Story & Commitment"</li>
+                  <li>• MissionVision: Add your academy's mission and vision</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <h4 className="font-semibold">Programs Content:</h4>
+                <ul className="text-sm mt-2 space-y-1">
+                  <li>• PageHeader: "Programs & Classes"</li>
+                  <li>• ClassSchedule: Weekly schedule with times and ages</li>
+                </ul>
+              </div>
             </div>
           </CardContent>
         </Card>
