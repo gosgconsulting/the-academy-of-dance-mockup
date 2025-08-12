@@ -1,20 +1,11 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Calendar, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-interface TrialsContentProps {
-  title: string
-  subtitle: string
-  joinTitle: string
-  contactName: string
-  contactPhone: string
-  bookButtonText: string
-}
-
-const TrialsSection = ({ title, subtitle, joinTitle, contactName, contactPhone, bookButtonText }: TrialsContentProps) => {
+const TrialsSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,8 +36,7 @@ Please contact me to schedule my trial class. Thank you!`;
 
     // Send to WhatsApp
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    const phoneDigits = (contactPhone || '').replace(/\D/g, '') || '6598372670'
-    const whatsappUrl = `https://wa.me/${phoneDigits}?text=${encodedMessage}`
+    const whatsappUrl = `https://wa.me/6598372670?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
     toast({
       title: "Redirecting to WhatsApp!",
@@ -105,14 +95,16 @@ Please contact me to schedule my trial class. Thank you!`;
         </div>
 
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">{title}</h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">{subtitle}</p>
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+            Begin Your Dance Journey
+          </h2>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">Jump into dance with a $20 trial class! Experience top-tier instruction and find your perfect style.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">{joinTitle}</h3>
+              <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Join Our Trial Classes</h3>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
@@ -145,12 +137,12 @@ Please contact me to schedule my trial class. Thank you!`;
               <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold mb-2">{contactName}</p>
+                  <p className="font-semibold mb-2">Ms June Lee</p>
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-primary" />
-                   <a href={`tel:${contactPhone.replace(/\s/g,'')}`} className="hover:text-secondary transition-colors">
-                    {contactPhone}
+                  <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
+                    (65) 9837 2670
                   </a>
                 </div>
                 <div className="flex items-start">
@@ -210,7 +202,7 @@ Please contact me to schedule my trial class. Thank you!`;
             })} rows={4} />
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white text-lg py-6">
                 <Calendar className="w-5 h-5 mr-2" />
-                {bookButtonText}
+                Book Now!
               </Button>
             </form>
           </div>

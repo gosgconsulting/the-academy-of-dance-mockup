@@ -2,18 +2,40 @@
 import { useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import type { GallerySection as GalleryData } from "@/cms/content/schemas/sections";
 
-const GallerySection = ({ data }: { data: GalleryData }) => {
+const GallerySection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
-  const galleryItems = Array.isArray(data?.items) ? data.items.filter(Boolean) : []
+  const galleryItems = [
+    {
+      image: "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
+      title: "Melbourne Dance Exchange 2023",
+    },
+    {
+      image: "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png",
+      title: "Ballet Class Excellence",
+    },
+    {
+      image: "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png",
+      title: "International Adventures",
+    },
+    {
+      image: "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png",
+      title: "Performance Ready",
+    },
+    {
+      image: "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png",
+      title: "Dance Community",
+    },
+    {
+      image: "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png",
+      title: "Young Performers",
+    },
+  ];
 
   const openModal = (imageIndex: number) => {
-    if (!Array.isArray(galleryItems) || galleryItems.length === 0) return
-    const safeIndex = Math.max(0, Math.min(imageIndex, galleryItems.length - 1))
-    setModalImageIndex(safeIndex);
+    setModalImageIndex(imageIndex);
     setIsModalOpen(true);
   };
 
@@ -22,12 +44,10 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
   };
 
   const nextModalImage = () => {
-    if (galleryItems.length === 0) return
     setModalImageIndex((prev) => (prev + 1) % galleryItems.length);
   };
 
   const prevModalImage = () => {
-    if (galleryItems.length === 0) return
     setModalImageIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
   };
 
@@ -36,10 +56,13 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
       <section id="gallery" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">{data.header.title}</h2>
-            {data.header.subtitle && (
-              <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">{data.header.subtitle}</p>
-            )}
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
+              Our Students Shine
+            </h2>
+            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">
+              Witness the artistry, passion, and technical excellence of our
+              dancers across all disciplines.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -49,14 +72,11 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
                 className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer"
                 onClick={() => openModal(index)}
               >
-                {item && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={typeof item.image === 'string' ? item.image : ''}
-                    alt={item.title}
-                    className="w-full h-64 object-cover"
-                  />
-                )}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-64 object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-playfair text-lg font-semibold">
@@ -85,14 +105,11 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
             {/* Main image container - centered with proper aspect ratio */}
             <div className="relative flex items-center justify-center w-full h-full px-16">
               {/* Main image - 80% of screen size with proper centering */}
-              {galleryItems[modalImageIndex] && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={typeof galleryItems[modalImageIndex].image === 'string' ? galleryItems[modalImageIndex].image : ''}
-                  alt={galleryItems[modalImageIndex].title}
-                  className="max-w-[80%] max-h-[80%] object-contain"
-                />
-              )}
+              <img
+                src={galleryItems[modalImageIndex].image}
+                alt={galleryItems[modalImageIndex].title}
+                className="max-w-[80%] max-h-[80%] object-contain"
+              />
 
               {/* Navigation arrows - positioned relative to the image container */}
               {galleryItems.length > 1 && (
