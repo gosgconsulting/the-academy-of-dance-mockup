@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import WhatsAppChat from "@/components/WhatsAppChat";
-import Navigation from "@/components/Navigation";
+// Header/Footer injected globally via SiteLayout
 import HeroSection from "@/components/HeroSection";
 import TrialsSection from "@/components/TrialsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
@@ -19,10 +19,15 @@ import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
 import { usePageContent } from "@/cms/usePageContent";
 import { homepageDefaults, type HomepageContent } from "@/cms/content/schemas/homepage";
+import { Render } from "@measured/puck";
+import puckConfig from "@/puck/config";
+import { useEditorData } from "@/puck/store";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
   const location = useLocation();
+  const { data: puckHomepage } = useEditorData('homepage')
+  const hasPuck = !!(puckHomepage && Array.isArray(puckHomepage.content) && puckHomepage.content.length)
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
@@ -45,44 +50,52 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation scrollToSection={scrollToSection} />
+      
       {(() => {
-        const { data } = usePageContent<HomepageContent>('homepage', homepageDefaults)
-        return (
-          <>
-            <HeroSection
-              scrollToSection={scrollToSection}
-              images={data.hero.images.map(img => typeof img === 'string' ? img : '')}
-              title={data.hero.title}
-              subtitle={data.hero.subtitle}
-              ctaText={data.hero.ctaText}
-            />
-            <TrialsSection
-              title={data.sections.trials.title}
-              subtitle={data.sections.trials.subtitle}
-              joinTitle={data.sections.trials.joinTitle}
-              contactName={data.sections.trials.contactName}
-              contactPhone={data.sections.trials.contactPhone}
-              bookButtonText={data.sections.trials.bookButtonText}
-            />
-            <AboutUsSection data={data.sections.about} />
-            <VisionMissionSection
-              vision={data.sections.visionMission.vision}
-              mission={data.sections.visionMission.mission}
-              tagline={data.sections.visionMission.tagline}
-            />
-            <ProgrammesAndExamsSection data={data.sections.programmes} />
-            <CompetitionExcellenceSection data={data.sections.competitionExcellence} />
-            <EventsSection data={data.sections.events} />
-            <AchievementsSection data={data.sections.achievements} />
-            <TeachersSection data={data.sections.teachers} />
-            <ReviewsSection data={data.sections.reviews} />
-            <LocationsSection data={data.sections.locations} />
-            <GallerySection data={data.sections.gallery} />
-          </>
-        )
+        if (!hasPuck) {
+          const { data } = usePageContent<HomepageContent>('homepage', homepageDefaults)
+          return (
+            <>
+              <HeroSection
+                scrollToSection={scrollToSection}
+                images={data.hero.images.map(img => typeof img === 'string' ? img : '')}
+                title={data.hero.title}
+                subtitle={data.hero.subtitle}
+                ctaText={data.hero.ctaText}
+              />
+              <TrialsSection
+                title={data.sections.trials.title}
+                subtitle={data.sections.trials.subtitle}
+                joinTitle={data.sections.trials.joinTitle}
+                contactName={data.sections.trials.contactName}
+                contactPhone={data.sections.trials.contactPhone}
+                bookButtonText={data.sections.trials.bookButtonText}
+              />
+              <AboutUsSection data={data.sections.about} />
+              <VisionMissionSection
+                vision={data.sections.visionMission.vision}
+                mission={data.sections.visionMission.mission}
+                tagline={data.sections.visionMission.tagline}
+              />
+              <ProgrammesAndExamsSection data={data.sections.programmes} />
+              <CompetitionExcellenceSection data={data.sections.competitionExcellence} />
+              <EventsSection data={data.sections.events} />
+              <AchievementsSection data={data.sections.achievements} />
+              <TeachersSection data={data.sections.teachers} />
+              <ReviewsSection data={data.sections.reviews} />
+              <LocationsSection data={data.sections.locations} />
+              <GallerySection data={data.sections.gallery} />
+            </>
+          )
+        }
+        const data = puckHomepage!
+        const filtered = {
+          ...data,
+          content: (data?.content || []).filter((b: any) => b?.type !== 'Header' && b?.type !== 'Footer')
+        }
+        return <Render config={puckConfig} data={filtered} />
       })()}
-      <Footer />
+      
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
         isOpen={isWhatsAppChatOpen}

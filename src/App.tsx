@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { builder } from "@builder.io/react";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -15,43 +14,28 @@ import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import AdminIndex from "@/cms/pages/AdminIndex";
-import BuilderAdminIndex from "@/cms/pages/BuilderAdminIndex";
 import ContentEditor from "@/cms/pages/ContentEditor";
 import Login from "@/cms/pages/Login";
 import Signup from "@/cms/pages/Signup";
 import ProtectedRoute from "@/cms/auth/ProtectedRoute";
-import { SupabaseAuthProvider } from "@/cms/auth/supabaseAuth";
 import { AuthProvider } from "@/cms/auth/auth";
-import { registerBuilderComponents } from "@/cms/components/BuilderComponents";
-import { BUILDER_API_KEY } from "@/cms/builderConfig";
+import PuckNative from "@/cms/pages/PuckNative";
+import SiteLayout from "@/layouts/SiteLayout";
+import { EditorProvider } from "@/puck/store";
+ 
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  useEffect(() => {
-    // Initialize Builder.io if API key is available
-    if (BUILDER_API_KEY && BUILDER_API_KEY !== 'YOUR_BUILDER_API_KEY_HERE') {
-      try {
-        builder.init(BUILDER_API_KEY);
-        // Delay component registration to ensure builder is fully initialized
-        setTimeout(() => {
-          registerBuilderComponents();
-        }, 100);
-      } catch (error) {
-        console.warn('Failed to initialize Builder.io:', error);
-      }
-    }
-  }, []);
-
-  return (
+const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SupabaseAuthProvider>
-        <AuthProvider>
-          <BrowserRouter>
-            <Routes>
+      <AuthProvider>
+        <EditorProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<SiteLayout />}>
               <Route path="/" element={<Index />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
@@ -60,27 +44,24 @@ const App = () => {
               <Route path="/blog/author/:author" element={<BlogAuthor />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            </Route>
 
-              {/* Login/Signup routes - deactivated for direct dashboard access */}
-              {/* <Route path="/login" element={<Login />} /> */}
-              {/* <Route path="/signup" element={<Signup />} /> */}
-
-              {/* Admin routes - now accessible without authentication */}
-              <Route path="/admin" element={<BuilderAdminIndex />} />
-              <Route path="/admin/traditional" element={<AdminIndex />} />
-              <Route path="/admin/content/:slug" element={<ContentEditor />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/edit" element={<PuckNative />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminIndex />} />
               <Route path="/admin/:slug" element={<ContentEditor />} />
-              <Route path="/AdminIndex" element={<BuilderAdminIndex />} />
+            </Route>
 
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
-      </SupabaseAuthProvider>
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+        </EditorProvider>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
-  );
-};
+);
 
 export default App;

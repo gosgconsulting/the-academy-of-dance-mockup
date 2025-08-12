@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
+// Header/Footer are injected via SiteLayout
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { usePageContent } from "@/cms/usePageContent";
 import { termsDefaults, type TermsContent } from "@/cms/content/schemas/legal";
@@ -9,7 +8,6 @@ const TermsConditions = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation scrollToSection={() => {}} />
       
       <div className="container mx-auto px-6 py-12 pt-24 max-w-4xl">
         <div className="mb-8">
@@ -29,7 +27,7 @@ const TermsConditions = () => {
         </ScrollArea>
       </div>
       
-      <Footer />
+      
     </div>
   );
 };

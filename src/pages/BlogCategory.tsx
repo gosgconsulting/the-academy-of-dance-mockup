@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+// Header/Footer are injected via SiteLayout
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
@@ -30,7 +29,6 @@ export default function BlogCategory() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation scrollToSection={handleScrollToSection} />
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
@@ -131,7 +129,7 @@ export default function BlogCategory() {
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 }
