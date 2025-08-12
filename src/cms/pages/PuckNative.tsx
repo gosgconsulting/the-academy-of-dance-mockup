@@ -27,7 +27,7 @@ function buildTemplate(slugForTemplate: string) {
       : { content: [] }
   }
   if (slugForTemplate === 'homepage') {
-    const order = ['Header', 'Hero', 'Trials', 'Footer'].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
+    const order = ['Header', 'Hero', 'Numbers', 'Footer'].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
     return { content: order.map((t) => ({ id: createId(), type: t, props: (puckConfig.components as any)[t].defaultProps })) }
   }
   return { content: [] }
@@ -91,8 +91,17 @@ export default function PuckNative() {
         result = ensureSingle(result, 'Hero')
       }
 
-      // Ensure only one Trials
-      result = ensureSingle(result, 'Trials')
+      // Ensure only one Numbers and place after Hero
+      if ((puckConfig.components as any).Numbers) {
+        const firstNumbers = result.findIndex((b: any) => b.type === 'Numbers')
+        if (firstNumbers === -1) {
+          const numbers = { id: createId(), type: 'Numbers', props: (puckConfig.components as any).Numbers.defaultProps }
+          const heroIndex = result.findIndex((b: any) => b.type === 'Hero')
+          const insertAt = heroIndex === -1 ? 0 : heroIndex + 1
+          result.splice(insertAt, 0, numbers)
+        }
+        result = ensureSingle(result, 'Numbers')
+      }
 
       // Ensure Footer at bottom
       if ((puckConfig.components as any).Footer) {

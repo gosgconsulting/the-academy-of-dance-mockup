@@ -4,6 +4,7 @@ import { PuckHeader } from './widgets/PuckHeader'
 import { PuckFooter } from './widgets/PuckFooter'
 import { PuckHero } from './widgets/PuckHero'
 import { PuckTrials } from './widgets/PuckTrials'
+import { PuckNumbers } from './widgets/PuckNumbers'
 
 // Define the editable props for each block
 export type PuckBlocks = {
@@ -34,8 +35,10 @@ export type PuckBlocks = {
     contactPhone: string
     bookButtonText: string
   }
+  Numbers: {
+    stats: { number: string; label: string; colorHex?: string; bgHex?: string }[]
+  }
 }
-
 export const puckConfig: Config<PuckBlocks> = {
   components: {
     Header: {
@@ -119,6 +122,30 @@ export const puckConfig: Config<PuckBlocks> = {
         bookButtonText: 'Book Trial Class',
       },
       render: PuckTrials,
+    },
+    Numbers: {
+      label: 'Numbers',
+      fields: {
+        stats: {
+          type: 'array',
+          arrayFields: {
+            number: { type: 'text', placeholder: '10,000+' },
+            label: { type: 'text', placeholder: 'Students Trained' },
+            colorHex: { type: 'text', placeholder: '#8b5cf6' },
+            bgHex: { type: 'text', placeholder: 'rgba(139,92,246,0.1)' },
+          },
+          getItemSummary: (i) => i?.label || i?.number || 'Stat',
+        },
+      },
+      defaultProps: {
+        stats: [
+          { number: '10,000+', label: 'Students Trained', colorHex: '#8b5cf6', bgHex: 'rgba(139,92,246,0.1)' },
+          { number: '40', label: 'Years Experience', colorHex: '#22c55e', bgHex: 'rgba(34,197,94,0.1)' },
+          { number: '95%', label: 'Success Rate', colorHex: '#f59e0b', bgHex: 'rgba(245,158,11,0.1)' },
+          { number: '2000+', label: 'Awards Won', colorHex: '#ec4899', bgHex: 'rgba(236,72,153,0.1)' },
+        ],
+      },
+      render: PuckNumbers,
     },
   },
 }
