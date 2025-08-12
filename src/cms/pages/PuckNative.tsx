@@ -27,7 +27,7 @@ function buildTemplate(slugForTemplate: string) {
       : { content: [] }
   }
   if (slugForTemplate === 'homepage') {
-    const order = ['Hero', 'Trials'].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
+    const order = ['Header', 'Hero', 'Trials', 'Footer'].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
     return { content: order.map((t) => ({ id: createId(), type: t, props: (puckConfig.components as any)[t].defaultProps })) }
   }
   return { content: [] }
@@ -58,37 +58,55 @@ export default function PuckNative() {
 
     // Homepage-specific constraints only
     if (slug === 'homepage') {
-      // Ensure exactly one Hero at the top for homepage content
-      if ((puckConfig.components as any).Hero) {
-        const firstHeroIndex = result.findIndex((b: any) => b.type === 'Hero')
-        if (firstHeroIndex === -1) {
-          result.unshift({ id: createId(), type: 'Hero', props: (puckConfig.components as any).Hero.defaultProps })
-        } else if (firstHeroIndex > 0) {
-          const [hero] = result.splice(firstHeroIndex, 1)
-          result.unshift(hero)
-        }
-        // remove extra Heroes beyond the first
-        let heroSeen = false
-        result = result.filter((b: any) => {
-          if (b.type !== 'Hero') return true
-          if (!heroSeen) {
-            heroSeen = true
-            return true
-          }
+      const ensureSingle = (arr: any[], type: string) => {
+        let seen = false
+        return arr.filter((b: any) => {
+          if (b.type !== type) return true
+          if (!seen) { seen = true; return true }
           return false
         })
       }
 
-      // De-duplicate Trials block (keep the first only)
-      let trialsSeen = false
-      result = result.filter((b: any) => {
-        if (b.type !== 'Trials') return true
-        if (!trialsSeen) {
-          trialsSeen = true
-          return true
+      // Ensure Header at top
+      if ((puckConfig.components as any).Header) {
+        const firstHeader = result.findIndex((b: any) => b.type === 'Header')
+        if (firstHeader === -1) {
+          result.unshift({ id: createId(), type: 'Header', props: (puckConfig.components as any).Header.defaultProps })
+        } else if (firstHeader > 0) {
+          const [hdr] = result.splice(firstHeader, 1)
+          result.unshift(hdr)
         }
-        return false
-      })
+        result = ensureSingle(result, 'Header')
+      }
+
+      // Ensure Hero after Header
+      if ((puckConfig.components as any).Hero) {
+        const firstHero = result.findIndex((b: any) => b.type === 'Hero')
+        if (firstHero === -1) {
+          const hero = { id: createId(), type: 'Hero', props: (puckConfig.components as any).Hero.defaultProps }
+          const headerIndex = result.findIndex((b: any) => b.type === 'Header')
+          result.splice(Math.max(0, headerIndex + 1), 0, hero)
+        }
+        // Keep only one Hero
+        result = ensureSingle(result, 'Hero')
+      }
+
+      // Ensure only one Trials
+      result = ensureSingle(result, 'Trials')
+
+      // Ensure Footer at bottom
+      if ((puckConfig.components as any).Footer) {
+        const firstFooterIdx = result.findIndex((b: any) => b.type === 'Footer')
+        if (firstFooterIdx === -1) {
+          result.push({ id: createId(), type: 'Footer', props: (puckConfig.components as any).Footer.defaultProps })
+        }
+        // Keep only the last Footer occurrence
+        let lastIdx = -1
+        for (let i = 0; i < result.length; i++) {
+          if (result[i].type === 'Footer') lastIdx = i
+        }
+        result = result.filter((b: any, idx: number) => b.type !== 'Footer' || idx === lastIdx)
+      }
     }
 
     return { content: result }
@@ -128,11 +146,6 @@ export default function PuckNative() {
   // Limit available components based on what is being edited
   const scopedConfig = useMemo(() => {
     const cloned: any = { ...puckConfig, components: { ...puckConfig.components } }
-    // Only expose Header/Footer when editing the unified layout slug
-    if (slug !== 'layout') {
-      delete cloned.components.Header
-      delete cloned.components.Footer
-    }
     return cloned
   }, [slug])
 
