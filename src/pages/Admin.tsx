@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Edit, Plus, Users, Settings } from 'lucide-react';
 
 const Admin = () => {
+  // These pages were found in Builder.io debug info - they still exist!
   const existingPages = [
     {
       id: '753fd9c1d6b2420da34a02e9e21a3369',
@@ -31,19 +32,6 @@ const Admin = () => {
     }
   ];
 
-  const missingPages = [
-    {
-      name: 'Contact',
-      description: 'Contact information and location details',
-      url: '/cms/contact',
-      components: ['PageHeader'],
-      content: {
-        title: 'Contact Elite Dance Academy',
-        description: 'Get in touch to learn more about our programs or schedule a trial class.',
-      }
-    }
-  ];
-
   const quickActions = [
     {
       title: 'Create New Page',
@@ -68,14 +56,6 @@ const Admin = () => {
     }
   ];
 
-  const openEditor = (contentId: string) => {
-    window.open(`https://builder.io/content/${contentId}`, '_blank');
-  };
-
-  const previewPage = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -84,7 +64,7 @@ const Admin = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Content Management</h1>
-              <p className="text-gray-600 mt-2">Manage your website content with Builder.io visual editor</p>
+              <p className="text-gray-600 mt-2">Great news! Your pages still exist in Builder.io</p>
             </div>
             <div className="flex gap-3">
               <Button onClick={() => window.open('https://builder.io/content', '_blank')}>
@@ -101,6 +81,17 @@ const Admin = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        {/* Good News Alert */}
+        <Card className="bg-green-50 border-green-200">
+          <CardHeader>
+            <CardTitle className="text-green-900">🎉 Good News!</CardTitle>
+          </CardHeader>
+          <CardContent className="text-green-800">
+            <p className="font-medium mb-2">Your pages weren't actually deleted!</p>
+            <p>I found all 3 pages still exist in your Builder.io space. They just need to be accessed through the direct editor links below.</p>
+          </CardContent>
+        </Card>
+
         {/* Quick Actions */}
         <div>
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
@@ -123,38 +114,39 @@ const Admin = () => {
           </div>
         </div>
 
-        {/* Content Pages */}
+        {/* Existing Pages */}
         <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Website Pages</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">✅ Your Pages (Ready to Edit!)</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {requiredPages.map((page, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow border-orange-200 bg-orange-50">
+            {existingPages.map((page) => (
+              <Card key={page.id} className="hover:shadow-lg transition-shadow border-green-200 bg-green-50">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-lg">{page.name}</CardTitle>
                       <CardDescription className="mt-1">{page.description}</CardDescription>
                     </div>
-                    <Badge variant="secondary">
-                      Needs Recreation
+                    <Badge variant="default" className="bg-green-600">
+                      Available
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
-                    <div className="text-sm">
-                      <strong>Title:</strong> {page.content.title}
-                    </div>
-                    <div className="text-sm">
-                      <strong>Components:</strong> {page.components.join(', ')}
-                    </div>
+                  <div className="flex gap-3">
                     <Button
                       size="sm"
-                      onClick={() => window.open('https://builder.io/content', '_blank')}
-                      className="w-full"
+                      onClick={() => window.open(page.editorUrl, '_blank')}
+                      className="flex-1"
                     >
-                      <Plus className="w-4 h-4 mr-2" />
-                      Create This Page
+                      <Edit className="w-4 h-4 mr-2" />
+                      Edit in Builder.io
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => window.open(page.url, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
                 </CardContent>
@@ -163,26 +155,21 @@ const Admin = () => {
           </div>
         </div>
 
-        {/* Recreation Instructions */}
-        <Card className="bg-red-50 border-red-200">
+        {/* Instructions */}
+        <Card className="bg-blue-50 border-blue-200">
           <CardHeader>
-            <CardTitle className="text-red-900">🚨 Content Needs Recreation</CardTitle>
+            <CardTitle className="text-blue-900">📝 Next Steps</CardTitle>
           </CardHeader>
-          <CardContent className="text-red-800 space-y-4">
-            <p className="font-medium">Your pages were deleted. Follow these steps to recreate them:</p>
-
-            <div className="bg-red-100 p-4 rounded-lg">
-              <h3 className="font-semibold mb-3">Step-by-Step Recreation:</h3>
-              <ol className="list-decimal list-inside space-y-2">
-                <li>Click "Create This Page" on each page above</li>
-                <li>In Builder.io, set the page name and URL path</li>
-                <li>Add the suggested components from the component menu</li>
-                <li>Fill in the provided title and description</li>
-                <li>Publish each page when complete</li>
-              </ol>
-            </div>
-
-            <div className="bg-red-100 p-4 rounded-lg">
+          <CardContent className="text-blue-800 space-y-4">
+            <ol className="list-decimal list-inside space-y-2">
+              <li>Click "Edit in Builder.io" on any page above</li>
+              <li>Login to Builder.io if prompted</li>
+              <li>Add components from the left sidebar (Hero, Programs, etc.)</li>
+              <li>Configure each component with your content</li>
+              <li>Click "Publish" to make changes live</li>
+            </ol>
+            
+            <div className="bg-blue-100 p-4 rounded-lg">
               <h3 className="font-semibold mb-3">Available Components:</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
                 <div className="bg-white p-2 rounded">• Hero</div>
@@ -193,46 +180,11 @@ const Admin = () => {
               </div>
             </div>
 
-            <div className="bg-red-100 p-4 rounded-lg">
-              <h3 className="font-semibold mb-3">Preview URLs to Set:</h3>
-              <p className="text-sm mb-2">In Builder.io model settings, set:</p>
-              <code className="text-xs bg-white p-2 rounded block">
+            <div className="mt-4 p-3 bg-blue-100 rounded-lg">
+              <p className="text-sm font-medium">💡 Tip: Set your preview URL to see components properly:</p>
+              <code className="text-xs bg-white p-2 rounded block mt-2">
                 Preview URL: {window.location.origin}/builder-preview
               </code>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Instructions */}
-        <Card className="bg-blue-50 border-blue-200">
-          <CardHeader>
-            <CardTitle className="text-blue-900">📚 Content Templates</CardTitle>
-          </CardHeader>
-          <CardContent className="text-blue-800 space-y-4">
-            <div className="space-y-3">
-              <div className="bg-blue-100 p-3 rounded-lg">
-                <h4 className="font-semibold">Homepage Content:</h4>
-                <ul className="text-sm mt-2 space-y-1">
-                  <li>• Hero: "Elite Dance Academy" + "Where Passion Meets Excellence"</li>
-                  <li>• Programs: Ballet, Contemporary, Hip Hop, Jazz</li>
-                </ul>
-              </div>
-
-              <div className="bg-blue-100 p-3 rounded-lg">
-                <h4 className="font-semibold">About Us Content:</h4>
-                <ul className="text-sm mt-2 space-y-1">
-                  <li>• PageHeader: "About Us" + "Our Story & Commitment"</li>
-                  <li>• MissionVision: Add your academy's mission and vision</li>
-                </ul>
-              </div>
-
-              <div className="bg-blue-100 p-3 rounded-lg">
-                <h4 className="font-semibold">Programs Content:</h4>
-                <ul className="text-sm mt-2 space-y-1">
-                  <li>• PageHeader: "Programs & Classes"</li>
-                  <li>• ClassSchedule: Weekly schedule with times and ages</li>
-                </ul>
-              </div>
             </div>
           </CardContent>
         </Card>
