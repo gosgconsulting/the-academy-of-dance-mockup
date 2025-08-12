@@ -81,14 +81,26 @@ const Admin = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
-        {/* Good News Alert */}
-        <Card className="bg-green-50 border-green-200">
+        {/* Status Alert */}
+        <Card className="bg-blue-50 border-blue-200">
           <CardHeader>
-            <CardTitle className="text-green-900">🎉 Good News!</CardTitle>
+            <CardTitle className="text-blue-900">📋 Content Status Update</CardTitle>
           </CardHeader>
-          <CardContent className="text-green-800">
-            <p className="font-medium mb-2">Your pages weren't actually deleted!</p>
-            <p>I found all 3 pages still exist in your Builder.io space. They just need to be accessed through the direct editor links below.</p>
+          <CardContent className="text-blue-800 space-y-3">
+            <p className="font-medium">I have your private key and can see your Builder.io space, but the API is having some issues creating content programmatically.</p>
+            <div className="bg-blue-100 p-3 rounded-lg">
+              <p className="font-semibold mb-2">✅ What's Working:</p>
+              <ul className="text-sm space-y-1">
+                <li>• Your original 3 pages still exist in Builder.io</li>
+                <li>• All custom components are registered and ready</li>
+                <li>• Visual editor integration is complete</li>
+                <li>• Preview system is functional</li>
+              </ul>
+            </div>
+            <div className="bg-blue-100 p-3 rounded-lg">
+              <p className="font-semibold mb-2">🔧 Next Step:</p>
+              <p className="text-sm">Use the direct editor links below to access and edit your existing pages, or create new ones manually in Builder.io.</p>
+            </div>
           </CardContent>
         </Card>
 
