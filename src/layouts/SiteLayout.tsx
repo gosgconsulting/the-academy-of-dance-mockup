@@ -7,11 +7,25 @@ import Footer from '@/components/Footer'
 import { Outlet } from 'react-router-dom'
 
 function usePuckLayout() {
-  // Read from the same storage key used by the visual editor
-  const { data } = useEditorData('layout')
-  const content: any[] = Array.isArray(data?.content) ? data!.content : []
-  const header = content.find((c) => c?.type === 'Header')
-  const footer = content.find((c) => c?.type === 'Footer')
+  // Prefer unified layout slug; gracefully fall back to separate header/footer slugs
+  const { data: layoutData } = useEditorData('layout')
+  const layoutContent: any[] = Array.isArray(layoutData?.content) ? layoutData!.content : []
+  let header = layoutContent.find((c) => c?.type === 'Header')
+  let footer = layoutContent.find((c) => c?.type === 'Footer')
+
+  // Fallback: dedicated header slug
+  if (!header) {
+    const { data: headerData } = useEditorData('header')
+    const headerContent: any[] = Array.isArray(headerData?.content) ? headerData!.content : []
+    header = headerContent.find((c) => c?.type === 'Header') || null
+  }
+  // Fallback: dedicated footer slug
+  if (!footer) {
+    const { data: footerData } = useEditorData('footer')
+    const footerContent: any[] = Array.isArray(footerData?.content) ? footerData!.content : []
+    footer = footerContent.find((c) => c?.type === 'Footer') || null
+  }
+
   return { header, footer }
 }
 
@@ -23,11 +37,8 @@ export default function SiteLayout() {
   return (
     <div className="min-h-screen bg-white">
       <div>
-        {hasPuckHeader ? (
-          <Render config={puckConfig} data={{ content: [header] }} />
-        ) : (
-          <Navigation scrollToSection={() => {}} />
-        )}
+        {hasPuckHeader && <Render config={puckConfig} data={{ content: [header] }} />}
+        {!hasPuckHeader && <Navigation scrollToSection={() => {}} />}
       </div>
 
       <div>
@@ -35,11 +46,8 @@ export default function SiteLayout() {
       </div>
 
       <div>
-        {hasPuckFooter ? (
-          <Render config={puckConfig} data={{ content: [footer] }} />
-        ) : (
-          <Footer />
-        )}
+        {hasPuckFooter && <Render config={puckConfig} data={{ content: [footer] }} />}
+        {!hasPuckFooter && <Footer />}
       </div>
     </div>
   )

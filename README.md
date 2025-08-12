@@ -94,6 +94,28 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## HTML → Puck tooling
+
+Convert an input HTML file into a Puck config and payload.
+
+Commands:
+
+```bash
+# Run all steps: parse → generate config/renderers → payload
+npx node scripts/html-to-puck/cli.mjs --input index.html --outDir scripts/output
+
+# Only parse structure
+npx node scripts/html-to-puck/cli.mjs parse --input index.html --outDir scripts/output
+
+# Only generate Puck config + TS render stubs
+npx node scripts/html-to-puck/cli.mjs generate --input index.html --outDir scripts/output
+
+# Only payload conversion
+npx node scripts/html-to-puck/cli.mjs payload --input index.html --outDir scripts/output
+```
+
+Outputs are written to `scripts/output/`.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/e611c053-474f-4d53-90eb-5fb6e3d41280) and click on Share -> Publish.

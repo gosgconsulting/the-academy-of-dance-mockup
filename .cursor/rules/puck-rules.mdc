@@ -1,9 +1,0 @@
----
-alwaysApply: false
----
-look up Puck’s official docs to confirm how to build and convert any pages in the visual builder editor:
-- official doc: https://puckeditor.com/docs
-- how to detect components
-- how to detect outlines (clickable)
-- how to identify reusable components for each outline
-- when a component is missing, check if you are create a new one tht can be re-used
