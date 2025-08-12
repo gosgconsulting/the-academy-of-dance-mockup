@@ -130,27 +130,34 @@ const Admin = () => {
         <div>
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Website Pages</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {contentPages.map((page) => (
-              <Card key={page.id} className="hover:shadow-lg transition-shadow">
+            {requiredPages.map((page, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow border-orange-200 bg-orange-50">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-lg">{page.name}</CardTitle>
                       <CardDescription className="mt-1">{page.description}</CardDescription>
                     </div>
-                    <Badge variant={page.status === 'Published' ? 'default' : 'secondary'}>
-                      {page.status}
+                    <Badge variant="secondary">
+                      Needs Recreation
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex gap-3">
-                    <Button onClick={() => openEditor(page.id)} className="flex-1">
-                      <Edit className="w-4 h-4 mr-2" />
-                      Edit in Builder.io
-                    </Button>
-                    <Button variant="outline" onClick={() => previewPage(page.url)}>
-                      <ExternalLink className="w-4 h-4" />
+                  <div className="space-y-3">
+                    <div className="text-sm">
+                      <strong>Title:</strong> {page.content.title}
+                    </div>
+                    <div className="text-sm">
+                      <strong>Components:</strong> {page.components.join(', ')}
+                    </div>
+                    <Button
+                      size="sm"
+                      onClick={() => window.open('https://builder.io/content', '_blank')}
+                      className="w-full"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Create This Page
                     </Button>
                   </div>
                 </CardContent>
