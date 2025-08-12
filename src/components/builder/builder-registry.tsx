@@ -148,3 +148,20 @@ Builder.registerComponent(Programs, {
     },
   ],
 });
+
+// Register MissionVision component
+Builder.registerComponent(MissionVision, {
+  name: 'MissionVision',
+  inputs: [
+    {
+      name: 'mission',
+      type: 'longText',
+      defaultValue: 'To provide exceptional dance education that nurtures creativity, builds confidence, and develops technical excellence in students of all ages.',
+    },
+    {
+      name: 'vision',
+      type: 'longText',
+      defaultValue: 'To be Singapore\'s leading dance academy, inspiring the next generation of dancers and artists.',
+    },
+  ],
+});
