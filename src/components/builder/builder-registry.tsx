@@ -3,6 +3,7 @@ import PageHeader from './PageHeader';
 import ClassSchedule from './ClassSchedule';
 import Hero from './Hero';
 import Programs from './Programs';
+import MissionVision from './MissionVision';
 
 // Register PageHeader component
 Builder.registerComponent(PageHeader, {
