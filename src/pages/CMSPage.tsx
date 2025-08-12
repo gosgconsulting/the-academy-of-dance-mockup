@@ -20,11 +20,11 @@ const CMSPage = () => {
       try {
         setLoading(true);
 
-        // Map slug to specific content IDs
+        // Map slug to existing content IDs (found in Builder.io)
         const contentMap: { [key: string]: string } = {
-          'home': '753fd9c1d6b2420da34a02e9e21a3369',
-          'about': '294aeefe60d14699937f62dcb66a982e',
-          'programs': 'c8f10486540145738bbb39572fd74110'
+          'home': '753fd9c1d6b2420da34a02e9e21a3369',      // Dance Academy Homepage
+          'about': '294aeefe60d14699937f62dcb66a982e',     // About Us Page
+          'programs': 'c8f10486540145738bbb39572fd74110'   // Programs & Classes
         };
 
         const contentId = contentMap[slug || 'home'];
