@@ -19,19 +19,29 @@ const CMSPage = () => {
     const fetchContent = async () => {
       try {
         setLoading(true);
-        const urlPath = slug || 'home';
-        
-        // Fetch content from Builder.io
-        const content = await builder
-          .get('page', {
-            userAttributes: {
-              urlPath: urlPath,
-            },
-          })
-          .toPromise();
 
-        if (content) {
-          setContent(content);
+        // Map slug to specific content IDs
+        const contentMap: { [key: string]: string } = {
+          'home': '753fd9c1d6b2420da34a02e9e21a3369',
+          'about': '294aeefe60d14699937f62dcb66a982e',
+          'programs': 'c8f10486540145738bbb39572fd74110'
+        };
+
+        const contentId = contentMap[slug || 'home'];
+
+        if (!contentId) {
+          setNotFound(true);
+          return;
+        }
+
+        // Fetch specific content by ID
+        const response = await fetch(
+          `https://cdn.builder.io/api/v3/content/page/${contentId}?apiKey=43ad973db23348b2847cc82fd8c0b54b`
+        );
+
+        if (response.ok) {
+          const contentData = await response.json();
+          setContent(contentData);
         } else {
           setNotFound(true);
         }
