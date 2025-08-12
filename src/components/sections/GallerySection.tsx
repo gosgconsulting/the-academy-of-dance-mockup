@@ -8,10 +8,12 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
-  const galleryItems = data.items
+  const galleryItems = Array.isArray(data?.items) ? data.items.filter(Boolean) : []
 
   const openModal = (imageIndex: number) => {
-    setModalImageIndex(imageIndex);
+    if (!Array.isArray(galleryItems) || galleryItems.length === 0) return
+    const safeIndex = Math.max(0, Math.min(imageIndex, galleryItems.length - 1))
+    setModalImageIndex(safeIndex);
     setIsModalOpen(true);
   };
 
@@ -20,10 +22,12 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
   };
 
   const nextModalImage = () => {
+    if (galleryItems.length === 0) return
     setModalImageIndex((prev) => (prev + 1) % galleryItems.length);
   };
 
   const prevModalImage = () => {
+    if (galleryItems.length === 0) return
     setModalImageIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
   };
 
@@ -45,11 +49,14 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
                 className="relative group overflow-hidden rounded-xl hover:scale-105 transition-transform duration-300 cursor-pointer"
                 onClick={() => openModal(index)}
               >
-                <img
-                  src={typeof item.image === 'string' ? item.image : ''}
-                  alt={item.title}
-                  className="w-full h-64 object-cover"
-                />
+                {item && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={typeof item.image === 'string' ? item.image : ''}
+                    alt={item.title}
+                    className="w-full h-64 object-cover"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4">
                     <h3 className="text-white font-playfair text-lg font-semibold">
@@ -78,11 +85,14 @@ const GallerySection = ({ data }: { data: GalleryData }) => {
             {/* Main image container - centered with proper aspect ratio */}
             <div className="relative flex items-center justify-center w-full h-full px-16">
               {/* Main image - 80% of screen size with proper centering */}
-              <img
-                src={typeof galleryItems[modalImageIndex].image === 'string' ? galleryItems[modalImageIndex].image : ''}
-                alt={galleryItems[modalImageIndex].title}
-                className="max-w-[80%] max-h-[80%] object-contain"
-              />
+              {galleryItems[modalImageIndex] && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={typeof galleryItems[modalImageIndex].image === 'string' ? galleryItems[modalImageIndex].image : ''}
+                  alt={galleryItems[modalImageIndex].title}
+                  className="max-w-[80%] max-h-[80%] object-contain"
+                />
+              )}
 
               {/* Navigation arrows - positioned relative to the image container */}
               {galleryItems.length > 1 && (

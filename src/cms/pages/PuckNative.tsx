@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
 import { Puck } from '@measured/puck'
 import puckConfig from '@/puck/config'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { registry } from '@/cms/content/registry'
+import { useLocation } from 'react-router-dom'
 
 const STORAGE_KEY_PREFIX = 'puck:'
 
@@ -11,14 +10,12 @@ function createId() {
 }
 
 function buildTemplate() {
-  // Homepage blocks only (Header/Footer are handled globally by SiteLayout)
-  const homepageOrder = [
-    'Hero', 'Trials', 'About', 'Vision', 'Programs', 'Competitions',
-    'Events', 'Achievements', 'Teachers', 'Reviews', 'Locations', 'Gallery'
-  ].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
-  return {
-    content: homepageOrder.map((t) => ({ id: createId(), type: t, props: puckConfig.components[t].defaultProps }))
+  // New atomic template: create Hero section
+  const content: any[] = []
+  if ('Hero' in puckConfig.components) {
+    content.push({ id: createId(), type: 'Hero', props: (puckConfig.components as any)['Hero'].defaultProps })
   }
+  return { content }
 }
 
 function getKeyForSlug(slug: string) {
@@ -27,10 +24,23 @@ function getKeyForSlug(slug: string) {
 
 export default function PuckNative() {
   const location = useLocation()
-  const navigate = useNavigate()
   const search = new URLSearchParams(location.search)
   const slug = search.get('slug') || 'homepage'
-  const pageTitle = (registry as any)[slug]?.title || slug
+  const pageTitle = 'Homepage'
+
+  function sanitize(data: any) {
+    // Old design: allow only monolithic Hero block
+    const defaultsHero = (puckConfig.components as any)['Hero']?.defaultProps || {}
+    const list = Array.isArray(data?.content) ? [...data.content] : []
+    const firstHero = list.find((n: any) => n?.type === 'Hero')
+    const hero = firstHero ? { ...firstHero, props: { ...defaultsHero, ...(firstHero.props || {}) } } : { id: createId(), type: 'Hero', props: defaultsHero }
+    return { content: [hero] }
+  }
+
+  const persist = (slugParam: string, data: any) => {
+    const cleaned = JSON.stringify(sanitize(data))
+    localStorage.setItem(getKeyForSlug(slugParam), cleaned)
+  }
 
   const initial = useMemo(() => {
     const raw = typeof window !== 'undefined' ? localStorage.getItem(getKeyForSlug(slug)) : null
@@ -38,12 +48,41 @@ export default function PuckNative() {
       try {
         const parsed = JSON.parse(raw)
         if (Array.isArray(parsed?.content)) {
+          // Migration: convert old monolithic blocks to new atomic structure if needed
+          const migrated = parsed.content.map((c: any) => {
+            // Convert legacy Hero with individual props to new Hero with slot content
+            if (c?.type === 'Hero' && c?.props && typeof c.props.title === 'string') {
+              const p = c.props
+              const backgroundImage = p.backgroundImage || (Array.isArray(p.images) ? (typeof p.images[0] === 'string' ? p.images[0] : p.images[0]?.value || p.images[0]?.src) : undefined)
+              const heroDefaults = (puckConfig.components as any)['Hero']?.defaultProps || {}
+              return {
+                id: c.id || createId(),
+                type: 'Hero',
+                props: {
+                  ...heroDefaults,
+                  backgroundImage,
+                  content: [
+                    { type: 'Heading', props: { text: p.title || 'Heading', tag: 'h1', align: 'center' } },
+                    { type: 'Text', props: { text: p.description || '', align: 'center' } },
+                    { type: 'Button', props: { label: p.ctaText || 'Click', url: p.ctaUrl || '#trials' } },
+                  ],
+                },
+              }
+            }
+            return c
+          })
+
+          const sanitized = sanitize({ content: migrated })
           return {
-            content: parsed.content.map((c: any) => ({
-              id: c?.id || createId(),
-              type: c?.type,
-              props: c?.props ?? {}
-            }))
+            content: sanitized.content.map((c: any) => {
+              const type = c?.type
+              const cfg = (puckConfig.components as any)[type]
+              const mergedProps = {
+                ...(cfg?.defaultProps ?? {}),
+                ...(c?.props ?? {}),
+              }
+              return { id: c?.id || createId(), type, props: mergedProps }
+            })
           }
         }
       } catch {}
@@ -51,34 +90,18 @@ export default function PuckNative() {
     return buildTemplate()
   }, [slug])
 
+  // Note: no auto-persist/cleanup on load to avoid surprising content changes
+
   return (
     <div className="min-h-screen">
-      {/* Header bar with page switcher */}
-      <div className="sticky top-0 z-10 flex items-center justify-between gap-3 px-4 py-2 border-b bg-white">
-        <div className="text-sm">
-          <span className="opacity-60">Page</span>
-          <span className="mx-1">›</span>
-          <span className="font-medium">{pageTitle}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          {/* Simple page links */}
-          {Object.entries(registry).map(([s, entry]) => (
-            <Link
-              key={s}
-              className={`text-xs px-2 py-1 rounded border ${s===slug?'bg-black text-white':'bg-white'}`}
-              to={`/edit?slug=${encodeURIComponent(s)}`}
-            >
-              {entry.title}
-            </Link>
-          ))}
-        </div>
-      </div>
-
+      {/* Official Puck editor UI */}
       <Puck
         config={puckConfig}
         data={initial}
+        headerTitle={pageTitle}
+        // Removed custom header actions to avoid accidental resets/cleanups
         onPublish={(data) => {
-          localStorage.setItem(getKeyForSlug(slug), JSON.stringify(data))
+          persist(slug, data)
         }}
       />
     </div>

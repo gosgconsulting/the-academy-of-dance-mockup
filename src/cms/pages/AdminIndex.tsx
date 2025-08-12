@@ -26,7 +26,7 @@ export default function AdminIndex() {
             </div>
             <div className="flex items-center gap-2">
               <Link to={`/admin/${slug}`} className="px-3 py-1.5 border rounded hover:bg-gray-50">Edit</Link>
-              <Link to={`/edit`} className="px-3 py-1.5 border rounded hover:bg-gray-50">Visual editor</Link>
+              <Link to={`/edit?slug=${slug}`} className="px-3 py-1.5 border rounded hover:bg-gray-50">Visual editor</Link>
             </div>
           </div>
         ))}

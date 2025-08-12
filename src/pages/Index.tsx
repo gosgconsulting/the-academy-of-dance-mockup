@@ -21,14 +21,13 @@ import { usePageContent } from "@/cms/usePageContent";
 import { homepageDefaults, type HomepageContent } from "@/cms/content/schemas/homepage";
 import { Render } from "@measured/puck";
 import puckConfig from "@/puck/config";
-
-const STORAGE_KEY = 'puck:homepage'
+import { useEditorData } from "@/puck/store";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
   const location = useLocation();
-  const puckRaw = typeof window !== 'undefined' ? localStorage.getItem('puck:homepage') : null
-  const hasPuck = !!puckRaw
+  const { data: puckHomepage } = useEditorData('homepage')
+  const hasPuck = !!(puckHomepage && Array.isArray(puckHomepage.content) && puckHomepage.content.length)
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
@@ -53,7 +52,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       
       {(() => {
-        if (!puckRaw) {
+        if (!hasPuck) {
           const { data } = usePageContent<HomepageContent>('homepage', homepageDefaults)
           return (
             <>
@@ -89,7 +88,7 @@ const Index = () => {
             </>
           )
         }
-        const data = JSON.parse(puckRaw)
+        const data = puckHomepage!
         const filtered = {
           ...data,
           content: (data?.content || []).filter((b: any) => b?.type !== 'Header' && b?.type !== 'Footer')

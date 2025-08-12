@@ -20,6 +20,7 @@ import ProtectedRoute from "@/cms/auth/ProtectedRoute";
 import { AuthProvider } from "@/cms/auth/auth";
 import PuckNative from "@/cms/pages/PuckNative";
 import SiteLayout from "@/layouts/SiteLayout";
+import { EditorProvider } from "@/puck/store";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
+        <EditorProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<SiteLayout />}>
@@ -54,6 +56,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        </EditorProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
