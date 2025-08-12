@@ -4,27 +4,46 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Edit, Plus, Users, Settings } from 'lucide-react';
 
 const Admin = () => {
-  const contentPages = [
+  const requiredPages = [
     {
-      id: '753fd9c1d6b2420da34a02e9e21a3369',
       name: 'Homepage',
       description: 'Main landing page with hero section and programs overview',
-      status: 'Published',
-      url: '/cms/home'
+      url: '/cms/home',
+      components: ['Hero', 'Programs'],
+      content: {
+        title: 'Elite Dance Academy - Premier Dance Training Singapore',
+        description: 'Join Singapore\'s premier dance academy offering professional training in Ballet, Contemporary, Hip Hop, and more.',
+      }
     },
     {
-      id: '294aeefe60d14699937f62dcb66a982e',
       name: 'About Us',
       description: 'Academy story, mission, and vision',
-      status: 'Draft',
-      url: '/cms/about'
+      url: '/cms/about',
+      components: ['PageHeader', 'MissionVision'],
+      content: {
+        title: 'About Elite Dance Academy - Our Story & Mission',
+        description: 'Learn about our journey, mission, and commitment to excellence in dance education.',
+      }
     },
     {
-      id: 'c8f10486540145738bbb39572fd74110',
       name: 'Programs & Classes',
       description: 'Dance programs, schedules, and class information',
-      status: 'Draft',
-      url: '/cms/programs'
+      url: '/cms/programs',
+      components: ['PageHeader', 'ClassSchedule'],
+      content: {
+        title: 'Dance Programs & Class Schedules',
+        description: 'Explore our comprehensive range of dance classes and programs for all ages and skill levels.',
+      }
+    },
+    {
+      name: 'Contact',
+      description: 'Contact information and location details',
+      url: '/cms/contact',
+      components: ['PageHeader'],
+      content: {
+        title: 'Contact Elite Dance Academy',
+        description: 'Get in touch to learn more about our programs or schedule a trial class.',
+      }
     }
   ];
 
