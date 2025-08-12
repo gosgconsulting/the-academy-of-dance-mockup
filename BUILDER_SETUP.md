@@ -34,7 +34,7 @@
 
 ---
 
-## 🛠️ Custom Components Available
+## 🛠️ Custom Components Available (10 Total)
 
 Your React app has these registered Builder.io components:
 
@@ -81,6 +81,64 @@ Your React app has these registered Builder.io components:
 **Props**:
 - `mission` (longText): Mission statement
 - `vision` (longText): Vision statement
+
+### 6. Testimonials Component
+**Usage**: Student reviews and testimonials
+**Props**:
+- `title` (text): Section title
+- `testimonials` (list): Array of testimonial objects
+  - `name` (text): Student name
+  - `role` (text): Student description
+  - `content` (longText): Testimonial text
+  - `rating` (number): Star rating (1-5)
+  - `image` (file): Student photo
+
+### 7. Pricing Component
+**Usage**: Display class packages and pricing
+**Props**:
+- `title` (text): Section title
+- `subtitle` (text): Section description
+- `tiers` (list): Array of pricing tier objects
+  - `name` (text): Package name
+  - `price` (text): Price amount
+  - `period` (text): Billing period
+  - `description` (text): Package description
+  - `features` (list): Array of feature strings
+  - `popular` (boolean): Mark as popular
+  - `ctaText` (text): Button text
+
+### 8. Instructors Component
+**Usage**: Showcase dance instructors
+**Props**:
+- `title` (text): Section title
+- `subtitle` (text): Section description
+- `instructors` (list): Array of instructor objects
+  - `name` (text): Instructor name
+  - `title` (text): Instructor title/role
+  - `specialties` (list): Array of dance specialties
+  - `bio` (longText): Instructor biography
+  - `image` (file): Instructor photo
+  - `experience` (text): Years of experience
+
+### 9. Gallery Component
+**Usage**: Photo galleries and studios
+**Props**:
+- `title` (text): Gallery title
+- `subtitle` (text): Gallery description
+- `columns` (number): Grid columns (2, 3, or 4)
+- `images` (list): Array of image objects
+  - `src` (file): Image file
+  - `alt` (text): Image description
+  - `category` (text): Image category
+
+### 10. FAQ Component
+**Usage**: Frequently asked questions
+**Props**:
+- `title` (text): Section title
+- `subtitle` (text): Section description
+- `faqs` (list): Array of FAQ objects
+  - `question` (text): Question text
+  - `answer` (longText): Answer text
 
 ---
 
