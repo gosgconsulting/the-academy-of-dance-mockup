@@ -22,6 +22,7 @@ import { homepageDefaults, type HomepageContent } from "@/cms/content/schemas/ho
 import { Render } from "@measured/puck";
 import puckConfig from "@/puck/config";
 import { useEditorData } from "@/puck/store";
+import { ensurePuckIds } from "@/puck/utils/ensureIds";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
@@ -93,7 +94,8 @@ const Index = () => {
           ...data,
           content: (data?.content || []).filter((b: any) => b?.type !== 'Header' && b?.type !== 'Footer')
         }
-        return <Render config={puckConfig} data={filtered} />
+        const normalized = ensurePuckIds(filtered)
+        return <Render config={puckConfig} data={normalized} />
       })()}
       
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />

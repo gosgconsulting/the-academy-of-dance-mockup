@@ -1,5 +1,5 @@
 import React from 'react'
-import { builder } from '@builder.io/react'
+import { Builder } from '@builder.io/react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -210,16 +210,12 @@ const CTASection: React.FC<CTASectionProps> = ({
 
 // Register components with Builder.io
 const registerBuilderComponents = () => {
-  // Check if builder and builder.register are available
-  if (typeof builder === 'undefined' || typeof builder.register !== 'function') {
-    console.warn('Builder.io SDK not properly loaded or register function not available')
-    return
-  }
+  if (typeof window === 'undefined') return
 
   try {
-    builder.register('component', {
+    // Hero Section
+    Builder.registerComponent(HeroSection, {
       name: 'Hero Section',
-      component: HeroSection,
       inputs: [
         { name: 'title', type: 'string', defaultValue: 'Where Dreams Take Flight' },
         { name: 'subtitle', type: 'string', defaultValue: "Singapore's premium ballet and dance academy" },
@@ -229,9 +225,9 @@ const registerBuilderComponents = () => {
       ]
     })
 
-    builder.register('component', {
+    // Testimonial Card
+    Builder.registerComponent(TestimonialCard, {
       name: 'Testimonial Card',
-      component: TestimonialCard,
       inputs: [
         { name: 'name', type: 'string', defaultValue: 'Parent Name' },
         { name: 'role', type: 'string', defaultValue: 'Parent of Student' },
@@ -241,9 +237,9 @@ const registerBuilderComponents = () => {
       ]
     })
 
-    builder.register('component', {
+    // Programme Card
+    Builder.registerComponent(ProgrammeCard, {
       name: 'Programme Card',
-      component: ProgrammeCard,
       inputs: [
         { name: 'title', type: 'string', defaultValue: 'Dance Programme' },
         { name: 'description', type: 'longText' },
@@ -253,25 +249,20 @@ const registerBuilderComponents = () => {
       ]
     })
 
-    builder.register('component', {
+    // Stat Card
+    Builder.registerComponent(StatCard, {
       name: 'Stat Card',
-      component: StatCard,
       inputs: [
         { name: 'value', type: 'string', defaultValue: '100+' },
         { name: 'label', type: 'string', defaultValue: 'Happy Students' },
         { name: 'icon', type: 'string', defaultValue: '👥' },
-        {
-          name: 'color',
-          type: 'string',
-          defaultValue: 'gold',
-          enum: ['gold', 'bronze', 'amber', 'champagne']
-        }
+        { name: 'color', type: 'string', defaultValue: 'gold', enum: ['gold', 'bronze', 'amber', 'champagne'] }
       ]
     })
 
-    builder.register('component', {
+    // CTA Section
+    Builder.registerComponent(CTASection, {
       name: 'CTA Section',
-      component: CTASection,
       inputs: [
         { name: 'title', type: 'string', defaultValue: 'Ready to Start Dancing?' },
         { name: 'description', type: 'longText' },

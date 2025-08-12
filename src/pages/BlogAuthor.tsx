@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { usePageContent } from "@/cms/usePageContent";
 import { blogDefaults, type BlogContent } from "@/cms/content/schemas/blog";
-
+import { toSrc } from "@/lib/media";
 export default function BlogAuthor() {
   const { author } = useParams();
   const { data } = usePageContent<BlogContent>('blog', blogDefaults)
@@ -71,8 +71,8 @@ export default function BlogAuthor() {
                   <Link to={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
                       <img 
-                        src={post.image} 
-                        alt={post.title} 
+                        src={toSrc(post.image.src)} 
+                        alt={post.image.alt || post.title} 
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
                       />
                     </div>

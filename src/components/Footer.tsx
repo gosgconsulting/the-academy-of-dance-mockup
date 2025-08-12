@@ -2,7 +2,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import TikTokIcon from "./TikTokIcon";
 import { usePageContent } from "@/cms/usePageContent";
 import { footerDefaults, type FooterContent } from "@/cms/content/schemas/layout";
-
+import { toSrc } from "@/lib/media";
 const Footer = () => {
   const { data } = usePageContent<FooterContent>('footer', footerDefaults)
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-1 gap-8 mb-8">
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <img src={data.logoSrc} alt="The Academy of Dance" className="h-12 md:h-16 w-auto object-contain" />
+              <img src={toSrc(data.logoSrc)} alt="The Academy of Dance" className="h-12 md:h-16 w-auto object-contain" />
             </div>
             <p className="text-gray-300 mb-6">{data.tagline}</p>
             

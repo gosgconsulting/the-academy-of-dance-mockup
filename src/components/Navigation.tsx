@@ -5,7 +5,7 @@ import { headerDefaults, type HeaderContent } from "@/cms/content/schemas/layout
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { toSrc } from "@/lib/media";
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
 }
@@ -41,7 +41,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img 
-                src={data.logoSrc}
+                src={toSrc(data.logoSrc)}
                 alt="The Academy of Dance" 
                 className="h-8 md:h-12 w-auto object-contain hover:opacity-80 transition-opacity" 
               />

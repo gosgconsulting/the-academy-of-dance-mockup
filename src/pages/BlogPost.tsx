@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User, Clock, ArrowLeft, Tag } from "lucide-react";
 import { usePageContent } from "@/cms/usePageContent";
 import { blogDefaults, type BlogContent } from "@/cms/content/schemas/blog";
-
+import { toSrc } from "@/lib/media";
 export default function BlogPost() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ export default function BlogPost() {
   if (!post) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation scrollToSection={() => {}} />
         <div className="container mx-auto px-4 pt-32 text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
@@ -88,7 +87,7 @@ export default function BlogPost() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="aspect-video overflow-hidden rounded-lg mb-8">
             <img 
-              src={post.image.src} 
+              src={toSrc(post.image.src)} 
               alt={post.image.alt}
               className="w-full h-full object-cover"
             />

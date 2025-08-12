@@ -13,7 +13,7 @@ export type PuckBlocks = {
     primaryCta: { label: string; href?: string }
   }
   Hero: {
-    images?: string[]
+    images?: { src: string }[]
     backgroundImage?: string
     title: string
     description: string
@@ -68,7 +68,7 @@ export const puckConfig: Config<PuckBlocks> = {
         description: { type: 'textarea', placeholder: 'Description' },
         ctaText: { type: 'text', placeholder: 'Call to action' },
         ctaUrl: { type: 'text', placeholder: '#trials or /contact or https://…' },
-        images: { type: 'array', arrayFields: { value: { type: 'text', placeholder: '/path/to/image.png' } }, getItemSummary: (i)=> i?.value || 'Image' },
+        images: { type: 'array', arrayFields: { src: { type: 'text', placeholder: '/path/to/image.png' } }, getItemSummary: (i)=> i?.src || 'Image' },
         backgroundImage: { type: 'text', placeholder: '/path/to/hero.jpg' },
       },
       defaultProps: {

@@ -5,6 +5,7 @@ import { Calendar, Clock, Tag } from "lucide-react";
 import { useMemo } from "react";
 import { usePageContent } from "@/cms/usePageContent";
 import { blogDefaults, type BlogContent } from "@/cms/content/schemas/blog";
+import { toSrc } from "@/lib/media";
 export default function Blog() {
   const handleScrollToSection = (sectionId: string) => {
     // For blog page, just scroll to top or handle differently
@@ -52,7 +53,7 @@ export default function Blog() {
               {blogPosts.map(post => <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <Link to={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
-                      <img src={post.image.src} alt={post.image.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src={toSrc(post.image.src)} alt={post.image.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                   </Link>
                   
