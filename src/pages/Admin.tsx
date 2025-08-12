@@ -182,14 +182,22 @@ const Admin = () => {
             </ol>
             
             <div className="bg-blue-100 p-4 rounded-lg">
-              <h3 className="font-semibold mb-3">Available Components:</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
-                <div className="bg-white p-2 rounded">• Hero</div>
-                <div className="bg-white p-2 rounded">• PageHeader</div>
-                <div className="bg-white p-2 rounded">• Programs</div>
-                <div className="bg-white p-2 rounded">• ClassSchedule</div>
-                <div className="bg-white p-2 rounded">• MissionVision</div>
+              <h3 className="font-semibold mb-3">🎨 Available Components (10 Total):</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 text-sm">
+                <div className="bg-white p-2 rounded shadow-sm">🦸 Hero</div>
+                <div className="bg-white p-2 rounded shadow-sm">📋 PageHeader</div>
+                <div className="bg-white p-2 rounded shadow-sm">🎭 Programs</div>
+                <div className="bg-white p-2 rounded shadow-sm">📅 ClassSchedule</div>
+                <div className="bg-white p-2 rounded shadow-sm">🎯 MissionVision</div>
+                <div className="bg-white p-2 rounded shadow-sm">💬 Testimonials</div>
+                <div className="bg-white p-2 rounded shadow-sm">💰 Pricing</div>
+                <div className="bg-white p-2 rounded shadow-sm">👨‍🏫 Instructors</div>
+                <div className="bg-white p-2 rounded shadow-sm">📸 Gallery</div>
+                <div className="bg-white p-2 rounded shadow-sm">❓ FAQ</div>
               </div>
+              <p className="text-xs text-blue-700 mt-3 font-medium">
+                ✨ All components are drag-and-drop ready in Builder.io visual editor!
+              </p>
             </div>
 
             <div className="mt-4 p-3 bg-blue-100 rounded-lg">
