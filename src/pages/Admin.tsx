@@ -4,37 +4,34 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Edit, Plus, Users, Settings } from 'lucide-react';
 
 const Admin = () => {
-  const requiredPages = [
+  const existingPages = [
     {
+      id: '753fd9c1d6b2420da34a02e9e21a3369',
       name: 'Homepage',
       description: 'Main landing page with hero section and programs overview',
       url: '/cms/home',
-      components: ['Hero', 'Programs'],
-      content: {
-        title: 'Elite Dance Academy - Premier Dance Training Singapore',
-        description: 'Join Singapore\'s premier dance academy offering professional training in Ballet, Contemporary, Hip Hop, and more.',
-      }
+      status: 'Draft',
+      editorUrl: 'https://builder.io/content/753fd9c1d6b2420da34a02e9e21a3369'
     },
     {
+      id: '294aeefe60d14699937f62dcb66a982e',
       name: 'About Us',
       description: 'Academy story, mission, and vision',
       url: '/cms/about',
-      components: ['PageHeader', 'MissionVision'],
-      content: {
-        title: 'About Elite Dance Academy - Our Story & Mission',
-        description: 'Learn about our journey, mission, and commitment to excellence in dance education.',
-      }
+      status: 'Draft',
+      editorUrl: 'https://builder.io/content/294aeefe60d14699937f62dcb66a982e'
     },
     {
+      id: 'c8f10486540145738bbb39572fd74110',
       name: 'Programs & Classes',
       description: 'Dance programs, schedules, and class information',
       url: '/cms/programs',
-      components: ['PageHeader', 'ClassSchedule'],
-      content: {
-        title: 'Dance Programs & Class Schedules',
-        description: 'Explore our comprehensive range of dance classes and programs for all ages and skill levels.',
-      }
-    },
+      status: 'Draft',
+      editorUrl: 'https://builder.io/content/c8f10486540145738bbb39572fd74110'
+    }
+  ];
+
+  const missingPages = [
     {
       name: 'Contact',
       description: 'Contact information and location details',
