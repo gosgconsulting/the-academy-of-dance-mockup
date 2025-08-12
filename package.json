@@ -17,6 +17,8 @@
   "dependencies": {
     "@builder.io/react": "^8.2.6",
     "@builder.io/sdk": "^6.1.2",
+    "@craftjs/core": "^0.2.12",
+    "@craftjs/utils": "^0.2.5",
     "@hookform/resolvers": "^3.9.0",
     "@measured/puck": "^0.19.3",
     "@radix-ui/react-accordion": "^1.2.0",

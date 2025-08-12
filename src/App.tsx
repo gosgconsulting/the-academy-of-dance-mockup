@@ -20,6 +20,7 @@ import Signup from "@/cms/pages/Signup";
 import ProtectedRoute from "@/cms/auth/ProtectedRoute";
 import { AuthProvider } from "@/cms/auth/auth";
 import PuckNative from "@/cms/pages/PuckNative";
+import CraftEditor from "@/cms/pages/CraftEditor";
 import SiteLayout from "@/layouts/SiteLayout";
 import { EditorProvider } from "@/puck/store";
  
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/edit" element={<PuckNative />} />
+            <Route path="/craft" element={<CraftEditor />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/admin" element={<AdminIndex />} />
               <Route path="/admin/:slug" element={<ContentEditor />} />
