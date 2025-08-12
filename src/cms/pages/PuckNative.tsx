@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { Puck } from '@measured/puck'
 import puckConfig from '@/puck/config'
+import { auditEditorState } from '@/puck/audit'
 import { useLocation } from 'react-router-dom'
 
 const STORAGE_KEY_PREFIX = 'puck:'
@@ -10,12 +11,11 @@ function createId() {
 }
 
 function buildTemplate() {
-  // New atomic template: create Hero section
-  const content: any[] = []
-  if ('Hero' in puckConfig.components) {
-    content.push({ id: createId(), type: 'Hero', props: (puckConfig.components as any)['Hero'].defaultProps })
+  // Start with a basic homepage: Hero + Trials when available
+  const order = ['Hero', 'Trials'].filter((k) => k in puckConfig.components) as Array<keyof typeof puckConfig.components>
+  return {
+    content: order.map((t) => ({ id: createId(), type: t, props: (puckConfig.components as any)[t].defaultProps }))
   }
-  return { content }
 }
 
 function getKeyForSlug(slug: string) {
@@ -29,12 +29,17 @@ export default function PuckNative() {
   const pageTitle = 'Homepage'
 
   function sanitize(data: any) {
-    // Old design: allow only monolithic Hero block
-    const defaultsHero = (puckConfig.components as any)['Hero']?.defaultProps || {}
     const list = Array.isArray(data?.content) ? [...data.content] : []
-    const firstHero = list.find((n: any) => n?.type === 'Hero')
-    const hero = firstHero ? { ...firstHero, props: { ...defaultsHero, ...(firstHero.props || {}) } } : { id: createId(), type: 'Hero', props: defaultsHero }
-    return { content: [hero] }
+    const result = list
+      .filter((n: any) => !!n && typeof n === 'object' && n.type && (puckConfig.components as any)[n.type])
+      .map((n: any) => {
+        const cfg = (puckConfig.components as any)[n.type]
+        const mergedProps = { ...(cfg?.defaultProps ?? {}), ...(n.props ?? {}) }
+        return { id: n.id || createId(), type: n.type, props: mergedProps }
+      })
+    // If nothing valid, seed a sensible default template
+    if (!result.length) return buildTemplate()
+    return { content: result }
   }
 
   const persist = (slugParam: string, data: any) => {
@@ -48,31 +53,7 @@ export default function PuckNative() {
       try {
         const parsed = JSON.parse(raw)
         if (Array.isArray(parsed?.content)) {
-          // Migration: convert old monolithic blocks to new atomic structure if needed
-          const migrated = parsed.content.map((c: any) => {
-            // Convert legacy Hero with individual props to new Hero with slot content
-            if (c?.type === 'Hero' && c?.props && typeof c.props.title === 'string') {
-              const p = c.props
-              const backgroundImage = p.backgroundImage || (Array.isArray(p.images) ? (typeof p.images[0] === 'string' ? p.images[0] : p.images[0]?.value || p.images[0]?.src) : undefined)
-              const heroDefaults = (puckConfig.components as any)['Hero']?.defaultProps || {}
-              return {
-                id: c.id || createId(),
-                type: 'Hero',
-                props: {
-                  ...heroDefaults,
-                  backgroundImage,
-                  content: [
-                    { type: 'Heading', props: { text: p.title || 'Heading', tag: 'h1', align: 'center' } },
-                    { type: 'Text', props: { text: p.description || '', align: 'center' } },
-                    { type: 'Button', props: { label: p.ctaText || 'Click', url: p.ctaUrl || '#trials' } },
-                  ],
-                },
-              }
-            }
-            return c
-          })
-
-          const sanitized = sanitize({ content: migrated })
+          const sanitized = sanitize(parsed)
           return {
             content: sanitized.content.map((c: any) => {
               const type = c?.type
@@ -102,6 +83,9 @@ export default function PuckNative() {
         // Removed custom header actions to avoid accidental resets/cleanups
         onPublish={(data) => {
           persist(slug, data)
+        }}
+        onChange={(data) => {
+          try { auditEditorState(puckConfig as any, data as any) } catch {}
         }}
       />
     </div>
