@@ -1,6 +1,11 @@
-
+// WordPress-ready homepage template structure
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
+// Import content data that will become WordPress customizer options
+import { siteConfig, heroContent, navigationMenu } from "../../wordpress-conversion/content-data";
+
+// Components that will become WordPress template parts
 import WhatsAppChat from "@/components/WhatsAppChat";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -19,7 +24,20 @@ import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
 import StatisticsSection from "@/components/sections/StatisticsSection";
 
-const Index = () => {
+/**
+ * HomePage Template Component
+ * 
+ * This structure maps directly to WordPress template hierarchy:
+ * - This component → index.php
+ * - Each section component → template-parts/sections/
+ * - Navigation/Footer → header.php/footer.php
+ * 
+ * Content data is imported from content-data.ts which will become:
+ * - WordPress Customizer options
+ * - ACF field groups
+ * - Theme options
+ */
+const HomePage = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
   const location = useLocation();
 
@@ -43,22 +61,34 @@ const Index = () => {
   }, [location.state]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
+      {/* Header - becomes header.php */}
       <Navigation scrollToSection={scrollToSection} />
-      <HeroSection scrollToSection={scrollToSection} />
-      <TrialsSection />
-      <AboutUsSection />
-      <VisionMissionSection />
-      <StatisticsSection />
-      <ProgrammesAndExamsSection />
-      <CompetitionExcellenceSection />
-      <EventsSection />
-      <AchievementsSection />
-      <TeachersSection />
-      <ReviewsSection />
-      <LocationsSection />
-      <GallerySection />
+      
+      {/* Main Content - becomes WordPress loop in index.php */}
+      <main>
+        {/* Hero Section - template-parts/hero-section.php */}
+        <HeroSection scrollToSection={scrollToSection} />
+        
+        {/* Content Sections - template-parts/sections/ */}
+        <TrialsSection />
+        <AboutUsSection />
+        <VisionMissionSection />
+        <StatisticsSection />
+        <ProgrammesAndExamsSection />
+        <CompetitionExcellenceSection />
+        <EventsSection />
+        <AchievementsSection />
+        <TeachersSection />
+        <ReviewsSection />
+        <LocationsSection />
+        <GallerySection />
+      </main>
+      
+      {/* Footer - becomes footer.php */}
       <Footer />
+      
+      {/* Interactive Elements - converted to vanilla JS/Alpine.js */}
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
         isOpen={isWhatsAppChatOpen}
@@ -68,4 +98,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HomePage;
