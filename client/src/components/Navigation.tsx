@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "wouter";
 
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
@@ -10,9 +10,8 @@ interface NavigationProps {
 
 const Navigation = ({ scrollToSection }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+  const [location, navigate] = useLocation();
+  const isHomePage = location === '/';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -22,7 +21,9 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
     if (isHomePage) {
       scrollToSection(sectionId);
     } else {
-      navigate('/', { state: { scrollTo: sectionId } });
+      navigate('/');
+      // For wouter, we'll handle the scrolling differently since it doesn't support state
+      setTimeout(() => scrollToSection(sectionId), 100);
     }
   };
 

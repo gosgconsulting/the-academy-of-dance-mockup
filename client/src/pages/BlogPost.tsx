@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "wouter";
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -175,7 +175,6 @@ const blogPosts = [
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const navigate = useNavigate();
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -212,13 +211,13 @@ export default function BlogPost() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
         <div className="container mx-auto px-4 text-center">
-          <button 
-            onClick={() => navigate('/blog')}
+          <Link 
+            to="/blog"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
-          </button>
+          </Link>
           
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-wrap justify-center gap-2 mb-4">
