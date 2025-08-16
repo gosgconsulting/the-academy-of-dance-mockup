@@ -1,0 +1,225 @@
+/*
+Theme Name: Dance Academy FSE
+Theme URI: https://danceacademy.com
+Description: A modern Full Site Editor theme for dance academies with comprehensive sections and beautiful design.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+Author: Dance Academy
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: dance-academy
+
+This theme is built for WordPress Full Site Editor and follows modern block theme standards.
+*/
+
+/* Reset and base styles */
+* {
+	box-sizing: border-box;
+}
+
+/* Custom properties for animations and transitions */
+:root {
+	--transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	--shadow-elegant: 0 10px 30px -10px hsl(var(--wp--preset--color--primary) / 0.3);
+	--shadow-glow: 0 0 40px hsl(var(--wp--preset--color--primary) / 0.4);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Enhanced button styles */
+.wp-block-button__link {
+	transition: var(--transition-smooth);
+	text-decoration: none;
+}
+
+.wp-block-button__link:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-elegant);
+}
+
+/* Card-like styling for groups */
+.wp-block-group.has-background {
+	border-radius: 12px;
+}
+
+/* Navigation enhancements */
+.wp-block-navigation ul {
+	gap: var(--wp--preset--spacing--large);
+}
+
+.wp-block-navigation-link__content {
+	transition: var(--transition-smooth);
+}
+
+.wp-block-navigation-link__content:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+/* Image hover effects */
+.wp-block-image img {
+	transition: var(--transition-smooth);
+}
+
+.wp-block-image:hover img {
+	transform: scale(1.05);
+}
+
+/* Social links styling */
+.wp-block-social-links .wp-block-social-link {
+	transition: var(--transition-smooth);
+}
+
+.wp-block-social-links .wp-block-social-link:hover {
+	transform: translateY(-2px);
+}
+
+/* Responsive utilities */
+@media (max-width: 781px) {
+	.wp-block-columns {
+		flex-direction: column;
+	}
+	
+	.wp-block-column {
+		flex-basis: 100% !important;
+	}
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Animation classes */
+.animate-fade-in {
+	animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+	animation: slideInRight 0.6s ease-out;
+}
+
+/* Custom list styling */
+.list-none {
+	list-style: none;
+}
+
+.list-none li::before {
+	content: '';
+	margin-right: 0;
+}
+
+/* Gradient text effect */
+.gradient-text {
+	background: var(--wp--preset--gradient--primary-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Stats counter styling */
+.stats-counter {
+	font-size: var(--wp--preset--font-size--heading-large);
+	font-weight: 700;
+	color: var(--wp--preset--color--primary);
+}
+
+/* Gallery grid */
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--wp--preset--spacing--large);
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+	background: var(--wp--preset--color--card);
+	border-radius: 12px;
+	padding: var(--wp--preset--spacing--large);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-elegant);
+}
+
+/* Form styling */
+.wp-block-contact-form-7 input,
+.wp-block-contact-form-7 textarea {
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 6px;
+	padding: var(--wp--preset--spacing--medium);
+	font-family: inherit;
+	font-size: var(--wp--preset--font-size--medium);
+	transition: var(--transition-smooth);
+}
+
+.wp-block-contact-form-7 input:focus,
+.wp-block-contact-form-7 textarea:focus {
+	outline: 2px solid var(--wp--preset--color--ring);
+	border-color: var(--wp--preset--color--primary);
+}
+
+/* Loading states */
+.loading {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Focus visible improvements */
+.wp-block-button__link:focus-visible,
+.wp-block-navigation-link__content:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ring);
+	outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+	.wp-block-navigation,
+	.wp-block-social-links {
+		display: none;
+	}
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.wp-block-button__link {
+		border: 2px solid currentColor;
+	}
+}
