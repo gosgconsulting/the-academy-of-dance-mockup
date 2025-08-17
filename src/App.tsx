@@ -12,6 +12,10 @@ import BlogAuthor from "./pages/BlogAuthor";
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
+import CMSPage from "./pages/CMSPage";
+import CMSDashboard from "./components/CMSDashboard";
+import Admin from "./pages/Admin";
+import BuilderPreview from "./pages/BuilderPreview";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +27,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/cms-dashboard" element={<CMSDashboard />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/builder-preview" element={<BuilderPreview />} />
+          <Route path="/cms/:slug" element={<CMSPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/blog/category/:category" element={<BlogCategory />} />
