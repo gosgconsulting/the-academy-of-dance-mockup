@@ -17,7 +17,6 @@ import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
-import StatisticsSection from "@/components/sections/StatisticsSection";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
@@ -43,13 +42,12 @@ const Index = () => {
   }, [location.state]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
       <AboutUsSection />
       <VisionMissionSection />
-      <StatisticsSection />
       <ProgrammesAndExamsSection />
       <CompetitionExcellenceSection />
       <EventsSection />
