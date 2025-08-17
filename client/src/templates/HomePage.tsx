@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 // Import content data that will become WordPress customizer options
-import { siteConfig, heroContent, navigationMenu } from "../../wordpress-conversion/content-data";
+import { siteConfig, heroContent, navigationMenu } from "../../../wordpress-conversion/content-data";
 
 // Components that will become WordPress template parts
 import WhatsAppChat from "@/components/WhatsAppChat";
