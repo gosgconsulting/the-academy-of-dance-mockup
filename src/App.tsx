@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SpartiBuilder } from "../sparti-builder";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -22,26 +23,28 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/cms-dashboard" element={<CMSDashboard />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/builder-preview" element={<BuilderPreview />} />
-          <Route path="/cms/:slug" element={<CMSPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/blog/category/:category" element={<BlogCategory />} />
-          <Route path="/blog/tag/:tag" element={<BlogTag />} />
-          <Route path="/blog/author/:author" element={<BlogAuthor />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <SpartiBuilder config={{ enabled: true, toolbar: true, autoDetect: true }}>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/cms-dashboard" element={<CMSDashboard />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/builder-preview" element={<BuilderPreview />} />
+            <Route path="/cms/:slug" element={<CMSPage />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/blog/category/:category" element={<BlogCategory />} />
+            <Route path="/blog/tag/:tag" element={<BlogTag />} />
+            <Route path="/blog/author/:author" element={<BlogAuthor />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </SpartiBuilder>
     </TooltipProvider>
   </QueryClientProvider>
 );
