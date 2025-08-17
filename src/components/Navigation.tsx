@@ -32,7 +32,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50">
+    <nav className="fixed top-0 w-full bg-elegant-black backdrop-blur-md z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -46,23 +46,23 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
           </div>
           
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => handleNavigation('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
-            <button onClick={() => handleNavigation('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
-            <button onClick={() => handleNavigation('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
-            <button onClick={() => handleNavigation('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
-            <button onClick={() => handleNavigation('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
-            <button onClick={() => handleNavigation('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
-            <button onClick={() => handleNavigation('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
-            <Link to="/blog" className="text-white hover:text-secondary transition-colors">Blog</Link>
+            <button onClick={() => handleNavigation('hero')} className="text-elegant-white hover:text-secondary transition-colors">Home</button>
+            <button onClick={() => handleNavigation('trials')} className="text-elegant-white hover:text-secondary transition-colors">Trials</button>
+            <button onClick={() => handleNavigation('about')} className="text-elegant-white hover:text-secondary transition-colors">About Us</button>
+            <button onClick={() => handleNavigation('programmes')} className="text-elegant-white hover:text-secondary transition-colors">Programmes</button>
+            <button onClick={() => handleNavigation('reviews')} className="text-elegant-white hover:text-secondary transition-colors">Reviews</button>
+            <button onClick={() => handleNavigation('teachers')} className="text-elegant-white hover:text-secondary transition-colors">Teachers</button>
+            <button onClick={() => handleNavigation('gallery')} className="text-elegant-white hover:text-secondary transition-colors">Gallery</button>
+            <Link to="/blog" className="text-elegant-white hover:text-secondary transition-colors">Blog</Link>
           </div>
           
           {/* Desktop Book Now Button */}
-          <Button onClick={() => handleNavigation('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
+          <Button onClick={() => handleNavigation('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-elegant-white">Book Now!</Button>
           
           {/* Mobile Menu Button */}
           <button 
             onClick={toggleMobileMenu}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-elegant-white p-2"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -73,14 +73,14 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => handleMobileNavClick('hero')} className="text-white hover:text-secondary transition-colors text-left">Home</button>
-              <button onClick={() => handleMobileNavClick('trials')} className="text-white hover:text-secondary transition-colors text-left">Trials</button>
-              <button onClick={() => handleMobileNavClick('about')} className="text-white hover:text-secondary transition-colors text-left">About Us</button>
-              <button onClick={() => handleMobileNavClick('programmes')} className="text-white hover:text-secondary transition-colors text-left">Programmes</button>
-              <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
-              <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
-              <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
-              <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Blog</Link>
+              <button onClick={() => handleMobileNavClick('hero')} className="text-elegant-white hover:text-secondary transition-colors text-left">Home</button>
+              <button onClick={() => handleMobileNavClick('trials')} className="text-elegant-white hover:text-secondary transition-colors text-left">Trials</button>
+              <button onClick={() => handleMobileNavClick('about')} className="text-elegant-white hover:text-secondary transition-colors text-left">About Us</button>
+              <button onClick={() => handleMobileNavClick('programmes')} className="text-elegant-white hover:text-secondary transition-colors text-left">Programmes</button>
+              <button onClick={() => handleMobileNavClick('reviews')} className="text-elegant-white hover:text-secondary transition-colors text-left">Reviews</button>
+              <button onClick={() => handleMobileNavClick('teachers')} className="text-elegant-white hover:text-secondary transition-colors text-left">Teachers</button>
+              <button onClick={() => handleMobileNavClick('gallery')} className="text-elegant-white hover:text-secondary transition-colors text-left">Gallery</button>
+              <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-elegant-white hover:text-secondary transition-colors text-left">Blog</Link>
             </div>
           </div>
         )}

@@ -43,7 +43,7 @@ const Index = () => {
   }, [location.state]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} />
       <TrialsSection />
