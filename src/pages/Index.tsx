@@ -17,7 +17,6 @@ import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
-import StatisticsSection from "@/components/sections/StatisticsSection";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
@@ -49,7 +48,6 @@ const Index = () => {
       <TrialsSection />
       <AboutUsSection />
       <VisionMissionSection />
-      <StatisticsSection />
       <ProgrammesAndExamsSection />
       <CompetitionExcellenceSection />
       <EventsSection />

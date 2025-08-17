@@ -4,26 +4,26 @@ const StatisticsSection = () => {
     {
       number: "500+",
       label: "Students Trained",
-      color: "text-stats-gold",
-      bgGlow: "bg-stats-gold/10",
+      color: "text-violet-500",
+      bgGlow: "bg-violet-100",
     },
     {
       number: "15+",
-      label: "Years Experience", 
-      color: "text-stats-amber",
-      bgGlow: "bg-stats-amber/10",
+      label: "Years Experience",
+      color: "text-emerald-500",
+      bgGlow: "bg-emerald-100",
     },
     {
       number: "95%",
       label: "Success Rate",
-      color: "text-stats-bronze",
-      bgGlow: "bg-stats-bronze/10",
+      color: "text-orange-500",
+      bgGlow: "bg-orange-100",
     },
     {
       number: "20+",
       label: "Awards Won",
-      color: "text-stats-royal",
-      bgGlow: "bg-stats-royal/10",
+      color: "text-rose-500",
+      bgGlow: "bg-rose-100",
     },
   ];
 
@@ -36,7 +36,7 @@ const StatisticsSection = () => {
               {statistics.map((stat, index) => (
                 <div key={index} className="text-center group">
                   <div className={`relative inline-block p-4 rounded-2xl ${stat.bgGlow} transition-all duration-300 group-hover:scale-105 mb-4`}>
-                    <div className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg`}>
+                    <div className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg !important`} style={{color: stat.color === 'text-violet-500' ? '#8b5cf6' : stat.color === 'text-emerald-500' ? '#10b981' : stat.color === 'text-orange-500' ? '#f97316' : '#f43f5e'}}>
                       {stat.number}
                     </div>
                   </div>
