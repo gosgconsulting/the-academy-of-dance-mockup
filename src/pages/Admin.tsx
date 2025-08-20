@@ -2,8 +2,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Edit, Plus, Users, Settings } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useEffect, useState, FormEvent } from 'react';
 
 const Admin = () => {
+  const [authed, setAuthed] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  useEffect(() => {
+    setAuthed(localStorage.getItem('admin_authed') === 'true');
+  }, []);
+  const handleLogin = (e: FormEvent) => {
+    e.preventDefault();
+    if (username === 'tadof' && password === 'tadoff000!') {
+      localStorage.setItem('admin_authed', 'true');
+      setAuthed(true);
+      setError('');
+    } else {
+      setError('Invalid username or password');
+    }
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('admin_authed');
+    setAuthed(false);
+  };
   // These pages were found in Builder.io debug info - they still exist!
   const existingPages = [
     {
@@ -56,6 +80,43 @@ const Admin = () => {
     }
   ];
 
+  if (!authed) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Admin Login</CardTitle>
+            <CardDescription>Enter your credentials</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              {error && <p className="text-sm text-red-600">{error}</p>}
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  autoComplete="username"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                />
+              </div>
+              <Button type="submit" className="w-full">Sign in</Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -74,6 +135,9 @@ const Admin = () => {
               <Button variant="outline" onClick={() => window.open('https://builder.io', '_blank')}>
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Open Builder.io
+              </Button>
+              <Button variant="outline" onClick={handleLogout}>
+                Logout
               </Button>
             </div>
           </div>
