@@ -1,14 +1,24 @@
 _schema: _schema
-source: /
+source: /src/
 paths:
   uploads: uploads
   static: ''
 collections_config:
   pages:
-    path: ''
+    path: pages
+    glob:
+      -
     name: Pages
     icon: wysiwyg
     description: ''
+    preview:
+      text:
+      subtext:
+      icon:
+      icon_color:
+      image:
+      metadata:
+      gallery:
     _editables:
       text:
         allow_custom_markup: true
@@ -29,6 +39,8 @@ collections_config:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+editor:
+  default_path:
 timezone: Asia/Bangkok
 markdown:
   engine: commonmark
