@@ -1,7 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
@@ -9,9 +9,7 @@ interface NavigationProps {
 
 const Navigation = ({ scrollToSection }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = typeof window !== 'undefined' ? window.location.pathname === '/' : true;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -21,7 +19,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
     if (isHomePage) {
       scrollToSection(sectionId);
     } else {
-      navigate('/', { state: { scrollTo: sectionId } });
+      window.location.href = `/#${sectionId}`;
     }
   };
 
@@ -35,13 +33,13 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <a href="/" className="flex items-center">
               <img 
                 src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
                 alt="The Academy of Dance" 
                 className="h-8 md:h-12 w-auto object-contain hover:opacity-80 transition-opacity" 
               />
-            </Link>
+            </a>
           </div>
           
           <div className="hidden md:flex space-x-8">
@@ -52,7 +50,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
             <button onClick={() => handleNavigation('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
             <button onClick={() => handleNavigation('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
             <button onClick={() => handleNavigation('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
-            <Link to="/blog" className="text-white hover:text-secondary transition-colors">Blog</Link>
+            <a href="/blog" className="text-white hover:text-secondary transition-colors">Blog</a>
           </div>
           
           {/* Desktop Book Now Button */}
@@ -79,7 +77,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
               <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
               <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
               <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
-              <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Blog</Link>
+              <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Blog</a>
             </div>
           </div>
         )}
@@ -89,3 +87,4 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
 };
 
 export default Navigation;
+

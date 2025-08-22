@@ -1,4 +1,3 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -173,9 +172,7 @@ const blogPosts = [
   }
 ];
 
-export default function BlogPost() {
-  const { slug } = useParams();
-  const navigate = useNavigate();
+export default function BlogPost({ slug }: { slug?: string }) {
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -191,9 +188,9 @@ export default function BlogPost() {
         <div className="container mx-auto px-4 pt-32 text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
-          <Link to="/blog" className="text-primary hover:text-primary/80">
+          <a href="/blog" className="text-primary hover:text-primary/80">
             ← Back to Blog
-          </Link>
+          </a>
         </div>
       </div>
     );
@@ -212,13 +209,13 @@ export default function BlogPost() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
         <div className="container mx-auto px-4 text-center">
-          <button 
-            onClick={() => navigate('/blog')}
+          <a 
+            href="/blog"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
-          </button>
+          </a>
           
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-wrap justify-center gap-2 mb-4">
@@ -273,9 +270,11 @@ export default function BlogPost() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map(tag => (
-                    <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-muted">
-                      {tag}
-                    </Badge>
+                    <a key={tag} href={`/blog/tag/${tag.toLowerCase()}`}>
+                      <Badge variant="outline" className="cursor-pointer hover:bg-muted">
+                        {tag}
+                      </Badge>
+                    </a>
                   ))}
                 </div>
               </div>

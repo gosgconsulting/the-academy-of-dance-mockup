@@ -1,0 +1,8 @@
+---
+import "../../../index.css";
+import BlogTag from "../../BlogTag";
+
+const { tag } = Astro.params;
+---
+
+<BlogTag tag={tag} client:load />

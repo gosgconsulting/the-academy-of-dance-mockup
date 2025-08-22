@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -134,31 +133,31 @@ export default function Blog() {
             {/* Blog Posts - Left Side */}
             <div className="lg:col-span-2 space-y-8">
               {blogPosts.map(post => <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <Link to={`/blog/${post.slug}`}>
+                  <a href={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
                       <img src={post.image} alt={post.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
-                  </Link>
+                  </a>
                   
                   <CardHeader>
                     <div className="flex flex-wrap gap-2 mb-3">
-                      <Link to={`/blog/category/${post.category.toLowerCase()}`}>
+                      <a href={`/blog/category/${post.category.toLowerCase()}`}>
                         <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
                           {post.category}
                         </Badge>
-                      </Link>
-                      {post.tags.map(tag => <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                      </a>
+                      {post.tags.map(tag => <a key={tag} href={`/blog/tag/${tag.toLowerCase()}`}>
                           <Badge variant="outline" className="text-xs cursor-pointer hover:bg-muted">
                             {tag}
                           </Badge>
-                        </Link>)}
+                        </a>)}
                     </div>
                     
-                    <Link to={`/blog/${post.slug}`}>
+                    <a href={`/blog/${post.slug}`}>
                       <CardTitle className="text-2xl font-playfair hover:text-primary transition-colors cursor-pointer text-dance-bronze">
                         {post.title}
                       </CardTitle>
-                    </Link>
+                    </a>
                     
                     <div className="flex items-center gap-4 text-sm text-gray-600">
                       <div className="flex items-center gap-1">
@@ -174,9 +173,9 @@ export default function Blog() {
                   
                   <CardContent>
                     <p className="mb-4 font-inter text-gray-600">{post.excerpt}</p>
-                    <Link to={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors font-inter">
+                    <a href={`/blog/${post.slug}`} className="text-primary hover:text-primary/80 font-medium transition-colors font-inter">
                       Read More →
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>)}
             </div>
@@ -193,10 +192,10 @@ export default function Blog() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {categories.map(category => <Link key={category.name} to={`/blog/category/${category.name.toLowerCase()}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors text-gray-600">
+                  {categories.map(category => <a key={category.name} href={`/blog/category/${category.name.toLowerCase()}`} className="flex justify-between items-center hover:text-primary cursor-pointer transition-colors text-gray-600">
                       <span>{category.name}</span>
                       <Badge variant="secondary">{category.count}</Badge>
-                    </Link>)}
+                    </a>)}
                 </CardContent>
               </Card>
 
@@ -210,11 +209,11 @@ export default function Blog() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {tags.map(tag => <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                    {tags.map(tag => <a key={tag} href={`/blog/tag/${tag.toLowerCase()}`}>
                         <Badge variant="outline" className="cursor-pointer hover:bg-muted">
                           {tag}
                         </Badge>
-                      </Link>)}
+                      </a>)}
                   </div>
                 </CardContent>
               </Card>

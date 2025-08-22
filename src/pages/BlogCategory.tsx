@@ -1,4 +1,3 @@
-import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -70,8 +69,7 @@ const blogPosts = [
   }
 ];
 
-export default function BlogCategory() {
-  const { category } = useParams();
+export default function BlogCategory({ category }: { category?: string }) {
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -95,13 +93,13 @@ export default function BlogCategory() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
         <div className="container mx-auto px-4 text-center text-white">
-          <Link 
-            to="/blog"
+          <a 
+            href="/blog"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to All Blogs
-          </Link>
+          </a>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             {category} Dance Blog Posts
@@ -124,18 +122,18 @@ export default function BlogCategory() {
               <p className="text-muted-foreground mb-8 font-inter">
                 There are no blog posts in the "{category}" category yet.
               </p>
-              <Link 
-                to="/blog"
+              <a 
+                href="/blog"
                 className="text-primary hover:text-primary/80 font-medium font-inter"
               >
                 ← Back to all posts
-              </Link>
+              </a>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map(post => (
                 <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <Link to={`/blog/${post.slug}`}>
+                  <a href={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
                       <img 
                         src={post.image} 
@@ -143,25 +141,25 @@ export default function BlogCategory() {
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
                       />
                     </div>
-                  </Link>
+                  </a>
                   
                   <CardHeader>
                     <div className="flex flex-wrap gap-2 mb-3">
                       <Badge variant="secondary">{post.category}</Badge>
                       {post.tags.map(tag => (
-                        <Link key={tag} to={`/blog/tag/${tag.toLowerCase()}`}>
+                        <a key={tag} href={`/blog/tag/${tag.toLowerCase()}`}>
                           <Badge variant="outline" className="text-xs cursor-pointer hover:bg-muted">
                             {tag}
                           </Badge>
-                        </Link>
+                        </a>
                       ))}
                     </div>
                     
-                    <Link to={`/blog/${post.slug}`}>
+                    <a href={`/blog/${post.slug}`}>
                       <CardTitle className="text-xl hover:text-primary transition-colors cursor-pointer">
                         {post.title}
                       </CardTitle>
-                    </Link>
+                    </a>
                     
                     <div className="flex items-center gap-4 text-sm text-muted-foreground font-inter">
                       <div className="flex items-center gap-1">
@@ -177,12 +175,12 @@ export default function BlogCategory() {
                   
                   <CardContent>
                     <p className="text-muted-foreground mb-4 font-inter">{post.excerpt}</p>
-                    <Link 
-                      to={`/blog/${post.slug}`}
+                    <a 
+                      href={`/blog/${post.slug}`}
                       className="text-primary hover:text-primary/80 font-medium transition-colors font-inter"
                     >
                       Read More →
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
               ))}

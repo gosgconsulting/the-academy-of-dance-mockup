@@ -1,0 +1,8 @@
+---
+import "../../../index.css";
+import BlogCategory from "../../BlogCategory";
+
+const { category } = Astro.params;
+---
+
+<BlogCategory category={category} client:load />

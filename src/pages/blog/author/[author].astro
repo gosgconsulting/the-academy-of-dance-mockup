@@ -1,0 +1,8 @@
+---
+import "../../../index.css";
+import BlogAuthor from "../../BlogAuthor";
+
+const { author } = Astro.params;
+---
+
+<BlogAuthor author={author} client:load />
