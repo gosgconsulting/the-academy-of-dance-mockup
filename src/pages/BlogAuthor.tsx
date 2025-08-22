@@ -1,4 +1,4 @@
- 
+ import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +69,8 @@ const blogPosts = [
   }
 ];
 
-export default function BlogAuthor({ author }: { author?: string }) {
+export default function BlogAuthor() {
+  const { author } = useParams<{ author: string }>();
   
   const authorName = author?.replace('-', ' ');
   const filteredPosts = blogPosts.filter(post => 

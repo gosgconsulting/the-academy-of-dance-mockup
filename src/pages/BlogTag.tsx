@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +70,8 @@ const blogPosts = [
   }
 ];
 
-export default function BlogTag({ tag }: { tag?: string }) {
+export default function BlogTag() {
+  const { tag } = useParams<{ tag: string }>();
   
   // Scroll to top when component mounts
   useEffect(() => {

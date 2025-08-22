@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -69,7 +70,8 @@ const blogPosts = [
   }
 ];
 
-export default function BlogCategory({ category }: { category?: string }) {
+export default function BlogCategory() {
+  const { category } = useParams<{ category: string }>();
   
   // Scroll to top when component mounts
   useEffect(() => {

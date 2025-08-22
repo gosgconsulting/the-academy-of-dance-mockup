@@ -8,10 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "astro:dev": "astro dev",
-    "astro:build": "astro build",
-    "astro:preview": "astro preview"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -66,9 +63,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
-    "@astrojs/react": "^3.6.2",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.15.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
