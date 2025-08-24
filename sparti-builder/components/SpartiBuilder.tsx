@@ -2,11 +2,9 @@
 import React, { ReactNode, useEffect } from 'react';
 import { SpartiBuilderProvider } from './SpartiBuilderProvider';
 import { SpartiToolbar } from './SpartiToolbar';
-import { EditingOverlay } from './EditingOverlay';
-import { ElementSelector } from './ElementSelector';
-import { ContentEditPanel } from './ContentEditPanel';
+import { SchemaSelector } from './SchemaSelector';
+import { SchemaModal } from './SchemaModal';
 import { SpartiBuilderConfig } from '../types';
-import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
 
 interface SpartiBuilderProps {
@@ -20,10 +18,6 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
 }) => {
   
   useEffect(() => {
-    // Initialize universal compatibility
-    const framework = UniversalElementDetector.detectFramework();
-    console.log(`Sparti Builder initialized on ${framework} framework`);
-    
     // Inject CSS styles directly into DOM for universal compatibility
     SpartiStyleManager.injectStyles();
 
@@ -42,11 +36,10 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
       <div className="sparti-builder-wrapper">
         <SpartiToolbar />
         <div className="sparti-content-area">
-          <ElementSelector>
+          <SchemaSelector>
             {children}
-          </ElementSelector>
-          <EditingOverlay />
-          <ContentEditPanel />
+          </SchemaSelector>
+          <SchemaModal />
         </div>
       </div>
     </SpartiBuilderProvider>
