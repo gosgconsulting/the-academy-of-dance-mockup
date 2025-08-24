@@ -640,6 +640,917 @@ body.sparti-editing a {
 body.sparti-editing .sparti-btn:hover {
   cursor: pointer !important;
 }
+
+/* Admin Navigation Styles */
+.sparti-admin-navigation {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 280px !important;
+  height: 100vh !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1) !important;
+  z-index: 2147483645 !important;
+  overflow-y: auto !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-admin-navigation {
+    background: #1f2937 !important;
+    border-right-color: #374151 !important;
+  }
+}
+
+.sparti-nav-header {
+  padding: 1.5rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #f9fafb !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-header {
+    background: #111827 !important;
+    border-bottom-color: #374151 !important;
+  }
+}
+
+.sparti-nav-title {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin: 0 0 0.25rem 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-nav-subtitle {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-subtitle {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-nav-content {
+  padding: 1rem !important;
+}
+
+.sparti-nav-group {
+  margin-bottom: 1rem !important;
+}
+
+.sparti-nav-group-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 0.75rem !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  font-family: inherit !important;
+}
+
+.sparti-nav-group-header:hover {
+  background: #f3f4f6 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-group-header:hover {
+    background: #374151 !important;
+  }
+}
+
+.sparti-nav-group-title {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-group-title {
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-nav-group-toggle {
+  color: #6b7280 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-group-toggle {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-nav-group-items {
+  margin-left: 0.5rem !important;
+  border-left: 2px solid #f3f4f6 !important;
+  padding-left: 0.5rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-group-items {
+    border-left-color: #374151 !important;
+  }
+}
+
+.sparti-nav-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  width: 100% !important;
+  padding: 0.75rem !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  text-align: left !important;
+  font-family: inherit !important;
+}
+
+.sparti-nav-item:hover {
+  background: #f3f4f6 !important;
+}
+
+.sparti-nav-item.selected {
+  background: #eff6ff !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-item:hover {
+    background: #374151 !important;
+  }
+  
+  .sparti-nav-item.selected {
+    background: #1e3a8a !important;
+    border-color: #3b82f6 !important;
+  }
+}
+
+.sparti-nav-item-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: #f9fafb !important;
+  border-radius: 6px !important;
+  color: #6b7280 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-item-icon {
+    background: #374151 !important;
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-nav-item.selected .sparti-nav-item-icon {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+.sparti-nav-item-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.sparti-nav-item-label {
+  display: block !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin-bottom: 0.125rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-item-label {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-nav-item-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+.sparti-nav-item-type {
+  font-size: 0.75rem !important;
+  color: #6b7280 !important;
+  text-transform: capitalize !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-nav-item-type {
+    color: #9ca3af !important;
+  }
+}
+
+/* Schema Modal Styles */
+.sparti-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.sparti-modal-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.sparti-modal-container {
+  position: relative !important;
+  width: 90% !important;
+  max-width: 800px !important;
+  max-height: 80vh !important;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-container {
+    background: #1f2937 !important;
+  }
+}
+
+.sparti-modal-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.sparti-modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.5rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #f9fafb !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-header {
+    background: #111827 !important;
+    border-bottom-color: #374151 !important;
+  }
+}
+
+.sparti-modal-title-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+.sparti-schema-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+}
+
+.sparti-modal-title {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-modal-subtitle {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-subtitle {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-modal-close {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 6px !important;
+  color: #6b7280 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.sparti-modal-close:hover {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-close:hover {
+    background: #374151 !important;
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-modal-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 1.5rem !important;
+}
+
+.sparti-loading-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 3rem !important;
+  text-align: center !important;
+}
+
+.sparti-spinner {
+  width: 32px !important;
+  height: 32px !important;
+  border: 3px solid #f3f4f6 !important;
+  border-top: 3px solid #3b82f6 !important;
+  border-radius: 50% !important;
+  animation: sparti-spin 1s linear infinite !important;
+  margin-bottom: 1rem !important;
+}
+
+@keyframes sparti-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sparti-error-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 3rem !important;
+  text-align: center !important;
+}
+
+.sparti-error-icon {
+  color: #dc2626 !important;
+  margin-bottom: 1rem !important;
+}
+
+.sparti-error-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-error-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-error-message {
+  color: #dc2626 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.sparti-retry-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+  font-family: inherit !important;
+}
+
+.sparti-retry-button:hover {
+  background: #2563eb !important;
+}
+
+.sparti-schema-overview {
+  background: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-schema-overview {
+    background: #111827 !important;
+    border-color: #374151 !important;
+  }
+}
+
+.sparti-overview-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.sparti-overview-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+}
+
+.sparti-overview-title {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-overview-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-overview-meta {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-overview-meta {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-overview-description {
+  color: #6b7280 !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-overview-description {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-sections-container {
+  margin-top: 2rem !important;
+}
+
+.sparti-sections-header {
+  margin-bottom: 1.5rem !important;
+}
+
+.sparti-sections-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sections-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-sections-subtitle {
+  color: #6b7280 !important;
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sections-subtitle {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 3rem !important;
+  text-align: center !important;
+  border: 2px dashed #d1d5db !important;
+  border-radius: 8px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-empty-state {
+    border-color: #4b5563 !important;
+  }
+}
+
+.sparti-empty-icon {
+  color: #9ca3af !important;
+  margin-bottom: 1rem !important;
+}
+
+.sparti-empty-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-empty-title {
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-empty-description {
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-empty-description {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-sections-table {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sections-table {
+    border-color: #374151 !important;
+  }
+}
+
+.sparti-table-header {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 2fr 100px !important;
+  background: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-table-header {
+    background: #111827 !important;
+    border-bottom-color: #374151 !important;
+  }
+}
+
+.sparti-table-header-cell {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-table-header-cell {
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-table-body {
+  background: #ffffff !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-table-body {
+    background: #1f2937 !important;
+  }
+}
+
+.sparti-table-row {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 2fr 100px !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.sparti-table-row:hover {
+  background: #f9fafb !important;
+}
+
+.sparti-table-row:last-child {
+  border-bottom: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-table-row {
+    border-bottom-color: #374151 !important;
+  }
+  
+  .sparti-table-row:hover {
+    background: #374151 !important;
+  }
+}
+
+.sparti-table-cell {
+  padding: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.sparti-section-name-cell {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.sparti-section-type-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.sparti-section-label {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-label {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-section-key {
+  font-size: 0.75rem !important;
+  color: #6b7280 !important;
+  font-family: 'Courier New', monospace !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-key {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-type-badge {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  text-transform: capitalize !important;
+}
+
+.sparti-section-description-cell {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.sparti-section-description {
+  font-size: 0.875rem !important;
+  color: #6b7280 !important;
+  margin: 0 0 0.25rem 0 !important;
+  line-height: 1.4 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-description {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-section-fields-info {
+  font-size: 0.75rem !important;
+  color: #9ca3af !important;
+  margin: 0 !important;
+}
+
+.sparti-section-actions {
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+
+.sparti-action-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border: 1px solid #d1d5db !important;
+  background: #ffffff !important;
+  border-radius: 4px !important;
+  color: #6b7280 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-action-btn {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-edit-btn:hover {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+  background: #eff6ff !important;
+}
+
+.sparti-view-btn:hover {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+  background: #ecfdf5 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-edit-btn:hover {
+    background: #1e3a8a !important;
+  }
+  
+  .sparti-view-btn:hover {
+    background: #064e3b !important;
+  }
+}
+
+.sparti-modal-footer {
+  padding: 1.5rem !important;
+  border-top: 1px solid #e5e7eb !important;
+  background: #f9fafb !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-modal-footer {
+    background: #111827 !important;
+    border-top-color: #374151 !important;
+  }
+}
+
+.sparti-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  font-family: inherit !important;
+}
+
+.sparti-btn-primary {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+.sparti-btn-primary:hover {
+  background: #2563eb !important;
+}
+
+.sparti-btn-secondary {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.sparti-btn-secondary:hover {
+  background: #e5e7eb !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-btn-secondary {
+    background: #374151 !important;
+    color: #d1d5db !important;
+    border-color: #4b5563 !important;
+  }
+  
+  .sparti-btn-secondary:hover {
+    background: #4b5563 !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sparti-admin-navigation {
+    width: 100% !important;
+    height: 50vh !important;
+    top: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+  
+  .sparti-modal-container {
+    max-width: 95vw !important;
+    max-height: 95vh !important;
+    margin: 0.5rem !important;
+  }
+  
+  .sparti-modal-header {
+    padding: 1rem !important;
+  }
+  
+  .sparti-modal-body {
+    padding: 1rem !important;
+  }
+  
+  .sparti-modal-footer {
+    padding: 1rem !important;
+  }
+  
+  .sparti-table-header,
+  .sparti-table-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  
+  .sparti-table-cell {
+    padding: 0.5rem !important;
+  }
+  
+  .sparti-table-header-cell {
+    display: none !important;
+  }
+  
+  .sparti-section-actions {
+    margin-top: 0.5rem !important;
+    justify-content: flex-end !important;
+  }
+}
+
+/* Focus styles for accessibility */
+.sparti-table-row:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: -2px !important;
+}
+
+.sparti-nav-item:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: -2px !important;
+}
+
+.sparti-action-btn:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 1px !important;
+}
 `;
 
 // CSS injection utility
