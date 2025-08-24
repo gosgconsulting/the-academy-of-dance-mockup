@@ -10,11 +10,11 @@ export const SPARTI_STYLES = `
 /* Toolbar Styles - Maximum Priority */
 .sparti-toolbar {
   position: fixed !important;
-  top: 0 !important;
+  bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   background: #ffffff !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  border-top: 1px solid #e5e7eb !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   z-index: 2147483647 !important;
   transition: all 0.3s ease;
@@ -24,7 +24,7 @@ export const SPARTI_STYLES = `
 @media (prefers-color-scheme: dark) {
   .sparti-toolbar {
     background: #1f2937 !important;
-    border-bottom-color: #374151 !important;
+    border-top-color: #374151 !important;
   }
 }
 
@@ -65,7 +65,7 @@ export const SPARTI_STYLES = `
 }
 
 .sparti-content {
-  padding-top: 80px !important;
+  padding-bottom: 80px !important;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -78,10 +78,10 @@ body.sparti-editing .sparti-content {
 body.sparti-editing .sparti-content::before {
   content: '';
   position: fixed;
-  top: 80px;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 80px;
   background: rgba(59, 130, 246, 0.05);
   pointer-events: none;
   z-index: 100;
@@ -202,7 +202,7 @@ body.sparti-editing .sparti-content::before {
 .sparti-edit-panel {
   position: fixed !important;
   right: 0 !important;
-  top: 80px !important;
+  top: 0 !important;
   width: 320px !important;
   height: calc(100vh - 80px) !important;
   background: #ffffff !important;
@@ -534,15 +534,15 @@ body.sparti-editing .sparti-content::before {
   .sparti-edit-panel {
     width: 100% !important;
     height: 50vh !important;
-    top: auto !important;
-    bottom: 0 !important;
+    top: 0 !important;
+    bottom: 80px !important;
     border-left: none !important;
-    border-top: 1px solid #e5e7eb !important;
+    border-bottom: 1px solid #e5e7eb !important;
   }
   
   @media (prefers-color-scheme: dark) {
     .sparti-edit-panel {
-      border-top-color: #374151 !important;
+      border-bottom-color: #374151 !important;
     }
   }
   
@@ -555,18 +555,18 @@ body.sparti-editing .sparti-content::before {
   }
   
   .sparti-content {
-    padding-top: 60px !important;
+    padding-bottom: 60px !important;
   }
 
   body.sparti-editing .sparti-content::before {
-    top: 60px !important;
-    bottom: 50vh !important;
+    top: 0 !important;
+    bottom: calc(60px + 50vh) !important;
   }
 }
 
 @media (prefers-contrast: high) {
   .sparti-toolbar {
-    border-bottom-width: 2px !important;
+    border-top-width: 2px !important;
   }
   
   .sparti-selection-overlay {
@@ -600,7 +600,7 @@ body.sparti-editing .sparti-content::before {
   
   body.sparti-editing .sparti-content {
     overflow-y: auto !important;
-    height: calc(100vh - 60px) !important;
+    height: calc(100vh - 60px - 50vh) !important;
   }
 }
 
