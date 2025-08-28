@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { FileText, Type, Palette, Image, FileImage, Users, LogOut, Home } from 'lucide-react';
+import { FileText, Type, Palette, Image, FileImage, Users, LogOut, Home, PenTool } from 'lucide-react';
 import { useAuth } from '../auth/AuthProvider';
 import ColorSettings from '../cms/ColorSettings';
 import TypographySettings from '../cms/TypographySettings';
 import BrandingSettings from '../cms/BrandingSettings';
 import MediaManager from '../cms/MediaManager';
 import PagesManager from '../cms/PagesManager';
+import PostsManager from '../cms/PostsManager';
 
 const CMSDashboard: React.FC = () => {
   console.log('CMSDashboard rendering successfully');
@@ -16,6 +17,8 @@ const CMSDashboard: React.FC = () => {
     switch (activeTab) {
       case 'pages':
         return <PagesManager />;
+      case 'posts':
+        return <PostsManager />;
       case 'typography':
         return <TypographySettings />;
       case 'colors':
@@ -31,6 +34,7 @@ const CMSDashboard: React.FC = () => {
 
   const navItems = [
     { id: 'pages', label: 'Pages', icon: FileText },
+    { id: 'posts', label: 'Posts', icon: PenTool },
     { id: 'typography', label: 'Typography', icon: Type },
     { id: 'colors', label: 'Colors', icon: Palette },
     { id: 'branding', label: 'Branding', icon: Image },
