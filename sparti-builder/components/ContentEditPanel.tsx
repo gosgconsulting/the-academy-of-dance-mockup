@@ -53,8 +53,12 @@ export const ContentEditPanel: React.FC = () => {
       return <SliderEditor {...commonProps} />;
     }
     
-    // Use ImageEditor for image elements
-    if (elementType === 'image' || data.tagName === 'IMG') {
+    // Use ImageEditor for image elements or elements containing images
+    if (elementType === 'image' || 
+        elementType === 'media' || 
+        data.tagName === 'IMG' || 
+        selectedElement.element.querySelector('img') ||
+        selectedElement.element.tagName === 'IMG') {
       return <ImageEditor {...commonProps} />;
     }
     
