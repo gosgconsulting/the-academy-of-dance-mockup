@@ -31,8 +31,8 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
   };
 
   return (
-    <nav 
-      className="fixed top-0 w-full bg-black backdrop-blur-md z-50"
+    <header 
+      className="fixed top-0 w-full bg-black/95 backdrop-blur-md z-50 border-b border-white/10"
       data-sparti-editable="true"
       data-sparti-component="navigation"
     >
@@ -88,7 +88,7 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
           </div>
         )}
       </div>
-    </nav>
+    </header>
   );
 };
 

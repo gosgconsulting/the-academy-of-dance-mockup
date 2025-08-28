@@ -9,11 +9,11 @@ export interface ComponentProperty {
 export interface ComponentDefinition {
   id: string;
   name: string;
-  type: 'text' | 'image' | 'video' | 'button' | 'link' | 'input' | 'container' | 'media' | 'unknown';
+  type: 'text' | 'image' | 'video' | 'button' | 'link' | 'input' | 'container' | 'media' | 'slider' | 'unknown';
   category: 'content' | 'media' | 'navigation' | 'form' | 'layout' | 'interactive';
   description?: string;
   properties: Record<string, ComponentProperty>;
-  editor: 'TextEditor' | 'ImageEditor' | 'VideoEditor' | 'ButtonEditor' | 'LinkEditor' | 'InputEditor' | 'ContainerEditor';
+  editor: 'TextEditor' | 'ImageEditor' | 'VideoEditor' | 'ButtonEditor' | 'LinkEditor' | 'InputEditor' | 'ContainerEditor' | 'SliderEditor';
   version: string;
   tenant_scope?: 'global' | 'tenant';
   tags?: string[];

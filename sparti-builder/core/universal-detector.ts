@@ -318,6 +318,7 @@ export class UniversalElementDetector {
       text: ['content', 'typography', 'colors', 'alignment', 'spacing'],
       container: ['layout', 'spacing', 'background', 'borders', 'responsive'],
       media: ['content', 'layout', 'styling', 'responsive'],
+      slider: ['images', 'autoplay', 'navigation', 'transitions', 'layout'],
       unknown: ['basic', 'styling']
     };
 

@@ -31,6 +31,22 @@ export interface ElementData {
   placeholder?: string;   // For inputs
   value?: string;         // For inputs, buttons
   type?: string;          // For inputs, buttons
+  // Slider-specific properties
+  images?: SliderImage[];
+  autoplay?: boolean;
+  autoplaySpeed?: number;
+  showDots?: boolean;
+  showArrows?: boolean;
+  slidesToShow?: number;
+  transition?: 'fade' | 'slide' | 'zoom';
+  height?: string;
+}
+
+export interface SliderImage {
+  src: string;
+  alt?: string;
+  title?: string;
+  caption?: string;
 }
 
 export interface SpartiElement {

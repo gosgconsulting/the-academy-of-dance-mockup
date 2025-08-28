@@ -11,7 +11,7 @@ import {
   EyeOff,
   ArrowLeft,
   ArrowRight,
-  MoreCircle
+  MoreHorizontal
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,9 +21,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 interface SliderImage {
   src: string;
-  alt: string;
-  title: string;
-  caption: string;
+  alt?: string;
+  title?: string;
+  caption?: string;
 }
 
 interface SliderEditorProps {
