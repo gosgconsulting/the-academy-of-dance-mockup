@@ -5,9 +5,7 @@ import { CMSSettingsProvider } from '../context/CMSSettingsContext';
 import AuthPage from './auth/AuthPage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import CMSDashboard from './admin/CMSDashboard';
-
-// Import from the main app for component library (temporary until moved)
-import ComponentLibrary from '../../src/pages/ComponentLibrary';
+import ComponentLibrary from './ComponentLibrary';
 
 export const SpartiCMS: React.FC = () => {
   return (

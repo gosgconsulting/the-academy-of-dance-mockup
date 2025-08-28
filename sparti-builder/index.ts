@@ -7,6 +7,7 @@ export { ContentEditPanel } from './components/ContentEditPanel';
 // CMS Module exports
 export { SpartiCMS } from './components/SpartiCMS';
 export { SpartiCMSWrapper } from './components/SpartiCMSWrapper';
+export { default as ComponentLibrary } from './components/ComponentLibrary';
 export { AuthProvider, useAuth } from './components/auth/AuthProvider';
 export { default as ProtectedRoute } from './components/auth/ProtectedRoute';
 export { CMSSettingsProvider, useCMSSettings } from './context/CMSSettingsContext';
