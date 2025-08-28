@@ -83,6 +83,11 @@ export const ContentEditPanel: React.FC = () => {
       }
     }
     
+    // Fallback for button elements
+    if (elementType === 'button' || data.tagName === 'BUTTON') {
+      return <ButtonEditor {...commonProps} />;
+    }
+    
     // Fallback: use TextEditor for all unregistered element types
     return <TextEditor {...commonProps} />;
   };

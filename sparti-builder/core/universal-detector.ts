@@ -85,6 +85,11 @@ export class UniversalElementDetector {
       return 'image';
     }
 
+    // Slider/Carousel detection (before media container)
+    if (this.isSliderElement(element)) {
+      return 'slider';
+    }
+
     // Media container detection
     if (element.querySelector('img, video, iframe, embed, object')) {
       return 'media';
@@ -101,6 +106,72 @@ export class UniversalElementDetector {
     }
 
     return 'unknown';
+  }
+
+  static isSliderElement(element: HTMLElement): boolean {
+    const className = element.className.toString().toLowerCase();
+    const tagName = element.tagName.toLowerCase();
+    
+    // Check for specific Sparti components that are sliders
+    const spartiComponent = element.getAttribute('data-sparti-component');
+    if (spartiComponent === 'hero-section' || spartiComponent?.includes('slider') || spartiComponent?.includes('carousel')) {
+      return true;
+    }
+    
+    // Check for common slider/carousel class names
+    const sliderClasses = [
+      'slider', 'carousel', 'swiper', 'glide', 'splide', 'keen-slider',
+      'owl-carousel', 'slick', 'flickity', 'embla', 'hero-slider',
+      'image-slider', 'gallery-slider', 'slideshow', 'banner-slider',
+      'hero-section', 'hero-banner', 'banner-carousel', 'main-slider'
+    ];
+    
+    // Check if element has slider-related classes
+    const hasSliderClass = sliderClasses.some(cls => className.includes(cls));
+    if (hasSliderClass) return true;
+    
+    // Check for data attributes that indicate sliders
+    const sliderAttributes = [
+      'data-slider', 'data-carousel', 'data-swiper', 'data-glide',
+      'data-splide', 'data-flickity', 'data-embla'
+    ];
+    
+    const hasSliderAttribute = sliderAttributes.some(attr => element.hasAttribute(attr));
+    if (hasSliderAttribute) return true;
+    
+    // Check if element contains multiple images (potential image slider)
+    const images = element.querySelectorAll('img');
+    if (images.length >= 2) {
+      // Additional checks to confirm it's likely a slider
+      // Check for navigation controls or slide indicators
+      const hasNavigation = element.querySelector('.prev, .next, .arrow, .nav, .dots, .indicators');
+      const hasSliderStructure = element.querySelector('.slide, .item, .panel, [data-slide]');
+      
+      // Check for opacity-based transitions (common in hero sliders)
+      const hasOpacityTransitions = Array.from(element.querySelectorAll('div')).some(div => {
+        const style = window.getComputedStyle(div);
+        return style.opacity !== undefined && (
+          div.className.includes('opacity-') || 
+          style.transition?.includes('opacity') ||
+          div.className.includes('transition')
+        );
+      });
+      
+      if (hasNavigation || hasSliderStructure || hasOpacityTransitions) {
+        return true;
+      }
+      
+      // If it's a container with multiple images and specific layout, likely a slider
+      if (tagName === 'div' || tagName === 'section') {
+        const computedStyle = window.getComputedStyle(element);
+        const overflow = computedStyle.overflow || computedStyle.overflowX;
+        if (overflow === 'hidden' && images.length >= 2) {
+          return true;
+        }
+      }
+    }
+    
+    return false;
   }
 
   static isContainerElement(element: HTMLElement): boolean {
