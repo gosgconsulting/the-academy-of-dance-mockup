@@ -7,6 +7,9 @@ export { ContentEditPanel } from './components/ContentEditPanel';
 // Component Editor exports
 export { SliderEditor } from './components/editors/SliderEditor';
 export { SliderComponent } from './components/SliderComponent';
+export { ImageEditor } from './components/editors/ImageEditor';
+
+// CMS Module exports
 export { SpartiCMS } from './components/SpartiCMS';
 export { SpartiCMSWrapper } from './components/SpartiCMSWrapper';
 export { default as ComponentLibrary } from './components/ComponentLibrary';
@@ -31,4 +34,5 @@ export { default as useDatabase } from './hooks/useDatabase';
 export { useSpartiEditor } from './hooks/useSpartiEditor';
 
 // Utilities
+export { removeBackground, loadImage, loadImageFromUrl } from './utils/backgroundRemoval';
 export * from './utils/component-detector';
