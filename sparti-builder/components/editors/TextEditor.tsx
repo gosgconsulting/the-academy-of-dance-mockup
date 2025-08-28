@@ -23,8 +23,33 @@ export const TextEditor: React.FC<TextEditorProps> = ({ selectedElement }) => {
   const colorPickerRef = useRef<HTMLDivElement>(null);
   const linkDialogRef = useRef<HTMLDivElement>(null);
   
-  // Get CMS settings
-  const { settings } = useCMSSettings();
+  // Get CMS settings with fallback
+  let settings;
+  try {
+    const cmsContext = useCMSSettings();
+    settings = cmsContext.settings;
+  } catch (error) {
+    console.warn('CMSSettings not available, using default settings for TextEditor:', error);
+    // Fallback settings
+    settings = {
+      colors: {
+        primary: '#0066ff',
+        secondary: '#6600cc',
+        accent: '#ff9900',
+        background: '#ffffff',
+        text: '#333333',
+        heading: '#111111',
+        link: '#0066cc'
+      },
+      typography: {
+        headingFont: 'Inter',
+        bodyFont: 'Inter',
+        baseFontSize: '16',
+        lineHeight: '1.5',
+        letterSpacing: '0'
+      }
+    };
+  }
   
   // Create color palette from CMS settings
   const colorPalette = [

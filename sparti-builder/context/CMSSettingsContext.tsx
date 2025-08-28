@@ -99,66 +99,81 @@ const STORAGE_KEY = 'cms_settings';
 // Provider component
 export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [settings, setSettings] = useState<CMSSettings>(defaultSettings);
-  const { settings: dbSettings } = useDatabase();
+  const database = useDatabase();
+  const dbSettings = database?.settings;
   const [isInitialized, setIsInitialized] = useState(false);
+
+  console.log('CMSSettingsProvider rendering, database available:', !!database);
 
   // Load settings from database on initial render, fallback to localStorage
   useEffect(() => {
     const loadSettings = async () => {
+      console.log('Loading CMS settings...');
       try {
         // Try to load from database first
-        const dbSiteSettings = await dbSettings.get();
-        
-        if (dbSiteSettings) {
-          // Map database settings to our CMSSettings format
-          const mappedSettings: CMSSettings = {
-            typography: {
-              headingFont: (dbSiteSettings as any).headingFont || defaultSettings.typography.headingFont,
-              bodyFont: (dbSiteSettings as any).bodyFont || defaultSettings.typography.bodyFont,
-              baseFontSize: (dbSiteSettings as any).baseFontSize?.toString() || defaultSettings.typography.baseFontSize,
-              lineHeight: (dbSiteSettings as any).lineHeight?.toString() || defaultSettings.typography.lineHeight,
-              letterSpacing: (dbSiteSettings as any).letterSpacing?.toString() || defaultSettings.typography.letterSpacing,
-              fontWeight: (dbSiteSettings as any).fontWeight?.toString() || defaultSettings.typography.fontWeight,
-            },
-            colors: {
-              primary: (dbSiteSettings as any).primaryColor || defaultSettings.colors.primary,
-              secondary: (dbSiteSettings as any).secondaryColor || defaultSettings.colors.secondary,
-              accent: defaultSettings.colors.accent, // Use default since accentColor doesn't exist in DB
-              background: defaultSettings.colors.background,
-              text: defaultSettings.colors.text,
-              heading: defaultSettings.colors.heading,
-              link: defaultSettings.colors.link,
-              success: defaultSettings.colors.success,
-              warning: defaultSettings.colors.warning,
-              error: defaultSettings.colors.error,
-            },
-            logo: {
-              logo: (dbSiteSettings as any).logo || null,
-              favicon: (dbSiteSettings as any).favicon || null,
-              logoAlt: 'Site Logo',
-              logoWidth: 200,
-              logoHeight: null,
-            },
-            mediaItems: [],
-          };
+        if (dbSettings && typeof dbSettings.get === 'function') {
+          console.log('Attempting to load from database...');
+          const dbSiteSettings = await dbSettings.get();
           
-          setSettings(mappedSettings);
-          setIsInitialized(true);
-          return;
+          if (dbSiteSettings) {
+            console.log('Loaded settings from database:', dbSiteSettings);
+            // Map database settings to our CMSSettings format
+            const mappedSettings: CMSSettings = {
+              typography: {
+                headingFont: (dbSiteSettings as any).headingFont || defaultSettings.typography.headingFont,
+                bodyFont: (dbSiteSettings as any).bodyFont || defaultSettings.typography.bodyFont,
+                baseFontSize: (dbSiteSettings as any).baseFontSize?.toString() || defaultSettings.typography.baseFontSize,
+                lineHeight: (dbSiteSettings as any).lineHeight?.toString() || defaultSettings.typography.lineHeight,
+                letterSpacing: (dbSiteSettings as any).letterSpacing?.toString() || defaultSettings.typography.letterSpacing,
+                fontWeight: (dbSiteSettings as any).fontWeight?.toString() || defaultSettings.typography.fontWeight,
+              },
+              colors: {
+                primary: (dbSiteSettings as any).primaryColor || defaultSettings.colors.primary,
+                secondary: (dbSiteSettings as any).secondaryColor || defaultSettings.colors.secondary,
+                accent: defaultSettings.colors.accent, // Use default since accentColor doesn't exist in DB
+                background: defaultSettings.colors.background,
+                text: defaultSettings.colors.text,
+                heading: defaultSettings.colors.heading,
+                link: defaultSettings.colors.link,
+                success: defaultSettings.colors.success,
+                warning: defaultSettings.colors.warning,
+                error: defaultSettings.colors.error,
+              },
+              logo: {
+                logo: (dbSiteSettings as any).logo || null,
+                favicon: (dbSiteSettings as any).favicon || null,
+                logoAlt: 'Site Logo',
+                logoWidth: 200,
+                logoHeight: null,
+              },
+              mediaItems: [],
+            };
+            
+            setSettings(mappedSettings);
+            setIsInitialized(true);
+            console.log('CMS settings initialized from database');
+            return;
+          }
+        } else {
+          console.log('Database settings not available, falling back to localStorage');
         }
       } catch (error) {
         console.error('Failed to load settings from database:', error);
       }
       
       // Fallback to localStorage if database load fails
+      console.log('Loading from localStorage...');
       const storedSettings = localStorage.getItem(STORAGE_KEY);
       if (storedSettings) {
         try {
           const parsedSettings = JSON.parse(storedSettings);
           setSettings(parsedSettings);
+          console.log('Loaded settings from localStorage');
         } catch (error) {
           console.error('Failed to parse stored settings:', error);
         }
+      } else {
+        console.log('No stored settings found, using defaults');
       }
       
       setIsInitialized(true);
@@ -176,7 +191,7 @@ export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ childre
     
     // Debounce database save to prevent excessive API calls
     const timeoutId = setTimeout(async () => {
-      if (!dbSettings) return;
+      if (!dbSettings || typeof dbSettings.update !== 'function') return;
       
       try {
         console.log('Auto-saving CMS settings to database...');
