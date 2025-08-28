@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
+import { CMSSettingsProvider } from '../context/CMSSettingsContext';
 import { SpartiBuilder } from './SpartiBuilder';
 
 interface SpartiCMSWrapperProps {
@@ -23,9 +24,11 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
 export const SpartiCMSWrapper: React.FC<SpartiCMSWrapperProps> = ({ children }) => {
   return (
     <AuthProvider>
-      <SpartiCMSWrapperContent>
-        {children}
-      </SpartiCMSWrapperContent>
+      <CMSSettingsProvider>
+        <SpartiCMSWrapperContent>
+          {children}
+        </SpartiCMSWrapperContent>
+      </CMSSettingsProvider>
     </AuthProvider>
   );
 };
