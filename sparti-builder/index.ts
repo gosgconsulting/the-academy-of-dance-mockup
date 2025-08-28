@@ -4,7 +4,9 @@ export { SpartiBuilderProvider, useSpartiBuilder } from './components/SpartiBuil
 export { SpartiToolbar } from './components/SpartiToolbar';
 export { ContentEditPanel } from './components/ContentEditPanel';
 
-// CMS Module exports
+// Component Editor exports
+export { SliderEditor } from './components/editors/SliderEditor';
+export { SliderComponent } from './components/SliderComponent';
 export { SpartiCMS } from './components/SpartiCMS';
 export { SpartiCMSWrapper } from './components/SpartiCMSWrapper';
 export { default as ComponentLibrary } from './components/ComponentLibrary';

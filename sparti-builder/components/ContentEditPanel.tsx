@@ -11,6 +11,7 @@ import { TextEditor } from './editors/TextEditor';
 import { ImageEditor } from './editors/ImageEditor';
 import { ButtonEditor } from './editors/ButtonEditor';
 import { ContainerEditor } from './editors/ContainerEditor';
+import { SliderEditor } from './editors/SliderEditor';
 
 export const ContentEditPanel: React.FC = () => {
   const { isEditing, selectedElement, selectElement } = useSpartiBuilder();
@@ -31,6 +32,7 @@ export const ContentEditPanel: React.FC = () => {
   const getEditorIcon = (type: ElementType) => {
     const icons = {
       image: Image,
+      slider: Image, // Use Image icon for sliders too
       video: Video,
       link: Link,
       button: MousePointer,
@@ -46,6 +48,11 @@ export const ContentEditPanel: React.FC = () => {
   const renderSpecializedEditor = () => {
     const commonProps = { selectedElement };
     
+    // Use SliderEditor for slider elements
+    if (elementType === 'slider') {
+      return <SliderEditor {...commonProps} />;
+    }
+    
     // Use ImageEditor for image elements
     if (elementType === 'image' || data.tagName === 'IMG') {
       return <ImageEditor {...commonProps} />;
@@ -58,6 +65,8 @@ export const ContentEditPanel: React.FC = () => {
       
       // Use specific editor based on component definition
       switch (registeredComponent.editor) {
+        case 'SliderEditor':
+          return <SliderEditor {...commonProps} />;
         case 'ImageEditor':
           return <ImageEditor {...commonProps} />;
         case 'ButtonEditor':

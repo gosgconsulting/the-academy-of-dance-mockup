@@ -4,7 +4,17 @@ export interface SpartiBuilderConfig {
   autoDetect?: boolean;
 }
 
-export type ElementType = 'text' | 'image' | 'video' | 'button' | 'link' | 'input' | 'container' | 'media' | 'unknown';
+export type ElementType = 
+  | 'text' 
+  | 'image' 
+  | 'slider'
+  | 'video' 
+  | 'button' 
+  | 'link' 
+  | 'input' 
+  | 'container' 
+  | 'media' 
+  | 'unknown';
 
 export interface ElementData {
   id: string;

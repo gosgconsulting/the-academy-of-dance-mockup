@@ -6,6 +6,7 @@ import textComponent from './components/text.json';
 import buttonComponent from './components/button.json';
 import containerComponent from './components/container.json';
 import imageComponent from './components/image.json';
+import sliderComponent from './components/slider.json';
 
 class ComponentRegistry {
   private static instance: ComponentRegistry;
@@ -30,6 +31,7 @@ class ComponentRegistry {
       buttonComponent as ComponentDefinition,
       containerComponent as ComponentDefinition,
       imageComponent as ComponentDefinition,
+      sliderComponent as ComponentDefinition,
     ];
 
     builtInComponents.forEach(component => {

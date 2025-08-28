@@ -54,15 +54,32 @@ export class SpartiElementDetector {
     const hasVideo = element.querySelector('video') !== null;
     const hasText = element.textContent && element.textContent.trim().length > 0;
     
-    // Detect image galleries or sliders
+    // Detect sliders/carousels first (higher priority than single images)
     if (hasMultipleImages) {
       const classList = element.classList.toString().toLowerCase();
-      if (classList.includes('gallery') || 
-          classList.includes('slider') || 
-          classList.includes('carousel') ||
-          classList.includes('swiper')) {
-        return 'image'; // Will be handled as multi-image in ImageEditor
+      const elementId = element.id.toLowerCase();
+      const dataAttrs = Array.from(element.attributes).map(attr => attr.name.toLowerCase());
+      
+      // Check for slider/carousel indicators
+      const sliderKeywords = ['slider', 'carousel', 'swiper', 'gallery', 'slideshow'];
+      const hasSliderClass = sliderKeywords.some(keyword => 
+        classList.includes(keyword) || 
+        elementId.includes(keyword) || 
+        dataAttrs.some(attr => attr.includes(keyword))
+      );
+      
+      // Check for slider-specific attributes
+      const hasSliderAttrs = element.hasAttribute('data-autoplay') || 
+                           element.hasAttribute('data-slides') ||
+                           element.querySelector('.slide, .swiper-slide, [class*="slide"]') ||
+                           element.querySelector('[class*="dot"], [class*="indicator"]');
+      
+      if (hasSliderClass || hasSliderAttrs) {
+        return 'slider';
       }
+      
+      // Fallback: multiple images without slider indicators = gallery (treat as image)
+      return 'image';
     }
     
     // Single image detection (prioritize over media)
@@ -149,6 +166,23 @@ export class SpartiElementDetector {
         data.title = element.getAttribute('title') || '';
         break;
         
+      case 'slider':
+        // Extract slider configuration
+        data.autoplay = element.getAttribute('data-autoplay') === 'true';
+        data.autoplaySpeed = parseInt(element.getAttribute('data-autoplay-speed') || '3000');
+        data.transition = element.getAttribute('data-transition') || 'fade';
+        data.slidesToShow = parseInt(element.getAttribute('data-slides-to-show') || '1');
+        
+        // Extract images from slider
+        const slides = element.querySelectorAll('img');
+        data.images = Array.from(slides).map(img => ({
+          src: img.src || '',
+          alt: img.alt || '',
+          title: img.title || '',
+          caption: img.getAttribute('data-caption') || ''
+        }));
+        break;
+        
       case 'video':
         data.src = element.getAttribute('src') || element.querySelector('source')?.getAttribute('src') || '';
         data.title = element.getAttribute('title') || '';
@@ -186,6 +220,7 @@ export class SpartiElementDetector {
   static getElementCapabilities(elementType: ElementType): string[] {
     const capabilities: Record<ElementType, string[]> = {
       image: ['src', 'alt', 'title', 'dimensions', 'filters', 'position'],
+      slider: ['images', 'autoplay', 'transition', 'navigation', 'layout'],
       video: ['src', 'controls', 'autoplay', 'dimensions', 'poster'],
       button: ['text', 'colors', 'borders', 'actions', 'states'],
       link: ['href', 'target', 'text', 'colors', 'decoration'],

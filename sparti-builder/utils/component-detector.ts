@@ -28,6 +28,20 @@ export function detectElementType(element: HTMLElement): {
     elementType = 'container';
   } else if (['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'em', 'strong', 'i', 'b', 'small', 'mark'].includes(tagName)) {
     elementType = 'text';
+  } else {
+    // Check for slider patterns
+    const hasMultipleImages = element.querySelectorAll('img').length > 1;
+    if (hasMultipleImages) {
+      const classList = element.classList.toString().toLowerCase();
+      const elementId = element.id.toLowerCase();
+      const sliderKeywords = ['slider', 'carousel', 'swiper', 'gallery', 'slideshow'];
+      
+      if (sliderKeywords.some(keyword => 
+        classList.includes(keyword) || elementId.includes(keyword)
+      )) {
+        elementType = 'slider';
+      }
+    }
   }
   
   // Check if element is registered in component registry

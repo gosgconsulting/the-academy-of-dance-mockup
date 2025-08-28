@@ -1,0 +1,76 @@
+{
+  "id": "slider",
+  "name": "Image Slider",
+  "type": "slider",
+  "category": "media",
+  "description": "Interactive image slider/carousel with navigation controls",
+  "properties": {
+    "images": {
+      "type": "array",
+      "description": "Array of image URLs and metadata",
+      "editable": true,
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "src": {"type": "string", "required": true},
+          "alt": {"type": "string", "default": ""},
+          "title": {"type": "string", "default": ""},
+          "caption": {"type": "string", "default": ""}
+        }
+      }
+    },
+    "autoplay": {
+      "type": "boolean",
+      "description": "Enable automatic slide transitions",
+      "editable": true,
+      "default": false
+    },
+    "autoplaySpeed": {
+      "type": "number",
+      "description": "Autoplay speed in milliseconds",
+      "editable": true,
+      "default": 3000,
+      "min": 1000,
+      "max": 10000
+    },
+    "showDots": {
+      "type": "boolean",
+      "description": "Show navigation dots",
+      "editable": true,
+      "default": true
+    },
+    "showArrows": {
+      "type": "boolean",
+      "description": "Show navigation arrows",
+      "editable": true,
+      "default": true
+    },
+    "slidesToShow": {
+      "type": "number",
+      "description": "Number of slides to show at once",
+      "editable": true,
+      "default": 1,
+      "min": 1,
+      "max": 5
+    },
+    "transition": {
+      "type": "string",
+      "description": "Slide transition type",
+      "editable": true,
+      "default": "fade",
+      "enum": ["fade", "slide", "zoom"]
+    },
+    "height": {
+      "type": "string",
+      "description": "Slider height (CSS value)",
+      "editable": true,
+      "default": "400px"
+    }
+  },
+  "editor": "SliderEditor",
+  "version": "1.0.0",
+  "tenant_scope": "global",
+  "tags": ["slider", "carousel", "gallery", "images", "media"],
+  "dependencies": []
+}
