@@ -31,7 +31,11 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-black backdrop-blur-md z-50">
+    <nav 
+      className="fixed top-0 w-full bg-black backdrop-blur-md z-50"
+      data-sparti-editable="true"
+      data-sparti-component="navigation"
+    >
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">

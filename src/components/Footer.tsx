@@ -3,7 +3,11 @@ import TikTokIcon from "./TikTokIcon";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-12">
+    <footer 
+      className="bg-black text-white py-12"
+      data-sparti-editable="true"
+      data-sparti-component="footer"
+    >
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-1 gap-8 mb-8">
           <div className="text-center">

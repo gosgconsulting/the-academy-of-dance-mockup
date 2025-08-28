@@ -52,7 +52,12 @@ Please contact me to schedule my trial class. Thank you!`;
       message: ""
     });
   };
-  return <section id="trials" className="py-20 bg-gradient-to-br from-secondary/10 to-white">
+  return <section 
+    id="trials" 
+    className="py-20 bg-gradient-to-br from-secondary/10 to-white"
+    data-sparti-editable="true"
+    data-sparti-component="trials-section"
+  >
       <div className="container mx-auto px-6">
         {/* Statistics Section */}
         <div className="max-w-6xl mx-auto mb-16">
@@ -95,7 +100,11 @@ Please contact me to schedule my trial class. Thank you!`;
         </div>
 
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+          <h2 
+            className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6"
+            data-sparti-editable="true"
+            data-sparti-component="trials-title"
+          >
             Begin Your Dance Journey
           </h2>
           <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">Jump into dance with a $20 trial class! Experience top-tier instruction and find your perfect style.</p>

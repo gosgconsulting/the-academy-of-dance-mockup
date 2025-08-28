@@ -12,6 +12,7 @@ import BlogAuthor from "./pages/BlogAuthor";
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
+import { SpartiCMS, SpartiCMSWrapper } from "../sparti-builder";
 
 const queryClient = new QueryClient();
 
@@ -21,18 +22,24 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/blog/category/:category" element={<BlogCategory />} />
-          <Route path="/blog/tag/:tag" element={<BlogTag />} />
-          <Route path="/blog/author/:author" element={<BlogAuthor />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <SpartiCMSWrapper>
+          <Routes>
+            {/* Admin routes */}
+            <Route path="/admin/*" element={<SpartiCMS />} />
+            
+            {/* Main app routes */}
+            <Route path="/" element={<Index />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/blog/category/:category" element={<BlogCategory />} />
+            <Route path="/blog/tag/:tag" element={<BlogTag />} />
+            <Route path="/blog/author/:author" element={<BlogAuthor />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </SpartiCMSWrapper>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

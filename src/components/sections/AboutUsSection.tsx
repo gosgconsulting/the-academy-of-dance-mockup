@@ -1,9 +1,18 @@
 import { Users, Heart, Award, Target } from "lucide-react";
 const AboutUsSection = () => {
-  return <section id="about" className="py-20 bg-white">
+  return <section 
+    id="about" 
+    className="py-20 bg-white"
+    data-sparti-editable="true"
+    data-sparti-component="about-section"
+  >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+          <h2 
+            className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6"
+            data-sparti-editable="true"
+            data-sparti-component="about-title"
+          >
             About Us
           </h2>
         </div>
