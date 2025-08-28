@@ -74,8 +74,19 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ selectedElement }) => 
       setAltText(imgData.alt || '');
       setTitle(imgData.title || '');
     } else {
-      // Check for multiple images within the element
-      const imgElements = element.querySelectorAll('img');
+      // Enhanced search: Look for images in current element, parent, and siblings
+      let imgElements: NodeListOf<HTMLImageElement> = element.querySelectorAll('img');
+      
+      // If no images found in current element, check parent element
+      if (imgElements.length === 0 && element.parentElement) {
+        imgElements = element.parentElement.querySelectorAll('img');
+      }
+      
+      // If still no images, check grandparent (for deeply nested structures)
+      if (imgElements.length === 0 && element.parentElement?.parentElement) {
+        imgElements = element.parentElement.parentElement.querySelectorAll('img');
+      }
+      
       if (imgElements.length > 1) {
         const imgArray: ImageData[] = Array.from(imgElements).map(img => ({
           src: img.getAttribute('src') || '',
@@ -111,8 +122,18 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ selectedElement }) => 
     const element = selectedElement.element;
     
     if (isMultiImage) {
+      // Enhanced search for images using same logic as analyzeImageElement
+      let imgElements: NodeListOf<HTMLImageElement> = element.querySelectorAll('img');
+      
+      if (imgElements.length === 0 && element.parentElement) {
+        imgElements = element.parentElement.querySelectorAll('img');
+      }
+      
+      if (imgElements.length === 0 && element.parentElement?.parentElement) {
+        imgElements = element.parentElement.parentElement.querySelectorAll('img');
+      }
+      
       // Update specific image in multi-image scenario
-      const imgElements = element.querySelectorAll('img');
       if (imgElements[currentImageIndex]) {
         imgElements[currentImageIndex].setAttribute('src', newSrc);
         if (newAlt !== undefined) {
@@ -143,7 +164,17 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ selectedElement }) => 
           element.setAttribute('title', newTitle);
         }
       } else {
-        const img = element.querySelector('img');
+        // Enhanced search for single image
+        let img: HTMLImageElement | null = element.querySelector('img');
+        
+        if (!img && element.parentElement) {
+          img = element.parentElement.querySelector('img');
+        }
+        
+        if (!img && element.parentElement?.parentElement) {
+          img = element.parentElement.parentElement.querySelector('img');
+        }
+        
         if (img) {
           img.setAttribute('src', newSrc);
           if (newAlt !== undefined) {
