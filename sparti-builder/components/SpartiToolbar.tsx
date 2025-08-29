@@ -6,6 +6,8 @@ export const SpartiToolbar: React.FC = () => {
   const { isEditing, config, enterEditMode, exitEditMode, savePage, isSaving } = useSpartiBuilder();
   const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  console.log('SpartiToolbar render:', { isEditing, config, hasContentAPI: config.contentAPI });
+
   if (!config.toolbar) return null;
 
   const handleSave = async () => {
@@ -59,16 +61,14 @@ export const SpartiToolbar: React.FC = () => {
               <button className="sparti-btn sparti-btn-ghost" title="Undo">
                 <Undo size={16} />
               </button>
-              {config.contentAPI && (
-                <button 
-                  className={getSaveButtonClass()}
-                  onClick={handleSave}
-                  disabled={isSaving}
-                  title="Save Page Content"
-                >
-                  {getSaveButtonContent()}
-                </button>
-              )}
+              <button 
+                className={getSaveButtonClass()}
+                onClick={handleSave}
+                disabled={isSaving}
+                title="Save Page Content"
+              >
+                {getSaveButtonContent()}
+              </button>
               <button 
                 className="sparti-btn sparti-btn-ghost" 
                 onClick={exitEditMode}
