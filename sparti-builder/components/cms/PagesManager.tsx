@@ -1,128 +1,101 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../../src/components/ui/button';
+// Demo pages manager (no database required)
 import { Input } from '../../../src/components/ui/input';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
-import { useSupabaseDatabase, Page } from '../../hooks/useSupabaseDatabase';
+
+interface PageItem {
+  id: string;
+  title: string;
+  slug: string;
+  is_published: boolean;
+  created_at: string;
+}
 
 export const PagesManager: React.FC = () => {
-  const [isCreating, setIsCreating] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pages, setPages] = useState<PageItem[]>([]);
   const [newPageTitle, setNewPageTitle] = useState('');
-  const [newPageSlug, setNewPageSlug] = useState('');
   const { toast } = useToast();
-  const { pages, isLoading, error } = useSupabaseDatabase();
-  const [pagesList, setPagesList] = useState<Page[]>([]);
 
-  // Load pages from Supabase
   useEffect(() => {
-    const loadPages = async () => {
-      try {
-        const pagesData = await pages.getAll();
-        setPagesList(pagesData);
-      } catch (err) {
-        console.error('Error loading pages:', err);
-      }
-    };
-    
-    loadPages();
-  }, [pages]);
-
-  // Auto-generate slug from title
-  useEffect(() => {
-    if (newPageTitle && !newPageSlug) {
-      setNewPageSlug(newPageTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''));
-    }
-  }, [newPageTitle, newPageSlug]);
+    // Demo: Load pages from localStorage
+    const demoPages = JSON.parse(localStorage.getItem('sparti-demo-pages') || '[]');
+    setPages(demoPages);
+  }, []);
 
   const handleCreatePage = async () => {
     if (!newPageTitle.trim()) return;
     
-    setIsCreating(true);
+    setIsLoading(true);
     
     try {
-      const pageData = {
+      // Demo: simulate creation delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const newPage: PageItem = {
+        id: 'demo-page-' + Date.now(),
         title: newPageTitle,
-        slug: newPageSlug || newPageTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''),
-        content: { sections: [] },
-        meta_title: newPageTitle,
-        meta_description: `${newPageTitle} page`,
-        is_published: false
+        slug: newPageTitle.toLowerCase().replace(/\s+/g, '-'),
+        is_published: false,
+        created_at: new Date().toISOString(),
       };
 
-      const newPage = await pages.create(pageData);
-      setPagesList(prev => [...prev, newPage]);
+      const updatedPages = [...pages, newPage];
+      setPages(updatedPages);
+      
+      // Demo: store in localStorage
+      localStorage.setItem('sparti-demo-pages', JSON.stringify(updatedPages));
+      
+      setNewPageTitle('');
       
       toast({
         title: "Page Created",
-        description: `Page "${newPageTitle}" has been created successfully.`,
+        description: `Page "${newPage.title}" has been created (demo mode)`,
       });
-      
-      setNewPageTitle('');
-      setNewPageSlug('');
-    } catch (err: any) {
-      console.error('Error creating page:', err);
+    } catch (error) {
       toast({
-        title: "Creation Failed",
-        description: err.message || "Failed to create page",
-        variant: "destructive"
+        title: "Error",
+        description: "Failed to create page (demo mode)",
+        variant: "destructive",
       });
     } finally {
-      setIsCreating(false);
+      setIsLoading(false);
     }
   };
 
-  const handleTogglePublish = async (pageId: string, currentStatus: boolean) => {
-    try {
-      await pages.update(pageId, { is_published: !currentStatus });
-      setPagesList(prev => 
-        prev.map(page => 
-          page.id === pageId 
-            ? { ...page, is_published: !currentStatus }
-            : page
-        )
-      );
-      
-      toast({
-        title: currentStatus ? "Page Unpublished" : "Page Published",
-        description: `Page has been ${currentStatus ? 'unpublished' : 'published'} successfully.`,
-      });
-    } catch (err: any) {
-      toast({
-        title: "Update Failed",
-        description: err.message || "Failed to update page status",
-        variant: "destructive"
-      });
-    }
-  };
-
-  const handleDeletePage = async (pageId: string, pageTitle: string) => {
-    if (!confirm(`Are you sure you want to delete "${pageTitle}"?`)) return;
+  const handleDeletePage = async (pageId: string) => {
+    setIsLoading(true);
     
     try {
-      await pages.delete(pageId);
-      setPagesList(prev => prev.filter(page => page.id !== pageId));
+      // Demo: simulate deletion delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const updatedPages = pages.filter(p => p.id !== pageId);
+      setPages(updatedPages);
+      
+      // Demo: store in localStorage
+      localStorage.setItem('sparti-demo-pages', JSON.stringify(updatedPages));
       
       toast({
         title: "Page Deleted",
-        description: `Page "${pageTitle}" has been deleted successfully.`,
+        description: "Page has been deleted (demo mode)",
       });
-    } catch (err: any) {
+    } catch (error) {
       toast({
-        title: "Deletion Failed",
-        description: err.message || "Failed to delete page",
-        variant: "destructive"
+        title: "Error",
+        description: "Failed to delete page (demo mode)",
+        variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <Card className="p-6">
       <h2 className="text-xl font-semibold mb-4">Pages Manager</h2>
-      
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded mb-4">
-          Error: {error}
-        </div>
-      )}
       
       <div className="space-y-4">
         <div className="flex gap-2">
@@ -130,64 +103,44 @@ export const PagesManager: React.FC = () => {
             value={newPageTitle}
             onChange={(e) => setNewPageTitle(e.target.value)}
             placeholder="Page title"
-            className="flex-1"
+            onKeyPress={(e) => e.key === 'Enter' && handleCreatePage()}
           />
-          <Input
-            value={newPageSlug}
-            onChange={(e) => setNewPageSlug(e.target.value)}
-            placeholder="URL slug (auto-generated)"
-            className="flex-1"
-          />
-          <Button 
-            onClick={handleCreatePage} 
-            disabled={isCreating || !newPageTitle.trim()}
-          >
-            {isCreating ? 'Creating...' : 'Create Page'}
+          <Button onClick={handleCreatePage} disabled={isLoading || !newPageTitle.trim()}>
+            {isLoading ? 'Creating...' : 'Create Page'}
           </Button>
         </div>
 
-        {isLoading ? (
-          <div className="text-center py-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-            <p className="text-muted-foreground mt-2">Loading pages...</p>
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {pagesList.length === 0 ? (
-              <p className="text-muted-foreground text-center py-4">
-                No pages yet. Create your first page above.
-              </p>
-            ) : (
-              pagesList.map((page) => (
-                <div key={page.id} className="flex items-center justify-between p-3 border rounded">
-                  <div>
-                    <h3 className="font-medium">{page.title}</h3>
-                    <p className="text-sm text-muted-foreground">/{page.slug}</p>
-                    <p className="text-xs text-muted-foreground">
-                      Created: {new Date(page.created_at).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant={page.is_published ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => handleTogglePublish(page.id, page.is_published)}
-                    >
-                      {page.is_published ? 'Unpublish' : 'Publish'}
-                    </Button>
-                    <Button 
-                      variant="destructive" 
-                      size="sm"
-                      onClick={() => handleDeletePage(page.id, page.title)}
-                    >
-                      Delete
-                    </Button>
-                  </div>
+        <div className="space-y-2">
+          {pages.length === 0 ? (
+            <p className="text-muted-foreground text-center py-4">
+              No pages yet. Create your first page above.
+            </p>
+          ) : (
+            pages.map((page) => (
+              <div key={page.id} className="flex items-center justify-between p-3 border rounded">
+                <div>
+                  <h3 className="font-medium">{page.title}</h3>
+                  <p className="text-sm text-muted-foreground">/{page.slug}</p>
                 </div>
-              ))
-            )}
-          </div>
-        )}
+                <div className="flex items-center gap-2">
+                  <span className={`px-2 py-1 text-xs rounded ${
+                    page.is_published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {page.is_published ? 'Published' : 'Draft'}
+                  </span>
+                  <Button 
+                    variant="destructive" 
+                    size="sm"
+                    onClick={() => handleDeletePage(page.id)}
+                    disabled={isLoading}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </Card>
   );

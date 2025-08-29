@@ -3,7 +3,7 @@ import { Edit3, X, Save, Undo } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 
 export const SpartiToolbar: React.FC = () => {
-  const { isEditing, config, enterEditMode, exitEditMode, saveSelectedElement, isSaving, selectedElement } = useSpartiBuilder();
+  const { isEditing, config, enterEditMode, exitEditMode } = useSpartiBuilder();
 
   if (!config.toolbar) return null;
 
@@ -29,14 +29,9 @@ export const SpartiToolbar: React.FC = () => {
               <button className="sparti-btn sparti-btn-ghost" title="Undo">
                 <Undo size={16} />
               </button>
-              <button 
-                className={`sparti-btn sparti-btn-success ${isSaving ? 'sparti-btn-loading' : ''}`}
-                onClick={saveSelectedElement}
-                disabled={isSaving || !selectedElement}
-                title="Save Changes"
-              >
+              <button className="sparti-btn sparti-btn-success" title="Save Changes">
                 <Save size={16} />
-                {isSaving ? 'Saving...' : 'Save'}
+                Save
               </button>
               <button 
                 className="sparti-btn sparti-btn-ghost" 

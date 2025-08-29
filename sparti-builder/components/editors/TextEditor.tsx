@@ -93,32 +93,11 @@ export const TextEditor: React.FC<TextEditorProps> = ({ selectedElement }) => {
     onUpdate: ({ editor }) => {
       const htmlContent = editor.getHTML();
       
-      // Update the element content immediately
+      // Update the element content
       if (selectedElement.element) {
         selectedElement.element.innerHTML = htmlContent;
         selectedElement.data.content = htmlContent;
-        
-        // Also update any text content for simple text elements
-        if (selectedElement.element.tagName === 'P' || 
-            selectedElement.element.tagName === 'SPAN' || 
-            selectedElement.element.tagName === 'DIV') {
-          selectedElement.element.textContent = editor.getText();
-        }
-        
-        // Force a repaint to ensure changes are visible
-        selectedElement.element.style.opacity = '0.99';
-        setTimeout(() => {
-          if (selectedElement.element) {
-            selectedElement.element.style.opacity = '';
-          }
-        }, 0);
       }
-      
-      console.log('TextEditor: Content updated', {
-        htmlContent,
-        elementTagName: selectedElement.element?.tagName,
-        elementContent: selectedElement.element?.innerHTML
-      });
     },
     onSelectionUpdate: ({ editor }) => {
       // Update current format
@@ -130,18 +109,12 @@ export const TextEditor: React.FC<TextEditorProps> = ({ selectedElement }) => {
 
   useEffect(() => {
     const { data } = selectedElement;
-    const initialContent = data.content || data.textContent || selectedElement.element?.innerHTML || '';
+    const initialContent = data.content || '';
     setContent(initialContent);
     
     if (editor && initialContent !== editor.getHTML()) {
       editor.commands.setContent(initialContent);
     }
-    
-    console.log('TextEditor: Initialized with content', {
-      initialContent,
-      elementTagName: selectedElement.element?.tagName,
-      dataContent: data.content
-    });
   }, [selectedElement, editor]);
   
   // Apply typography settings from CMS context

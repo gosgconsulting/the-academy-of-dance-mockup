@@ -1,4 +1,5 @@
 /* Sparti Builder Core Styles - Universal Plugin */
+@import '../styles/section-boundaries.css';
 .sparti-builder-wrapper {
   position: relative;
   min-height: 100vh;

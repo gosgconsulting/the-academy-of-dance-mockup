@@ -1,0 +1,68 @@
+/* Sparti Section Boundaries and Protection */
+
+/* Non-editable elements */
+.sparti-no-edit,
+header[data-sparti-ignore],
+footer[data-sparti-ignore],
+nav[data-sparti-ignore] {
+  position: relative;
+}
+
+.sparti-no-edit::before,
+header[data-sparti-ignore]::before,
+footer[data-sparti-ignore]::before,
+nav[data-sparti-ignore]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* When in editing mode, add protective overlay to non-editable sections */
+body.sparti-editing .sparti-no-edit::before,
+body.sparti-editing header[data-sparti-ignore]::before,
+body.sparti-editing footer[data-sparti-ignore]::before,
+body.sparti-editing nav[data-sparti-ignore]::before {
+  background-color: rgba(255, 0, 0, 0.05);
+  border: 2px dashed rgba(255, 0, 0, 0.3);
+  pointer-events: all;
+  cursor: not-allowed;
+}
+
+/* Section boundaries */
+.sparti-section,
+[data-sparti-section] {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Clear section boundaries in editing mode */
+body.sparti-editing .sparti-section,
+body.sparti-editing [data-sparti-section] {
+  outline: 1px solid rgba(59, 130, 246, 0.2);
+  margin: 2px 0;
+}
+
+/* Prevent hover bleeding between sections */
+body.sparti-editing .sparti-section:hover,
+body.sparti-editing [data-sparti-section]:hover {
+  outline-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Hero section specific protection */
+.sparti-section[data-sparti-section="hero"] {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure slider elements within sections don't interfere with navigation */
+body.sparti-editing .sparti-section .slider,
+body.sparti-editing .sparti-section [data-sparti-component*="hero"],
+body.sparti-editing .sparti-section [data-sparti-component*="slider"] {
+  isolation: isolate;
+  position: relative;
+}

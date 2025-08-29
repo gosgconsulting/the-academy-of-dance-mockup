@@ -1,11 +1,10 @@
 // Enhanced Content Edit Panel with component registry integration
 import React, { useState } from 'react';
-import { Type, Image, Video, Link, MousePointer, Settings, X } from 'lucide-react';
+import { Type, Image, Video, Link, MousePointer, Settings, X, Save } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { ElementType } from '../types';
-import { useSupabaseDatabase } from '../hooks/useSupabaseDatabase';
+import useDatabase from '../hooks/useDatabase';
 import { componentRegistry } from '../registry';
-import { useToast } from '@/hooks/use-toast';
 
 // Specialized editor components
 import { TextEditor } from './editors/TextEditor';
@@ -16,7 +15,11 @@ import { SliderEditor } from './editors/SliderEditor';
 
 export const ContentEditPanel: React.FC = () => {
   const { isEditing, selectedElement, selectElement } = useSpartiBuilder();
-  const { components, isLoading, error } = useSupabaseDatabase();
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const { components, status, error } = useDatabase();
+  
+  // Derive loading state from useDatabase status
+  const isSaving = status === 'loading';
 
   if (!isEditing || !selectedElement) return null;
 
@@ -27,6 +30,11 @@ export const ContentEditPanel: React.FC = () => {
   const isComponent = ['header', 'footer', 'sidebar', 'navigation'].includes(data.tagName);
 
   const getEditorIcon = (type: ElementType) => {
+    // Check for hero section specifically
+    if (data.attributes?.['data-sparti-component'] === 'hero-section') {
+      return Image;
+    }
+    
     const icons = {
       image: Image,
       slider: Image, // Use Image icon for sliders too
@@ -45,8 +53,10 @@ export const ContentEditPanel: React.FC = () => {
   const renderSpecializedEditor = () => {
     const commonProps = { selectedElement };
     
-    // Use SliderEditor for slider elements
-    if (elementType === 'slider') {
+    // Check for hero sections specifically (they should use SliderEditor for image background changes)
+    if (data.attributes?.['data-sparti-component'] === 'hero-section' || 
+        elementType === 'slider' || 
+        selectedElement.element.matches('[data-sparti-component="hero-section"]')) {
       return <SliderEditor {...commonProps} />;
     }
     
@@ -91,6 +101,43 @@ export const ContentEditPanel: React.FC = () => {
 
   const IconComponent = getEditorIcon(elementType);
 
+  // Save the current element to the database as a component
+  const saveToDatabase = async () => {
+    if (!isComponent) return;
+    
+    setSaveSuccess(false);
+    
+    try {
+      // Create a component object from the selected element
+      const componentData = {
+        name: data.id || `${data.tagName}-${Date.now()}`,
+        type: data.tagName,
+        content: JSON.stringify(data),
+        isPublished: true
+      };
+      
+      // Check if component already exists
+      const existingComponent = await components.getByName(componentData.name) as any;
+      
+      if (existingComponent && existingComponent.id) {
+        // Update existing component
+        await components.update(existingComponent.id, componentData);
+      } else {
+        // Create new component
+        await components.create({ ...componentData, tenantId: 'default' });
+      }
+      
+      setSaveSuccess(true);
+      
+      // Auto-hide success message after 3 seconds
+      setTimeout(() => {
+        setSaveSuccess(false);
+      }, 3000);
+    } catch (err) {
+      // Error is already handled by useDatabase hook
+      console.error('Error saving component:', err);
+    }
+  };
 
   return (
     <>
@@ -100,7 +147,11 @@ export const ContentEditPanel: React.FC = () => {
           <div className="sparti-edit-header-content">
             <IconComponent size={20} />
             <div>
-              <h3>{elementType.charAt(0).toUpperCase() + elementType.slice(1)} Editor</h3>
+              <h3>
+                {data.attributes?.['data-sparti-component'] === 'hero-section' 
+                  ? 'Hero Background Editor' 
+                  : `${elementType.charAt(0).toUpperCase() + elementType.slice(1)} Editor`}
+              </h3>
               <p className="sparti-element-path">{data.tagName.toUpperCase()}</p>
               {componentRegistry.has(elementType) && (
                 <div className="sparti-registry-status">
@@ -110,6 +161,17 @@ export const ContentEditPanel: React.FC = () => {
             </div>
           </div>
           <div className="sparti-edit-panel-actions">
+            {isComponent && (
+              <button 
+                className={`sparti-btn sparti-btn-primary ${isSaving ? 'sparti-btn-loading' : ''}`}
+                onClick={saveToDatabase}
+                disabled={isSaving}
+                aria-label="Save to database"
+              >
+                <Save size={16} />
+                {isSaving ? 'Saving...' : 'Save'}
+              </button>
+            )}
             <button 
               className="sparti-btn sparti-btn-ghost sparti-close-btn" 
               onClick={() => selectElement(null)}
@@ -121,14 +183,19 @@ export const ContentEditPanel: React.FC = () => {
         </div>
         
         <div className="sparti-edit-panel-content">
-          {error && (
+          {saveSuccess && (
+            <div className="sparti-alert sparti-alert-success">
+              Component saved successfully!
+            </div>
+          )}
+          {error && status === 'error' && (
             <div className="sparti-alert sparti-alert-error">
               {error}
             </div>
           )}
-          {isLoading && (
+          {status === 'loading' && (
             <div className="sparti-alert sparti-alert-info">
-              Loading components...
+              Processing your request...
             </div>
           )}
           {renderSpecializedEditor()}
