@@ -13,6 +13,8 @@ import {
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { UniversalElementDetector } from '../core/universal-detector';
 
+// Force refresh to clear Vite cache
+
 interface PageSection {
   id: string;
   name: string;
