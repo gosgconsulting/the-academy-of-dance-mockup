@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { SpartiElement } from '../../types';
 import { 
-  Images, 
+  Sliders, 
   Plus, 
   Trash2, 
-  Upload
+  Upload, 
+  Play, 
+  Pause, 
+  Eye, 
+  EyeOff,
+  ArrowLeft,
+  ArrowRight,
+  MoreHorizontal
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface SliderImage {
   src: string;
@@ -23,6 +32,13 @@ interface SliderEditorProps {
 
 export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) => {
   const [images, setImages] = useState<SliderImage[]>([]);
+  const [autoplay, setAutoplay] = useState(false);
+  const [autoplaySpeed, setAutoplaySpeed] = useState(3000);
+  const [showDots, setShowDots] = useState(true);
+  const [showArrows, setShowArrows] = useState(true);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [transition, setTransition] = useState<'fade' | 'slide' | 'zoom'>('fade');
+  const [height, setHeight] = useState('400px');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   // Initialize from element data
@@ -32,110 +48,105 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
     if (data.images) {
       setImages(Array.isArray(data.images) ? data.images : []);
     } else {
-      // Check if this is a hero section and extract images from the heroImages array
-      const isHeroSection = data.attributes?.['data-sparti-component'] === 'hero-section';
-      
-      if (isHeroSection) {
-        // For hero sections, we need to extract images from the component's structure
-        const imgElements = selectedElement.element?.querySelectorAll('img');
-        if (imgElements && imgElements.length > 0) {
-          const extractedImages: SliderImage[] = Array.from(imgElements).map((img, index) => ({
-            src: img.src || '',
-            alt: img.alt || `Dance performance ${index + 1}`
-          }));
-          setImages(extractedImages);
-        } else {
-          // Fallback: create default hero images if none found
-          const defaultHeroImages = [
-            '/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png',
-            '/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png',
-            '/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png',
-            '/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png',
-            '/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png'
-          ].map((src, index) => ({
-            src,
-            alt: `Dance performance ${index + 1}`
-          }));
-          setImages(defaultHeroImages);
-        }
-      } else {
-        // Extract images from existing HTML structure if available
-        const imgElements = selectedElement.element?.querySelectorAll('img');
-        if (imgElements && imgElements.length > 0) {
-          const extractedImages: SliderImage[] = Array.from(imgElements).map(img => ({
-            src: img.src || '',
-            alt: img.alt || ''
-          }));
-          setImages(extractedImages);
-        }
+      // Extract images from existing HTML structure if available
+      const imgElements = selectedElement.element?.querySelectorAll('img');
+      if (imgElements && imgElements.length > 0) {
+        const extractedImages: SliderImage[] = Array.from(imgElements).map(img => ({
+          src: img.src || '',
+          alt: img.alt || '',
+          title: img.title || '',
+          caption: img.getAttribute('data-caption') || ''
+        }));
+        setImages(extractedImages);
       }
     }
+    
+    setAutoplay(data.autoplay || false);
+    setAutoplaySpeed(data.autoplaySpeed || 3000);
+    setShowDots(data.showDots !== false); // default true
+    setShowArrows(data.showArrows !== false); // default true
+    setSlidesToShow(data.slidesToShow || 1);
+    setTransition(data.transition || 'fade');
+    setHeight(data.height || '400px');
   }, [selectedElement]);
 
-  // Update element when images change
+  // Update element when settings change
   useEffect(() => {
     if (selectedElement.element) {
-      selectedElement.data = { ...selectedElement.data, images };
+      const updatedData = {
+        images,
+        autoplay,
+        autoplaySpeed,
+        showDots,
+        showArrows,
+        slidesToShow,
+        transition,
+        height
+      };
+
+      // Update the element's data
+      selectedElement.data = { ...selectedElement.data, ...updatedData };
+      
+      // Regenerate the slider HTML
       updateSliderHTML();
     }
-  }, [images]);
+  }, [images, autoplay, autoplaySpeed, showDots, showArrows, slidesToShow, transition, height]);
 
   const updateSliderHTML = () => {
-    if (!selectedElement.element || images.length === 0) return;
+    if (!selectedElement.element) return;
 
-    const isHeroSection = selectedElement.data.attributes?.['data-sparti-component'] === 'hero-section';
-    
-    if (isHeroSection) {
-      // For hero sections, update the image sources directly
-      const imgElements = selectedElement.element.querySelectorAll('img');
-      
-      // Update existing images or create new ones
-      images.forEach((image, index) => {
-        if (imgElements[index]) {
-          imgElements[index].src = image.src;
-          imgElements[index].alt = image.alt || `Dance performance ${index + 1}`;
-        }
-      });
-      
-      // If we have more images than existing img elements, we need to recreate the hero slider
-      if (images.length !== imgElements.length) {
-        const imageContainer = selectedElement.element.querySelector('.absolute.inset-0');
-        if (imageContainer) {
-          // Keep the overlay but update the image slides
-          const overlay = imageContainer.querySelector('.bg-black\\/50');
-          imageContainer.innerHTML = '';
-          
-          // Add updated images
-          images.forEach((image, index) => {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
-            slideDiv.innerHTML = `<img src="${image.src}" alt="${image.alt}" class="w-full h-full object-cover" />`;
-            imageContainer.appendChild(slideDiv);
-          });
-          
-          // Re-add overlay
-          if (overlay) {
-            imageContainer.appendChild(overlay);
-          }
-        }
-      }
-    } else {
-      // For regular sliders, update existing images
-      const imgElements = selectedElement.element.querySelectorAll('img');
-      
-      if (imgElements.length > 0) {
-        images.forEach((image, index) => {
-          if (imgElements[index]) {
-            imgElements[index].src = image.src;
-            imgElements[index].alt = image.alt || '';
-          }
-        });
-      }
-    }
+    const sliderHTML = `
+      <div class="sparti-slider" 
+           data-autoplay="${autoplay}" 
+           data-autoplay-speed="${autoplaySpeed}"
+           data-transition="${transition}"
+           data-slides-to-show="${slidesToShow}"
+           style="height: ${height}; position: relative; overflow: hidden;">
+        
+        <!-- Slider Container -->
+        <div class="sparti-slider-container" style="display: flex; transition: transform 0.3s ease;">
+          ${images.map((image, index) => `
+            <div class="sparti-slide" style="min-width: ${100 / slidesToShow}%; position: relative;">
+              <img src="${image.src}" 
+                   alt="${image.alt}" 
+                   title="${image.title}"
+                   data-caption="${image.caption}"
+                   style="width: 100%; height: 100%; object-fit: cover;" />
+              ${image.caption ? `
+                <div class="sparti-slide-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; padding: 1rem;">
+                  ${image.caption}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+        
+        <!-- Navigation Arrows -->
+        ${showArrows ? `
+          <button class="sparti-slider-prev" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 0.5rem; border-radius: 50%; cursor: pointer;">
+            ‹
+          </button>
+          <button class="sparti-slider-next" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 0.5rem; border-radius: 50%; cursor: pointer;">
+            ›
+          </button>
+        ` : ''}
+        
+        <!-- Navigation Dots -->
+        ${showDots ? `
+          <div class="sparti-slider-dots" style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem;">
+            ${images.map((_, index) => `
+              <button class="sparti-slider-dot" data-slide="${index}" style="width: 12px; height: 12px; border-radius: 50%; border: none; background: rgba(255,255,255,0.5); cursor: pointer;"></button>
+            `).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    selectedElement.element.innerHTML = sliderHTML;
   };
 
   const addImage = () => {
-    setImages([...images, { src: '', alt: '' }]);
+    setImages([...images, { src: '', alt: '', title: '', caption: '' }]);
   };
 
   const updateImage = (index: number, field: keyof SliderImage, value: string) => {
@@ -172,8 +183,8 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
   return (
     <div className="sparti-edit-section">
       <div className="sparti-edit-label">
-        <Images size={16} />
-        Image Editor
+        <Sliders size={16} />
+        Image Slider Editor
       </div>
 
       {/* Images Management */}
@@ -186,7 +197,7 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
           </Button>
         </div>
 
-        <div className="space-y-4 max-h-96 overflow-y-auto">
+        <div className="space-y-4 max-h-60 overflow-y-auto">
           {images.map((image, index) => (
             <div key={index} className="border border-gray-200 rounded-lg p-3 bg-gray-50">
               <div className="flex items-center justify-between mb-2">
@@ -222,18 +233,114 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
                     className="text-xs"
                   />
                 </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <Label className="text-xs text-gray-600">Alt Text</Label>
+                    <Input
+                      value={image.alt}
+                      onChange={(e) => updateImage(index, 'alt', e.target.value)}
+                      placeholder="Alt text"
+                      className="text-xs"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs text-gray-600">Title</Label>
+                    <Input
+                      value={image.title}
+                      onChange={(e) => updateImage(index, 'title', e.target.value)}
+                      placeholder="Title"
+                      className="text-xs"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <Label className="text-xs text-gray-600">Alt Text</Label>
+                  <Label className="text-xs text-gray-600">Caption</Label>
                   <Input
-                    value={image.alt}
-                    onChange={(e) => updateImage(index, 'alt', e.target.value)}
-                    placeholder="Alt text"
+                    value={image.caption}
+                    onChange={(e) => updateImage(index, 'caption', e.target.value)}
+                    placeholder="Image caption"
                     className="text-xs"
                   />
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Slider Settings */}
+      <div className="sparti-edit-group">
+        <Label className="text-sm font-semibold mb-3 block">Slider Settings</Label>
+        
+        <div className="space-y-4">
+          {/* Autoplay */}
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Autoplay</Label>
+            <Switch checked={autoplay} onCheckedChange={setAutoplay} />
+          </div>
+
+          {autoplay && (
+            <div>
+              <Label className="text-xs text-gray-600">Autoplay Speed (ms)</Label>
+              <Input
+                type="number"
+                value={autoplaySpeed}
+                onChange={(e) => setAutoplaySpeed(Number(e.target.value))}
+                min={1000}
+                max={10000}
+                step={500}
+                className="text-xs"
+              />
+            </div>
+          )}
+
+          {/* Navigation */}
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Show Navigation Dots</Label>
+            <Switch checked={showDots} onCheckedChange={setShowDots} />
+          </div>
+
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Show Navigation Arrows</Label>
+            <Switch checked={showArrows} onCheckedChange={setShowArrows} />
+          </div>
+
+          {/* Layout */}
+          <div>
+            <Label className="text-xs text-gray-600">Slides to Show</Label>
+            <Input
+              type="number"
+              value={slidesToShow}
+              onChange={(e) => setSlidesToShow(Number(e.target.value))}
+              min={1}
+              max={5}
+              className="text-xs"
+            />
+          </div>
+
+          <div>
+            <Label className="text-xs text-gray-600">Transition Effect</Label>
+            <Select value={transition} onValueChange={(value: 'fade' | 'slide' | 'zoom') => setTransition(value)}>
+              <SelectTrigger className="text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="fade">Fade</SelectItem>
+                <SelectItem value="slide">Slide</SelectItem>
+                <SelectItem value="zoom">Zoom</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label className="text-xs text-gray-600">Height</Label>
+            <Input
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              placeholder="400px or 50vh"
+              className="text-xs"
+            />
+          </div>
         </div>
       </div>
 

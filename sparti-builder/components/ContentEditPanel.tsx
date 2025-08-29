@@ -30,11 +30,6 @@ export const ContentEditPanel: React.FC = () => {
   const isComponent = ['header', 'footer', 'sidebar', 'navigation'].includes(data.tagName);
 
   const getEditorIcon = (type: ElementType) => {
-    // Check for hero section specifically
-    if (data.attributes?.['data-sparti-component'] === 'hero-section') {
-      return Image;
-    }
-    
     const icons = {
       image: Image,
       slider: Image, // Use Image icon for sliders too
@@ -53,10 +48,8 @@ export const ContentEditPanel: React.FC = () => {
   const renderSpecializedEditor = () => {
     const commonProps = { selectedElement };
     
-    // Check for hero sections specifically (they should use SliderEditor for image background changes)
-    if (data.attributes?.['data-sparti-component'] === 'hero-section' || 
-        elementType === 'slider' || 
-        selectedElement.element.matches('[data-sparti-component="hero-section"]')) {
+    // Use SliderEditor for slider elements
+    if (elementType === 'slider') {
       return <SliderEditor {...commonProps} />;
     }
     
@@ -147,11 +140,7 @@ export const ContentEditPanel: React.FC = () => {
           <div className="sparti-edit-header-content">
             <IconComponent size={20} />
             <div>
-              <h3>
-                {data.attributes?.['data-sparti-component'] === 'hero-section' 
-                  ? 'Hero Background Editor' 
-                  : `${elementType.charAt(0).toUpperCase() + elementType.slice(1)} Editor`}
-              </h3>
+              <h3>{elementType.charAt(0).toUpperCase() + elementType.slice(1)} Editor</h3>
               <p className="sparti-element-path">{data.tagName.toUpperCase()}</p>
               {componentRegistry.has(elementType) && (
                 <div className="sparti-registry-status">

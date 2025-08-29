@@ -6,9 +6,7 @@ export class UniversalElementDetector {
   private static readonly SKIP_SELECTORS = [
     '.sparti-toolbar', '.sparti-edit-panel', '.sparti-overlay', '.sparti-ui',
     'script', 'style', 'noscript', 'meta', 'title', 'link', 'head',
-    '[data-sparti-ignore]', '.no-edit', '[contenteditable="false"]',
-    '.sparti-no-edit', 'header[data-sparti-ignore]', 'footer[data-sparti-ignore]',
-    'nav[data-sparti-ignore]', '.fixed-ui', '.whatsapp-button', '.whatsapp-chat'
+    '[data-sparti-ignore]', '.no-edit', '[contenteditable="false"]'
   ];
 
   // Interactive element indicators
@@ -323,25 +321,6 @@ export class UniversalElementDetector {
       return false;
     }
 
-    // Skip header, footer, and navigation elements
-    const nonEditableTags = ['header', 'footer', 'nav'];
-    const tagName = element.tagName.toLowerCase();
-    
-    if (nonEditableTags.includes(tagName)) {
-      return false;
-    }
-
-    // Skip elements inside non-editable containers
-    if (element.closest('header, footer, nav, [data-sparti-ignore], .sparti-no-edit')) {
-      return false;
-    }
-
-    // Only allow editing within sparti-section containers
-    const isInEditableSection = element.closest('[data-sparti-section], .sparti-section');
-    if (!isInEditableSection && !element.matches('[data-sparti-section], .sparti-section')) {
-      return false;
-    }
-
     // Skip elements with explicit skip indicators
     for (const selector of this.SKIP_SELECTORS) {
       try {
@@ -390,19 +369,6 @@ export class UniversalElementDetector {
     const maxDepth = 10; // Prevent infinite loops
     
     while (current && current !== document.body && depth < maxDepth) {
-      // Skip elements outside editable sections
-      if (current.closest('[data-sparti-ignore], .sparti-no-edit')) {
-        return null;
-      }
-      
-      // Only allow elements within sparti sections
-      if (!current.closest('[data-sparti-section], .sparti-section') && 
-          !current.matches('[data-sparti-section], .sparti-section')) {
-        current = current.parentElement;
-        depth++;
-        continue;
-      }
-      
       if (this.isEditableElement(current)) {
         return current;
       }
