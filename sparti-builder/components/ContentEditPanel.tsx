@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { Type, Image, Video, Link, MousePointer, Settings, X, Save } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { ElementType } from '../types';
-import useDatabase from '../hooks/useDatabase';
+import { useSupabaseDatabase } from '../hooks/useSupabaseDatabase';
 import { componentRegistry } from '../registry';
+import { useToast } from '@/hooks/use-toast';
 
 // Specialized editor components
 import { TextEditor } from './editors/TextEditor';
@@ -15,11 +16,9 @@ import { SliderEditor } from './editors/SliderEditor';
 
 export const ContentEditPanel: React.FC = () => {
   const { isEditing, selectedElement, selectElement } = useSpartiBuilder();
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const { components, status, error } = useDatabase();
-  
-  // Derive loading state from useDatabase status
-  const isSaving = status === 'loading';
+  const [isSaving, setIsSaving] = useState(false);
+  const { components, isLoading, error } = useSupabaseDatabase();
+  const { toast } = useToast();
 
   if (!isEditing || !selectedElement) return null;
 
@@ -96,39 +95,57 @@ export const ContentEditPanel: React.FC = () => {
 
   // Save the current element to the database as a component
   const saveToDatabase = async () => {
-    if (!isComponent) return;
-    
-    setSaveSuccess(false);
+    setIsSaving(true);
     
     try {
       // Create a component object from the selected element
       const componentData = {
         name: data.id || `${data.tagName}-${Date.now()}`,
         type: data.tagName,
-        content: JSON.stringify(data),
-        isPublished: true
+        content: data,
+        styles: selectedElement.data.styles || {},
+        is_active: true,
+        is_global: false
       };
       
-      // Check if component already exists
-      const existingComponent = await components.getByName(componentData.name) as any;
-      
-      if (existingComponent && existingComponent.id) {
-        // Update existing component
-        await components.update(existingComponent.id, componentData);
-      } else {
-        // Create new component
-        await components.create({ ...componentData, tenantId: 'default' });
+      // Try to get existing component by name first
+      try {
+        const allComponents = await components.getAll();
+        const existingComponent = allComponents.find(comp => comp.name === componentData.name);
+        
+        if (existingComponent) {
+          // Update existing component
+          await components.update(existingComponent.id, componentData);
+          toast({
+            title: "Component Updated",
+            description: `Component "${componentData.name}" has been updated successfully.`,
+          });
+        } else {
+          // Create new component
+          await components.create(componentData);
+          toast({
+            title: "Component Saved",
+            description: `Component "${componentData.name}" has been saved to the database.`,
+          });
+        }
+      } catch (err) {
+        // If getting components fails, try to create a new one
+        await components.create(componentData);
+        toast({
+          title: "Component Saved", 
+          description: `Component "${componentData.name}" has been saved to the database.`,
+        });
       }
       
-      setSaveSuccess(true);
-      
-      // Auto-hide success message after 3 seconds
-      setTimeout(() => {
-        setSaveSuccess(false);
-      }, 3000);
-    } catch (err) {
-      // Error is already handled by useDatabase hook
+    } catch (err: any) {
       console.error('Error saving component:', err);
+      toast({
+        title: "Save Failed",
+        description: err.message || "Failed to save component to database",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -150,17 +167,15 @@ export const ContentEditPanel: React.FC = () => {
             </div>
           </div>
           <div className="sparti-edit-panel-actions">
-            {isComponent && (
-              <button 
-                className={`sparti-btn sparti-btn-primary ${isSaving ? 'sparti-btn-loading' : ''}`}
-                onClick={saveToDatabase}
-                disabled={isSaving}
-                aria-label="Save to database"
-              >
-                <Save size={16} />
-                {isSaving ? 'Saving...' : 'Save'}
-              </button>
-            )}
+            <button 
+              className={`sparti-btn sparti-btn-primary ${isSaving ? 'sparti-btn-loading' : ''}`}
+              onClick={saveToDatabase}
+              disabled={isSaving}
+              aria-label="Save to database"
+            >
+              <Save size={16} />
+              {isSaving ? 'Saving...' : 'Save to Database'}
+            </button>
             <button 
               className="sparti-btn sparti-btn-ghost sparti-close-btn" 
               onClick={() => selectElement(null)}
@@ -172,19 +187,14 @@ export const ContentEditPanel: React.FC = () => {
         </div>
         
         <div className="sparti-edit-panel-content">
-          {saveSuccess && (
-            <div className="sparti-alert sparti-alert-success">
-              Component saved successfully!
-            </div>
-          )}
-          {error && status === 'error' && (
+          {error && (
             <div className="sparti-alert sparti-alert-error">
               {error}
             </div>
           )}
-          {status === 'loading' && (
+          {isLoading && (
             <div className="sparti-alert sparti-alert-info">
-              Processing your request...
+              Loading components...
             </div>
           )}
           {renderSpecializedEditor()}
