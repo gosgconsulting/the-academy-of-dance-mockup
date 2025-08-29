@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useDatabase } from '../hooks/useDatabase';
+import { useSupabaseDatabase } from '../hooks/useSupabaseDatabase';
 
 // Define types for our CMS settings
 export interface TypographySettings {
@@ -99,7 +99,7 @@ const STORAGE_KEY = 'cms_settings';
 // Provider component
 export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [settings, setSettings] = useState<CMSSettings>(defaultSettings);
-  const database = useDatabase();
+  const database = useSupabaseDatabase();
   const dbSettings = database?.settings;
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -120,17 +120,17 @@ export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ childre
             // Map database settings to our CMSSettings format
             const mappedSettings: CMSSettings = {
               typography: {
-                headingFont: (dbSiteSettings as any).headingFont || defaultSettings.typography.headingFont,
-                bodyFont: (dbSiteSettings as any).bodyFont || defaultSettings.typography.bodyFont,
-                baseFontSize: (dbSiteSettings as any).baseFontSize?.toString() || defaultSettings.typography.baseFontSize,
-                lineHeight: (dbSiteSettings as any).lineHeight?.toString() || defaultSettings.typography.lineHeight,
-                letterSpacing: (dbSiteSettings as any).letterSpacing?.toString() || defaultSettings.typography.letterSpacing,
-                fontWeight: (dbSiteSettings as any).fontWeight?.toString() || defaultSettings.typography.fontWeight,
+                headingFont: (dbSiteSettings as any).font_family || defaultSettings.typography.headingFont,
+                bodyFont: (dbSiteSettings as any).font_family || defaultSettings.typography.bodyFont,
+                baseFontSize: defaultSettings.typography.baseFontSize,
+                lineHeight: defaultSettings.typography.lineHeight,
+                letterSpacing: defaultSettings.typography.letterSpacing,
+                fontWeight: defaultSettings.typography.fontWeight,
               },
               colors: {
-                primary: (dbSiteSettings as any).primaryColor || defaultSettings.colors.primary,
-                secondary: (dbSiteSettings as any).secondaryColor || defaultSettings.colors.secondary,
-                accent: defaultSettings.colors.accent, // Use default since accentColor doesn't exist in DB
+                primary: (dbSiteSettings as any).primary_color || defaultSettings.colors.primary,
+                secondary: (dbSiteSettings as any).secondary_color || defaultSettings.colors.secondary,
+                accent: defaultSettings.colors.accent,
                 background: defaultSettings.colors.background,
                 text: defaultSettings.colors.text,
                 heading: defaultSettings.colors.heading,
@@ -140,8 +140,8 @@ export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ childre
                 error: defaultSettings.colors.error,
               },
               logo: {
-                logo: (dbSiteSettings as any).logo || null,
-                favicon: (dbSiteSettings as any).favicon || null,
+                logo: (dbSiteSettings as any).logo_url || null,
+                favicon: null,
                 logoAlt: 'Site Logo',
                 logoWidth: 200,
                 logoHeight: null,
@@ -196,19 +196,16 @@ export const CMSSettingsProvider: React.FC<{ children: ReactNode }> = ({ childre
       try {
         console.log('Auto-saving CMS settings to database...');
         await dbSettings.update({
-          siteName: 'Sparti CMS',
-          headingFont: settings.typography.headingFont,
-          bodyFont: settings.typography.bodyFont,
-          baseFontSize: parseInt(settings.typography.baseFontSize) || 16,
-          lineHeight: parseFloat(settings.typography.lineHeight) || 1.5,
-          letterSpacing: parseFloat(settings.typography.letterSpacing) || 0,
-          fontWeight: parseInt(settings.typography.fontWeight) || 400,
-          primaryColor: settings.colors.primary,
-          secondaryColor: settings.colors.secondary,
-          // Removed accentColor as it doesn't exist in database schema
-          logo: settings.logo.logo || undefined,
-          favicon: settings.logo.favicon || undefined,
-          tenantId: 'default'
+          site_name: 'Sparti CMS',
+          font_family: settings.typography.headingFont,
+          primary_color: settings.colors.primary,
+          secondary_color: settings.colors.secondary,
+          logo_url: settings.logo.logo || undefined,
+          settings: {
+            typography: settings.typography,
+            colors: settings.colors,
+            logo: settings.logo
+          }
         });
         console.log('CMS settings saved successfully');
       } catch (error) {

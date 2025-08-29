@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { AuthProvider, useAuth } from './auth/AuthProvider';
+import { SupabaseAuthProvider, useSupabaseAuth } from '../providers/SupabaseAuthProvider';
+import { TenantProvider } from '../providers/TenantProvider';
 import { CMSSettingsProvider } from '../context/CMSSettingsContext';
 import { SpartiBuilder } from './SpartiBuilder';
 
@@ -8,7 +9,18 @@ interface SpartiCMSWrapperProps {
 }
 
 const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useSupabaseAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (user) {
     return (
@@ -23,13 +35,15 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
 
 export const SpartiCMSWrapper: React.FC<SpartiCMSWrapperProps> = ({ children }) => {
   return (
-    <AuthProvider>
-      <CMSSettingsProvider>
-        <SpartiCMSWrapperContent>
-          {children}
-        </SpartiCMSWrapperContent>
-      </CMSSettingsProvider>
-    </AuthProvider>
+    <SupabaseAuthProvider>
+      <TenantProvider>
+        <CMSSettingsProvider>
+          <SpartiCMSWrapperContent>
+            {children}
+          </SpartiCMSWrapperContent>
+        </CMSSettingsProvider>
+      </TenantProvider>
+    </SupabaseAuthProvider>
   );
 };
 

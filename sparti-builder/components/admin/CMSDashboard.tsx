@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Type, Palette, Image, FileImage, Users, LogOut, Home, PenTool, FileEdit } from 'lucide-react';
-import { useAuth } from '../auth/AuthProvider';
+import { useSupabaseAuth } from '../../providers/SupabaseAuthProvider';
+import { useTenant } from '../../providers/TenantProvider';
 import ColorSettings from '../cms/ColorSettings';
 import TypographySettings from '../cms/TypographySettings';
 import BrandingSettings from '../cms/BrandingSettings';
@@ -12,7 +13,8 @@ import FormsManager from '../cms/FormsManager';
 const CMSDashboard: React.FC = () => {
   console.log('CMSDashboard rendering successfully');
   const [activeTab, setActiveTab] = useState<string>('pages');
-  const { signOut } = useAuth();
+  const { user, signOut } = useSupabaseAuth();
+  const { currentTenant, tenants } = useTenant();
 
   const renderContent = () => {
     switch (activeTab) {
@@ -53,6 +55,12 @@ const CMSDashboard: React.FC = () => {
           {/* Header */}
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-xl font-bold text-gray-900">Sparti CMS</h1>
+            {currentTenant && (
+              <p className="text-sm text-gray-600 mt-1">{currentTenant.name}</p>
+            )}
+            {user && (
+              <p className="text-xs text-gray-500 mt-1">{user.email}</p>
+            )}
           </div>
           
           {/* Navigation */}
