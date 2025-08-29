@@ -1,8 +1,9 @@
 import { PageSchema, SaveResponse, LoadResponse, PageVersion } from '../types/content-schema';
 
 export class ContentAPI {
-  // Make baseURL configurable with a default that works with the content server
-  private static baseURL = process.env.CONTENT_API_URL || 'http://localhost:3001/api/content';
+  // Use a hardcoded URL that works with the content server
+  // Browser doesn't have access to process.env unless explicitly exposed by the build system
+  private static baseURL = 'http://localhost:3001/api/content';
 
   public static async savePage(schema: PageSchema, comment?: string): Promise<SaveResponse> {
     try {
