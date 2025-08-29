@@ -43,25 +43,87 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation scrollToSection={scrollToSection} />
-      <HeroSection scrollToSection={scrollToSection} />
-      <TrialsSection />
-      <AboutUsSection />
-      <VisionMissionSection />
-      <ProgrammesAndExamsSection />
-      <CompetitionExcellenceSection />
-      <EventsSection />
-      <AchievementsSection />
-      <TeachersSection />
-      <ReviewsSection />
-      <LocationsSection />
-      <GallerySection />
-      <Footer />
-      <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
-      <WhatsAppChat
-        isOpen={isWhatsAppChatOpen}
-        onClose={() => setIsWhatsAppChatOpen(false)}
-      />
+      {/* Header - Not editable with Sparti */}
+      <header data-sparti-ignore="true" className="sparti-no-edit">
+        <Navigation scrollToSection={scrollToSection} />
+      </header>
+
+      {/* Main Content - Sparti Editable Sections */}
+      <main className="sparti-content">
+        {/* Hero Section */}
+        <section data-sparti-section="hero" data-sparti-editable="true" className="sparti-section">
+          <HeroSection scrollToSection={scrollToSection} />
+        </section>
+
+        {/* Trials Section */}
+        <section data-sparti-section="trials" data-sparti-editable="true" className="sparti-section">
+          <TrialsSection />
+        </section>
+
+        {/* About Us Section */}
+        <section data-sparti-section="about" data-sparti-editable="true" className="sparti-section">
+          <AboutUsSection />
+        </section>
+
+        {/* Vision Mission Section */}
+        <section data-sparti-section="vision-mission" data-sparti-editable="true" className="sparti-section">
+          <VisionMissionSection />
+        </section>
+
+        {/* Programmes Section */}
+        <section data-sparti-section="programmes" data-sparti-editable="true" className="sparti-section">
+          <ProgrammesAndExamsSection />
+        </section>
+
+        {/* Competition Excellence Section */}
+        <section data-sparti-section="competition" data-sparti-editable="true" className="sparti-section">
+          <CompetitionExcellenceSection />
+        </section>
+
+        {/* Events Section */}
+        <section data-sparti-section="events" data-sparti-editable="true" className="sparti-section">
+          <EventsSection />
+        </section>
+
+        {/* Achievements Section */}
+        <section data-sparti-section="achievements" data-sparti-editable="true" className="sparti-section">
+          <AchievementsSection />
+        </section>
+
+        {/* Teachers Section */}
+        <section data-sparti-section="teachers" data-sparti-editable="true" className="sparti-section">
+          <TeachersSection />
+        </section>
+
+        {/* Reviews Section */}
+        <section data-sparti-section="reviews" data-sparti-editable="true" className="sparti-section">
+          <ReviewsSection />
+        </section>
+
+        {/* Locations Section */}
+        <section data-sparti-section="locations" data-sparti-editable="true" className="sparti-section">
+          <LocationsSection />
+        </section>
+
+        {/* Gallery Section */}
+        <section data-sparti-section="gallery" data-sparti-editable="true" className="sparti-section">
+          <GallerySection />
+        </section>
+      </main>
+
+      {/* Footer - Not editable with Sparti */}
+      <footer data-sparti-ignore="true" className="sparti-no-edit">
+        <Footer />
+      </footer>
+
+      {/* Fixed UI Elements - Not editable */}
+      <div data-sparti-ignore="true" className="sparti-no-edit">
+        <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
+        <WhatsAppChat
+          isOpen={isWhatsAppChatOpen}
+          onClose={() => setIsWhatsAppChatOpen(false)}
+        />
+      </div>
     </div>
   );
 };
