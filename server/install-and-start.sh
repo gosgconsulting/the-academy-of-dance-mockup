@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# Check if node_modules exists in server directory
-if [ ! -d "server/node_modules" ]; then
-  echo "Installing server dependencies..."
-  cd server
-  npm install
-  cd ..
-fi
-
-# Start the content server in the background
-echo "Starting content server..."
+echo "Installing server dependencies..."
 cd server
+npm install
+
+echo "Starting content server..."
 node content-server.js &
 SERVER_PID=$!
 
