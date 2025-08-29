@@ -49,64 +49,64 @@ const Index = () => {
       </header>
 
       {/* Main Content - Sparti Editable Sections */}
-      <main className="sparti-content">
+      <main id="main-content" className="sparti-content">
         {/* Hero Section */}
-        <section data-sparti-section="hero" data-sparti-editable="true" className="sparti-section">
+        <section id="hero-section" data-section-type="hero" className="sparti-section">
           <HeroSection scrollToSection={scrollToSection} />
         </section>
 
         {/* Trials Section */}
-        <section data-sparti-section="trials" data-sparti-editable="true" className="sparti-section">
+        <section id="trials-section" data-section-type="trials" className="sparti-section">
           <TrialsSection />
         </section>
 
         {/* About Us Section */}
-        <section data-sparti-section="about" data-sparti-editable="true" className="sparti-section">
+        <section id="about-section" data-section-type="about" className="sparti-section">
           <AboutUsSection />
         </section>
 
         {/* Vision Mission Section */}
-        <section data-sparti-section="vision-mission" data-sparti-editable="true" className="sparti-section">
+        <section id="vision-mission-section" data-section-type="vision-mission" className="sparti-section">
           <VisionMissionSection />
         </section>
 
         {/* Programmes Section */}
-        <section data-sparti-section="programmes" data-sparti-editable="true" className="sparti-section">
+        <section id="programmes-section" data-section-type="programmes" className="sparti-section">
           <ProgrammesAndExamsSection />
         </section>
 
         {/* Competition Excellence Section */}
-        <section data-sparti-section="competition" data-sparti-editable="true" className="sparti-section">
+        <section id="competition-section" data-section-type="competition" className="sparti-section">
           <CompetitionExcellenceSection />
         </section>
 
         {/* Events Section */}
-        <section data-sparti-section="events" data-sparti-editable="true" className="sparti-section">
+        <section id="events-section" data-section-type="events" className="sparti-section">
           <EventsSection />
         </section>
 
         {/* Achievements Section */}
-        <section data-sparti-section="achievements" data-sparti-editable="true" className="sparti-section">
+        <section id="achievements-section" data-section-type="achievements" className="sparti-section">
           <AchievementsSection />
         </section>
 
         {/* Teachers Section */}
-        <section data-sparti-section="teachers" data-sparti-editable="true" className="sparti-section">
+        <section id="teachers-section" data-section-type="teachers" className="sparti-section">
           <TeachersSection />
         </section>
 
         {/* Reviews Section */}
-        <section data-sparti-section="reviews" data-sparti-editable="true" className="sparti-section">
+        <section id="reviews-section" data-section-type="reviews" className="sparti-section">
           <ReviewsSection />
         </section>
 
         {/* Locations Section */}
-        <section data-sparti-section="locations" data-sparti-editable="true" className="sparti-section">
+        <section id="locations-section" data-section-type="locations" className="sparti-section">
           <LocationsSection />
         </section>
 
         {/* Gallery Section */}
-        <section data-sparti-section="gallery" data-sparti-editable="true" className="sparti-section">
+        <section id="gallery-section" data-section-type="gallery" className="sparti-section">
           <GallerySection />
         </section>
       </main>

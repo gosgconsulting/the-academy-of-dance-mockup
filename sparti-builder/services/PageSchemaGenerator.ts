@@ -178,6 +178,7 @@ export class PageSchemaGenerator {
     return {
       sections: updatedSections,
       metadata: {
+        createdAt: new Date().toISOString(), // Add required field
         updatedAt: new Date().toISOString()
       }
     };
