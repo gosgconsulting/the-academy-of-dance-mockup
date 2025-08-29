@@ -28,7 +28,7 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
   const [selectedElement, setSelectedElement] = useState<SpartiElement | null>(null);
   const [hoveredElement, setHoveredElement] = useState<SpartiElement | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-  const { components } = useSupabaseDatabase();
+  const { components, currentTenant } = useSupabaseDatabase();
   const { toast } = useToast();
 
   const enterEditMode = () => {
@@ -57,16 +57,43 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
     setIsSaving(true);
     
     try {
-      const { data } = selectedElement;
+      const { data, element } = selectedElement;
+      
+      // Get the latest content from the DOM element
+      const currentContent = element.innerHTML;
+      const currentStyles = window.getComputedStyle(element);
+      
+      // Extract relevant styles to save
+      const stylesToSave = {
+        color: currentStyles.color,
+        backgroundColor: currentStyles.backgroundColor,
+        fontSize: currentStyles.fontSize,
+        fontFamily: currentStyles.fontFamily,
+        fontWeight: currentStyles.fontWeight,
+        textAlign: currentStyles.textAlign,
+        padding: currentStyles.padding,
+        margin: currentStyles.margin,
+        border: currentStyles.border,
+        borderRadius: currentStyles.borderRadius,
+        // Add any custom styles from data
+        ...selectedElement.data.styles
+      };
+      
       // Create a component object from the selected element
       const componentData = {
         name: data.id || `${data.tagName}-${Date.now()}`,
-        type: data.tagName,
-        content: data,
-        styles: selectedElement.data.styles || {},
+        type: data.elementType || data.tagName,
+        content: {
+          ...data,
+          content: currentContent, // Use the latest content from DOM
+          innerHTML: currentContent
+        },
+        styles: stylesToSave,
         is_active: true,
         is_global: false
       };
+      
+      console.log('Saving component data:', componentData);
       
       // Try to get existing component by name first
       try {
@@ -78,14 +105,14 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
           await components.update(existingComponent.id, componentData);
           toast({
             title: "Component Updated",
-            description: `Component "${componentData.name}" has been updated successfully.`,
+            description: `Component "${componentData.name}" has been updated successfully for tenant ${currentTenant?.name || 'TAOD'}.`,
           });
         } else {
           // Create new component
           await components.create(componentData);
           toast({
             title: "Component Saved",
-            description: `Component "${componentData.name}" has been saved to the database.`,
+            description: `Component "${componentData.name}" has been saved to the database for tenant ${currentTenant?.name || 'TAOD'}.`,
           });
         }
       } catch (err) {
@@ -93,7 +120,7 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
         await components.create(componentData);
         toast({
           title: "Component Saved", 
-          description: `Component "${componentData.name}" has been saved to the database.`,
+          description: `Component "${componentData.name}" has been saved to the database for tenant ${currentTenant?.name || 'TAOD'}.`,
         });
       }
       
