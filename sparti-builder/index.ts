@@ -33,6 +33,12 @@ export type { ComponentDefinition, ComponentProperty } from './registry/types';
 export { default as useDatabase } from './hooks/useDatabase';
 export { useSpartiEditor } from './hooks/useSpartiEditor';
 
+// Content Management
+export { PageSchemaGenerator } from './services/PageSchemaGenerator';
+export { PageSchemaLoader } from './services/PageSchemaLoader';
+export { ContentAPI } from './services/ContentAPI';
+export type { PageSchema, SectionSchema, ElementSchema, SaveResponse, LoadResponse } from './types/content-schema';
+
 // Utilities
 export { removeBackground, loadImage, loadImageFromUrl } from './utils/backgroundRemoval';
 export * from './utils/component-detector';

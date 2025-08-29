@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { EditingContext, SpartiElement, SpartiBuilderConfig } from '../types';
+import { PageSchemaGenerator } from '../services/PageSchemaGenerator';
+import { ContentAPI } from '../services/ContentAPI';
+import { SaveResponse } from '../types/content-schema';
 
 interface SpartiBuilderContextType extends EditingContext {
   config: SpartiBuilderConfig;
@@ -7,6 +10,8 @@ interface SpartiBuilderContextType extends EditingContext {
   exitEditMode: () => void;
   selectElement: (element: SpartiElement | null) => void;
   hoverElement: (element: SpartiElement | null) => void;
+  savePage: () => Promise<SaveResponse>;
+  isSaving: boolean;
 }
 
 const SpartiBuilderContext = createContext<SpartiBuilderContextType | null>(null);
@@ -18,11 +23,12 @@ interface SpartiBuilderProviderProps {
 
 export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
   children,
-  config = { enabled: true, toolbar: true, autoDetect: true }
+  config = { enabled: true, toolbar: true, autoDetect: true, contentAPI: true }
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedElement, setSelectedElement] = useState<SpartiElement | null>(null);
   const [hoveredElement, setHoveredElement] = useState<SpartiElement | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   const enterEditMode = () => {
     setIsEditing(true);
@@ -44,6 +50,32 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
     setHoveredElement(element);
   };
 
+  const savePage = async (): Promise<SaveResponse> => {
+    if (!config.contentAPI) {
+      return { success: false, error: 'Content API not enabled' };
+    }
+
+    setIsSaving(true);
+    try {
+      const schema = PageSchemaGenerator.generatePageSchema();
+      const result = await ContentAPI.savePage(schema);
+      
+      if (result.success) {
+        console.log(`Page saved successfully (v${result.version})`);
+      }
+      
+      return result;
+    } catch (error) {
+      console.error('Error saving page:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Unknown error' 
+      };
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   const contextValue: SpartiBuilderContextType = {
     config,
     isEditing,
@@ -53,6 +85,8 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
     exitEditMode,
     selectElement,
     hoverElement,
+    savePage,
+    isSaving,
   };
 
   return (

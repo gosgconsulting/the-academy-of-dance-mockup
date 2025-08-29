@@ -1,11 +1,41 @@
-import React from 'react';
-import { Edit3, X, Save, Undo } from 'lucide-react';
+import React, { useState } from 'react';
+import { Edit3, X, Save, Undo, Check, AlertCircle } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 
 export const SpartiToolbar: React.FC = () => {
-  const { isEditing, config, enterEditMode, exitEditMode } = useSpartiBuilder();
+  const { isEditing, config, enterEditMode, exitEditMode, savePage, isSaving } = useSpartiBuilder();
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   if (!config.toolbar) return null;
+
+  const handleSave = async () => {
+    if (!config.contentAPI) return;
+    
+    setSaveStatus('idle');
+    const result = await savePage();
+    
+    if (result.success) {
+      setSaveStatus('success');
+      setTimeout(() => setSaveStatus('idle'), 3000);
+    } else {
+      setSaveStatus('error');
+      setTimeout(() => setSaveStatus('idle'), 5000);
+      console.error('Save failed:', result.error);
+    }
+  };
+
+  const getSaveButtonContent = () => {
+    if (isSaving) return 'Saving...';
+    if (saveStatus === 'success') return <><Check size={16} /> Saved</>;
+    if (saveStatus === 'error') return <><AlertCircle size={16} /> Error</>;
+    return <><Save size={16} /> Save</>;
+  };
+
+  const getSaveButtonClass = () => {
+    if (saveStatus === 'success') return 'sparti-btn sparti-btn-success';
+    if (saveStatus === 'error') return 'sparti-btn sparti-btn-error';
+    return 'sparti-btn sparti-btn-success';
+  };
 
   return (
     <div className="sparti-toolbar">
@@ -29,10 +59,16 @@ export const SpartiToolbar: React.FC = () => {
               <button className="sparti-btn sparti-btn-ghost" title="Undo">
                 <Undo size={16} />
               </button>
-              <button className="sparti-btn sparti-btn-success" title="Save Changes">
-                <Save size={16} />
-                Save
-              </button>
+              {config.contentAPI && (
+                <button 
+                  className={getSaveButtonClass()}
+                  onClick={handleSave}
+                  disabled={isSaving}
+                  title="Save Page Content"
+                >
+                  {getSaveButtonContent()}
+                </button>
+              )}
               <button 
                 className="sparti-btn sparti-btn-ghost" 
                 onClick={exitEditMode}
