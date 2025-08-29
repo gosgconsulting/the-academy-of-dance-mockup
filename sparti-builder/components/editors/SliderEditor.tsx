@@ -32,14 +32,42 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
     if (data.images) {
       setImages(Array.isArray(data.images) ? data.images : []);
     } else {
-      // Extract images from existing HTML structure if available
-      const imgElements = selectedElement.element?.querySelectorAll('img');
-      if (imgElements && imgElements.length > 0) {
-        const extractedImages: SliderImage[] = Array.from(imgElements).map(img => ({
-          src: img.src || '',
-          alt: img.alt || ''
-        }));
-        setImages(extractedImages);
+      // Check if this is a hero section and extract images from the heroImages array
+      const isHeroSection = data.attributes?.['data-sparti-component'] === 'hero-section';
+      
+      if (isHeroSection) {
+        // For hero sections, we need to extract images from the component's structure
+        const imgElements = selectedElement.element?.querySelectorAll('img');
+        if (imgElements && imgElements.length > 0) {
+          const extractedImages: SliderImage[] = Array.from(imgElements).map((img, index) => ({
+            src: img.src || '',
+            alt: img.alt || `Dance performance ${index + 1}`
+          }));
+          setImages(extractedImages);
+        } else {
+          // Fallback: create default hero images if none found
+          const defaultHeroImages = [
+            '/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png',
+            '/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png',
+            '/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png',
+            '/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png',
+            '/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png'
+          ].map((src, index) => ({
+            src,
+            alt: `Dance performance ${index + 1}`
+          }));
+          setImages(defaultHeroImages);
+        }
+      } else {
+        // Extract images from existing HTML structure if available
+        const imgElements = selectedElement.element?.querySelectorAll('img');
+        if (imgElements && imgElements.length > 0) {
+          const extractedImages: SliderImage[] = Array.from(imgElements).map(img => ({
+            src: img.src || '',
+            alt: img.alt || ''
+          }));
+          setImages(extractedImages);
+        }
       }
     }
   }, [selectedElement]);
@@ -55,17 +83,54 @@ export const SliderEditor: React.FC<SliderEditorProps> = ({ selectedElement }) =
   const updateSliderHTML = () => {
     if (!selectedElement.element || images.length === 0) return;
 
-    // Keep the existing slider structure but update only the images
-    const imgElements = selectedElement.element.querySelectorAll('img');
+    const isHeroSection = selectedElement.data.attributes?.['data-sparti-component'] === 'hero-section';
     
-    if (imgElements.length > 0) {
-      // Update existing images
+    if (isHeroSection) {
+      // For hero sections, update the image sources directly
+      const imgElements = selectedElement.element.querySelectorAll('img');
+      
+      // Update existing images or create new ones
       images.forEach((image, index) => {
         if (imgElements[index]) {
           imgElements[index].src = image.src;
-          imgElements[index].alt = image.alt || '';
+          imgElements[index].alt = image.alt || `Dance performance ${index + 1}`;
         }
       });
+      
+      // If we have more images than existing img elements, we need to recreate the hero slider
+      if (images.length !== imgElements.length) {
+        const imageContainer = selectedElement.element.querySelector('.absolute.inset-0');
+        if (imageContainer) {
+          // Keep the overlay but update the image slides
+          const overlay = imageContainer.querySelector('.bg-black\\/50');
+          imageContainer.innerHTML = '';
+          
+          // Add updated images
+          images.forEach((image, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = `absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+            slideDiv.innerHTML = `<img src="${image.src}" alt="${image.alt}" class="w-full h-full object-cover" />`;
+            imageContainer.appendChild(slideDiv);
+          });
+          
+          // Re-add overlay
+          if (overlay) {
+            imageContainer.appendChild(overlay);
+          }
+        }
+      }
+    } else {
+      // For regular sliders, update existing images
+      const imgElements = selectedElement.element.querySelectorAll('img');
+      
+      if (imgElements.length > 0) {
+        images.forEach((image, index) => {
+          if (imgElements[index]) {
+            imgElements[index].src = image.src;
+            imgElements[index].alt = image.alt || '';
+          }
+        });
+      }
     }
   };
 
