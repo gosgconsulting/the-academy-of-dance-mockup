@@ -8,7 +8,9 @@ import {
   Square, 
   AlignJustify,
   Menu,
-  Minus
+  Minus,
+  GripVertical,
+  Eye
 } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { UniversalElementDetector } from '../core/universal-detector';
@@ -20,8 +22,16 @@ interface PageSection {
   name: string;
   element: HTMLElement;
   type: 'header' | 'section' | 'footer' | 'slider' | 'text' | 'image' | 'container';
+  category: 'structural' | 'content' | 'navigation';
   children?: PageSection[];
   isExpanded?: boolean;
+}
+
+interface SectionGroup {
+  name: string;
+  category: string;
+  sections: PageSection[];
+  isExpanded: boolean;
 }
 
 interface SpartiSidebarProps {
@@ -30,8 +40,9 @@ interface SpartiSidebarProps {
 }
 
 export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggle }) => {
-  const [sections, setSections] = useState<PageSection[]>([]);
+  const [sectionGroups, setSectionGroups] = useState<SectionGroup[]>([]);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set(['structural', 'content']));
   const { selectElement, selectedElement } = useSpartiBuilder();
 
   const getElementIcon = (type: PageSection['type']) => {
@@ -45,6 +56,25 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
       container: Square
     };
     return icons[type] || Square;
+  };
+
+  const getElementCategory = (element: HTMLElement): PageSection['category'] => {
+    const tagName = element.tagName.toLowerCase();
+    
+    if (tagName === 'header' || tagName === 'footer' || tagName === 'nav') {
+      return 'structural';
+    }
+    
+    if (tagName === 'main' || element.hasAttribute('data-sparti-section')) {
+      return 'content';
+    }
+    
+    const classList = element.className.toLowerCase();
+    if (classList.includes('nav') || classList.includes('menu')) {
+      return 'navigation';
+    }
+    
+    return 'content';
   };
 
   const getElementName = (element: HTMLElement): string => {
@@ -118,7 +148,7 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
     }));
   };
 
-  const scanPageSections = (): PageSection[] => {
+  const scanPageSections = (): SectionGroup[] => {
     const sections: PageSection[] = [];
     
     // Find main structural elements
@@ -143,6 +173,7 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
             name: getElementName(element as HTMLElement),
             element: element as HTMLElement,
             type: getElementType(element as HTMLElement),
+            category: getElementCategory(element as HTMLElement),
             isExpanded: false
           };
 
@@ -157,18 +188,42 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
       });
     });
 
-    return sections.sort((a, b) => {
+    const sortedSections = sections.sort((a, b) => {
       // Sort by DOM order
       const aRect = a.element.getBoundingClientRect();
       const bRect = b.element.getBoundingClientRect();
       return aRect.top - bRect.top;
     });
+
+    // Group sections by category
+    const groups: SectionGroup[] = [
+      {
+        name: 'LAYOUT',
+        category: 'structural',
+        sections: sortedSections.filter(s => s.category === 'structural'),
+        isExpanded: expandedGroups.has('structural')
+      },
+      {
+        name: 'CONTENT',
+        category: 'content', 
+        sections: sortedSections.filter(s => s.category === 'content'),
+        isExpanded: expandedGroups.has('content')
+      },
+      {
+        name: 'NAVIGATION',
+        category: 'navigation',
+        sections: sortedSections.filter(s => s.category === 'navigation'),
+        isExpanded: expandedGroups.has('navigation')
+      }
+    ].filter(group => group.sections.length > 0);
+
+    return groups;
   };
 
   useEffect(() => {
     if (isVisible) {
-      const foundSections = scanPageSections();
-      setSections(foundSections);
+      const foundGroups = scanPageSections();
+      setSectionGroups(foundGroups);
     }
   }, [isVisible]);
 
@@ -188,6 +243,22 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
     });
   };
 
+  const toggleGroup = (groupCategory: string) => {
+    const newExpanded = new Set(expandedGroups);
+    if (newExpanded.has(groupCategory)) {
+      newExpanded.delete(groupCategory);
+    } else {
+      newExpanded.add(groupCategory);
+    }
+    setExpandedGroups(newExpanded);
+    
+    // Update groups with new expanded state
+    setSectionGroups(prev => prev.map(group => ({
+      ...group,
+      isExpanded: newExpanded.has(group.category)
+    })));
+  };
+
   const toggleSection = (sectionId: string) => {
     const newExpanded = new Set(expandedSections);
     if (newExpanded.has(sectionId)) {
@@ -198,9 +269,12 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
     setExpandedSections(newExpanded);
     
     // Update sections with new expanded state
-    setSections(prev => prev.map(section => ({
-      ...section,
-      isExpanded: newExpanded.has(section.id)
+    setSectionGroups(prev => prev.map(group => ({
+      ...group,
+      sections: group.sections.map(section => ({
+        ...section,
+        isExpanded: newExpanded.has(section.id)
+      }))
     })));
   };
 
@@ -209,7 +283,7 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
   return (
     <div className="sparti-sidebar-left">
       <div className="sparti-sidebar-header">
-        <h3 className="sparti-sidebar-title">Page Structure</h3>
+        <h3 className="sparti-sidebar-title">Components</h3>
         <button 
           onClick={onToggle}
           className="sparti-btn sparti-btn-ghost sparti-btn-sm"
@@ -220,51 +294,73 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
       </div>
 
       <div className="sparti-sidebar-content">
-        <div className="sparti-section-list">
-          {sections.map((section) => (
-            <div key={section.id} className="sparti-section-item">
-              <div 
-                className={`sparti-section-header ${
-                  selectedElement?.element === section.element ? 'sparti-section-active' : ''
-                }`}
-                onClick={() => handleSectionClick(section)}
-              >
-                <div className="sparti-section-info">
-                  {section.children && (
-                    <button
-                      className="sparti-expand-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleSection(section.id);
-                      }}
-                    >
-                      {section.isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-                    </button>
-                  )}
-                  {React.createElement(getElementIcon(section.type), { size: 16 })}
-                  <span className="sparti-section-name">{section.name}</span>
-                </div>
-              </div>
-
-              {section.children && section.isExpanded && (
-                <div className="sparti-section-children">
-                  {section.children.map((child) => (
+        {sectionGroups.map((group) => (
+          <div key={group.category} className="sparti-group">
+            <button
+              className="sparti-group-header"
+              onClick={() => toggleGroup(group.category)}
+            >
+              <span className="sparti-group-title">{group.name}</span>
+              {group.isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+            </button>
+            
+            {group.isExpanded && (
+              <div className="sparti-group-content">
+                {group.sections.map((section) => (
+                  <div key={section.id} className="sparti-component-item">
                     <div 
-                      key={child.id} 
-                      className={`sparti-child-item ${
-                        selectedElement?.element === child.element ? 'sparti-section-active' : ''
+                      className={`sparti-component-header ${
+                        selectedElement?.element === section.element ? 'sparti-component-active' : ''
                       }`}
-                      onClick={() => handleSectionClick(child)}
+                      onClick={() => handleSectionClick(section)}
                     >
-                      {React.createElement(getElementIcon(child.type), { size: 14 })}
-                      <span className="sparti-child-name">{child.name}</span>
+                      <div className="sparti-component-drag">
+                        <GripVertical size={12} />
+                      </div>
+                      <div className="sparti-component-icon">
+                        {React.createElement(getElementIcon(section.type), { size: 16 })}
+                      </div>
+                      <span className="sparti-component-name">{section.name}</span>
+                      {section.children && (
+                        <button
+                          className="sparti-component-expand"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleSection(section.id);
+                          }}
+                        >
+                          {section.isExpanded ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                        </button>
+                      )}
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+
+                    {section.children && section.isExpanded && (
+                      <div className="sparti-component-children">
+                        {section.children.map((child) => (
+                          <div 
+                            key={child.id} 
+                            className={`sparti-child-component ${
+                              selectedElement?.element === child.element ? 'sparti-component-active' : ''
+                            }`}
+                            onClick={() => handleSectionClick(child)}
+                          >
+                            <div className="sparti-component-drag">
+                              <GripVertical size={10} />
+                            </div>
+                            <div className="sparti-component-icon">
+                              {React.createElement(getElementIcon(child.type), { size: 14 })}
+                            </div>
+                            <span className="sparti-child-name">{child.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

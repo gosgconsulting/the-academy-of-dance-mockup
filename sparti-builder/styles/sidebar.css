@@ -4,7 +4,7 @@
   position: fixed !important;
   left: 0 !important;
   top: 80px !important; /* Below toolbar */
-  width: 280px !important;
+  width: 300px !important;
   height: calc(100vh - 80px) !important;
   background: #ffffff !important;
   border-right: 1px solid #e5e7eb !important;
@@ -28,21 +28,21 @@
   justify-content: space-between !important;
   padding: 1rem !important;
   border-bottom: 1px solid #e5e7eb !important;
-  background: #f9fafb !important;
+  background: #ffffff !important;
   margin: 0 !important;
 }
 
 @media (prefers-color-scheme: dark) {
   .sparti-sidebar-header {
     border-bottom-color: #374151 !important;
-    background: #111827 !important;
+    background: #1f2937 !important;
   }
 }
 
 .sparti-sidebar-title {
   margin: 0 !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
   color: #111827 !important;
   font-family: inherit !important;
 }
@@ -59,55 +59,137 @@
   padding: 0 !important;
 }
 
-.sparti-section-list {
-  padding: 0.5rem 0 !important;
+/* Group Styles */
+.sparti-group {
+  margin-bottom: 0.5rem !important;
 }
 
-.sparti-section-item {
-  margin: 0 !important;
-  border: none !important;
-}
-
-.sparti-section-header {
+.sparti-group-header {
   display: flex !important;
   align-items: center !important;
-  padding: 0.75rem 1rem !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 1rem !important;
+  background: none !important;
+  border: none !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  border: none !important;
-  background: none !important;
-  margin: 0 !important;
+  font-family: inherit !important;
 }
 
-.sparti-section-header:hover {
-  background: #f3f4f6 !important;
+.sparti-group-header:hover {
+  background: #f9fafb !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .sparti-section-header:hover {
+  .sparti-group-header:hover {
     background: #374151 !important;
   }
 }
 
-.sparti-section-active {
-  background: #dbeafe !important;
-  border-left: 3px solid #3b82f6 !important;
+.sparti-group-title {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #6b7280 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: inherit !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .sparti-section-active {
-    background: #1e40af !important;
+  .sparti-group-title {
+    color: #9ca3af !important;
   }
 }
 
-.sparti-section-info {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  flex: 1 !important;
+.sparti-group-content {
+  padding: 0 0.5rem 1rem 0.5rem !important;
 }
 
-.sparti-expand-btn {
+/* Component Item Styles */
+.sparti-component-item {
+  margin-bottom: 0.25rem !important;
+}
+
+.sparti-component-header {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.75rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid transparent !important;
+  margin: 0 !important;
+  background: none !important;
+  position: relative !important;
+}
+
+.sparti-component-header:hover {
+  background: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-component-header:hover {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+  }
+}
+
+.sparti-component-active {
+  background: #dbeafe !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-component-active {
+    background: #1e40af !important;
+    border-color: #3b82f6 !important;
+  }
+}
+
+.sparti-component-drag {
+  display: flex !important;
+  align-items: center !important;
+  color: #9ca3af !important;
+  margin-right: 0.5rem !important;
+  cursor: grab !important;
+}
+
+.sparti-component-drag:active {
+  cursor: grabbing !important;
+}
+
+.sparti-component-icon {
+  display: flex !important;
+  align-items: center !important;
+  color: #6b7280 !important;
+  margin-right: 0.5rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-component-icon {
+    color: #9ca3af !important;
+  }
+}
+
+.sparti-component-name {
+  flex: 1 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  font-family: inherit !important;
+  text-align: left !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-component-name {
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-component-expand {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -120,80 +202,70 @@
   transition: all 0.2s ease !important;
 }
 
-.sparti-expand-btn:hover {
+.sparti-component-expand:hover {
   background: #e5e7eb !important;
   color: #374151 !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .sparti-expand-btn {
+  .sparti-component-expand {
     color: #9ca3af !important;
   }
   
-  .sparti-expand-btn:hover {
+  .sparti-component-expand:hover {
     background: #4b5563 !important;
     color: #f3f4f6 !important;
   }
 }
 
-.sparti-section-name {
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  color: #374151 !important;
-  font-family: inherit !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .sparti-section-name {
-    color: #d1d5db !important;
-  }
-}
-
-.sparti-section-children {
-  margin-left: 1rem !important;
+/* Children Styles */
+.sparti-component-children {
+  margin-left: 1.5rem !important;
+  padding-left: 1rem !important;
   border-left: 1px solid #e5e7eb !important;
-  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .sparti-section-children {
+  .sparti-component-children {
     border-left-color: #374151 !important;
   }
 }
 
-.sparti-child-item {
+.sparti-child-component {
   display: flex !important;
   align-items: center !important;
-  gap: 0.5rem !important;
-  padding: 0.5rem 1rem !important;
+  padding: 0.5rem 0.75rem !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  font-size: 0.8125rem !important;
-  color: #6b7280 !important;
-  margin: 0 !important;
-  border: none !important;
-  background: none !important;
+  border-radius: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  border: 1px solid transparent !important;
 }
 
-.sparti-child-item:hover {
+.sparti-child-component:hover {
   background: #f9fafb !important;
-  color: #374151 !important;
+  border-color: #e5e7eb !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .sparti-child-item {
-    color: #9ca3af !important;
-  }
-  
-  .sparti-child-item:hover {
+  .sparti-child-component:hover {
     background: #1f2937 !important;
-    color: #f3f4f6 !important;
+    border-color: #374151 !important;
   }
 }
 
 .sparti-child-name {
+  font-size: 0.8125rem !important;
   font-weight: 400 !important;
+  color: #6b7280 !important;
   font-family: inherit !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-child-name {
+    color: #9ca3af !important;
+  }
 }
 
 /* Adjust content area when sidebar is visible */
@@ -202,7 +274,7 @@ body.sparti-editing .sparti-content {
 }
 
 body.sparti-editing.sparti-sidebar-visible .sparti-content {
-  padding-left: 280px !important;
+  padding-left: 300px !important;
 }
 
 body.sparti-editing.sparti-sidebar-hidden .sparti-content {
