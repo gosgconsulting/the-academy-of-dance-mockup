@@ -57,7 +57,6 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
             <button onClick={() => handleNavigation('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
             <button onClick={() => handleNavigation('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
             <Link to="/blog" className="text-white hover:text-secondary transition-colors">Blog</Link>
-            <Link to="/admin" className="text-white hover:text-secondary transition-colors">Admin</Link>
           </div>
           
           {/* Desktop Book Now Button */}
@@ -85,7 +84,6 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
               <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
               <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
               <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Blog</Link>
-              <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Admin</Link>
             </div>
           </div>
         )}
