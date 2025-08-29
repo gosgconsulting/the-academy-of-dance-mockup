@@ -6,9 +6,9 @@ import {
   Image, 
   Type, 
   Square, 
-  Header,
-  Navigation,
-  Footprints
+  AlignJustify,
+  Menu,
+  Minus
 } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { UniversalElementDetector } from '../core/universal-detector';
@@ -34,9 +34,9 @@ export const SpartiSidebar: React.FC<SpartiSidebarProps> = ({ isVisible, onToggl
 
   const getElementIcon = (type: PageSection['type']) => {
     const icons = {
-      header: Header,
+      header: AlignJustify,
       section: Layout,
-      footer: Footprints,
+      footer: Minus,
       slider: Image,
       text: Type,
       image: Image,
