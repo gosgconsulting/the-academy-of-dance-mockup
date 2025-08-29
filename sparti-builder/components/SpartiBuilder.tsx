@@ -1,7 +1,8 @@
 // Universal Sparti Builder Plugin - Works on any website
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { SpartiBuilderProvider } from './SpartiBuilderProvider';
 import { SpartiToolbar } from './SpartiToolbar';
+import { SpartiSidebar } from './SpartiSidebar';
 import { EditingOverlay } from './EditingOverlay';
 import { ElementSelector } from './ElementSelector';
 import { ContentEditPanel } from './ContentEditPanel';
@@ -18,6 +19,8 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
   children, 
   config = { enabled: true, toolbar: true, autoDetect: true }
 }) => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  
   console.log('SpartiBuilder rendering with config:', config);
   
   useEffect(() => {
@@ -30,14 +33,24 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
       SpartiStyleManager.injectStyles();
       console.log('Sparti styles injected successfully');
 
+      // Add sidebar visibility class to body
+      if (isSidebarVisible) {
+        document.body.classList.add('sparti-sidebar-visible');
+        document.body.classList.remove('sparti-sidebar-hidden');
+      } else {
+        document.body.classList.add('sparti-sidebar-hidden');
+        document.body.classList.remove('sparti-sidebar-visible');
+      }
+
       // Cleanup on unmount
       return () => {
         SpartiStyleManager.removeStyles();
+        document.body.classList.remove('sparti-sidebar-visible', 'sparti-sidebar-hidden');
       };
     } catch (error) {
       console.error('Error initializing Sparti Builder:', error);
     }
-  }, []);
+  }, [isSidebarVisible]);
 
   if (!config.enabled) {
     return <>{children}</>;
@@ -46,7 +59,14 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
   return (
     <SpartiBuilderProvider config={config}>
       <div className="sparti-builder-wrapper">
-        <SpartiToolbar />
+        <SpartiToolbar 
+          isSidebarVisible={isSidebarVisible}
+          onToggleSidebar={() => setIsSidebarVisible(!isSidebarVisible)}
+        />
+        <SpartiSidebar 
+          isVisible={isSidebarVisible}
+          onToggle={() => setIsSidebarVisible(false)}
+        />
         <div className="sparti-content-area">
           <ElementSelector>
             {children}

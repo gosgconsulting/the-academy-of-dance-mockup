@@ -1,5 +1,6 @@
 /* Sparti Builder Core Styles - Universal Plugin */
 @import '../styles/section-boundaries.css';
+@import '../styles/sidebar.css';
 .sparti-builder-wrapper {
   position: relative;
   min-height: 100vh;
@@ -55,6 +56,20 @@
 }
 
 .sparti-toolbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.sparti-toolbar-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sparti-toolbar-right-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;

@@ -1,8 +1,13 @@
 import React from 'react';
-import { Edit3, X, Save, Undo } from 'lucide-react';
+import { Edit3, X, Save, Undo, Menu, ChevronLeft } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 
-export const SpartiToolbar: React.FC = () => {
+interface SpartiToolbarProps {
+  isSidebarVisible: boolean;
+  onToggleSidebar: () => void;
+}
+
+export const SpartiToolbar: React.FC<SpartiToolbarProps> = ({ isSidebarVisible, onToggleSidebar }) => {
   const { isEditing, config, enterEditMode, exitEditMode } = useSpartiBuilder();
 
   if (!config.toolbar) return null;
@@ -26,20 +31,33 @@ export const SpartiToolbar: React.FC = () => {
             </button>
           ) : (
             <>
-              <button className="sparti-btn sparti-btn-ghost" title="Undo">
-                <Undo size={16} />
-              </button>
-              <button className="sparti-btn sparti-btn-success" title="Save Changes">
-                <Save size={16} />
-                Save
-              </button>
-              <button 
-                className="sparti-btn sparti-btn-ghost" 
-                onClick={exitEditMode}
-                title="Exit Editor"
-              >
-                <X size={16} />
-              </button>
+              <div className="sparti-toolbar-left-actions">
+                <button 
+                  className="sparti-btn sparti-btn-ghost" 
+                  onClick={onToggleSidebar}
+                  title={isSidebarVisible ? "Hide page structure" : "Show page structure"}
+                >
+                  {isSidebarVisible ? <ChevronLeft size={16} /> : <Menu size={16} />}
+                  {isSidebarVisible ? 'Hide Structure' : 'Structure'}
+                </button>
+              </div>
+              
+              <div className="sparti-toolbar-right-actions">
+                <button className="sparti-btn sparti-btn-ghost" title="Undo">
+                  <Undo size={16} />
+                </button>
+                <button className="sparti-btn sparti-btn-success" title="Save Changes">
+                  <Save size={16} />
+                  Save
+                </button>
+                <button 
+                  className="sparti-btn sparti-btn-ghost" 
+                  onClick={exitEditMode}
+                  title="Exit Editor"
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </>
           )}
         </div>

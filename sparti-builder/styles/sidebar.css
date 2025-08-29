@@ -1,0 +1,232 @@
+/* Sparti Builder Left Sidebar */
+
+.sparti-sidebar-left {
+  position: fixed !important;
+  left: 0 !important;
+  top: 80px !important; /* Below toolbar */
+  width: 280px !important;
+  height: calc(100vh - 80px) !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15) !important;
+  z-index: 2147483645 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sidebar-left {
+    background: #1f2937 !important;
+    border-right-color: #374151 !important;
+  }
+}
+
+.sparti-sidebar-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #f9fafb !important;
+  margin: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sidebar-header {
+    border-bottom-color: #374151 !important;
+    background: #111827 !important;
+  }
+}
+
+.sparti-sidebar-title {
+  margin: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  font-family: inherit !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-sidebar-title {
+    color: #f9fafb !important;
+  }
+}
+
+.sparti-sidebar-content {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 0 !important;
+}
+
+.sparti-section-list {
+  padding: 0.5rem 0 !important;
+}
+
+.sparti-section-item {
+  margin: 0 !important;
+  border: none !important;
+}
+
+.sparti-section-header {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.75rem 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  background: none !important;
+  margin: 0 !important;
+}
+
+.sparti-section-header:hover {
+  background: #f3f4f6 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-header:hover {
+    background: #374151 !important;
+  }
+}
+
+.sparti-section-active {
+  background: #dbeafe !important;
+  border-left: 3px solid #3b82f6 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-active {
+    background: #1e40af !important;
+  }
+}
+
+.sparti-section-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex: 1 !important;
+}
+
+.sparti-expand-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0.25rem !important;
+  border-radius: 0.25rem !important;
+  color: #6b7280 !important;
+  transition: all 0.2s ease !important;
+}
+
+.sparti-expand-btn:hover {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-expand-btn {
+    color: #9ca3af !important;
+  }
+  
+  .sparti-expand-btn:hover {
+    background: #4b5563 !important;
+    color: #f3f4f6 !important;
+  }
+}
+
+.sparti-section-name {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  font-family: inherit !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-name {
+    color: #d1d5db !important;
+  }
+}
+
+.sparti-section-children {
+  margin-left: 1rem !important;
+  border-left: 1px solid #e5e7eb !important;
+  padding-left: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-section-children {
+    border-left-color: #374151 !important;
+  }
+}
+
+.sparti-child-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.8125rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: none !important;
+}
+
+.sparti-child-item:hover {
+  background: #f9fafb !important;
+  color: #374151 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sparti-child-item {
+    color: #9ca3af !important;
+  }
+  
+  .sparti-child-item:hover {
+    background: #1f2937 !important;
+    color: #f3f4f6 !important;
+  }
+}
+
+.sparti-child-name {
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+
+/* Adjust content area when sidebar is visible */
+body.sparti-editing .sparti-content {
+  transition: padding-left 0.3s ease !important;
+}
+
+body.sparti-editing.sparti-sidebar-visible .sparti-content {
+  padding-left: 280px !important;
+}
+
+body.sparti-editing.sparti-sidebar-hidden .sparti-content {
+  padding-left: 0 !important;
+}
+
+/* Sidebar toggle when hidden */
+.sparti-sidebar-toggle {
+  position: fixed !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483646 !important;
+  background: #3b82f6 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem !important;
+  border-radius: 0.5rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+.sparti-sidebar-toggle:hover {
+  background: #2563eb !important;
+  transform: translateY(-50%) scale(1.05) !important;
+}
