@@ -59,8 +59,20 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
     try {
       const { data, element } = selectedElement;
       
+      // Force update the content from any active editors before saving
+      const allEditors = document.querySelectorAll('.ProseMirror');
+      allEditors.forEach(editorElement => {
+        if (editorElement && element.contains(editorElement)) {
+          // If this element contains an active editor, get content from editor
+          const editorContent = editorElement.innerHTML;
+          element.innerHTML = editorContent;
+          data.content = editorContent;
+        }
+      });
+      
       // Get the latest content from the DOM element
       const currentContent = element.innerHTML;
+      const currentTextContent = element.textContent || element.innerText || '';
       const currentStyles = window.getComputedStyle(element);
       
       // Extract relevant styles to save
@@ -79,13 +91,18 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
         ...selectedElement.data.styles
       };
       
+      // Update the selectedElement data to match current content
+      selectedElement.data.content = currentContent;
+      selectedElement.data.textContent = currentTextContent;
+      
       // Create a component object from the selected element
       const componentData = {
         name: data.id || `${data.tagName}-${Date.now()}`,
         type: data.elementType || data.tagName,
         content: {
           ...data,
-          content: currentContent, // Use the latest content from DOM
+          content: currentContent,
+          textContent: currentTextContent,
           innerHTML: currentContent
         },
         styles: stylesToSave,
@@ -123,6 +140,23 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
           description: `Component "${componentData.name}" has been saved to the database for tenant ${currentTenant?.name || 'TAOD'}.`,
         });
       }
+      
+      // After successful save, ensure the element content persists
+      setTimeout(() => {
+        if (element && element.isConnected) {
+          element.innerHTML = currentContent;
+          // Force a style recalculation to ensure changes are visible
+          element.style.display = 'none';
+          element.offsetHeight; // Trigger reflow
+          element.style.display = '';
+          
+          console.log('Post-save: Content restored to element', {
+            elementTagName: element.tagName,
+            currentContent,
+            elementContent: element.innerHTML
+          });
+        }
+      }, 100);
       
     } catch (err: any) {
       console.error('Error saving component:', err);
