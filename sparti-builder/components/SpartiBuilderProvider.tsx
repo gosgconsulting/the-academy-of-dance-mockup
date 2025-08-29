@@ -51,22 +51,29 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
   };
 
   const savePage = async (): Promise<SaveResponse> => {
-    if (!config.contentAPI) {
-      return { success: false, error: 'Content API not enabled' };
-    }
+    // Remove the conditional check that was blocking saves
+    // if (!config.contentAPI) {
+    //   return { success: false, error: 'Content API not enabled' };
+    // }
 
     setIsSaving(true);
     try {
+      console.log('Generating page schema...');
       const schema = PageSchemaGenerator.generatePageSchema();
+      console.log('Schema generated:', schema);
+      
+      console.log('Sending save request to ContentAPI...');
       const result = await ContentAPI.savePage(schema);
       
       if (result.success) {
         console.log(`Page saved successfully (v${result.version})`);
+      } else {
+        console.error('Save failed with API response:', result);
       }
       
       return result;
     } catch (error) {
-      console.error('Error saving page:', error);
+      console.error('Exception during page save:', error);
       return { 
         success: false, 
         error: error instanceof Error ? error.message : 'Unknown error' 

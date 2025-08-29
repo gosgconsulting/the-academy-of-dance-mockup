@@ -1,10 +1,13 @@
 import { PageSchema, SaveResponse, LoadResponse, PageVersion } from '../types/content-schema';
 
 export class ContentAPI {
-  private static baseURL = '/api/content';
+  // Make baseURL configurable with a default that works with the content server
+  private static baseURL = process.env.CONTENT_API_URL || 'http://localhost:3001/api/content';
 
   public static async savePage(schema: PageSchema, comment?: string): Promise<SaveResponse> {
     try {
+      console.log(`ContentAPI: Saving page to ${this.baseURL}/save`, { schema });
+      
       const response = await fetch(`${this.baseURL}/save`, {
         method: 'POST',
         headers: {
@@ -17,14 +20,19 @@ export class ContentAPI {
         })
       });
 
+      console.log('ContentAPI: Save response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('ContentAPI: HTTP error response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
       }
 
       const result: SaveResponse = await response.json();
+      console.log('ContentAPI: Save result:', result);
       return result;
     } catch (error) {
-      console.error('Error saving page:', error);
+      console.error('ContentAPI: Error saving page:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error occurred'
@@ -34,22 +42,29 @@ export class ContentAPI {
 
   public static async loadPage(route: string): Promise<LoadResponse> {
     try {
+      console.log(`ContentAPI: Loading page from ${this.baseURL}/load?route=${encodeURIComponent(route)}`);
+      
       const response = await fetch(`${this.baseURL}/load?route=${encodeURIComponent(route)}`);
+      console.log('ContentAPI: Load response status:', response.status);
 
       if (!response.ok) {
         if (response.status === 404) {
+          console.log('ContentAPI: Page not found');
           return {
             success: false,
             error: 'Page not found'
           };
         }
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('ContentAPI: HTTP error response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
       }
 
       const result: LoadResponse = await response.json();
+      console.log('ContentAPI: Load result:', result);
       return result;
     } catch (error) {
-      console.error('Error loading page:', error);
+      console.error('ContentAPI: Error loading page:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error occurred'

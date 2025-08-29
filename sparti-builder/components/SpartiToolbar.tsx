@@ -11,18 +11,28 @@ export const SpartiToolbar: React.FC = () => {
   if (!config.toolbar) return null;
 
   const handleSave = async () => {
-    if (!config.contentAPI) return;
+    // Remove the conditional check that was blocking saves
+    // if (!config.contentAPI) return;
     
     setSaveStatus('idle');
-    const result = await savePage();
+    console.log('Attempting to save page...');
     
-    if (result.success) {
-      setSaveStatus('success');
-      setTimeout(() => setSaveStatus('idle'), 3000);
-    } else {
+    try {
+      const result = await savePage();
+      
+      if (result.success) {
+        console.log('Save successful:', result);
+        setSaveStatus('success');
+        setTimeout(() => setSaveStatus('idle'), 3000);
+      } else {
+        console.error('Save failed with error:', result.error);
+        setSaveStatus('error');
+        setTimeout(() => setSaveStatus('idle'), 5000);
+      }
+    } catch (error) {
+      console.error('Exception during save:', error);
       setSaveStatus('error');
       setTimeout(() => setSaveStatus('idle'), 5000);
-      console.error('Save failed:', result.error);
     }
   };
 
