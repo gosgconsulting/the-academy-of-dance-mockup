@@ -2,7 +2,6 @@ export interface SpartiBuilderConfig {
   enabled?: boolean;
   toolbar?: boolean;
   autoDetect?: boolean;
-  contentAPI?: boolean; // Enable content save/load functionality
 }
 
 export type ElementType = 

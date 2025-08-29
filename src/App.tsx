@@ -12,7 +12,7 @@ import BlogAuthor from "./pages/BlogAuthor";
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
-import { SpartiCMS, SpartiCMSWrapper, SpartiBuilder } from "../sparti-builder";
+import { SpartiCMS, SpartiCMSWrapper } from "../sparti-builder";
 
 const queryClient = new QueryClient();
 
@@ -28,16 +28,7 @@ const App = () => (
             <Route path="/admin/*" element={<SpartiCMS />} />
             
             {/* Main app routes */}
-            <Route path="/" element={
-              <SpartiBuilder config={{ 
-                enabled: true, 
-                toolbar: true, 
-                autoDetect: true, 
-                contentAPI: true 
-              }}>
-                <Index />
-              </SpartiBuilder>
-            } />
+            <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/blog/category/:category" element={<BlogCategory />} />

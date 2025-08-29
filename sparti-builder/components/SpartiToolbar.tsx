@@ -1,53 +1,11 @@
-import React, { useState } from 'react';
-import { Edit3, X, Save, Undo, Check, AlertCircle } from 'lucide-react';
+import React from 'react';
+import { Edit3, X, Save, Undo } from 'lucide-react';
 import { useSpartiBuilder } from './SpartiBuilderProvider';
 
 export const SpartiToolbar: React.FC = () => {
-  const { isEditing, config, enterEditMode, exitEditMode, savePage, isSaving } = useSpartiBuilder();
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  console.log('SpartiToolbar render:', { isEditing, config, hasContentAPI: config.contentAPI });
+  const { isEditing, config, enterEditMode, exitEditMode } = useSpartiBuilder();
 
   if (!config.toolbar) return null;
-
-  const handleSave = async () => {
-    // Remove the conditional check that was blocking saves
-    // if (!config.contentAPI) return;
-    
-    setSaveStatus('idle');
-    console.log('Attempting to save page...');
-    
-    try {
-      const result = await savePage();
-      
-      if (result.success) {
-        console.log('Save successful:', result);
-        setSaveStatus('success');
-        setTimeout(() => setSaveStatus('idle'), 3000);
-      } else {
-        console.error('Save failed with error:', result.error);
-        setSaveStatus('error');
-        setTimeout(() => setSaveStatus('idle'), 5000);
-      }
-    } catch (error) {
-      console.error('Exception during save:', error);
-      setSaveStatus('error');
-      setTimeout(() => setSaveStatus('idle'), 5000);
-    }
-  };
-
-  const getSaveButtonContent = () => {
-    if (isSaving) return 'Saving...';
-    if (saveStatus === 'success') return <><Check size={16} /> Saved</>;
-    if (saveStatus === 'error') return <><AlertCircle size={16} /> Error</>;
-    return <><Save size={16} /> Save</>;
-  };
-
-  const getSaveButtonClass = () => {
-    if (saveStatus === 'success') return 'sparti-btn sparti-btn-success';
-    if (saveStatus === 'error') return 'sparti-btn sparti-btn-error';
-    return 'sparti-btn sparti-btn-success';
-  };
 
   return (
     <div className="sparti-toolbar">
@@ -71,13 +29,9 @@ export const SpartiToolbar: React.FC = () => {
               <button className="sparti-btn sparti-btn-ghost" title="Undo">
                 <Undo size={16} />
               </button>
-              <button 
-                className={getSaveButtonClass()}
-                onClick={handleSave}
-                disabled={isSaving}
-                title="Save Page Content"
-              >
-                {getSaveButtonContent()}
+              <button className="sparti-btn sparti-btn-success" title="Save Changes">
+                <Save size={16} />
+                Save
               </button>
               <button 
                 className="sparti-btn sparti-btn-ghost" 
