@@ -269,15 +269,15 @@
 }
 
 /* Adjust content area when sidebar is visible */
-body.sparti-editing .sparti-content {
+body .sparti-content {
   transition: padding-left 0.3s ease !important;
 }
 
-body.sparti-editing.sparti-sidebar-visible .sparti-content {
+body.sparti-sidebar-visible .sparti-content {
   padding-left: 300px !important;
 }
 
-body.sparti-editing.sparti-sidebar-hidden .sparti-content {
+body.sparti-sidebar-hidden .sparti-content {
   padding-left: 0 !important;
 }
 

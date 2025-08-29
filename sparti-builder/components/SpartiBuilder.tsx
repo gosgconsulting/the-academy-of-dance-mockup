@@ -19,7 +19,7 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
   children, 
   config = { enabled: true, toolbar: true, autoDetect: true }
 }) => {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true); // Default to visible
   
   console.log('SpartiBuilder rendering with config:', config);
   

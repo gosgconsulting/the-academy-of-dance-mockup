@@ -21,28 +21,28 @@ export const SpartiToolbar: React.FC<SpartiToolbarProps> = ({ isSidebarVisible, 
         </div>
         
         <div className="sparti-toolbar-actions">
-          {!isEditing ? (
+          <div className="sparti-toolbar-left-actions">
             <button 
-              className="sparti-btn sparti-btn-primary" 
-              onClick={enterEditMode}
+              className="sparti-btn sparti-btn-ghost" 
+              onClick={onToggleSidebar}
+              title={isSidebarVisible ? "Hide page structure" : "Show page structure"}
             >
-              <Edit3 size={16} />
-              Edit with Sparti Builder
+              {isSidebarVisible ? <ChevronLeft size={16} /> : <Menu size={16} />}
+              {isSidebarVisible ? 'Hide Structure' : 'Structure'}
             </button>
-          ) : (
-            <>
-              <div className="sparti-toolbar-left-actions">
-                <button 
-                  className="sparti-btn sparti-btn-ghost" 
-                  onClick={onToggleSidebar}
-                  title={isSidebarVisible ? "Hide page structure" : "Show page structure"}
-                >
-                  {isSidebarVisible ? <ChevronLeft size={16} /> : <Menu size={16} />}
-                  {isSidebarVisible ? 'Hide Structure' : 'Structure'}
-                </button>
-              </div>
-              
-              <div className="sparti-toolbar-right-actions">
+          </div>
+          
+          <div className="sparti-toolbar-right-actions">
+            {!isEditing ? (
+              <button 
+                className="sparti-btn sparti-btn-primary" 
+                onClick={enterEditMode}
+              >
+                <Edit3 size={16} />
+                Edit with Sparti Builder
+              </button>
+            ) : (
+              <>
                 <button className="sparti-btn sparti-btn-ghost" title="Undo">
                   <Undo size={16} />
                 </button>
@@ -57,9 +57,9 @@ export const SpartiToolbar: React.FC<SpartiToolbarProps> = ({ isSidebarVisible, 
                 >
                   <X size={16} />
                 </button>
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
