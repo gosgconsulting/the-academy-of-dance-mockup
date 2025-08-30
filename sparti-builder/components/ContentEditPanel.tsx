@@ -5,6 +5,8 @@ import { useSpartiBuilder } from './SpartiBuilderProvider';
 import { ElementType } from '../types';
 import useDatabase from '../hooks/useDatabase';
 import { componentRegistry } from '../registry';
+import { ContentExtractor } from '../services/ContentExtractor';
+import { SectionMappingService } from '../config/SectionMapping';
 
 // Specialized editor components
 import { TextEditor } from './editors/TextEditor';
@@ -20,6 +22,9 @@ export const ContentEditPanel: React.FC = () => {
   
   // Derive loading state from useDatabase status
   const isSaving = status === 'loading';
+  
+  // Check if this element is part of a mapped section
+  const sectionMapping = selectedElement ? SectionMappingService.findMappingByElement(selectedElement.element) : null;
 
   if (!isEditing || !selectedElement) return null;
 
@@ -156,6 +161,11 @@ export const ContentEditPanel: React.FC = () => {
               {componentRegistry.has(elementType) && (
                 <div className="sparti-registry-status">
                   ✓ Registered Component
+                </div>
+              )}
+              {sectionMapping && (
+                <div className="sparti-section-info">
+                  📁 {sectionMapping.componentName} ({sectionMapping.filePath.split('/').pop()})
                 </div>
               )}
             </div>

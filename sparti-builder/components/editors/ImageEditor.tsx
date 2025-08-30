@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SpartiElement } from '../../types';
 import { removeBackground, loadImage, loadImageFromUrl } from '../../utils/backgroundRemoval';
+import { ContentExtractor } from '../../services/ContentExtractor';
+import { FileSaveService } from '../../services/FileSaveService';
 import { 
   Image as ImageIcon, 
   Upload, 
@@ -197,6 +199,24 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ selectedElement }) => 
       alt: newAlt,
       title: newTitle
     };
+
+    // Track change for saving to source code
+    const componentId = ContentExtractor.getSpartiComponentId(selectedElement.element);
+    if (componentId) {
+      ContentExtractor.trackChange({
+        type: 'image',
+        elementId: componentId,
+        content: newSrc,
+        element: selectedElement.element,
+        attributes: {
+          src: newSrc,
+          alt: newAlt || '',
+          title: newTitle || ''
+        },
+        oldValue: images[currentImageIndex] || null,
+        newValue: { src: newSrc, alt: newAlt, title: newTitle }
+      });
+    }
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {

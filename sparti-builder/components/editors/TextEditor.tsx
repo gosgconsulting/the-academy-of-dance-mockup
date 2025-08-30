@@ -8,6 +8,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import Link from '@tiptap/extension-link';
+import { ContentExtractor } from '../../services/ContentExtractor';
 
 interface TextEditorProps {
   selectedElement: SpartiElement;
@@ -97,6 +98,19 @@ export const TextEditor: React.FC<TextEditorProps> = ({ selectedElement }) => {
       if (selectedElement.element) {
         selectedElement.element.innerHTML = htmlContent;
         selectedElement.data.content = htmlContent;
+        
+        // Track change for saving to source code
+        const componentId = ContentExtractor.getSpartiComponentId(selectedElement.element);
+        if (componentId) {
+          ContentExtractor.trackChange({
+            type: 'text',
+            elementId: componentId,
+            content: editor.getText(), // Use plain text for React components
+            element: selectedElement.element,
+            oldValue: selectedElement.data.content,
+            newValue: htmlContent
+          });
+        }
       }
     },
     onSelectionUpdate: ({ editor }) => {

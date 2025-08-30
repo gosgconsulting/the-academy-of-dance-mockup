@@ -8,6 +8,7 @@ import { ContentEditPanel } from './ContentEditPanel';
 import { SpartiBuilderConfig } from '../types';
 import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
+import '../styles/sparti-toolbar-styles.css';
 
 interface SpartiBuilderProps {
   children: ReactNode;
