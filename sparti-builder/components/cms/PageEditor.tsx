@@ -304,6 +304,8 @@ export const PageEditor: React.FC = () => {
       </Button>
     );
   };
+
+  const fixSlidesContent = async (sectionId: string) => {
     const correctSlides = [
       {
         title: "Where Dreams",
