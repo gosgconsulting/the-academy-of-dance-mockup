@@ -139,44 +139,15 @@ export const PageEditor: React.FC = () => {
   };
 
   const getSectionDisplayName = (section: PageSection) => {
-    // Create user-friendly display names based on actual homepage content
-    const nameMap: Record<string, string> = {
-      'hero': 'Hero',
-      'statistics': 'Statistics', 
-      'trials': 'Begin Your Dance Journey', 
-      'about': 'About Us',
-      'vision-mission': 'Vision Mission',
-      'programmes': 'Programmes & Examinations',
-      'competition': 'Competition Excellence',
-      'events': 'Events',
-      'achievements': 'Achievements',
-      'teachers': 'Teachers',
-      'reviews': 'Reviews',
-      'locations': 'Locations',
-      'gallery': 'Gallery'
-    };
-    
-    return nameMap[section.section_id] || section.section_type?.replace(/([A-Z])/g, ' $1').trim() || section.section_id;
+    // Create user-friendly display names from section data
+    return section.section_type?.replace(/([A-Z])/g, ' $1').trim() || 
+           section.section_id?.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || 
+           'Section';
   };
 
   const getSectionIcon = (section: PageSection) => {
-    const iconMap: Record<string, string> = {
-      'hero': '',
-      'statistics': '',
-      'trials': '', 
-      'about': '',
-      'vision-mission': '',
-      'programmes': '',
-      'competition': '',
-      'events': '',
-      'achievements': '',
-      'teachers': '',
-      'reviews': '',
-      'locations': '',
-      'gallery': ''
-    };
-    
-    return iconMap[section.section_id] || '';
+    // Return empty string - icons can be added based on actual content if needed
+    return '';
   };
 
   const renderOutlinesSidebar = () => {
@@ -307,91 +278,6 @@ export const PageEditor: React.FC = () => {
     );
   };
 
-  const fixSlidesContent = async (sectionId: string) => {
-    const correctSlides = [
-      {
-        title: "Where Dreams",
-        subtitle: "Take Flight", 
-        description: "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
-        backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png",
-        buttonText: "Start Your Journey",
-        buttonLink: "#trials",
-        duration: "5"
-      },
-      {
-        title: "Artistic Excellence",
-        subtitle: "Dance With Passion",
-        description: "Experience world-class ballet and dance training with our professional instructors in our state-of-the-art studios.",
-        backgroundImage: "/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png", 
-        buttonText: "Learn More",
-        buttonLink: "#programmes",
-        duration: "5"
-      },
-      {
-        title: "Grace & Strength",
-        subtitle: "Build Confidence",
-        description: "Develop poise, discipline and self-expression through the beautiful art of dance and ballet.",
-        backgroundImage: "/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png",
-        buttonText: "Join Us",
-        buttonLink: "#contact", 
-        duration: "5"
-      },
-      {
-        title: "Performance Ready",
-        subtitle: "Shine on Stage",
-        description: "Prepare for recitals and competitions with our advanced performance training programs.",
-        backgroundImage: "/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png",
-        buttonText: "Get Started",
-        buttonLink: "#events",
-        duration: "5"
-      },
-      {
-        title: "Dance Family", 
-        subtitle: "Learn Together, Grow Together",
-        description: "Join our supportive dance community where students inspire each other to reach new heights.",
-        backgroundImage: "/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png",
-        buttonText: "Join Community",
-        buttonLink: "#about",
-        duration: "5"
-      }
-    ];
-
-    try {
-      const { error } = await supabase
-        .from('page_sections')
-        .update({ 
-          content: { slides: correctSlides },
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', sectionId);
-
-      if (error) {
-        toast({
-          title: "Error",
-          description: `Failed to fix slides: ${error.message}`,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Slides Fixed!",
-          description: "Replaced wrong boxing content with correct dance academy slides",
-        });
-        
-        // Update local state
-        setSections(prev => 
-          prev.map(section => 
-            section.id === sectionId ? { ...section, content: { slides: correctSlides } } : section
-          )
-        );
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to fix slides",
-        variant: "destructive",
-      });
-    }
-  };
 
   const handleSaveSection = async (sectionId: string, content: any) => {
     try {
@@ -957,7 +843,7 @@ export const PageEditor: React.FC = () => {
         title: '', 
         subtitle: '', 
         description: '', 
-        backgroundImage: mediaFiles.length > 0 ? mediaFiles[0].file_path : '/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png'
+        backgroundImage: mediaFiles.length > 0 ? mediaFiles[0].file_path : ''
       }];
       const newContent = { ...section.content, slides: newSlides };
       setSections(prev => 
@@ -1253,52 +1139,43 @@ export const PageEditor: React.FC = () => {
                 Hero Content (Convert to Slideshow)
               </h4>
               
-              <Card className="p-4 border-2 border-dashed border-red-200 bg-red-50/50">
+              <Card className="p-4 border-2 border-dashed border-blue-200 bg-blue-50/50">
                 <div className="text-center">
-                  <p className="text-sm text-red-600 mb-3">
-                    ⚠️ Wrong Content Detected: This hero section has "Spartan Boxing Academy" content, but this should be a dance academy site.
+                  <p className="text-sm text-blue-600 mb-3">
+                    Convert this hero section to a slideshow for better visual impact.
                   </p>
-                  <div className="flex gap-2 justify-center flex-wrap">
-                    <Button
-                      size="sm"
-                      onClick={() => fixSlidesContent(section.id)}
-                      className="bg-red-600 hover:bg-red-700"
-                    >
-                      🗑️ Fix Slides (Replace with Dance Content)
-                    </Button>
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        const slides = [
-                          {
-                            title: content.title || "Where Dreams",
-                            subtitle: content.subtitle || "Take Flight",
-                            description: content.description || "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
-                            backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png",
-                            buttonText: "Start Your Journey",
-                            buttonLink: "#trials",
-                            duration: "5"
-                          }
-                        ];
-                        
-                        const newContent = { ...content, slides };
-                        setSections(prev => 
-                          prev.map(s => 
-                            s.id === section.id ? { ...s, content: newContent } : s
-                          )
-                        );
-                        
-                        toast({
-                          title: "Converted to Single Slide",
-                          description: "Created 1 slide from current content. Save to persist changes.",
-                        });
-                      }}
-                      variant="outline"
-                    >
-                      <Plus className="w-4 h-4 mr-1" />
-                      Keep Current & Convert to Slide
-                    </Button>
-                  </div>
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      const slides = [
+                        {
+                          title: content.title || "Title",
+                          subtitle: content.subtitle || "Subtitle",
+                          description: content.description || "Description",
+                          backgroundImage: "",
+                          buttonText: "Get Started",
+                          buttonLink: "#",
+                          duration: "5"
+                        }
+                      ];
+                      
+                      const newContent = { ...content, slides };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                      
+                      toast({
+                        title: "Converted to Slideshow",
+                        description: "Created slideshow from current content. Save to persist changes.",
+                      });
+                    }}
+                    variant="outline"
+                  >
+                    <Plus className="w-4 h-4 mr-1" />
+                    Convert to Slideshow
+                  </Button>
                 </div>
               </Card>
               
