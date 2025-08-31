@@ -15,7 +15,12 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
     const isAdminArea = window.location.pathname.startsWith('/admin');
     
     return (
-      <SpartiBuilder config={{ enabled: true, toolbar: !isAdminArea, autoDetect: true }}>
+      <SpartiBuilder config={{ 
+        enabled: true, 
+        toolbar: !isAdminArea, 
+        autoDetect: true,
+        aiAgentAlwaysOpen: true // Always show AI Agent for authenticated users
+      }}>
         {children}
       </SpartiBuilder>
     );
