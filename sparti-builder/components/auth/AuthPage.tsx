@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import { supabase } from '../../../src/integrations/supabase/client';
 import { useAuth } from './AuthProvider';
 
 const AuthPage: React.FC = () => {
-  const [email, setEmail] = useState('admin');
-  const [password, setPassword] = useState('admin');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { signIn, user } = useAuth();
+  const { user, signIn, signUp } = useAuth();
 
   // If already logged in, redirect to dashboard
   if (user) {
@@ -20,12 +22,15 @@ const AuthPage: React.FC = () => {
     setError('');
 
     try {
-      const result = await signIn(email, password);
+      const result = isLogin 
+        ? await signIn(email, password)
+        : await signUp(email, password);
+        
       if (!result.success) {
-        setError(result.error || 'Login failed');
+        setError(result.error || `${isLogin ? 'Login' : 'Sign up'} failed`);
       }
     } catch (err) {
-      setError('An error occurred during login');
+      setError(`An error occurred during ${isLogin ? 'login' : 'sign up'}`);
     } finally {
       setIsLoading(false);
     }
@@ -39,15 +44,7 @@ const AuthPage: React.FC = () => {
             Sparti CMS Admin
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Sign in to access the content management system
-          </p>
-        </div>
-        
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <p className="text-sm text-blue-800">
-            <strong>Demo Credentials:</strong><br />
-            Username: admin<br />
-            Password: admin
+            {isLogin ? 'Sign in to access the content management system' : 'Create your admin account'}
           </p>
         </div>
 
@@ -60,16 +57,16 @@ const AuthPage: React.FC = () => {
           
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Username
+              Email
             </label>
             <input
               id="email"
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10"
-              placeholder="Enter username"
+              placeholder="Enter your email"
             />
           </div>
 
@@ -84,7 +81,7 @@ const AuthPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10"
-              placeholder="Enter password"
+              placeholder="Enter your password"
             />
           </div>
 
@@ -94,7 +91,17 @@ const AuthPage: React.FC = () => {
               disabled={isLoading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Signing in...' : 'Sign in'}
+              {isLoading ? `${isLogin ? 'Signing in' : 'Creating account'}...` : isLogin ? 'Sign in' : 'Create Account'}
+            </button>
+          </div>
+
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-blue-600 hover:text-blue-500 text-sm"
+            >
+              {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
             </button>
           </div>
         </form>
