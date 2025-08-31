@@ -17,39 +17,16 @@ interface StatisticsContent {
 
 const StatisticsSection = () => {
   const [content, setContent] = useState<StatisticsContent>({
-    title: "Our Impact",
-    description: "Celebrating our achievements in dance education",
-    statistics: [
-      {
-        number: "10,000+",
-        label: "Students Trained",
-        color: "text-violet-500",
-        bgGlow: "bg-violet-100",
-      },
-      {
-        number: "40",
-        label: "Years Experience",
-        color: "text-emerald-500",
-        bgGlow: "bg-emerald-100",
-      },
-      {
-        number: "95%",
-        label: "Success Rate",
-        color: "text-orange-500",
-        bgGlow: "bg-orange-100",
-      },
-      {
-        number: "2000+",
-        label: "Awards Won",
-        color: "text-rose-500",
-        bgGlow: "bg-rose-100",
-      },
-    ],
+    title: "",
+    description: "",
+    statistics: [],
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadContent = async () => {
       try {
+        setIsLoading(true);
         const { sections } = await SupabaseContentService.loadPageContent('index');
         const statisticsSection = sections.find(s => s.section_id === 'statistics');
         
@@ -58,11 +35,18 @@ const StatisticsSection = () => {
         }
       } catch (error) {
         console.error('Error loading statistics content:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     loadContent();
   }, []);
+
+  // Don't render anything if loading or no statistics
+  if (isLoading || !content.statistics || content.statistics.length === 0) {
+    return null;
+  }
 
   return (
     <section 
