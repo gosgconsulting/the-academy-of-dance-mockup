@@ -5,6 +5,7 @@ import { SpartiToolbar } from './SpartiToolbar';
 import { EditingOverlay } from './EditingOverlay';
 import { ElementSelector } from './ElementSelector';
 import { ContentEditPanel } from './ContentEditPanel';
+import { AIElementEditor } from './AIElementEditor';
 import { SpartiBuilderConfig } from '../types';
 import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
@@ -54,6 +55,7 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
           </ElementSelector>
           <EditingOverlay />
           <ContentEditPanel />
+          <AIElementEditor />
         </div>
       </div>
     </SpartiBuilderProvider>
