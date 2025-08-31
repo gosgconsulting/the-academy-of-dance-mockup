@@ -142,6 +142,7 @@ export const PageEditor: React.FC = () => {
     // Create user-friendly display names based on actual homepage content
     const nameMap: Record<string, string> = {
       'hero': 'Hero',
+      'statistics': 'Statistics', 
       'trials': 'Begin Your Dance Journey', 
       'about': 'About Us',
       'vision-mission': 'Vision Mission',
@@ -161,6 +162,7 @@ export const PageEditor: React.FC = () => {
   const getSectionIcon = (section: PageSection) => {
     const iconMap: Record<string, string> = {
       'hero': '',
+      'statistics': '',
       'trials': '', 
       'about': '',
       'vision-mission': '',
@@ -1259,7 +1261,7 @@ export const PageEditor: React.FC = () => {
                   <div className="flex gap-2 justify-center flex-wrap">
                     <Button
                       size="sm"
-                      onClick={() => fixSlideContent(section.id)}
+                      onClick={() => fixSlidesContent(section.id)}
                       className="bg-red-600 hover:bg-red-700"
                     >
                       🗑️ Fix Slides (Replace with Dance Content)

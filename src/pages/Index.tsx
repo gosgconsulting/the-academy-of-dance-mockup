@@ -18,6 +18,7 @@ import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
+import StatisticsSection from "@/components/sections/StatisticsSection";
 import { ContentLoader } from "@/components/ContentLoader";
 import { useContentLoader } from "@/hooks/useContentLoader";
 
@@ -80,6 +81,11 @@ const Index = () => {
           {/* Hero Section */}
           <section data-sparti-section="hero" data-sparti-editable="true" className="sparti-section">
             <HeroSection scrollToSection={scrollToSection} />
+          </section>
+
+          {/* Statistics Section */}
+          <section data-sparti-section="statistics" data-sparti-editable="true" className="sparti-section">
+            <StatisticsSection />
           </section>
 
           {/* Trials Section */}

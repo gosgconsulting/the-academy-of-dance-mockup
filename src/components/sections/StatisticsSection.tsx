@@ -2,13 +2,13 @@
 const StatisticsSection = () => {
   const statistics = [
     {
-      number: "500+",
+      number: "10,000+",
       label: "Students Trained",
       color: "text-violet-500",
       bgGlow: "bg-violet-100",
     },
     {
-      number: "15+",
+      number: "40",
       label: "Years Experience",
       color: "text-emerald-500",
       bgGlow: "bg-emerald-100",
@@ -20,7 +20,7 @@ const StatisticsSection = () => {
       bgGlow: "bg-orange-100",
     },
     {
-      number: "20+",
+      number: "2000+",
       label: "Awards Won",
       color: "text-rose-500",
       bgGlow: "bg-rose-100",
