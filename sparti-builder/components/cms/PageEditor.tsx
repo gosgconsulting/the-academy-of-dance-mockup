@@ -708,8 +708,7 @@ export const PageEditor: React.FC = () => {
       const newStatistics = [...statistics, { 
         number: '0', 
         label: 'New Statistic', 
-        color: 'text-blue-500',
-        bgGlow: 'bg-blue-100'
+        color: 'text-blue-500'
       }];
       const newContent = { ...content, statistics: newStatistics };
       setSections(prev => 
@@ -730,12 +729,12 @@ export const PageEditor: React.FC = () => {
     };
 
     const colorOptions = [
-      { value: 'text-violet-500', label: 'Purple', bgGlow: 'bg-violet-100' },
-      { value: 'text-emerald-500', label: 'Green', bgGlow: 'bg-emerald-100' },
-      { value: 'text-orange-500', label: 'Orange', bgGlow: 'bg-orange-100' },
-      { value: 'text-rose-500', label: 'Pink', bgGlow: 'bg-rose-100' },
-      { value: 'text-blue-500', label: 'Blue', bgGlow: 'bg-blue-100' },
-      { value: 'text-yellow-500', label: 'Yellow', bgGlow: 'bg-yellow-100' },
+      { value: 'text-violet-500', label: 'Purple' },
+      { value: 'text-emerald-500', label: 'Green' },
+      { value: 'text-orange-500', label: 'Orange' },
+      { value: 'text-rose-500', label: 'Pink' },
+      { value: 'text-blue-500', label: 'Blue' },
+      { value: 'text-yellow-500', label: 'Yellow' },
     ];
 
     return (
@@ -790,7 +789,7 @@ export const PageEditor: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {statistics.map((stat: any, index: number) => (
                 <div key={index} className="text-center group relative">
-                  <div className={`relative inline-block p-4 rounded-2xl ${stat.bgGlow} transition-all duration-300 group-hover:scale-105 mb-4`}>
+                  <div className="relative inline-block p-4 rounded-2xl transition-all duration-300 group-hover:scale-105 mb-4">
                     <div 
                       className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg`}
                       style={{
@@ -842,7 +841,7 @@ export const PageEditor: React.FC = () => {
                 </Button>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Number</label>
                   <Input
@@ -866,9 +865,7 @@ export const PageEditor: React.FC = () => {
                   <select
                     value={stat.color || 'text-blue-500'}
                     onChange={(e) => {
-                      const selectedColor = colorOptions.find(c => c.value === e.target.value);
                       updateStatistic(index, 'color', e.target.value);
-                      updateStatistic(index, 'bgGlow', selectedColor?.bgGlow || 'bg-blue-100');
                     }}
                     className="w-full p-2 border rounded-md"
                   >
@@ -1586,10 +1583,10 @@ export const PageEditor: React.FC = () => {
                           title: content.title || "Our Impact",
                           description: content.description || "Celebrating our achievements",
                           statistics: [
-                            { number: "1000+", label: "Students", color: "text-violet-500", bgGlow: "bg-violet-100" },
-                            { number: "10", label: "Years", color: "text-emerald-500", bgGlow: "bg-emerald-100" },
-                            { number: "95%", label: "Success Rate", color: "text-orange-500", bgGlow: "bg-orange-100" },
-                            { number: "50+", label: "Awards", color: "text-rose-500", bgGlow: "bg-rose-100" }
+                            { number: "1000+", label: "Students", color: "text-violet-500" },
+                            { number: "10", label: "Years", color: "text-emerald-500" },
+                            { number: "95%", label: "Success Rate", color: "text-orange-500" },
+                            { number: "50+", label: "Awards", color: "text-rose-500" }
                           ]
                         };
                         setSections(prev => 
