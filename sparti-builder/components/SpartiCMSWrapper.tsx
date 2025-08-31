@@ -11,8 +11,11 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
   const { user } = useAuth();
 
   if (user) {
+    // Hide toolbar in admin area to provide cleaner editing experience
+    const isAdminArea = window.location.pathname.startsWith('/admin');
+    
     return (
-      <SpartiBuilder config={{ enabled: true, toolbar: true, autoDetect: true }}>
+      <SpartiBuilder config={{ enabled: true, toolbar: !isAdminArea, autoDetect: true }}>
         {children}
       </SpartiBuilder>
     );
