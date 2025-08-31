@@ -690,6 +690,203 @@ export const PageEditor: React.FC = () => {
     );
   };
 
+  const renderStatisticsEditor = (section: PageSection, content: any) => {
+    const statistics = content.statistics || [];
+    
+    const updateStatistic = (index: number, field: string, value: string) => {
+      const newStatistics = [...statistics];
+      newStatistics[index] = { ...newStatistics[index], [field]: value };
+      const newContent = { ...content, statistics: newStatistics };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const addStatistic = () => {
+      const newStatistics = [...statistics, { 
+        number: '0', 
+        label: 'New Statistic', 
+        color: 'text-blue-500',
+        bgGlow: 'bg-blue-100'
+      }];
+      const newContent = { ...content, statistics: newStatistics };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const removeStatistic = (index: number) => {
+      const newStatistics = statistics.filter((_, i) => i !== index);
+      const newContent = { ...content, statistics: newStatistics };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const colorOptions = [
+      { value: 'text-violet-500', label: 'Purple', bgGlow: 'bg-violet-100' },
+      { value: 'text-emerald-500', label: 'Green', bgGlow: 'bg-emerald-100' },
+      { value: 'text-orange-500', label: 'Orange', bgGlow: 'bg-orange-100' },
+      { value: 'text-rose-500', label: 'Pink', bgGlow: 'bg-rose-100' },
+      { value: 'text-blue-500', label: 'Blue', bgGlow: 'bg-blue-100' },
+      { value: 'text-yellow-500', label: 'Yellow', bgGlow: 'bg-yellow-100' },
+    ];
+
+    return (
+      <div className="space-y-6">
+        {/* Title and Description */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="p-4">
+            <label className="block text-sm font-medium mb-2">Section Title</label>
+            <Input
+              value={content.title || ''}
+              onChange={(e) => {
+                const newContent = { ...content, title: e.target.value };
+                setSections(prev => 
+                  prev.map(s => 
+                    s.id === section.id ? { ...s, content: newContent } : s
+                  )
+                );
+              }}
+              placeholder="e.g., Our Impact"
+            />
+          </Card>
+          
+          <Card className="p-4">
+            <label className="block text-sm font-medium mb-2">Description</label>
+            <Input
+              value={content.description || ''}
+              onChange={(e) => {
+                const newContent = { ...content, description: e.target.value };
+                setSections(prev => 
+                  prev.map(s => 
+                    s.id === section.id ? { ...s, content: newContent } : s
+                  )
+                );
+              }}
+              placeholder="Brief description"
+            />
+          </Card>
+        </div>
+
+        {/* Statistics Preview - Exactly as shown on frontend */}
+        <Card className="p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="font-medium">Statistics Preview</h4>
+            <Button size="sm" onClick={addStatistic}>
+              <Plus className="w-4 h-4 mr-1" />
+              Add Statistic
+            </Button>
+          </div>
+          
+          {/* Frontend-matching preview */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {statistics.map((stat: any, index: number) => (
+                <div key={index} className="text-center group relative">
+                  <div className={`relative inline-block p-4 rounded-2xl ${stat.bgGlow} transition-all duration-300 group-hover:scale-105 mb-4`}>
+                    <div 
+                      className={`text-4xl md:text-5xl font-bold ${stat.color} drop-shadow-lg`}
+                      style={{
+                        color: stat.color === 'text-violet-500' ? '#8b5cf6' : 
+                               stat.color === 'text-emerald-500' ? '#10b981' : 
+                               stat.color === 'text-orange-500' ? '#f97316' : 
+                               stat.color === 'text-rose-500' ? '#f43f5e' :
+                               stat.color === 'text-blue-500' ? '#3b82f6' :
+                               stat.color === 'text-yellow-500' ? '#eab308' : '#6b7280'
+                      }}
+                    >
+                      {stat.number}
+                    </div>
+                  </div>
+                  <div className="text-gray-600 font-medium text-sm md:text-base">
+                    {stat.label}
+                  </div>
+                  
+                  {/* Edit overlay */}
+                  <div className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => removeStatistic(index)}
+                      className="w-6 h-6 p-0"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
+        {/* Statistics Editor */}
+        <div className="space-y-4">
+          <h4 className="font-medium">Edit Statistics</h4>
+          {statistics.map((stat: any, index: number) => (
+            <Card key={index} className="p-4 border-l-4" style={{borderLeftColor: stat.color === 'text-violet-500' ? '#8b5cf6' : stat.color === 'text-emerald-500' ? '#10b981' : stat.color === 'text-orange-500' ? '#f97316' : stat.color === 'text-rose-500' ? '#f43f5e' : stat.color === 'text-blue-500' ? '#3b82f6' : '#eab308'}}>
+              <div className="flex justify-between items-start mb-3">
+                <h5 className="font-medium text-sm">Statistic {index + 1}</h5>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => removeStatistic(index)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Number</label>
+                  <Input
+                    value={stat.number || ''}
+                    onChange={(e) => updateStatistic(index, 'number', e.target.value)}
+                    placeholder="e.g., 10,000+"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium mb-1">Label</label>
+                  <Input
+                    value={stat.label || ''}
+                    onChange={(e) => updateStatistic(index, 'label', e.target.value)}
+                    placeholder="e.g., Students Trained"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium mb-1">Color</label>
+                  <select
+                    value={stat.color || 'text-blue-500'}
+                    onChange={(e) => {
+                      const selectedColor = colorOptions.find(c => c.value === e.target.value);
+                      updateStatistic(index, 'color', e.target.value);
+                      updateStatistic(index, 'bgGlow', selectedColor?.bgGlow || 'bg-blue-100');
+                    }}
+                    className="w-full p-2 border rounded-md"
+                  >
+                    {colorOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderCardsEditor = (section: PageSection, cards: any[]) => {
     const addCard = () => {
       const newCards = [...cards, { 
@@ -1261,6 +1458,14 @@ export const PageEditor: React.FC = () => {
               </h4>
               {renderCardsEditor(section, content.cards)}
             </div>
+          ) : section.section_id === 'statistics' && content.statistics ? (
+            <div>
+              <h4 className="text-md font-medium mb-4 flex items-center">
+                <ChevronRight className="w-4 h-4 mr-1" />
+                Statistics Editor
+              </h4>
+              {renderStatisticsEditor(section, content)}
+            </div>
           ) : (
             <div className="space-y-4">
               <h4 className="text-md font-medium mb-4 flex items-center">
@@ -1362,6 +1567,43 @@ export const PageEditor: React.FC = () => {
                       })}
                     </div>
                   )}
+                </Card>
+              )}
+              
+              {/* Initialize statistics for statistics sections */}
+              {section.section_id === 'statistics' && !content.statistics && (
+                <Card className="p-4 border-dashed border-purple-200 bg-purple-50/50">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-3">
+                      This is a statistics section. Initialize with default statistics?
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        const newContent = { 
+                          ...content, 
+                          title: content.title || "Our Impact",
+                          description: content.description || "Celebrating our achievements",
+                          statistics: [
+                            { number: "1000+", label: "Students", color: "text-violet-500", bgGlow: "bg-violet-100" },
+                            { number: "10", label: "Years", color: "text-emerald-500", bgGlow: "bg-emerald-100" },
+                            { number: "95%", label: "Success Rate", color: "text-orange-500", bgGlow: "bg-orange-100" },
+                            { number: "50+", label: "Awards", color: "text-rose-500", bgGlow: "bg-rose-100" }
+                          ]
+                        };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      className="bg-purple-600 hover:bg-purple-700"
+                    >
+                      <Plus className="w-4 h-4 mr-1" />
+                      Initialize Statistics
+                    </Button>
+                  </div>
                 </Card>
               )}
               
