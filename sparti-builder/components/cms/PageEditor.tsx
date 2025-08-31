@@ -139,17 +139,17 @@ export const PageEditor: React.FC = () => {
   };
 
   const getSectionDisplayName = (section: PageSection) => {
-    // Create user-friendly display names
+    // Create user-friendly display names based on actual homepage content
     const nameMap: Record<string, string> = {
       'hero': 'Hero',
       'trials': 'Begin Your Dance Journey', 
       'about': 'About Us',
-      'vision-mission': 'Vision & Mission',
+      'vision-mission': 'Vision Mission',
       'programmes': 'Programmes & Examinations',
       'competition': 'Competition Excellence',
       'events': 'Events',
       'achievements': 'Achievements',
-      'teachers': 'Our Teachers',
+      'teachers': 'Teachers',
       'reviews': 'Reviews',
       'locations': 'Locations',
       'gallery': 'Gallery'
@@ -160,21 +160,21 @@ export const PageEditor: React.FC = () => {
 
   const getSectionIcon = (section: PageSection) => {
     const iconMap: Record<string, string> = {
-      'hero': '🎭',
-      'trials': '✨', 
-      'about': '📖',
-      'vision-mission': '🎯',
-      'programmes': '📚',
-      'competition': '🏆',
-      'events': '🎪',
-      'achievements': '🌟',
-      'teachers': '👩‍🏫',
-      'reviews': '💬',
-      'locations': '📍',
-      'gallery': '🖼️'
+      'hero': '',
+      'trials': '', 
+      'about': '',
+      'vision-mission': '',
+      'programmes': '',
+      'competition': '',
+      'events': '',
+      'achievements': '',
+      'teachers': '',
+      'reviews': '',
+      'locations': '',
+      'gallery': ''
     };
     
-    return iconMap[section.section_id] || '📄';
+    return iconMap[section.section_id] || '';
   };
 
   const renderOutlinesSidebar = () => {
@@ -220,7 +220,7 @@ export const PageEditor: React.FC = () => {
                     onClick={() => scrollToSection(section.id)}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="text-lg">{getSectionIcon(section)}</div>
+                      <div className="w-4 h-4 rounded-full bg-gray-300 mt-1 flex-shrink-0"></div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
                           <h4 className="font-medium text-gray-800 truncate">
