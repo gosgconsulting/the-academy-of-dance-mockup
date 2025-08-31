@@ -7,6 +7,9 @@ interface SpartiBuilderContextType extends EditingContext {
   exitEditMode: () => void;
   selectElement: (element: SpartiElement | null) => void;
   hoverElement: (element: SpartiElement | null) => void;
+  openAIAgent: () => void;
+  closeAIAgent: () => void;
+  isAIAgentOpen: boolean;
 }
 
 const SpartiBuilderContext = createContext<SpartiBuilderContextType | null>(null);
@@ -23,6 +26,7 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [selectedElement, setSelectedElement] = useState<SpartiElement | null>(null);
   const [hoveredElement, setHoveredElement] = useState<SpartiElement | null>(null);
+  const [isAIAgentOpen, setIsAIAgentOpen] = useState(false);
 
   const enterEditMode = () => {
     setIsEditing(true);
@@ -44,15 +48,26 @@ export const SpartiBuilderProvider: React.FC<SpartiBuilderProviderProps> = ({
     setHoveredElement(element);
   };
 
+  const openAIAgent = () => {
+    setIsAIAgentOpen(true);
+  };
+
+  const closeAIAgent = () => {
+    setIsAIAgentOpen(false);
+  };
+
   const contextValue: SpartiBuilderContextType = {
     config,
     isEditing,
     selectedElement,
     hoveredElement,
+    isAIAgentOpen,
     enterEditMode,
     exitEditMode,
     selectElement,
     hoverElement,
+    openAIAgent,
+    closeAIAgent,
   };
 
   return (

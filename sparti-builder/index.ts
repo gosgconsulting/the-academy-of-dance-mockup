@@ -9,6 +9,9 @@ export { SliderEditor } from './components/editors/SliderEditor';
 export { SliderComponent } from './components/SliderComponent';
 export { ImageEditor } from './components/editors/ImageEditor';
 
+// AI Agent Module exports
+export * from './ai-agent';
+
 // CMS Module exports
 export { SpartiCMS } from './components/SpartiCMS';
 export { SpartiCMSWrapper } from './components/SpartiCMSWrapper';

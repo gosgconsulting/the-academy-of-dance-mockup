@@ -1,11 +1,11 @@
 // Universal Sparti Builder Plugin - Works on any website
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { SpartiBuilderProvider } from './SpartiBuilderProvider';
 import { SpartiToolbar } from './SpartiToolbar';
 import { EditingOverlay } from './EditingOverlay';
 import { ElementSelector } from './ElementSelector';
 import { ContentEditPanel } from './ContentEditPanel';
-import { AIElementEditor } from './AIElementEditor';
+import { AIAgentInterface } from '../ai-agent/components/AIAgentInterface';
 import { SpartiBuilderConfig } from '../types';
 import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
@@ -21,6 +21,7 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
   config = { enabled: true, toolbar: true, autoDetect: true }
 }) => {
   console.log('SpartiBuilder rendering with config:', config);
+  const [isAIAgentOpen, setIsAIAgentOpen] = useState(false);
   
   useEffect(() => {
     try {
@@ -55,7 +56,10 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
           </ElementSelector>
           <EditingOverlay />
           <ContentEditPanel />
-          <AIElementEditor />
+          <AIAgentInterface 
+            isOpen={isAIAgentOpen}
+            onClose={() => setIsAIAgentOpen(false)}
+          />
         </div>
       </div>
     </SpartiBuilderProvider>
