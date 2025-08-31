@@ -56,29 +56,13 @@ export const PageEditor: React.FC = () => {
     
     setGroupedSections(grouped);
 
-    // Initialize slides for hero sections that don't have them yet
-    sections.forEach(section => {
-      const isHeroSection = section.section_id === 'hero' || section.section_type?.toLowerCase().includes('hero');
-      const content = section.content || {};
-      const hasSlides = content.slides && Array.isArray(content.slides) && content.slides.length > 0;
-      
-      if (isHeroSection && !hasSlides) {
-        const defaultSlides = [
-          {
-            title: "Where Dreams",
-            subtitle: "Take Flight",
-            description: "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
-            backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png"
-          }
-        ];
-        const newContent = { ...content, slides: defaultSlides };
-        setSections(prev => 
-          prev.map(s => 
-            s.id === section.id ? { ...s, content: newContent } : s
-          )
-        );
-      }
-    });
+    // Don't initialize slides if they already exist - preserve existing data
+    console.log('Sections loaded:', sections.map(s => ({ 
+      id: s.id, 
+      section_id: s.section_id, 
+      hasSlides: s.content?.slides?.length || 0,
+      content: s.content 
+    })));
   }, [sections]);
 
   const loadMediaFiles = async () => {
@@ -654,6 +638,147 @@ export const PageEditor: React.FC = () => {
                 Hero Slideshow Editor
               </h4>
               {renderSlideEditor(section, content.slides, currentSlide)}
+            </div>
+          ) : isHeroSection && !hasSlides ? (
+            <div className="space-y-4">
+              <h4 className="text-md font-medium mb-4 flex items-center">
+                <ChevronRight className="w-4 h-4 mr-1" />
+                Hero Content (Convert to Slideshow)
+              </h4>
+              
+              <Card className="p-4 border-2 border-dashed border-orange-200 bg-orange-50/50">
+                <div className="text-center">
+                  <p className="text-sm text-muted-foreground mb-3">
+                    This hero section has basic content but no slides. Convert it to a slideshow to enable image backgrounds and multiple slides.
+                  </p>
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      const slides = [
+                        {
+                          title: content.title || "Spartan Boxing Academy",
+                          subtitle: content.subtitle || "Train Hard, Fight Smart, Win Bold",
+                          description: content.description || "Join the most prestigious boxing academy and unlock your potential with world-class training and expert guidance.",
+                          backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png",
+                          buttonText: "Start Your Journey",
+                          buttonLink: "#trials",
+                          duration: "5"
+                        },
+                        {
+                          title: "Professional Training",
+                          subtitle: "Elite Boxing Programs",
+                          description: "Experience world-class boxing training with our professional coaches and state-of-the-art facilities.",
+                          backgroundImage: "/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png",
+                          buttonText: "Learn More",
+                          buttonLink: "#programmes",
+                          duration: "5"
+                        },
+                        {
+                          title: "Champion Mindset",
+                          subtitle: "Build Mental Strength",
+                          description: "Develop the discipline and mental toughness needed to excel in boxing and in life.",
+                          backgroundImage: "/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png",
+                          buttonText: "Join Us",
+                          buttonLink: "#contact",
+                          duration: "5"
+                        },
+                        {
+                          title: "Competition Ready",
+                          subtitle: "Fight Like a Champion",
+                          description: "Prepare for competition with our advanced training programs designed for serious athletes.",
+                          backgroundImage: "/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png",
+                          buttonText: "Get Started",
+                          buttonLink: "#competition",
+                          duration: "5"
+                        },
+                        {
+                          title: "Community Spirit",
+                          subtitle: "Train Together, Win Together",
+                          description: "Join our boxing family and be part of a supportive community that pushes each other to greatness.",
+                          backgroundImage: "/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png",
+                          buttonText: "Join Community",
+                          buttonLink: "#events",
+                          duration: "5"
+                        }
+                      ];
+                      
+                      const newContent = { ...content, slides };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                      
+                      toast({
+                        title: "Converted to Slideshow",
+                        description: "Hero section now has 5 slides with the original hardcoded images. Save to persist changes.",
+                      });
+                    }}
+                    className="bg-orange-600 hover:bg-orange-700"
+                  >
+                    <Plus className="w-4 h-4 mr-1" />
+                    Convert to Slideshow (5 slides)
+                  </Button>
+                </div>
+              </Card>
+              
+              {/* Show current basic content */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {content.title !== undefined && (
+                  <Card className="p-4">
+                    <label className="block text-sm font-medium mb-2">Title</label>
+                    <Input
+                      value={content.title || ''}
+                      onChange={(e) => {
+                        const newContent = { ...content, title: e.target.value };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      placeholder="Enter title"
+                    />
+                  </Card>
+                )}
+                
+                {content.subtitle !== undefined && (
+                  <Card className="p-4">
+                    <label className="block text-sm font-medium mb-2">Subtitle</label>
+                    <Input
+                      value={content.subtitle || ''}
+                      onChange={(e) => {
+                        const newContent = { ...content, subtitle: e.target.value };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      placeholder="Enter subtitle"
+                    />
+                  </Card>
+                )}
+              </div>
+              
+              {content.description !== undefined && (
+                <Card className="p-4">
+                  <label className="block text-sm font-medium mb-2">Description</label>
+                  <Textarea
+                    value={content.description || ''}
+                    onChange={(e) => {
+                      const newContent = { ...content, description: e.target.value };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                    }}
+                    placeholder="Enter description"
+                    rows={4}
+                  />
+                </Card>
+              )}
             </div>
           ) : hasCards ? (
             <div>
