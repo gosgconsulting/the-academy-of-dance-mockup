@@ -59,46 +59,6 @@ Please contact me to schedule my trial class. Thank you!`;
     data-sparti-component="trials-section"
   >
       <div className="container mx-auto px-6">
-        {/* Statistics Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-violet-500 drop-shadow-lg mb-4">
-                  10,000+
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Students Trained
-                </div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-emerald-500 drop-shadow-lg mb-4">
-                  40
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Years Experience
-                </div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-orange-500 drop-shadow-lg mb-4">
-                  95%
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Success Rate
-                </div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl md:text-5xl font-bold text-rose-500 drop-shadow-lg mb-4">
-                  2000+
-                </div>
-                <div className="text-gray-600 font-medium text-sm md:text-base">
-                  Awards Won
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="text-center mb-16">
           <h2 
             className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6"
