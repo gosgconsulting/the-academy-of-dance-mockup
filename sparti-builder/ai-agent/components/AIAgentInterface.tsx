@@ -156,7 +156,7 @@ export const AIAgentInterface: React.FC<AIAgentInterfaceProps> = ({ isOpen, onCl
   if (!isOpen) return null;
 
   return (
-    <div className={`fixed right-4 bottom-4 bg-background border rounded-lg shadow-lg transition-all duration-300 ${
+    <div className={`fixed left-4 bottom-4 bg-background border rounded-lg shadow-lg transition-all duration-300 ${
       isMinimized ? 'w-80 h-16' : 'w-96 h-[600px]'
     }`}>
       {/* Header */}
