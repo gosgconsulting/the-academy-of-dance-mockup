@@ -292,6 +292,335 @@ export const PageEditor: React.FC = () => {
     );
   };
 
+  const renderTabsEditor = (section: PageSection, tabs: any[]) => {
+    const [currentTab, setCurrentTab] = useState(0);
+    
+    const addTab = () => {
+      const newTabs = [...tabs, { 
+        id: `tab-${Date.now()}`,
+        label: 'New Tab', 
+        title: '', 
+        description: '',
+        items: []
+      }];
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+      setCurrentTab(newTabs.length - 1);
+    };
+
+    const updateTab = (index: number, field: string, value: any) => {
+      const newTabs = [...tabs];
+      newTabs[index] = { ...newTabs[index], [field]: value };
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const removeTab = (index: number) => {
+      if (tabs.length <= 1) return;
+      const newTabs = tabs.filter((_, i) => i !== index);
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+      setCurrentTab(Math.max(0, currentTab - 1));
+    };
+
+    const addTabItem = (tabIndex: number) => {
+      const newTabs = [...tabs];
+      if (!newTabs[tabIndex].items) newTabs[tabIndex].items = [];
+      newTabs[tabIndex].items.push({
+        id: `item-${Date.now()}`,
+        title: '',
+        description: '',
+        image: '',
+        date: ''
+      });
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const updateTabItem = (tabIndex: number, itemIndex: number, field: string, value: string) => {
+      const newTabs = [...tabs];
+      newTabs[tabIndex].items[itemIndex] = { ...newTabs[tabIndex].items[itemIndex], [field]: value };
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const removeTabItem = (tabIndex: number, itemIndex: number) => {
+      const newTabs = [...tabs];
+      newTabs[tabIndex].items = newTabs[tabIndex].items.filter((_, i) => i !== itemIndex);
+      const newContent = { ...section.content, tabs: newTabs };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const tab = tabs[currentTab] || {};
+
+    return (
+      <div className="space-y-6">
+        {/* Tab Navigation */}
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border">
+          <div className="flex justify-between items-center mb-3">
+            <div className="flex items-center gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentTab(Math.max(0, currentTab - 1))}
+                disabled={currentTab === 0}
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              <div className="text-center">
+                <div className="font-semibold">Tab {currentTab + 1} of {tabs.length}</div>
+                <div className="text-sm text-muted-foreground">
+                  {tab.label || 'Untitled Tab'}
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentTab(Math.min(tabs.length - 1, currentTab + 1))}
+                disabled={currentTab === tabs.length - 1}
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+            
+            <div className="flex gap-2">
+              <Button size="sm" variant="outline" onClick={addTab}>
+                <Plus className="w-4 h-4 mr-1" />
+                Add Tab
+              </Button>
+              {tabs.length > 1 && (
+                <Button size="sm" variant="destructive" onClick={() => removeTab(currentTab)}>
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              )}
+            </div>
+          </div>
+          
+          {/* Tab Pills */}
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {tabs.map((t, index) => (
+              <div
+                key={index}
+                className={`px-3 py-1 rounded-full text-sm cursor-pointer whitespace-nowrap ${
+                  index === currentTab 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-muted hover:bg-muted/80'
+                }`}
+                onClick={() => setCurrentTab(index)}
+              >
+                {t.label || `Tab ${index + 1}`}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tab Content Editor */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="p-4">
+            <h4 className="font-medium mb-3">Tab Settings</h4>
+            <div className="space-y-3">
+              <div>
+                <label className="block text-sm font-medium mb-1">Tab Label</label>
+                <Input
+                  value={tab.label || ''}
+                  onChange={(e) => updateTab(currentTab, 'label', e.target.value)}
+                  placeholder="e.g., Past Events"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Tab Title</label>
+                <Input
+                  value={tab.title || ''}
+                  onChange={(e) => updateTab(currentTab, 'title', e.target.value)}
+                  placeholder="Tab title"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Tab Description</label>
+                <Textarea
+                  value={tab.description || ''}
+                  onChange={(e) => updateTab(currentTab, 'description', e.target.value)}
+                  placeholder="Tab description"
+                  rows={3}
+                />
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-4">
+            <div className="flex justify-between items-center mb-3">
+              <h4 className="font-medium">Tab Items ({tab.items?.length || 0})</h4>
+              <Button size="sm" onClick={() => addTabItem(currentTab)}>
+                <Plus className="w-4 h-4 mr-1" />
+                Add Item
+              </Button>
+            </div>
+            
+            <div className="space-y-3 max-h-64 overflow-y-auto">
+              {(tab.items || []).map((item: any, itemIndex: number) => (
+                <div key={itemIndex} className="p-3 border rounded-lg">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-sm font-medium">Item {itemIndex + 1}</span>
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => removeTabItem(currentTab, itemIndex)}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <div className="space-y-2">
+                    <Input
+                      value={item.title || ''}
+                      onChange={(e) => updateTabItem(currentTab, itemIndex, 'title', e.target.value)}
+                      placeholder="Item title"
+                      className="text-sm"
+                    />
+                    <Input
+                      value={item.description || ''}
+                      onChange={(e) => updateTabItem(currentTab, itemIndex, 'description', e.target.value)}
+                      placeholder="Item description"
+                      className="text-sm"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </div>
+    );
+  };
+
+  const renderGalleryEditor = (section: PageSection, images: any[]) => {
+    const addGalleryImage = () => {
+      const newImages = [...images, { 
+        id: `img-${Date.now()}`,
+        image: '', 
+        title: '', 
+        description: '',
+        category: ''
+      }];
+      const newContent = { ...section.content, images: newImages };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const updateGalleryImage = (index: number, field: string, value: string) => {
+      const newImages = [...images];
+      newImages[index] = { ...newImages[index], [field]: value };
+      const newContent = { ...section.content, images: newImages };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const removeGalleryImage = (index: number) => {
+      const newImages = images.filter((_, i) => i !== index);
+      const newContent = { ...section.content, images: newImages };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    return (
+      <div className="space-y-4">
+        <div className="flex justify-between items-center">
+          <h4 className="font-medium">Gallery Images ({images.length})</h4>
+          <Button size="sm" onClick={addGalleryImage}>
+            <Plus className="w-4 h-4 mr-1" />
+            Add Image
+          </Button>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-96 overflow-y-auto">
+          {images.map((img, index) => (
+            <Card key={index} className="overflow-hidden">
+              {img.image && (
+                <div className="aspect-square bg-muted">
+                  <img
+                    src={img.image}
+                    alt={img.title || `Gallery image ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-3 space-y-2">
+                <div className="flex justify-between items-start">
+                  <span className="text-xs font-medium">#{index + 1}</span>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    onClick={() => removeGalleryImage(index)}
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </Button>
+                </div>
+                
+                <Input
+                  value={img.title || ''}
+                  onChange={(e) => updateGalleryImage(index, 'title', e.target.value)}
+                  placeholder="Image title"
+                  className="text-xs"
+                />
+                
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setSelectedImageSection(`${section.id}-gallery-${index}`)}
+                  className="w-full text-xs"
+                >
+                  <ImageIcon className="w-3 h-3 mr-1" />
+                  {img.image ? 'Change Image' : 'Select Image'}
+                </Button>
+                
+                {selectedImageSection === `${section.id}-gallery-${index}` && (
+                  <div className="mt-2 p-2 border rounded">
+                    {renderImagePicker(img.image || '', (imageUrl) => {
+                      updateGalleryImage(index, 'image', imageUrl);
+                      setSelectedImageSection(null);
+                    })}
+                  </div>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderCardsEditor = (section: PageSection, cards: any[]) => {
     const addCard = () => {
       const newCards = [...cards, { 
@@ -688,8 +1017,17 @@ export const PageEditor: React.FC = () => {
     const isHeroSection = section.section_id === 'hero' || section.section_type?.toLowerCase().includes('hero');
     const hasSlides = content.slides && Array.isArray(content.slides) && content.slides.length > 0;
     
-    // Check if this section has cards
+    // Check if this section has different content types
     const hasCards = content.cards && Array.isArray(content.cards) && content.cards.length > 0;
+    const hasTabs = content.tabs && Array.isArray(content.tabs) && content.tabs.length > 0;
+    const hasImages = content.images && Array.isArray(content.images) && content.images.length > 0;
+    
+    // Determine section type for smart defaults
+    const isTabSection = section.section_type?.toLowerCase().includes('competition') || 
+                         section.section_type?.toLowerCase().includes('events') || 
+                         section.section_type?.toLowerCase().includes('programmes');
+    const isGallerySection = section.section_id === 'gallery' || section.section_type?.toLowerCase().includes('gallery');
+    const isAchievementsSection = section.section_id === 'achievements' || section.section_type?.toLowerCase().includes('achievements');
     
     return (
       <Card key={section.id} className="p-6 mb-6 shadow-sm">
@@ -838,6 +1176,22 @@ export const PageEditor: React.FC = () => {
                 </Card>
               )}
             </div>
+          ) : hasTabs ? (
+            <div>
+              <h4 className="text-md font-medium mb-4 flex items-center">
+                <ChevronRight className="w-4 h-4 mr-1" />
+                Tabs Editor
+              </h4>
+              {renderTabsEditor(section, content.tabs)}
+            </div>
+          ) : hasImages && isGallerySection ? (
+            <div>
+              <h4 className="text-md font-medium mb-4 flex items-center">
+                <ChevronRight className="w-4 h-4 mr-1" />
+                Gallery Editor
+              </h4>
+              {renderGalleryEditor(section, content.images)}
+            </div>
           ) : hasCards ? (
             <div>
               <h4 className="text-md font-medium mb-4 flex items-center">
@@ -950,8 +1304,110 @@ export const PageEditor: React.FC = () => {
                 </Card>
               )}
               
+              {/* Initialize tabs for sections that should have them */}
+              {!hasTabs && isTabSection && (
+                <Card className="p-4 border-dashed border-blue-200 bg-blue-50/50">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-3">
+                      This section should have tabs. Initialize with default tabs?
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        const defaultTabs = section.section_type?.toLowerCase().includes('competition') ? [
+                          { id: 'solo', label: 'Solo Competitions', title: 'Solo Competitions', description: '', items: [] },
+                          { id: 'groups', label: 'Group Competitions', title: 'Group Competitions', description: '', items: [] }
+                        ] : section.section_type?.toLowerCase().includes('events') ? [
+                          { id: 'past', label: 'Past Events', title: 'Past Events', description: '', items: [] },
+                          { id: 'upcoming', label: 'Upcoming Events', title: 'Upcoming Events', description: '', items: [] }
+                        ] : [
+                          { id: 'programmes', label: 'Programmes', title: 'Programmes', description: '', items: [] },
+                          { id: 'exams', label: 'Exams', title: 'Exams', description: '', items: [] }
+                        ];
+                        
+                        const newContent = { ...content, tabs: defaultTabs };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      className="bg-blue-600 hover:bg-blue-700"
+                    >
+                      <Plus className="w-4 h-4 mr-1" />
+                      Initialize Tabs
+                    </Button>
+                  </div>
+                </Card>
+              )}
+              
+              {/* Initialize gallery for gallery sections */}
+              {!hasImages && isGallerySection && (
+                <Card className="p-4 border-dashed border-green-200 bg-green-50/50">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-3">
+                      This is a gallery section. Initialize with image gallery?
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        const newContent = { 
+                          ...content, 
+                          images: [
+                            { id: 'img-1', image: '', title: 'Gallery Image 1', description: '', category: 'performance' }
+                          ] 
+                        };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      className="bg-green-600 hover:bg-green-700"
+                    >
+                      <ImageIcon className="w-4 h-4 mr-1" />
+                      Initialize Gallery
+                    </Button>
+                  </div>
+                </Card>
+              )}
+              
+              {/* Initialize achievements carousel */}
+              {!hasCards && isAchievementsSection && (
+                <Card className="p-4 border-dashed border-yellow-200 bg-yellow-50/50">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-3">
+                      This is an achievements section. Initialize with achievement cards?
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        const newContent = { 
+                          ...content, 
+                          cards: [
+                            { title: 'Competition Winner', description: 'First place in regional dance competition', image: '', link: '', date: '2024' }
+                          ] 
+                        };
+                        setSections(prev => 
+                          prev.map(s => 
+                            s.id === section.id ? { ...s, content: newContent } : s
+                          )
+                        );
+                      }}
+                      className="bg-yellow-600 hover:bg-yellow-700"
+                    >
+                      <Plus className="w-4 h-4 mr-1" />
+                      Initialize Achievements
+                    </Button>
+                  </div>
+                </Card>
+              )}
+              
               {/* Initialize cards if content suggests it should have them */}
-              {!hasCards && (content.title || content.description) && (
+              {!hasCards && !hasTabs && !hasImages && !isAchievementsSection && (content.title || content.description) && (
                 <Card className="p-4 border-dashed">
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground mb-3">
