@@ -29,6 +29,7 @@ export const PageEditor: React.FC = () => {
   const [page, setPage] = useState<Page | null>(null);
   const [sections, setSections] = useState<PageSection[]>([]);
   const [groupedSections, setGroupedSections] = useState<GroupedSections>({});
+  const [currentSlides, setCurrentSlides] = useState<Record<string, number>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -50,6 +51,30 @@ export const PageEditor: React.FC = () => {
     }, {} as GroupedSections);
     
     setGroupedSections(grouped);
+
+    // Initialize slides for hero sections that don't have them yet
+    sections.forEach(section => {
+      const isHeroSection = section.section_id === 'hero' || section.section_type?.toLowerCase().includes('hero');
+      const content = section.content || {};
+      const hasSlides = content.slides && Array.isArray(content.slides) && content.slides.length > 0;
+      
+      if (isHeroSection && !hasSlides) {
+        const defaultSlides = [
+          {
+            title: "Where Dreams",
+            subtitle: "Take Flight",
+            description: "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
+            backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png"
+          }
+        ];
+        const newContent = { ...content, slides: defaultSlides };
+        setSections(prev => 
+          prev.map(s => 
+            s.id === section.id ? { ...s, content: newContent } : s
+          )
+        );
+      }
+    });
   }, [sections]);
 
   const loadPageData = async () => {
@@ -140,7 +165,13 @@ export const PageEditor: React.FC = () => {
     }
   };
 
-  const renderSlideEditor = (section: PageSection, slides: any[], currentSlide: number, setCurrentSlide: (index: number) => void) => {
+  const renderSlideEditor = (section: PageSection, slides: any[], currentSlide: number) => {
+    const setCurrentSlide = (index: number) => {
+      setCurrentSlides(prev => ({
+        ...prev,
+        [section.id]: index
+      }));
+    };
     const slide = slides[currentSlide] || {};
     
     const updateSlide = (field: string, value: string) => {
@@ -282,31 +313,11 @@ export const PageEditor: React.FC = () => {
 
   const renderSectionEditor = (section: PageSection) => {
     const content = section.content || {};
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const currentSlide = currentSlides[section.id] || 0;
     
     // Check if this is a hero section with slides
     const isHeroSection = section.section_id === 'hero' || section.section_type?.toLowerCase().includes('hero');
     const hasSlides = content.slides && Array.isArray(content.slides) && content.slides.length > 0;
-    
-    // Initialize slides if this is a hero section but doesn't have slides yet
-    useEffect(() => {
-      if (isHeroSection && !hasSlides) {
-        const defaultSlides = [
-          {
-            title: "Where Dreams",
-            subtitle: "Take Flight",
-            description: "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
-            backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png"
-          }
-        ];
-        const newContent = { ...content, slides: defaultSlides };
-        setSections(prev => 
-          prev.map(s => 
-            s.id === section.id ? { ...s, content: newContent } : s
-          )
-        );
-      }
-    }, [isHeroSection, hasSlides, section.id, content]);
     
     return (
       <Card key={section.id} className="p-4 mb-4">
@@ -327,7 +338,7 @@ export const PageEditor: React.FC = () => {
           
           {/* Hero Section with Slides */}
           {isHeroSection && hasSlides ? (
-            renderSlideEditor(section, content.slides, currentSlide, setCurrentSlide)
+            renderSlideEditor(section, content.slides, currentSlide)
           ) : (
             <>
               {/* Generic content editor for other sections */}
