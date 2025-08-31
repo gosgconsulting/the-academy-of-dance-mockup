@@ -26,7 +26,7 @@ export class SiteSettingsService {
         return { data: null, error: error.message };
       }
 
-      return { data: data || [], error: null };
+      return { data: (data || []) as SiteSetting[], error: null };
     } catch (error) {
       console.error('Error in getAllSettings:', error);
       return { data: null, error: error instanceof Error ? error.message : 'Unknown error' };
@@ -50,7 +50,7 @@ export class SiteSettingsService {
         return { data: null, error: error.message };
       }
 
-      return { data: data || [], error: null };
+      return { data: (data || []) as SiteSetting[], error: null };
     } catch (error) {
       console.error('Error in getSettingsByCategory:', error);
       return { data: null, error: error instanceof Error ? error.message : 'Unknown error' };
@@ -73,7 +73,7 @@ export class SiteSettingsService {
         return { data: null, error: error.message };
       }
 
-      return { data, error: null };
+      return { data: data as SiteSetting | null, error: null };
     } catch (error) {
       console.error('Error in getSetting:', error);
       return { data: null, error: error instanceof Error ? error.message : 'Unknown error' };
@@ -108,7 +108,7 @@ export class SiteSettingsService {
         return { data: null, error: error.message };
       }
 
-      return { data, error: null };
+      return { data: data as SiteSetting | null, error: null };
     } catch (error) {
       console.error('Error in updateSetting:', error);
       return { data: null, error: error instanceof Error ? error.message : 'Unknown error' };

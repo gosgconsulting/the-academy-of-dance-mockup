@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../src/components/ui/button';
 import { Input } from '../../../src/components/ui/input';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
 import { PagesService, type Page } from '../../services/PagesService';
+import { Edit } from 'lucide-react';
 
 export const PagesManager: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [pages, setPages] = useState<Page[]>([]);
   const [newPageTitle, setNewPageTitle] = useState('');
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadPages();
@@ -140,6 +143,15 @@ export const PagesManager: React.FC = () => {
                   }`}>
                     {page.status === 'published' ? 'Published' : 'Draft'}
                   </span>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => navigate(`/admin/pages/edit/${page.id}`)}
+                    disabled={isLoading}
+                  >
+                    <Edit className="w-4 h-4 mr-1" />
+                    Edit
+                  </Button>
                   <Button 
                     variant="destructive" 
                     size="sm"
