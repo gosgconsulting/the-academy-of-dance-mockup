@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { SpartiCMSWrapper } from "sparti-builder";
+import { SpartiCMSWrapper } from "../../sparti-builder";
 import WhatsAppChat from "@/components/WhatsAppChat";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
