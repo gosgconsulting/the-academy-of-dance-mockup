@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthPage } from '../../sparti-builder/components/auth/AuthPage';
+import AuthPage from '../../sparti-builder/components/auth/AuthPage';
 
 const Auth: React.FC = () => {
   return (

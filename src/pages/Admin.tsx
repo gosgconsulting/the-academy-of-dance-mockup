@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { CMSDashboard } from '../../sparti-builder/components/admin/CMSDashboard';
+import CMSDashboard from '../../sparti-builder/components/admin/CMSDashboard';
 import { AuthProvider, useAuth } from '../../sparti-builder/components/auth/AuthProvider';
 import { CMSSettingsProvider } from '../../sparti-builder/context/CMSSettingsContext';
 

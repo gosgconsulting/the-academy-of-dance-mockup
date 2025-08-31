@@ -9,6 +9,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signOut: () => void;
   loading: boolean;
 }
@@ -59,6 +60,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const signUp = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
+    // Demo signup - for now just redirect to sign in
+    return { 
+      success: false, 
+      error: 'Sign up not implemented in demo. Use admin/admin to sign in.' 
+    };
+  };
+
   const signOut = () => {
     setUser(null);
     localStorage.removeItem('sparti-demo-session');
@@ -67,6 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const value = {
     user,
     signIn,
+    signUp,
     signOut,
     loading,
   };
