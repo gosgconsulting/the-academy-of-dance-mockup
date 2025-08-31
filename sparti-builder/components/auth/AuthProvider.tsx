@@ -1,13 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-interface User {
-  id: string;
-  email: string;
-  role: string;
-}
+import React, { useState, useContext, createContext, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import type { User, Session } from '@supabase/supabase-js';
 
 interface AuthContextType {
   user: User | null;
+  session: Session | null;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signOut: () => void;
@@ -17,64 +14,101 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for existing session in localStorage
-    const session = localStorage.getItem('sparti-demo-session');
-    if (session) {
-      try {
-        const userData = JSON.parse(session);
-        setUser(userData);
-      } catch (error) {
-        console.error('Error parsing session data:', error);
-        localStorage.removeItem('sparti-demo-session');
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
       }
-    }
-    setLoading(false);
+    );
+
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const signIn = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
-    // Demo authentication - hardcoded admin/admin
-    if (email === 'admin' && password === 'admin') {
-      const userData: User = {
-        id: 'demo-admin',
-        email: 'admin@sparti-demo.com',
-        role: 'admin'
-      };
-      
-      setUser(userData);
-      localStorage.setItem('sparti-demo-session', JSON.stringify(userData));
-      
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        console.error('Sign in error:', error);
+        return { success: false, error: error.message };
+      }
+
       return { success: true };
-    } else {
+    } catch (error) {
+      console.error('Sign in error:', error);
       return { 
         success: false, 
-        error: 'Invalid credentials. Use admin/admin for demo.' 
+        error: error instanceof Error ? error.message : 'Unknown error' 
       };
     }
   };
 
   const signUp = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
-    // Demo signup - for now just redirect to sign in
-    return { 
-      success: false, 
-      error: 'Sign up not implemented in demo. Use admin/admin to sign in.' 
-    };
+    try {
+      const redirectUrl = `${window.location.origin}/`;
+      
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: redirectUrl
+        }
+      });
+
+      if (error) {
+        console.error('Sign up error:', error);
+        return { success: false, error: error.message };
+      }
+
+      if (data.user && !data.session) {
+        return { 
+          success: true, 
+          error: 'Please check your email to confirm your account.' 
+        };
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error('Sign up error:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Unknown error' 
+      };
+    }
   };
 
-  const signOut = () => {
-    setUser(null);
-    localStorage.removeItem('sparti-demo-session');
+  const signOut = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
   };
 
   const value = {
     user,
+    session,
     signIn,
     signUp,
     signOut,

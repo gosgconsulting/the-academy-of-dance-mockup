@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../../../src/components/ui/button';
-// Demo branding settings (no Supabase required)
 import { Input } from '../../../src/components/ui/input';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
+import { SiteSettingsService } from '../../services/SiteSettingsService';
 
 interface BrandingSettingsProps {
   onUpdate?: (settings: any) => void;
@@ -11,37 +11,91 @@ interface BrandingSettingsProps {
 
 export const BrandingSettings: React.FC<BrandingSettingsProps> = ({ onUpdate }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [siteName, setSiteName] = useState('Sparti CMS Demo');
-  const [tagline, setTagline] = useState('Visual Website Builder');
-  const [description, setDescription] = useState('Experience the power of visual website editing');
+  const [siteName, setSiteName] = useState('');
+  const [tagline, setTagline] = useState('');
+  const [description, setDescription] = useState('');
   const { toast } = useToast();
+
+  useEffect(() => {
+    loadBrandingSettings();
+  }, []);
+
+  const loadBrandingSettings = async () => {
+    try {
+      const { data, error } = await SiteSettingsService.getSettingsByCategory('branding');
+      if (error) {
+        console.error('Error loading branding settings:', error);
+      } else if (data) {
+        data.forEach(setting => {
+          switch (setting.key) {
+            case 'site_name':
+              setSiteName(setting.value?.replace(/"/g, '') || '');
+              break;
+            case 'site_tagline':
+              setTagline(setting.value?.replace(/"/g, '') || '');
+              break;
+            case 'site_description':
+              setDescription(setting.value?.replace(/"/g, '') || '');
+              break;
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error loading branding settings:', error);
+    }
+  };
 
   const handleSave = async () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate save delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const settings = {
-        site_name: siteName,
-        tagline,
-        description,
-      };
+      const settingsToUpdate = [
+        {
+          key: 'site_name',
+          value: `"${siteName}"`,
+          category: 'branding' as const,
+          description: 'Site name displayed in header and meta tags'
+        },
+        {
+          key: 'site_tagline',
+          value: `"${tagline}"`,
+          category: 'branding' as const,
+          description: 'Site tagline or slogan'
+        },
+        {
+          key: 'site_description',
+          value: `"${description}"`,
+          category: 'branding' as const,
+          description: 'Site description for SEO'
+        }
+      ];
 
-      // Demo: just store in localStorage
-      localStorage.setItem('sparti-demo-branding', JSON.stringify(settings));
+      const { success, error } = await SiteSettingsService.updateMultipleSettings(settingsToUpdate);
       
-      onUpdate?.(settings);
-      
-      toast({
-        title: "Settings Saved",
-        description: "Branding settings have been updated (demo mode)",
-      });
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to save branding settings: ${error}`,
+          variant: "destructive",
+        });
+      } else if (success) {
+        const settings = {
+          site_name: siteName,
+          tagline,
+          description,
+        };
+        
+        onUpdate?.(settings);
+        
+        toast({
+          title: "Settings Saved",
+          description: "Branding settings have been updated successfully",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to save branding settings (demo mode)",
+        description: "Failed to save branding settings",
         variant: "destructive",
       });
     } finally {

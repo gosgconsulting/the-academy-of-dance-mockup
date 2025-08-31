@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../../../src/components/ui/button';
-// Demo color settings (no database required)
 import { Input } from '../../../src/components/ui/input';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
+import { SiteSettingsService } from '../../services/SiteSettingsService';
 
 interface ColorSettingsProps {
   onUpdate?: (settings: any) => void;
@@ -11,37 +11,92 @@ interface ColorSettingsProps {
 
 export const ColorSettings: React.FC<ColorSettingsProps> = ({ onUpdate }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [primaryColor, setPrimaryColor] = useState('#3b82f6');
-  const [secondaryColor, setSecondaryColor] = useState('#64748b');
-  const [accentColor, setAccentColor] = useState('#8b5cf6');
+  const [primaryColor, setPrimaryColor] = useState('#d4af37');
+  const [secondaryColor, setSecondaryColor] = useState('#b8860b');
+  const [accentColor, setAccentColor] = useState('#daa520');
   const { toast } = useToast();
+
+  useEffect(() => {
+    loadColorSettings();
+  }, []);
+
+  const loadColorSettings = async () => {
+    try {
+      const { data, error } = await SiteSettingsService.getSettingsByCategory('colors');
+      if (error) {
+        console.error('Error loading color settings:', error);
+      } else if (data) {
+        data.forEach(setting => {
+          const hslValue = setting.value?.replace(/"/g, '') || '';
+          switch (setting.key) {
+            case 'primary_color':
+              setPrimaryColor(SiteSettingsService.hslToHex(hslValue));
+              break;
+            case 'secondary_color':
+              setSecondaryColor(SiteSettingsService.hslToHex(hslValue));
+              break;
+            case 'accent_color':
+              setAccentColor(SiteSettingsService.hslToHex(hslValue));
+              break;
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error loading color settings:', error);
+    }
+  };
 
   const handleSave = async () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate save delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const settings = {
-        primary_color: primaryColor,
-        secondary_color: secondaryColor,
-        accent_color: accentColor,
-      };
+      const settingsToUpdate = [
+        {
+          key: 'primary_color',
+          value: `"${SiteSettingsService.hexToHsl(primaryColor)}"`,
+          category: 'colors' as const,
+          description: 'Primary brand color (HSL)'
+        },
+        {
+          key: 'secondary_color',
+          value: `"${SiteSettingsService.hexToHsl(secondaryColor)}"`,
+          category: 'colors' as const,
+          description: 'Secondary brand color (HSL)'
+        },
+        {
+          key: 'accent_color',
+          value: `"${SiteSettingsService.hexToHsl(accentColor)}"`,
+          category: 'colors' as const,
+          description: 'Accent color (HSL)'
+        }
+      ];
 
-      // Demo: just store in localStorage
-      localStorage.setItem('sparti-demo-colors', JSON.stringify(settings));
+      const { success, error } = await SiteSettingsService.updateMultipleSettings(settingsToUpdate);
       
-      onUpdate?.(settings);
-      
-      toast({
-        title: "Colors Updated",
-        description: "Color settings have been saved (demo mode)",
-      });
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to save color settings: ${error}`,
+          variant: "destructive",
+        });
+      } else if (success) {
+        const settings = {
+          primary_color: primaryColor,
+          secondary_color: secondaryColor,
+          accent_color: accentColor,
+        };
+        
+        onUpdate?.(settings);
+        
+        toast({
+          title: "Colors Updated",
+          description: "Color settings have been saved successfully",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to save color settings (demo mode)",
+        description: "Failed to save color settings",
         variant: "destructive",
       });
     } finally {

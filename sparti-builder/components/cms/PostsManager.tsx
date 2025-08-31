@@ -4,23 +4,11 @@ import { Input } from '../../../src/components/ui/input';
 import { Textarea } from '../../../src/components/ui/textarea';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
-
-interface PostItem {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  is_published: boolean;
-  created_at: string;
-  author: string;
-  tags: string[];
-  category: string;
-}
+import { PostsService, type Post } from '../../services/PostsService';
 
 export const PostsManager: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [posts, setPosts] = useState<PostItem[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [newPostTitle, setNewPostTitle] = useState('');
   const [newPostExcerpt, setNewPostExcerpt] = useState('');
   const [newPostCategory, setNewPostCategory] = useState('');
@@ -28,10 +16,32 @@ export const PostsManager: React.FC = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Demo: Load posts from localStorage
-    const demoPosts = JSON.parse(localStorage.getItem('sparti-demo-posts') || '[]');
-    setPosts(demoPosts);
+    loadPosts();
   }, []);
+
+  const loadPosts = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await PostsService.getAllPosts();
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to load posts: ${error}`,
+          variant: "destructive",
+        });
+      } else if (data) {
+        setPosts(data);
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to load posts",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleCreatePost = async () => {
     if (!newPostTitle.trim()) return;
@@ -39,41 +49,35 @@ export const PostsManager: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate creation delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const newPost: PostItem = {
-        id: 'demo-post-' + Date.now(),
+      const { data, error } = await PostsService.createPost({
         title: newPostTitle,
-        slug: newPostTitle.toLowerCase().replace(/\s+/g, '-'),
-        excerpt: newPostExcerpt || 'No excerpt provided',
-        content: '',
-        is_published: false,
-        created_at: new Date().toISOString(),
+        excerpt: newPostExcerpt || undefined,
+        category: newPostCategory || undefined,
         author: 'Admin',
-        tags: [],
-        category: newPostCategory || 'General',
-      };
-
-      const updatedPosts = [...posts, newPost];
-      setPosts(updatedPosts);
-      
-      // Demo: store in localStorage
-      localStorage.setItem('sparti-demo-posts', JSON.stringify(updatedPosts));
-      
-      setNewPostTitle('');
-      setNewPostExcerpt('');
-      setNewPostCategory('');
-      setIsCreating(false);
-      
-      toast({
-        title: "Post Created",
-        description: `Post "${newPost.title}" has been created (demo mode)`,
       });
+
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to create post: ${error}`,
+          variant: "destructive",
+        });
+      } else if (data) {
+        setPosts(prev => [data, ...prev]);
+        setNewPostTitle('');
+        setNewPostExcerpt('');
+        setNewPostCategory('');
+        setIsCreating(false);
+        
+        toast({
+          title: "Post Created",
+          description: `Post "${data.title}" has been created successfully`,
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to create post (demo mode)",
+        description: "Failed to create post",
         variant: "destructive",
       });
     } finally {
@@ -85,23 +89,25 @@ export const PostsManager: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate deletion delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      const { success, error } = await PostsService.deletePost(postId);
       
-      const updatedPosts = posts.filter(p => p.id !== postId);
-      setPosts(updatedPosts);
-      
-      // Demo: store in localStorage
-      localStorage.setItem('sparti-demo-posts', JSON.stringify(updatedPosts));
-      
-      toast({
-        title: "Post Deleted",
-        description: "Post has been deleted (demo mode)",
-      });
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to delete post: ${error}`,
+          variant: "destructive",
+        });
+      } else if (success) {
+        setPosts(prev => prev.filter(p => p.id !== postId));
+        toast({
+          title: "Post Deleted",
+          description: "Post has been deleted successfully",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to delete post (demo mode)",
+        description: "Failed to delete post",
         variant: "destructive",
       });
     } finally {
@@ -113,26 +119,28 @@ export const PostsManager: React.FC = () => {
     setIsLoading(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 300));
+      const { data, error } = await PostsService.togglePublishStatus(postId);
       
-      const updatedPosts = posts.map(post => 
-        post.id === postId 
-          ? { ...post, is_published: !post.is_published }
-          : post
-      );
-      
-      setPosts(updatedPosts);
-      localStorage.setItem('sparti-demo-posts', JSON.stringify(updatedPosts));
-      
-      const post = updatedPosts.find(p => p.id === postId);
-      toast({
-        title: post?.is_published ? "Post Published" : "Post Unpublished",
-        description: `Post has been ${post?.is_published ? 'published' : 'unpublished'} (demo mode)`,
-      });
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to update post status: ${error}`,
+          variant: "destructive",
+        });
+      } else if (data) {
+        setPosts(prev => prev.map(post => 
+          post.id === postId ? data : post
+        ));
+        
+        toast({
+          title: data.is_published ? "Post Published" : "Post Unpublished",
+          description: `Post has been ${data.is_published ? 'published' : 'unpublished'} successfully`,
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to update post status (demo mode)",
+        description: "Failed to update post status",
         variant: "destructive",
       });
     } finally {
@@ -150,7 +158,7 @@ export const PostsManager: React.FC = () => {
             Create New Post
           </Button>
         ) : (
-          <div className="space-y-3 p-4 border rounded-lg bg-gray-50">
+          <div className="space-y-3 p-4 border rounded-lg bg-muted/50">
             <Input
               value={newPostTitle}
               onChange={(e) => setNewPostTitle(e.target.value)}

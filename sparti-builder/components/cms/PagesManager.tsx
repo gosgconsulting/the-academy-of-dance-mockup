@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../../src/components/ui/button';
-// Demo pages manager (no database required)
 import { Input } from '../../../src/components/ui/input';
 import { Card } from '../../../src/components/ui/card';
 import { useToast } from '../../../src/hooks/use-toast';
-
-interface PageItem {
-  id: string;
-  title: string;
-  slug: string;
-  is_published: boolean;
-  created_at: string;
-}
+import { PagesService, type Page } from '../../services/PagesService';
 
 export const PagesManager: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [pages, setPages] = useState<PageItem[]>([]);
+  const [pages, setPages] = useState<Page[]>([]);
   const [newPageTitle, setNewPageTitle] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
-    // Demo: Load pages from localStorage
-    const demoPages = JSON.parse(localStorage.getItem('sparti-demo-pages') || '[]');
-    setPages(demoPages);
+    loadPages();
   }, []);
+
+  const loadPages = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await PagesService.getAllPages();
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to load pages: ${error}`,
+          variant: "destructive",
+        });
+      } else if (data) {
+        setPages(data);
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to load pages",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleCreatePage = async () => {
     if (!newPageTitle.trim()) return;
@@ -31,33 +45,29 @@ export const PagesManager: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate creation delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const newPage: PageItem = {
-        id: 'demo-page-' + Date.now(),
+      const { data, error } = await PagesService.createPage({
         title: newPageTitle,
-        slug: newPageTitle.toLowerCase().replace(/\s+/g, '-'),
-        is_published: false,
-        created_at: new Date().toISOString(),
-      };
-
-      const updatedPages = [...pages, newPage];
-      setPages(updatedPages);
-      
-      // Demo: store in localStorage
-      localStorage.setItem('sparti-demo-pages', JSON.stringify(updatedPages));
-      
-      setNewPageTitle('');
-      
-      toast({
-        title: "Page Created",
-        description: `Page "${newPage.title}" has been created (demo mode)`,
       });
+
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to create page: ${error}`,
+          variant: "destructive",
+        });
+      } else if (data) {
+        setPages(prev => [data, ...prev]);
+        setNewPageTitle('');
+        
+        toast({
+          title: "Page Created",
+          description: `Page "${data.title}" has been created successfully`,
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to create page (demo mode)",
+        description: "Failed to create page",
         variant: "destructive",
       });
     } finally {
@@ -69,23 +79,25 @@ export const PagesManager: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // Demo: simulate deletion delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      const { success, error } = await PagesService.deletePage(pageId);
       
-      const updatedPages = pages.filter(p => p.id !== pageId);
-      setPages(updatedPages);
-      
-      // Demo: store in localStorage
-      localStorage.setItem('sparti-demo-pages', JSON.stringify(updatedPages));
-      
-      toast({
-        title: "Page Deleted",
-        description: "Page has been deleted (demo mode)",
-      });
+      if (error) {
+        toast({
+          title: "Error",
+          description: `Failed to delete page: ${error}`,
+          variant: "destructive",
+        });
+      } else if (success) {
+        setPages(prev => prev.filter(p => p.id !== pageId));
+        toast({
+          title: "Page Deleted",
+          description: "Page has been deleted successfully",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to delete page (demo mode)",
+        description: "Failed to delete page",
         variant: "destructive",
       });
     } finally {
@@ -124,9 +136,9 @@ export const PagesManager: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`px-2 py-1 text-xs rounded ${
-                    page.is_published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    page.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
                   }`}>
-                    {page.is_published ? 'Published' : 'Draft'}
+                    {page.status === 'published' ? 'Published' : 'Draft'}
                   </span>
                   <Button 
                     variant="destructive" 
