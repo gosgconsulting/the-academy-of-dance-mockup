@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useContentLoader } from "@/hooks/useContentLoader";
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
+}
+
+interface HeroContent {
+  title: string;
+  titleHighlight: string;
+  subtitle: string;
+  ctaButtonText: string;
+  backgroundImages: string[];
 }
 
 const HeroSection = ({
   scrollToSection
 }: HeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [
-    '/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png',
-    '/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png',
-    '/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png',
-    '/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png',
-    '/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png'
-  ];
+  const { getSectionContent, isLoading } = useContentLoader('index');
+  
+  const content = getSectionContent('hero') as HeroContent;
+  const heroImages = content?.backgroundImages || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,15 +60,15 @@ const HeroSection = ({
           data-sparti-editable="true"
           data-sparti-component="hero-title"
         >
-          Where Dreams
-          <span className="text-secondary block text-center">Take Flight</span>
+          {content?.title || 'Where Dreams'}
+          <span className="text-secondary block text-center">{content?.titleHighlight || 'Take Flight'}</span>
         </h1>
         <p 
           className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center"
           data-sparti-editable="true"
           data-sparti-component="hero-subtitle"
         >
-          Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.
+          {content?.subtitle || 'Singapore\'s premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.'}
         </p>
         <div className="flex justify-center items-center">
           <Button 
@@ -72,7 +78,7 @@ const HeroSection = ({
             data-sparti-editable="true"
             data-sparti-component="hero-cta-button"
           >
-            Start Your Journey
+            {content?.ctaButtonText || 'Start Your Journey'}
           </Button>
         </div>
       </div>

@@ -2,37 +2,25 @@
 import { useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { useContentLoader } from "@/hooks/useContentLoader";
+
+interface GalleryItem {
+  image: string;
+  title: string;
+}
+
+interface GalleryContent {
+  title: string;
+  description: string;
+  galleryItems: GalleryItem[];
+}
 
 const GallerySection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
-
-  const galleryItems = [
-    {
-      image: "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
-      title: "Melbourne Dance Exchange 2023",
-    },
-    {
-      image: "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png",
-      title: "Ballet Class Excellence",
-    },
-    {
-      image: "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png",
-      title: "International Adventures",
-    },
-    {
-      image: "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png",
-      title: "Performance Ready",
-    },
-    {
-      image: "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png",
-      title: "Dance Community",
-    },
-    {
-      image: "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png",
-      title: "Young Performers",
-    },
-  ];
+  const { getSectionContent } = useContentLoader('index');
+  const content = getSectionContent('gallery') as GalleryContent;
+  const galleryItems = content?.galleryItems || [];
 
   const openModal = (imageIndex: number) => {
     setModalImageIndex(imageIndex);
@@ -57,11 +45,10 @@ const GallerySection = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
-              Our Students Shine
+              {content?.title || 'Our Students Shine'}
             </h2>
             <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">
-              Witness the artistry, passion, and technical excellence of our
-              dancers across all disciplines.
+              {content?.description || 'Witness the artistry, passion, and technical excellence of our dancers across all disciplines.'}
             </p>
           </div>
 

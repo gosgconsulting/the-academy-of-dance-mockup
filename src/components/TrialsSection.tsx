@@ -5,7 +5,26 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useContentLoader } from "@/hooks/useContentLoader";
+
+interface TrialsContent {
+  title: string;
+  subtitle: string;
+  benefits: string[];
+  contactInfo: {
+    name: string;
+    phone: string;
+    address: {
+      location: string;
+      line1: string;
+      line2: string;
+    };
+  };
+}
+
 const TrialsSection = () => {
+  const { getSectionContent } = useContentLoader('index');
+  const content = getSectionContent('trials') as TrialsContent;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,9 +84,11 @@ Please contact me to schedule my trial class. Thank you!`;
             data-sparti-editable="true"
             data-sparti-component="trials-title"
           >
-            Begin Your Dance Journey
+            {content?.title || 'Begin Your Dance Journey'}
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">Jump into dance with a $20 trial class! Experience top-tier instruction and find your perfect style.</p>
+          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">
+            {content?.subtitle || 'Jump into dance with a $20 trial class! Experience top-tier instruction and find your perfect style.'}
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -75,30 +96,12 @@ Please contact me to schedule my trial class. Thank you!`;
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="font-playfair text-2xl font-bold text-primary mb-4">Join Our Trial Classes</h3>
               <ul className="space-y-4 text-gray-700">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  Ballet, Jazz, Lyrical & Contemporary, Hip Hop, Tap
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  Tumbling classes are also available as our new course
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  You can join our trial classes for just $20!
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  Professional instructors with international experience
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  Small class sizes for personalized attention
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                  Ages 3 to adult - everyone welcome
-                </li>
+                {content?.benefits?.map((benefit, index) => (
+                  <li key={index} className="flex items-center">
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
+                    {benefit}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -106,20 +109,20 @@ Please contact me to schedule my trial class. Thank you!`;
               <h3 className="font-playfair text-2xl font-bold mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold mb-2">Ms June Lee</p>
+                  <p className="font-semibold mb-2">{content?.contactInfo?.name || 'Ms June Lee'}</p>
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-primary" />
-                  <a href="tel:+6598372670" className="hover:text-secondary transition-colors">
-                    (65) 9837 2670
+                  <a href={`tel:${content?.contactInfo?.phone?.replace(/[\s()-]/g, '') || '+6598372670'}`} className="hover:text-secondary transition-colors">
+                    {content?.contactInfo?.phone || '(65) 9837 2670'}
                   </a>
                 </div>
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 mt-1 text-primary" />
                   <div>
-                    <p className="font-semibold">Tampines</p>
-                    <p>510 Tampines Central 1, #02-250</p>
-                    <p>Singapore 520510</p>
+                    <p className="font-semibold">{content?.contactInfo?.address?.location || 'Tampines'}</p>
+                    <p>{content?.contactInfo?.address?.line1 || '510 Tampines Central 1, #02-250'}</p>
+                    <p>{content?.contactInfo?.address?.line2 || 'Singapore 520510'}</p>
                   </div>
                 </div>
               </div>

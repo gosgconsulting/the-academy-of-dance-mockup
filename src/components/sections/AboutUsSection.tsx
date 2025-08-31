@@ -1,5 +1,31 @@
 import { Users, Heart, Award, Target } from "lucide-react";
+import { useContentLoader } from "@/hooks/useContentLoader";
+
+interface AboutContent {
+  title: string;
+  storyTitle: string;
+  storyParagraphs: string[];
+  features: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+}
+
 const AboutUsSection = () => {
+  const { getSectionContent } = useContentLoader('index');
+  const content = getSectionContent('about') as AboutContent;
+  
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case 'Users': return Users;
+      case 'Heart': return Heart;
+      case 'Award': return Award;
+      case 'Target': return Target;
+      default: return Users;
+    }
+  };
+  
   return <section 
     id="about" 
     className="py-20 bg-white"
@@ -13,55 +39,31 @@ const AboutUsSection = () => {
             data-sparti-editable="true"
             data-sparti-component="about-title"
           >
-            About Us
+            {content?.title || 'About Us'}
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
           <div className="space-y-6">
-            <h3 className="font-playfair text-3xl font-bold text-primary mb-4">Our Story</h3>
-            <p className="text-gray-700 leading-relaxed">
-              At The Academy of Dance (TAD), we merge passion with precision. Our tagline, "Our insatiable passion for dance," 
-              truly encapsulates the spirit of TAD. Dance is not just an art form for us; it is our passion. At TAD, we believe that dance transcends mere movements and steps. It is a profound expression of 
-              the soul and a vital journey of self-discovery and improvement. Established in 2019, TAD has since 
-              emerged as one of the most renowned dance schools in Singapore.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              What distinguishes us is our devoted team of teachers who not only have extensive experience in their respective genres but 
-              also possess a profound passion for sharing the love of dance and providing a comprehensive education for dancers.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              At TAD, our teachers foster an encouraging environment for everyone, from beginners taking their first steps to seasoned 
-              dancers gracing the stage. We prioritize our students' progress to ensure every dancer achieves their fullest potential. Whether your aim is to pursue a 
-              professional dance career, maintain fitness, or simply enjoy moving to the rhythm, we are here to support you in reaching 
-              your goals.
-            </p>
+            <h3 className="font-playfair text-3xl font-bold text-primary mb-4">{content?.storyTitle || 'Our Story'}</h3>
+            {content?.storyParagraphs?.map((paragraph, index) => (
+              <p key={index} className="text-gray-700 leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 text-center">
-              <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h4 className="font-playfair text-xl font-bold text-primary mb-2">Expert Faculty</h4>
-              <p className="text-gray-600 text-sm">Internationally trained instructors with decades of experience</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-secondary/10 to-primary/10 rounded-2xl p-6 text-center">
-              <Heart className="w-12 h-12 text-secondary mx-auto mb-4" />
-              <h4 className="font-playfair text-xl font-bold text-primary mb-2">Passion Driven</h4>
-              <p className="text-gray-600 text-sm">Every class is taught with love, dedication, and enthusiasm</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 text-center">
-              <Award className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h4 className="font-playfair text-xl font-bold text-primary mb-2">Award Winning</h4>
-              <p className="text-gray-600 text-sm">Over 1000 awards and recognitions in competitions</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-secondary/10 to-primary/10 rounded-2xl p-6 text-center">
-              <Target className="w-12 h-12 text-secondary mx-auto mb-4" />
-              <h4 className="font-playfair text-xl font-bold text-primary mb-2">Goal Oriented</h4>
-              <p className="text-gray-600 text-sm">Structured curriculum designed for measurable progress</p>
-            </div>
+            {content?.features?.map((feature, index) => {
+              const IconComponent = getIconComponent(feature.icon);
+              return (
+                <div key={index} className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 text-center">
+                  <IconComponent className={`w-12 h-12 mx-auto mb-4 ${feature.icon === 'Heart' || feature.icon === 'Target' ? 'text-secondary' : 'text-primary'}`} />
+                  <h4 className="font-playfair text-xl font-bold text-primary mb-2">{feature.title}</h4>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
