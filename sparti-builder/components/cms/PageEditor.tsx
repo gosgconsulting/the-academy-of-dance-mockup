@@ -4,7 +4,7 @@ import { Button } from '../../../src/components/ui/button';
 import { Card } from '../../../src/components/ui/card';
 import { Input } from '../../../src/components/ui/input';
 import { Textarea } from '../../../src/components/ui/textarea';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, ChevronLeft, ChevronRight, Upload } from 'lucide-react';
 import { useToast } from '../../../src/hooks/use-toast';
 import { PagesService, type Page } from '../../services/PagesService';
 import { supabase } from '../../../src/integrations/supabase/client';
@@ -140,8 +140,173 @@ export const PageEditor: React.FC = () => {
     }
   };
 
+  const renderSlideEditor = (section: PageSection, slides: any[], currentSlide: number, setCurrentSlide: (index: number) => void) => {
+    const slide = slides[currentSlide] || {};
+    
+    const updateSlide = (field: string, value: string) => {
+      const newSlides = [...slides];
+      newSlides[currentSlide] = { ...slide, [field]: value };
+      const newContent = { ...section.content, slides: newSlides };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+    };
+
+    const addSlide = () => {
+      const newSlides = [...slides, { 
+        title: '', 
+        subtitle: '', 
+        description: '', 
+        backgroundImage: '/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png' 
+      }];
+      const newContent = { ...section.content, slides: newSlides };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+      setCurrentSlide(newSlides.length - 1);
+    };
+
+    const removeSlide = (index: number) => {
+      if (slides.length <= 1) return;
+      const newSlides = slides.filter((_, i) => i !== index);
+      const newContent = { ...section.content, slides: newSlides };
+      setSections(prev => 
+        prev.map(s => 
+          s.id === section.id ? { ...s, content: newContent } : s
+        )
+      );
+      setCurrentSlide(Math.max(0, currentSlide - 1));
+    };
+
+    return (
+      <div className="space-y-4">
+        {/* Slide Navigation */}
+        <div className="flex items-center justify-between bg-muted/50 p-3 rounded-lg">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+              disabled={currentSlide === 0}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <span className="text-sm font-medium">
+              Slide {currentSlide + 1} of {slides.length}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
+              disabled={currentSlide === slides.length - 1}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline" onClick={addSlide}>
+              Add Slide
+            </Button>
+            {slides.length > 1 && (
+              <Button size="sm" variant="destructive" onClick={() => removeSlide(currentSlide)}>
+                Remove
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* Background Image Preview */}
+        {slide.backgroundImage && (
+          <div className="relative">
+            <label className="block text-sm font-medium mb-2">Background Image</label>
+            <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-dashed border-muted-foreground/25">
+              <img 
+                src={slide.backgroundImage} 
+                alt="Slide background" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <Button variant="secondary" size="sm">
+                  <Upload className="w-4 h-4 mr-2" />
+                  Change Image
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide Content Fields */}
+        <div>
+          <label className="block text-sm font-medium mb-1">Title</label>
+          <Input
+            value={slide.title || ''}
+            onChange={(e) => updateSlide('title', e.target.value)}
+            placeholder="Enter slide title"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Subtitle</label>
+          <Input
+            value={slide.subtitle || ''}
+            onChange={(e) => updateSlide('subtitle', e.target.value)}
+            placeholder="Enter slide subtitle"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Description</label>
+          <Textarea
+            value={slide.description || ''}
+            onChange={(e) => updateSlide('description', e.target.value)}
+            placeholder="Enter slide description"
+            rows={3}
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Background Image URL</label>
+          <Input
+            value={slide.backgroundImage || ''}
+            onChange={(e) => updateSlide('backgroundImage', e.target.value)}
+            placeholder="Enter image URL"
+          />
+        </div>
+      </div>
+    );
+  };
+
   const renderSectionEditor = (section: PageSection) => {
     const content = section.content || {};
+    const [currentSlide, setCurrentSlide] = useState(0);
+    
+    // Check if this is a hero section with slides
+    const isHeroSection = section.section_id === 'hero' || section.section_type?.toLowerCase().includes('hero');
+    const hasSlides = content.slides && Array.isArray(content.slides) && content.slides.length > 0;
+    
+    // Initialize slides if this is a hero section but doesn't have slides yet
+    useEffect(() => {
+      if (isHeroSection && !hasSlides) {
+        const defaultSlides = [
+          {
+            title: "Where Dreams",
+            subtitle: "Take Flight",
+            description: "Singapore's premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
+            backgroundImage: "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png"
+          }
+        ];
+        const newContent = { ...content, slides: defaultSlides };
+        setSections(prev => 
+          prev.map(s => 
+            s.id === section.id ? { ...s, content: newContent } : s
+          )
+        );
+      }
+    }, [isHeroSection, hasSlides, section.id, content]);
     
     return (
       <Card key={section.id} className="p-4 mb-4">
@@ -160,83 +325,90 @@ export const PageEditor: React.FC = () => {
             </Button>
           </div>
           
-          {/* Generic content editor - adapt based on common patterns */}
-          {content.title !== undefined && (
-            <div>
-              <label className="block text-sm font-medium mb-1">Title</label>
-              <Input
-                value={content.title || ''}
-                onChange={(e) => {
-                  const newContent = { ...content, title: e.target.value };
-                  setSections(prev => 
-                    prev.map(s => 
-                      s.id === section.id ? { ...s, content: newContent } : s
-                    )
-                  );
-                }}
-                placeholder="Enter title"
-              />
-            </div>
+          {/* Hero Section with Slides */}
+          {isHeroSection && hasSlides ? (
+            renderSlideEditor(section, content.slides, currentSlide, setCurrentSlide)
+          ) : (
+            <>
+              {/* Generic content editor for other sections */}
+              {content.title !== undefined && (
+                <div>
+                  <label className="block text-sm font-medium mb-1">Title</label>
+                  <Input
+                    value={content.title || ''}
+                    onChange={(e) => {
+                      const newContent = { ...content, title: e.target.value };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                    }}
+                    placeholder="Enter title"
+                  />
+                </div>
+              )}
+              
+              {content.subtitle !== undefined && (
+                <div>
+                  <label className="block text-sm font-medium mb-1">Subtitle</label>
+                  <Input
+                    value={content.subtitle || ''}
+                    onChange={(e) => {
+                      const newContent = { ...content, subtitle: e.target.value };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                    }}
+                    placeholder="Enter subtitle"
+                  />
+                </div>
+              )}
+              
+              {content.description !== undefined && (
+                <div>
+                  <label className="block text-sm font-medium mb-1">Description</label>
+                  <Textarea
+                    value={content.description || ''}
+                    onChange={(e) => {
+                      const newContent = { ...content, description: e.target.value };
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                    }}
+                    placeholder="Enter description"
+                    rows={3}
+                  />
+                </div>
+              )}
+              
+              {/* Raw JSON editor for complex content */}
+              <div>
+                <label className="block text-sm font-medium mb-1">Raw Content (JSON)</label>
+                <Textarea
+                  value={JSON.stringify(content, null, 2)}
+                  onChange={(e) => {
+                    try {
+                      const newContent = JSON.parse(e.target.value);
+                      setSections(prev => 
+                        prev.map(s => 
+                          s.id === section.id ? { ...s, content: newContent } : s
+                        )
+                      );
+                    } catch (error) {
+                      // Invalid JSON, don't update
+                    }
+                  }}
+                  rows={8}
+                  className="font-mono text-sm"
+                />
+              </div>
+            </>
           )}
-          
-          {content.subtitle !== undefined && (
-            <div>
-              <label className="block text-sm font-medium mb-1">Subtitle</label>
-              <Input
-                value={content.subtitle || ''}
-                onChange={(e) => {
-                  const newContent = { ...content, subtitle: e.target.value };
-                  setSections(prev => 
-                    prev.map(s => 
-                      s.id === section.id ? { ...s, content: newContent } : s
-                    )
-                  );
-                }}
-                placeholder="Enter subtitle"
-              />
-            </div>
-          )}
-          
-          {content.description !== undefined && (
-            <div>
-              <label className="block text-sm font-medium mb-1">Description</label>
-              <Textarea
-                value={content.description || ''}
-                onChange={(e) => {
-                  const newContent = { ...content, description: e.target.value };
-                  setSections(prev => 
-                    prev.map(s => 
-                      s.id === section.id ? { ...s, content: newContent } : s
-                    )
-                  );
-                }}
-                placeholder="Enter description"
-                rows={3}
-              />
-            </div>
-          )}
-          
-          {/* Raw JSON editor for complex content */}
-          <div>
-            <label className="block text-sm font-medium mb-1">Raw Content (JSON)</label>
-            <Textarea
-              value={JSON.stringify(content, null, 2)}
-              onChange={(e) => {
-                try {
-                  const newContent = JSON.parse(e.target.value);
-                  setSections(prev => 
-                    prev.map(s => 
-                      s.id === section.id ? { ...s, content: newContent } : s
-                    )
-                  );
-                } catch (error) {
-                  // Invalid JSON, don't update
-                }
-              }}
-              rows={8}
-              className="font-mono text-sm"
-            />
-          </div>
         </div>
       </Card>
     );
