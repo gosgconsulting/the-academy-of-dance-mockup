@@ -7,6 +7,7 @@ export { AIService } from './services/ai-service';
 
 // Components
 export { AIAgentInterface } from './components/AIAgentInterface';
+export { AIAgentToggle } from './components/AIAgentToggle';
 export { MonacoEditor } from './components/MonacoEditor';
 
 // Types

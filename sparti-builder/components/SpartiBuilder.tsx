@@ -6,6 +6,7 @@ import { EditingOverlay } from './EditingOverlay';
 import { ElementSelector } from './ElementSelector';
 import { ContentEditPanel } from './ContentEditPanel';
 import { AIAgentInterface } from '../ai-agent/components/AIAgentInterface';
+import { AIAgentToggle } from '../ai-agent/components/AIAgentToggle';
 import { SpartiBuilderConfig } from '../types';
 import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
@@ -64,6 +65,12 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
           <AIAgentInterface 
             isOpen={isAIAgentOpen}
             onClose={() => setIsAIAgentOpen(false)}
+          />
+          
+          {/* AI Agent Toggle Button */}
+          <AIAgentToggle 
+            isOpen={isAIAgentOpen}
+            onClick={() => setIsAIAgentOpen(true)}
           />
         </div>
       </div>

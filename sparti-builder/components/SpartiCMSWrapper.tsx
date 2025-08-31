@@ -19,7 +19,7 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
         enabled: true, 
         toolbar: false, // Remove toolbar for cleaner experience
         autoDetect: true,
-        aiAgentAlwaysOpen: true // Always show AI Agent for authenticated users
+        aiAgentAlwaysOpen: false // Don't auto-open, let user control it
       }}>
         {children}
       </SpartiBuilder>
