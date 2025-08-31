@@ -43,7 +43,7 @@ export const AIElementEditor: React.FC = () => {
       setMessages([{
         id: Date.now().toString(),
         type: 'system',
-        content: `Selected: ${selectedElement.tagName} element. What would you like to change?`,
+        content: `Selected: ${selectedElement.element.tagName} element. What would you like to change?`,
         timestamp: new Date()
       }]);
     }
@@ -56,14 +56,15 @@ export const AIElementEditor: React.FC = () => {
   const getElementContext = () => {
     if (!selectedElement) return {};
     
+    const element = selectedElement.element;
     return {
-      tagName: selectedElement.tagName,
-      content: selectedElement.textContent || selectedElement.innerHTML,
+      tagName: element.tagName,
+      content: element.textContent || element.innerHTML,
       styles: {
-        className: selectedElement.className,
-        computedStyles: window.getComputedStyle(selectedElement)
+        className: element.className,
+        computedStyles: window.getComputedStyle(element)
       },
-      attributes: Array.from(selectedElement.attributes).reduce((acc, attr) => {
+      attributes: Array.from(element.attributes).reduce((acc, attr) => {
         acc[attr.name] = attr.value;
         return acc;
       }, {} as Record<string, string>)
@@ -89,7 +90,7 @@ export const AIElementEditor: React.FC = () => {
         body: {
           prompt: userMessage.content,
           elementContext: getElementContext(),
-          elementType: selectedElement.tagName
+          elementType: selectedElement.element.tagName
         }
       });
 
@@ -115,7 +116,7 @@ export const AIElementEditor: React.FC = () => {
         }
         if (data.attributes) {
           Object.entries(data.attributes).forEach(([key, value]) => {
-            updateAttribute(selectedElement, key, value);
+            updateAttribute(selectedElement, key, value as string);
           });
         }
         
@@ -203,7 +204,7 @@ export const AIElementEditor: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Badge variant="secondary" className="text-xs">
                   <Code className="h-3 w-3 mr-1" />
-                  {selectedElement.tagName.toLowerCase()}
+                  {selectedElement.element.tagName.toLowerCase()}
                 </Badge>
                 <Button
                   variant="ghost" 
