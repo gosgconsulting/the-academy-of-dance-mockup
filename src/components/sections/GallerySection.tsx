@@ -25,7 +25,7 @@ const GallerySection = () => {
   // Don't render if still loading or no gallery items
   if (isLoading || !galleryItems || galleryItems.length === 0) {
     return (
-      <section id="gallery" className="py-20 bg-black">
+      <section id="gallery" className="pt-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
@@ -61,7 +61,7 @@ const GallerySection = () => {
 
   return (
     <>
-      <section id="gallery" className="py-20 bg-black">
+      <section id="gallery" className="pt-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
