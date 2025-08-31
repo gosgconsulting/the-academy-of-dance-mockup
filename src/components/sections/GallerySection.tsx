@@ -18,13 +18,33 @@ interface GalleryContent {
 const GallerySection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
-  const { getSectionContent } = useContentLoader('index');
+  const { getSectionContent, isLoading } = useContentLoader('index');
   const content = getSectionContent('gallery') as GalleryContent;
   const galleryItems = content?.galleryItems || [];
 
+  // Don't render if still loading or no gallery items
+  if (isLoading || !galleryItems || galleryItems.length === 0) {
+    return (
+      <section id="gallery" className="py-20 bg-black">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">
+              Our Students Shine
+            </h2>
+            <p className="font-inter text-gray-300 max-w-2xl mx-auto text-lg">
+              Loading gallery...
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const openModal = (imageIndex: number) => {
-    setModalImageIndex(imageIndex);
-    setIsModalOpen(true);
+    if (galleryItems && galleryItems[imageIndex]) {
+      setModalImageIndex(imageIndex);
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
@@ -92,11 +112,13 @@ const GallerySection = () => {
             {/* Main image container - centered with proper aspect ratio */}
             <div className="relative flex items-center justify-center w-full h-full px-16">
               {/* Main image - 80% of screen size with proper centering */}
-              <img
-                src={galleryItems[modalImageIndex].image}
-                alt={galleryItems[modalImageIndex].title}
-                className="max-w-[80%] max-h-[80%] object-contain"
-              />
+              {galleryItems[modalImageIndex] && (
+                <img
+                  src={galleryItems[modalImageIndex].image}
+                  alt={galleryItems[modalImageIndex].title}
+                  className="max-w-[80%] max-h-[80%] object-contain"
+                />
+              )}
 
               {/* Navigation arrows - positioned relative to the image container */}
               {galleryItems.length > 1 && (
@@ -118,9 +140,11 @@ const GallerySection = () => {
             </div>
 
             {/* Image counter - positioned at bottom center */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
-              {modalImageIndex + 1} / {galleryItems.length}
-            </div>
+            {galleryItems.length > 0 && (
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                {modalImageIndex + 1} / {galleryItems.length}
+              </div>
+            )}
           </div>
         </DialogContent>
       </Dialog>
