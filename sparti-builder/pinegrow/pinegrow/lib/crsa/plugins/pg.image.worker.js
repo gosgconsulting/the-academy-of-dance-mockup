@@ -1,0 +1,1 @@
+self.onmessage=function(e){var a;"createImageURL"===e.data.type&&(a=e.data.imageData,e.data.mimeType,a=URL.createObjectURL(a),self.postMessage({type:"imageURLCreated",url:a}))};

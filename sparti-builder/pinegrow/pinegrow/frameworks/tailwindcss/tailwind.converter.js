@@ -1,0 +1,1 @@
+class PgTailwindConverter{constructor(s){this.twf=s,this.info=null}loadInfo(){var s;this.info||(s=require("fs").readFileSync(this.twf.getResourceFile("resources/tailwind.info.json")),this.info=JSON.parse(s))}getValuesForClassKey(s){}styleToClass(s,o,i,e){this.loadInfo();var t=null,r=(s+":"+o).replace(/ /g,"");return t=this.info.prop_to_class[r]?this.info.prop_to_class[r]:t}}

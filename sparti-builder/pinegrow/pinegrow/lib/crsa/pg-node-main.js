@@ -1,0 +1,1 @@
+console.log("Hello from node main");let get_config=!1;global.pgGetTailwind4Config=async function(n){get_config=n};const p="/Users/Matjaz/Desktop/TWTests/v4/ext1",cr=new PgTailwindConfigReaderV4;cr.getConfig(p).then(function(n){console.log("Config",n)});

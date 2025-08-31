@@ -1,0 +1,7888 @@
+{
+  "accent-color": {
+    "description": "Utilities for controlling the accented color of a form control.",
+    "values": [
+      {
+        "key": "accent-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "accent-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "accent-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "accent-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "accent-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "accent-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "align-content": {
+    "description": "Utilities for controlling how rows are positioned in multi-row flex and grid containers.",
+    "values": [
+      {
+        "key": "content-normal",
+        "name": "normal"
+      },
+      {
+        "key": "content-center",
+        "name": "center"
+      },
+      {
+        "key": "content-start",
+        "name": "flex-start"
+      },
+      {
+        "key": "content-end",
+        "name": "flex-end"
+      },
+      {
+        "key": "content-between",
+        "name": "space-between"
+      },
+      {
+        "key": "content-around",
+        "name": "space-around"
+      },
+      {
+        "key": "content-evenly",
+        "name": "space-evenly"
+      },
+      {
+        "key": "content-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "content-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "align-items": {
+    "description": "Utilities for controlling how flex and grid items are positioned along a container's cross axis.",
+    "values": [
+      {
+        "key": "items-start",
+        "name": "start"
+      },
+      {
+        "key": "items-end",
+        "name": "end"
+      },
+      {
+        "key": "items-center",
+        "name": "center"
+      },
+      {
+        "key": "items-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "items-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "align-self": {
+    "description": "Utilities for controlling how an individual flex or grid item is positioned along its container's cross axis.",
+    "values": [
+      {
+        "key": "self-auto",
+        "name": "auto"
+      },
+      {
+        "key": "self-start",
+        "name": "flex-start"
+      },
+      {
+        "key": "self-end",
+        "name": "flex-end"
+      },
+      {
+        "key": "self-center",
+        "name": "center"
+      },
+      {
+        "key": "self-stretch",
+        "name": "stretch"
+      },
+      {
+        "key": "self-baseline",
+        "name": "baseline"
+      }
+    ]
+  },
+  "animation": {
+    "description": "Utilities for animating elements with CSS animations.",
+    "values": [
+      {
+        "key": "animate-spin",
+        "name": "spin"
+      },
+      {
+        "key": "animate-ping",
+        "name": "ping"
+      },
+      {
+        "key": "animate-pulse",
+        "name": "pulse"
+      },
+      {
+        "key": "animate-bounce",
+        "name": "bounce"
+      },
+      {
+        "key": "animate-none",
+        "name": "none"
+      },
+      {
+        "key": "animate-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "animate-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "appearance": {
+    "description": "Utilities for suppressing native form control styling.",
+    "values": [
+      {
+        "key": "appearance-none",
+        "name": "none"
+      },
+      {
+        "key": "appearance-auto",
+        "name": "auto"
+      }
+    ]
+  },
+  "aspect-ratio": {
+    "description": "Utilities for controlling the aspect ratio of an element.",
+    "values": [
+      {
+        "key": "aspect-<ratio>",
+        "name": "<ratio>"
+      },
+      {
+        "key": "aspect-square",
+        "name": "square"
+      },
+      {
+        "key": "aspect-video",
+        "name": "video"
+      },
+      {
+        "key": "aspect-auto",
+        "name": "auto"
+      },
+      {
+        "key": "aspect-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "aspect-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-filter": {
+    "description": "Utilities for applying backdrop blur filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-blur-xs",
+        "name": "xs"
+      },
+      {
+        "key": "backdrop-blur-sm",
+        "name": "sm"
+      },
+      {
+        "key": "backdrop-blur-md",
+        "name": "md"
+      },
+      {
+        "key": "backdrop-blur-lg",
+        "name": "lg"
+      },
+      {
+        "key": "backdrop-blur-xl",
+        "name": "xl"
+      },
+      {
+        "key": "backdrop-blur-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "backdrop-blur-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "backdrop-blur-none",
+        "name": "none"
+      },
+      {
+        "key": "backdrop-blur-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "backdrop-blur-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "backdrop-filter: brightness()": {
+    "description": "Utilities for applying backdrop brightness filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-brightness-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "backdrop-brightness-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "backdrop-brightness-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-contrast": {
+    "description": "Utilities for applying backdrop contrast filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-contrast-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "backdrop-contrast-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "backdrop-contrast-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-filter: grayscale()": {
+    "description": "Utilities for applying backdrop grayscale filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-grayscale",
+        "name": "grayscale(100%)"
+      },
+      {
+        "key": "backdrop-grayscale-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "backdrop-grayscale-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "backdrop-grayscale-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-hue-rotate": {
+    "description": "Utilities for applying backdrop hue-rotate filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-hue-rotate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-backdrop-hue-rotate-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "backdrop-hue-rotate-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "backdrop-hue-rotate-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "backdrop-filter: opacity()": {
+    "description": "Utilities for applying backdrop opacity filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-opacity-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "backdrop-opacity-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "backdrop-opacity-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-saturate": {
+    "description": "Utilities for applying backdrop saturation filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-saturate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "backdrop-saturate-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "backdrop-saturate-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backdrop-sepia": {
+    "description": "Utilities for applying backdrop sepia filters to an element.",
+    "values": [
+      {
+        "key": "backdrop-sepia",
+        "name": "sepia(100%)"
+      },
+      {
+        "key": "backdrop-sepia-<number>",
+        "name": "<number>%"
+      },
+      {
+        "key": "backdrop-sepia-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "backdrop-sepia-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "backface-visibility": {
+    "description": "Utilities for controlling if an element's backface is visible.",
+    "values": [
+      {
+        "key": "backface-hidden",
+        "name": "hidden"
+      },
+      {
+        "key": "backface-visible",
+        "name": "visible"
+      }
+    ]
+  },
+  "background-attachment": {
+    "description": "Utilities for controlling how a background image behaves when scrolling.",
+    "values": [
+      {
+        "key": "bg-fixed",
+        "name": "fixed"
+      },
+      {
+        "key": "bg-local",
+        "name": "local"
+      },
+      {
+        "key": "bg-scroll",
+        "name": "scroll"
+      }
+    ]
+  },
+  "background-blend-mode": {
+    "description": "Utilities for controlling how an element's background image should blend with its background color.",
+    "values": [
+      {
+        "key": "bg-blend-normal",
+        "name": "normal"
+      },
+      {
+        "key": "bg-blend-multiply",
+        "name": "multiply"
+      },
+      {
+        "key": "bg-blend-screen",
+        "name": "screen"
+      },
+      {
+        "key": "bg-blend-overlay",
+        "name": "overlay"
+      },
+      {
+        "key": "bg-blend-darken",
+        "name": "darken"
+      },
+      {
+        "key": "bg-blend-lighten",
+        "name": "lighten"
+      },
+      {
+        "key": "bg-blend-color-dodge",
+        "name": "color-dodge"
+      },
+      {
+        "key": "bg-blend-color-burn",
+        "name": "color-burn"
+      },
+      {
+        "key": "bg-blend-hard-light",
+        "name": "hard-light"
+      },
+      {
+        "key": "bg-blend-soft-light",
+        "name": "soft-light"
+      },
+      {
+        "key": "bg-blend-difference",
+        "name": "difference"
+      },
+      {
+        "key": "bg-blend-exclusion",
+        "name": "exclusion"
+      },
+      {
+        "key": "bg-blend-hue",
+        "name": "hue"
+      },
+      {
+        "key": "bg-blend-saturation",
+        "name": "saturation"
+      },
+      {
+        "key": "bg-blend-color",
+        "name": "color"
+      },
+      {
+        "key": "bg-blend-luminosity",
+        "name": "luminosity"
+      }
+    ]
+  },
+  "background-clip": {
+    "description": "Utilities for controlling the bounding box of an element's background.",
+    "values": [
+      {
+        "key": "bg-clip-border",
+        "name": "border"
+      },
+      {
+        "key": "bg-clip-padding",
+        "name": "padding"
+      },
+      {
+        "key": "bg-clip-content",
+        "name": "content"
+      },
+      {
+        "key": "bg-clip-text",
+        "name": "text"
+      }
+    ]
+  },
+  "background-color": {
+    "description": "Utilities for controlling an element's background color.",
+    "values": [
+      {
+        "key": "bg-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "bg-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "bg-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "bg-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "bg-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "bg-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "background-image": {
+    "description": "Utilities for controlling an element's background image.",
+    "values": [
+      {
+        "key": "bg-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "bg-(image:<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "bg-none",
+        "name": "none"
+      },
+      {
+        "key": "bg-linear-to-t",
+        "name": "linear-gradient(to top)"
+      },
+      {
+        "key": "bg-linear-to-tr",
+        "name": "linear-gradient(to top right)"
+      },
+      {
+        "key": "bg-linear-to-r",
+        "name": "linear-gradient(to right)"
+      },
+      {
+        "key": "bg-linear-to-br",
+        "name": "linear-gradient(to bottom right)"
+      },
+      {
+        "key": "bg-linear-to-b",
+        "name": "linear-gradient(to bottom)"
+      },
+      {
+        "key": "bg-linear-to-bl",
+        "name": "linear-gradient(to bottom left)"
+      },
+      {
+        "key": "bg-linear-to-l",
+        "name": "linear-gradient(to left)"
+      },
+      {
+        "key": "bg-linear-to-tl",
+        "name": "linear-gradient(to top left)"
+      },
+      {
+        "key": "bg-linear-<angle>",
+        "name": "linear-gradient(<angle> in oklab)"
+      },
+      {
+        "key": "-bg-linear-<angle>",
+        "name": "linear-gradient(-<angle> in oklab)"
+      },
+      {
+        "key": "bg-linear-(<custom-property>)",
+        "name": "linear-gradient(var(--tw-gradient-stops, var(<custom-property>)))"
+      },
+      {
+        "key": "bg-linear-[<value>]",
+        "name": "linear-gradient(var(--tw-gradient-stops, <value>))"
+      },
+      {
+        "key": "bg-radial",
+        "name": "radial-gradient(in oklab)"
+      },
+      {
+        "key": "bg-radial-(<custom-property>)",
+        "name": "radial-gradient(var(--tw-gradient-stops, var(<custom-property>)))"
+      },
+      {
+        "key": "bg-radial-[<value>]",
+        "name": "radial-gradient(var(--tw-gradient-stops, <value>))"
+      },
+      {
+        "key": "bg-conic-<angle>",
+        "name": "conic-gradient(from <angle> in oklab)"
+      },
+      {
+        "key": "-bg-conic-<angle>",
+        "name": "conic-gradient(from -<angle> in oklab)"
+      },
+      {
+        "key": "bg-conic-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "bg-conic-[<value>]",
+        "name": "<image>"
+      },
+      {
+        "key": "from-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "from-<percentage>",
+        "name": "<percentage>"
+      },
+      {
+        "key": "from-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "from-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "via-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "via-<percentage>",
+        "name": "<percentage>"
+      },
+      {
+        "key": "via-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "via-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "to-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "to-<percentage>",
+        "name": "<percentage>"
+      },
+      {
+        "key": "to-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "to-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "background-origin": {
+    "description": "Utilities for controlling how an element's background is positioned relative to borders, padding, and content.",
+    "values": [
+      {
+        "key": "bg-origin-border",
+        "name": "border"
+      },
+      {
+        "key": "bg-origin-padding",
+        "name": "padding"
+      },
+      {
+        "key": "bg-origin-content",
+        "name": "content"
+      }
+    ]
+  },
+  "background-position": {
+    "description": "Utilities for controlling the position of an element's background image.",
+    "values": [
+      {
+        "key": "bg-bottom",
+        "name": "bottom"
+      },
+      {
+        "key": "bg-center",
+        "name": "center"
+      },
+      {
+        "key": "bg-left",
+        "name": "left"
+      },
+      {
+        "key": "bg-left-bottom",
+        "name": "left bottom"
+      },
+      {
+        "key": "bg-left-top",
+        "name": "left top"
+      },
+      {
+        "key": "bg-right",
+        "name": "right"
+      },
+      {
+        "key": "bg-right-bottom",
+        "name": "right bottom"
+      },
+      {
+        "key": "bg-right-top",
+        "name": "right top"
+      },
+      {
+        "key": "bg-top",
+        "name": "top"
+      },
+      {
+        "key": "bg-(position:<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "bg-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "background-repeat": {
+    "description": "Utilities for controlling the repetition of an element's background image.",
+    "values": [
+      {
+        "key": "bg-repeat",
+        "name": "repeat"
+      },
+      {
+        "key": "bg-repeat-x",
+        "name": "repeat-x"
+      },
+      {
+        "key": "bg-repeat-y",
+        "name": "repeat-y"
+      },
+      {
+        "key": "bg-repeat-space",
+        "name": "space"
+      },
+      {
+        "key": "bg-repeat-round",
+        "name": "round"
+      },
+      {
+        "key": "bg-no-repeat",
+        "name": "no-repeat"
+      }
+    ]
+  },
+  "background-size": {
+    "description": "Utilities for controlling the background size of an element's background image.",
+    "values": [
+      {
+        "key": "bg-auto",
+        "name": "auto"
+      },
+      {
+        "key": "bg-cover",
+        "name": "cover"
+      },
+      {
+        "key": "bg-contain",
+        "name": "contain"
+      },
+      {
+        "key": "bg-(length:<custom-property>)",
+        "name": "(length:<custom-property>)"
+      },
+      {
+        "key": "bg-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "border-collapse": {
+    "description": "Utilities for controlling whether table borders should collapse or be separated.",
+    "values": [
+      {
+        "key": "border-collapse",
+        "name": "collapse"
+      },
+      {
+        "key": "border-separate",
+        "name": "separate"
+      }
+    ]
+  },
+  "border-color": {
+    "description": "Utilities for controlling the color of an element's borders.",
+    "values": [
+      {
+        "key": "border-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-x-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-x-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-x-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-x-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-x-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-x-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-y-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-y-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-y-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-y-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-y-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-y-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-s-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-s-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-s-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-s-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-s-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-s-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-e-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-e-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-e-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-e-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-e-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-e-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-t-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-t-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-t-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-t-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-t-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-t-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-r-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-r-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-r-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-r-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-r-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-r-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-b-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-b-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-b-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-b-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-b-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-b-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-l-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "border-l-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "border-l-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "border-l-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "border-l-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-l-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "divide-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "divide-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "divide-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "divide-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "divide-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "divide-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "border-spacing": {
+    "description": "Utilities for controlling the spacing between table borders.",
+    "values": [
+      {
+        "key": "border-spacing-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "border-spacing-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "border-spacing-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-spacing-x-<number>",
+        "name": "x-<number>"
+      },
+      {
+        "key": "border-spacing-x-(<custom-property>)",
+        "name": "x-<custom-property>"
+      },
+      {
+        "key": "border-spacing-x-[<value>]",
+        "name": "x-[<value>]"
+      },
+      {
+        "key": "border-spacing-y-<number>",
+        "name": "y-<number>"
+      },
+      {
+        "key": "border-spacing-y-(<custom-property>)",
+        "name": "y-<custom-property>"
+      },
+      {
+        "key": "border-spacing-y-[<value>]",
+        "name": "y-[<value>]"
+      }
+    ]
+  },
+  "border-style": {
+    "description": "Utilities for controlling the style of an element's borders.",
+    "values": [
+      {
+        "key": "border-solid",
+        "name": "solid"
+      },
+      {
+        "key": "border-dashed",
+        "name": "dashed"
+      },
+      {
+        "key": "border-dotted",
+        "name": "dotted"
+      },
+      {
+        "key": "border-double",
+        "name": "double"
+      },
+      {
+        "key": "border-hidden",
+        "name": "hidden"
+      },
+      {
+        "key": "border-none",
+        "name": "none"
+      }
+    ]
+  },
+  "divide-style": {
+    "description": "Utilities for controlling the style of an element's borders.",
+    "values": [
+      {
+        "key": "divide-solid",
+        "name": "solid"
+      },
+      {
+        "key": "divide-dashed",
+        "name": "dashed"
+      },
+      {
+        "key": "divide-dotted",
+        "name": "dotted"
+      },
+      {
+        "key": "divide-double",
+        "name": "double"
+      },
+      {
+        "key": "divide-hidden",
+        "name": "hidden"
+      },
+      {
+        "key": "divide-none",
+        "name": "none"
+      }
+    ]
+  },
+  "border-width": {
+    "description": "Utilities for controlling the width of an element's borders.",
+    "values": [
+      {
+        "key": "border",
+        "name": "1px"
+      },
+      {
+        "key": "border-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-x",
+        "name": "1px"
+      },
+      {
+        "key": "border-x-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-x-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-x-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-y",
+        "name": "1px"
+      },
+      {
+        "key": "border-y-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-y-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-y-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-s",
+        "name": "1px"
+      },
+      {
+        "key": "border-s-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-s-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-s-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-e",
+        "name": "1px"
+      },
+      {
+        "key": "border-e-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-e-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-e-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-t",
+        "name": "1px"
+      },
+      {
+        "key": "border-t-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-t-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-t-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-r",
+        "name": "1px"
+      },
+      {
+        "key": "border-r-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-r-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-r-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-b",
+        "name": "1px"
+      },
+      {
+        "key": "border-b-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-b-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-b-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "border-l",
+        "name": "1px"
+      },
+      {
+        "key": "border-l-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "border-l-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "border-l-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "divide-x": {
+    "description": "Utilities for controlling the width of an element's borders.",
+    "values": [
+      {
+        "key": "divide-x",
+        "name": "border-inline-start-width: 0px; border-inline-end-width: 1px;"
+      },
+      {
+        "key": "divide-x-<number>",
+        "name": "border-inline-start-width: 0px; border-inline-end-width: <number>px;"
+      },
+      {
+        "key": "divide-x-(length:<custom-property>)",
+        "name": "border-inline-start-width: 0px; border-inline-end-width: var(<custom-property>);"
+      },
+      {
+        "key": "divide-x-[<value>]",
+        "name": "border-inline-start-width: 0px; border-inline-end-width: <value>;"
+      }
+    ]
+  },
+  "divide-y": {
+    "description": "Utilities for controlling the width of an element's borders.",
+    "values": [
+      {
+        "key": "divide-y",
+        "name": "border-top-width: 0px; border-bottom-width: 1px;"
+      },
+      {
+        "key": "divide-y-<number>",
+        "name": "border-top-width: 0px; border-bottom-width: <number>px;"
+      },
+      {
+        "key": "divide-y-(length:<custom-property>)",
+        "name": "border-top-width: 0px; border-bottom-width: var(<custom-property>);"
+      },
+      {
+        "key": "divide-y-[<value>]",
+        "name": "border-top-width: 0px; border-bottom-width: <value>;"
+      }
+    ]
+  },
+  "divide-x-reverse": {
+    "description": "Utilities for controlling the width of an element's borders.",
+    "values": [
+      {
+        "key": "divide-x-reverse",
+        "name": "--tw-divide-x-reverse: 1;"
+      }
+    ]
+  },
+  "divide-y-reverse": {
+    "description": "Utilities for controlling the width of an element's borders.",
+    "values": [
+      {
+        "key": "divide-y-reverse",
+        "name": "--tw-divide-y-reverse: 1;"
+      }
+    ]
+  },
+  "box-decoration-break": {
+    "description": "Utilities for controlling how element fragments should be rendered across multiple lines, columns, or pages.",
+    "values": [
+      {
+        "key": "box-decoration-clone",
+        "name": "clone"
+      },
+      {
+        "key": "box-decoration-slice",
+        "name": "slice"
+      }
+    ]
+  },
+  "box-shadow": {
+    "description": "Utilities for controlling the box shadow of an element.",
+    "values": [
+      {
+        "key": "shadow-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "shadow-xs",
+        "name": "xs"
+      },
+      {
+        "key": "shadow-sm",
+        "name": "sm"
+      },
+      {
+        "key": "shadow-md",
+        "name": "md"
+      },
+      {
+        "key": "shadow-lg",
+        "name": "lg"
+      },
+      {
+        "key": "shadow-xl",
+        "name": "xl"
+      },
+      {
+        "key": "shadow-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "shadow-none",
+        "name": "none"
+      },
+      {
+        "key": "shadow-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "shadow-(color:<custom-property>)",
+        "name": "(color:<custom-property>)"
+      },
+      {
+        "key": "shadow-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "shadow-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "shadow-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "shadow-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "shadow-<color>",
+        "name": "<color>"
+      }
+    ]
+  },
+  "inset-shadow": {
+    "description": "Utilities for controlling the inset box shadow of an element.",
+    "values": [
+      {
+        "key": "inset-shadow-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "inset-shadow-xs",
+        "name": "xs"
+      },
+      {
+        "key": "inset-shadow-sm",
+        "name": "sm"
+      },
+      {
+        "key": "inset-shadow-none",
+        "name": "none"
+      },
+      {
+        "key": "inset-shadow-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "inset-shadow-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "inset-shadow-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "inset-shadow-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "inset-shadow-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "inset-shadow-<color>",
+        "name": "<color>"
+      }
+    ]
+  },
+  "ring": {
+    "description": "Utilities for controlling the ring shadow of an element.",
+    "values": [
+      {
+        "key": "ring",
+        "name": "default"
+      },
+      {
+        "key": "ring-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "ring-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "ring-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "ring-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "ring-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "ring-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "ring-<color>",
+        "name": "<color>"
+      }
+    ]
+  },
+  "inset-ring": {
+    "description": "Utilities for controlling the inset ring shadow of an element.",
+    "values": [
+      {
+        "key": "inset-ring",
+        "name": "default"
+      },
+      {
+        "key": "inset-ring-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "inset-ring-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "inset-ring-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "inset-ring-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "inset-ring-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "inset-ring-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "inset-ring-<color>",
+        "name": "<color>"
+      }
+    ]
+  },
+  "box-sizing": {
+    "description": "Utilities for controlling how the browser should calculate an element's total size.",
+    "values": [
+      {
+        "key": "box-border",
+        "name": "border-box"
+      },
+      {
+        "key": "box-content",
+        "name": "content-box"
+      }
+    ]
+  },
+  "break-after": {
+    "description": "Utilities for controlling how a column or page should break after an element.",
+    "values": [
+      {
+        "key": "break-after-auto",
+        "name": "auto"
+      },
+      {
+        "key": "break-after-avoid",
+        "name": "avoid"
+      },
+      {
+        "key": "break-after-all",
+        "name": "all"
+      },
+      {
+        "key": "break-after-avoid-page",
+        "name": "avoid-page"
+      },
+      {
+        "key": "break-after-page",
+        "name": "page"
+      },
+      {
+        "key": "break-after-left",
+        "name": "left"
+      },
+      {
+        "key": "break-after-right",
+        "name": "right"
+      },
+      {
+        "key": "break-after-column",
+        "name": "column"
+      }
+    ]
+  },
+  "break-before": {
+    "description": "Utilities for controlling how a column or page should break before an element.",
+    "values": [
+      {
+        "key": "break-before-auto",
+        "name": "auto"
+      },
+      {
+        "key": "break-before-avoid",
+        "name": "avoid"
+      },
+      {
+        "key": "break-before-all",
+        "name": "all"
+      },
+      {
+        "key": "break-before-avoid-page",
+        "name": "avoid-page"
+      },
+      {
+        "key": "break-before-page",
+        "name": "page"
+      },
+      {
+        "key": "break-before-left",
+        "name": "left"
+      },
+      {
+        "key": "break-before-right",
+        "name": "right"
+      },
+      {
+        "key": "break-before-column",
+        "name": "column"
+      }
+    ]
+  },
+  "break-inside": {
+    "description": "Utilities for controlling how a column or page should break within an element.",
+    "values": [
+      {
+        "key": "break-inside-auto",
+        "name": "auto"
+      },
+      {
+        "key": "break-inside-avoid",
+        "name": "avoid"
+      },
+      {
+        "key": "break-inside-avoid-page",
+        "name": "avoid-page"
+      },
+      {
+        "key": "break-inside-avoid-column",
+        "name": "avoid-column"
+      }
+    ]
+  },
+  "caption-side": {
+    "description": "Utilities for controlling the alignment of a caption element inside of a table.",
+    "values": [
+      {
+        "key": "caption-top",
+        "name": "top"
+      },
+      {
+        "key": "caption-bottom",
+        "name": "bottom"
+      }
+    ]
+  },
+  "caret-color": {
+    "description": "Utilities for controlling the color of the text input cursor.",
+    "values": [
+      {
+        "key": "caret-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "caret-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "caret-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "caret-black",
+        "name": "black"
+      },
+      {
+        "key": "caret-white",
+        "name": "white"
+      },
+      {
+        "key": "caret-red-500",
+        "name": "red-500"
+      },
+      {
+        "key": "caret-blue-500",
+        "name": "blue-500"
+      },
+      {
+        "key": "caret-green-500",
+        "name": "green-500"
+      },
+      {
+        "key": "caret-yellow-500",
+        "name": "yellow-500"
+      },
+      {
+        "key": "caret-purple-500",
+        "name": "purple-500"
+      },
+      {
+        "key": "caret-pink-500",
+        "name": "pink-500"
+      },
+      {
+        "key": "caret-indigo-500",
+        "name": "indigo-500"
+      },
+      {
+        "key": "caret-gray-500",
+        "name": "gray-500"
+      },
+      {
+        "key": "caret-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "caret-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "clear": {
+    "description": "Utilities for controlling the wrapping of content around an element.",
+    "values": [
+      {
+        "key": "clear-left",
+        "name": "left"
+      },
+      {
+        "key": "clear-right",
+        "name": "right"
+      },
+      {
+        "key": "clear-both",
+        "name": "both"
+      },
+      {
+        "key": "clear-start",
+        "name": "inline-start"
+      },
+      {
+        "key": "clear-end",
+        "name": "inline-end"
+      },
+      {
+        "key": "clear-none",
+        "name": "none"
+      }
+    ]
+  },
+  "color-scheme": {
+    "description": "Utilities for controlling the color scheme of an element.",
+    "values": [
+      {
+        "key": "scheme-normal",
+        "name": "normal"
+      },
+      {
+        "key": "scheme-dark",
+        "name": "dark"
+      },
+      {
+        "key": "scheme-light",
+        "name": "light"
+      },
+      {
+        "key": "scheme-light-dark",
+        "name": "light dark"
+      },
+      {
+        "key": "scheme-only-dark",
+        "name": "only dark"
+      },
+      {
+        "key": "scheme-only-light",
+        "name": "only light"
+      }
+    ]
+  },
+  "color": {
+    "description": "Utilities for controlling the text color of an element.",
+    "values": [
+      {
+        "key": "text-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "text-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "text-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "text-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "text-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "text-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "columns": {
+    "description": "Utilities for controlling the number of columns within an element.",
+    "values": [
+      {
+        "key": "columns-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "columns-3xs",
+        "name": "3xs"
+      },
+      {
+        "key": "columns-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "columns-xs",
+        "name": "xs"
+      },
+      {
+        "key": "columns-sm",
+        "name": "sm"
+      },
+      {
+        "key": "columns-md",
+        "name": "md"
+      },
+      {
+        "key": "columns-lg",
+        "name": "lg"
+      },
+      {
+        "key": "columns-xl",
+        "name": "xl"
+      },
+      {
+        "key": "columns-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "columns-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "columns-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "columns-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "columns-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "columns-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "columns-auto",
+        "name": "auto"
+      },
+      {
+        "key": "columns-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "columns-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "content": {
+    "description": "Utilities for controlling the content of the before and after pseudo-elements.",
+    "values": [
+      {
+        "key": "content-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "content-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "content-none",
+        "name": "none"
+      }
+    ]
+  },
+  "cursor": {
+    "description": "Utilities for controlling the cursor style when hovering over an element.",
+    "values": [
+      {
+        "key": "cursor-auto",
+        "name": "auto"
+      },
+      {
+        "key": "cursor-default",
+        "name": "default"
+      },
+      {
+        "key": "cursor-pointer",
+        "name": "pointer"
+      },
+      {
+        "key": "cursor-wait",
+        "name": "wait"
+      },
+      {
+        "key": "cursor-text",
+        "name": "text"
+      },
+      {
+        "key": "cursor-move",
+        "name": "move"
+      },
+      {
+        "key": "cursor-help",
+        "name": "help"
+      },
+      {
+        "key": "cursor-not-allowed",
+        "name": "not-allowed"
+      },
+      {
+        "key": "cursor-none",
+        "name": "none"
+      },
+      {
+        "key": "cursor-context-menu",
+        "name": "context-menu"
+      },
+      {
+        "key": "cursor-progress",
+        "name": "progress"
+      },
+      {
+        "key": "cursor-cell",
+        "name": "cell"
+      },
+      {
+        "key": "cursor-crosshair",
+        "name": "crosshair"
+      },
+      {
+        "key": "cursor-vertical-text",
+        "name": "vertical-text"
+      },
+      {
+        "key": "cursor-alias",
+        "name": "alias"
+      },
+      {
+        "key": "cursor-copy",
+        "name": "copy"
+      },
+      {
+        "key": "cursor-no-drop",
+        "name": "no-drop"
+      },
+      {
+        "key": "cursor-grab",
+        "name": "grab"
+      },
+      {
+        "key": "cursor-grabbing",
+        "name": "grabbing"
+      },
+      {
+        "key": "cursor-all-scroll",
+        "name": "all-scroll"
+      },
+      {
+        "key": "cursor-col-resize",
+        "name": "col-resize"
+      },
+      {
+        "key": "cursor-row-resize",
+        "name": "row-resize"
+      },
+      {
+        "key": "cursor-n-resize",
+        "name": "n-resize"
+      },
+      {
+        "key": "cursor-e-resize",
+        "name": "e-resize"
+      },
+      {
+        "key": "cursor-s-resize",
+        "name": "s-resize"
+      },
+      {
+        "key": "cursor-w-resize",
+        "name": "w-resize"
+      },
+      {
+        "key": "cursor-ne-resize",
+        "name": "ne-resize"
+      },
+      {
+        "key": "cursor-nw-resize",
+        "name": "nw-resize"
+      },
+      {
+        "key": "cursor-se-resize",
+        "name": "se-resize"
+      },
+      {
+        "key": "cursor-sw-resize",
+        "name": "sw-resize"
+      },
+      {
+        "key": "cursor-ew-resize",
+        "name": "ew-resize"
+      },
+      {
+        "key": "cursor-ns-resize",
+        "name": "ns-resize"
+      },
+      {
+        "key": "cursor-nesw-resize",
+        "name": "nesw-resize"
+      },
+      {
+        "key": "cursor-nwse-resize",
+        "name": "nwse-resize"
+      },
+      {
+        "key": "cursor-zoom-in",
+        "name": "zoom-in"
+      },
+      {
+        "key": "cursor-zoom-out",
+        "name": "zoom-out"
+      },
+      {
+        "key": "cursor-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "cursor-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "display": {
+    "description": "Utilities for controlling the display box type of an element.",
+    "values": [
+      {
+        "key": "inline",
+        "name": "inline"
+      },
+      {
+        "key": "block",
+        "name": "block"
+      },
+      {
+        "key": "inline-block",
+        "name": "inline-block"
+      },
+      {
+        "key": "flow-root",
+        "name": "flow-root"
+      },
+      {
+        "key": "flex",
+        "name": "flex"
+      },
+      {
+        "key": "inline-flex",
+        "name": "inline-flex"
+      },
+      {
+        "key": "grid",
+        "name": "grid"
+      },
+      {
+        "key": "inline-grid",
+        "name": "inline-grid"
+      },
+      {
+        "key": "contents",
+        "name": "contents"
+      },
+      {
+        "key": "table",
+        "name": "table"
+      },
+      {
+        "key": "inline-table",
+        "name": "inline-table"
+      },
+      {
+        "key": "table-caption",
+        "name": "table-caption"
+      },
+      {
+        "key": "table-cell",
+        "name": "table-cell"
+      },
+      {
+        "key": "table-column",
+        "name": "table-column"
+      },
+      {
+        "key": "table-column-group",
+        "name": "table-column-group"
+      },
+      {
+        "key": "table-footer-group",
+        "name": "table-footer-group"
+      },
+      {
+        "key": "table-header-group",
+        "name": "table-header-group"
+      },
+      {
+        "key": "table-row-group",
+        "name": "table-row-group"
+      },
+      {
+        "key": "table-row",
+        "name": "table-row"
+      },
+      {
+        "key": "list-item",
+        "name": "list-item"
+      },
+      {
+        "key": "hidden",
+        "name": "hidden"
+      }
+    ]
+  },
+  "sr-only": {
+    "description": "Utilities for visually hiding an element while keeping it accessible to screen readers.",
+    "values": [
+      {
+        "key": "sr-only",
+        "name": "sr-only"
+      }
+    ]
+  },
+  "not-sr-only": {
+    "description": "Utilities for making an element visible that was hidden with sr-only.",
+    "values": [
+      {
+        "key": "not-sr-only",
+        "name": "not-sr-only"
+      }
+    ]
+  },
+  "field-sizing": {
+    "description": "Utilities for controlling the sizing of form controls.",
+    "values": [
+      {
+        "key": "field-sizing-fixed",
+        "name": "fixed"
+      },
+      {
+        "key": "field-sizing-content",
+        "name": "content"
+      }
+    ]
+  },
+  "fill": {
+    "description": "Utilities for styling the fill of SVG elements.",
+    "values": [
+      {
+        "key": "fill-none",
+        "name": "none"
+      },
+      {
+        "key": "fill-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "fill-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "fill-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "fill-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "fill-<custom-property>",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "filter-blur": {
+    "description": "Utilities for applying blur filters to an element.",
+    "values": [
+      {
+        "key": "blur-xs",
+        "name": "xs"
+      },
+      {
+        "key": "blur-sm",
+        "name": "sm"
+      },
+      {
+        "key": "blur-md",
+        "name": "md"
+      },
+      {
+        "key": "blur-lg",
+        "name": "lg"
+      },
+      {
+        "key": "blur-xl",
+        "name": "xl"
+      },
+      {
+        "key": "blur-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "blur-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "blur-none",
+        "name": "none"
+      },
+      {
+        "key": "blur-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "blur-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "filter-brightness": {
+    "description": "Utilities for applying brightness filters to an element.",
+    "values": [
+      {
+        "key": "brightness-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "brightness-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "brightness-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "filter: contrast()": {
+    "description": "Utilities for applying contrast filters to an element.",
+    "values": [
+      {
+        "key": "contrast-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "contrast-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "contrast-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "drop-shadow": {
+    "description": "Utilities for applying drop-shadow filters to an element.",
+    "values": [
+      {
+        "key": "drop-shadow-xs",
+        "name": "xs"
+      },
+      {
+        "key": "drop-shadow-sm",
+        "name": "sm"
+      },
+      {
+        "key": "drop-shadow-md",
+        "name": "md"
+      },
+      {
+        "key": "drop-shadow-lg",
+        "name": "lg"
+      },
+      {
+        "key": "drop-shadow-xl",
+        "name": "xl"
+      },
+      {
+        "key": "drop-shadow-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "drop-shadow-none",
+        "name": "none"
+      },
+      {
+        "key": "drop-shadow-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "drop-shadow-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "filter: grayscale()": {
+    "description": "Utilities for applying grayscale filters to an element.",
+    "values": [
+      {
+        "key": "grayscale",
+        "name": "100%"
+      },
+      {
+        "key": "grayscale-<number>",
+        "name": "<number>%"
+      },
+      {
+        "key": "grayscale-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "grayscale-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "hue-rotate": {
+    "description": "Utilities for applying hue-rotate filters to an element.",
+    "values": [
+      {
+        "key": "hue-rotate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-hue-rotate-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "hue-rotate-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "hue-rotate-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "invert": {
+    "description": "Utilities for applying invert filters to an element.",
+    "values": [
+      {
+        "key": "invert",
+        "name": "100%"
+      },
+      {
+        "key": "invert-<number>",
+        "name": "<number>%"
+      },
+      {
+        "key": "invert-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "invert-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "saturate": {
+    "description": "Utilities for applying saturation filters to an element.",
+    "values": [
+      {
+        "key": "saturate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "saturate-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "saturate-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "filter-sepia": {
+    "description": "Utilities for applying sepia filters to an element.",
+    "values": [
+      {
+        "key": "sepia",
+        "name": "100%"
+      },
+      {
+        "key": "sepia-<number>",
+        "name": "<number>%"
+      },
+      {
+        "key": "sepia-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "sepia-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "filter": {
+    "description": "Utilities for applying filters to an element.",
+    "values": [
+      {
+        "key": "filter-none",
+        "name": "none"
+      },
+      {
+        "key": "filter-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "filter-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "flex-basis": {
+    "description": "Utilities for controlling the initial size of flex items.",
+    "values": [
+      {
+        "key": "basis-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "basis-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "basis-full",
+        "name": "full"
+      },
+      {
+        "key": "basis-auto",
+        "name": "auto"
+      },
+      {
+        "key": "basis-3xs",
+        "name": "3xs"
+      },
+      {
+        "key": "basis-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "basis-xs",
+        "name": "xs"
+      },
+      {
+        "key": "basis-sm",
+        "name": "sm"
+      },
+      {
+        "key": "basis-md",
+        "name": "md"
+      },
+      {
+        "key": "basis-lg",
+        "name": "lg"
+      },
+      {
+        "key": "basis-xl",
+        "name": "xl"
+      },
+      {
+        "key": "basis-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "basis-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "basis-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "basis-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "basis-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "basis-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "basis-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "basis-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "flex-direction": {
+    "description": "Utilities for controlling the direction of flex items.",
+    "values": [
+      {
+        "key": "flex-row",
+        "name": "row"
+      },
+      {
+        "key": "flex-row-reverse",
+        "name": "row-reverse"
+      },
+      {
+        "key": "flex-col",
+        "name": "column"
+      },
+      {
+        "key": "flex-col-reverse",
+        "name": "column-reverse"
+      }
+    ]
+  },
+  "flex-grow": {
+    "description": "Utilities for controlling how flex items grow.",
+    "values": [
+      {
+        "key": "grow",
+        "name": "1"
+      },
+      {
+        "key": "grow-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "grow-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "grow-(<custom-property>)",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "flex-shrink": {
+    "description": "Utilities for controlling how flex items shrink.",
+    "values": [
+      {
+        "key": "shrink",
+        "name": "1"
+      },
+      {
+        "key": "shrink-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "shrink-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "shrink-(<custom-property>)",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "flex-wrap": {
+    "description": "Utilities for controlling how flex items wrap.",
+    "values": [
+      {
+        "key": "flex-nowrap",
+        "name": "nowrap"
+      },
+      {
+        "key": "flex-wrap",
+        "name": "wrap"
+      },
+      {
+        "key": "flex-wrap-reverse",
+        "name": "wrap-reverse"
+      }
+    ]
+  },
+  "flex": {
+    "description": "Utilities for controlling how flex items both grow and shrink.",
+    "values": [
+      {
+        "key": "flex-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "flex-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "flex-auto",
+        "name": "auto"
+      },
+      {
+        "key": "flex-initial",
+        "name": "initial"
+      },
+      {
+        "key": "flex-none",
+        "name": "none"
+      },
+      {
+        "key": "flex-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "flex-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "float": {
+    "description": "Utilities for controlling the wrapping of content around an element.",
+    "values": [
+      {
+        "key": "float-right",
+        "name": "right"
+      },
+      {
+        "key": "float-left",
+        "name": "left"
+      },
+      {
+        "key": "float-start",
+        "name": "inline-start"
+      },
+      {
+        "key": "float-end",
+        "name": "inline-end"
+      },
+      {
+        "key": "float-none",
+        "name": "none"
+      }
+    ]
+  },
+  "font-family": {
+    "description": "Utilities for controlling the font family of an element.",
+    "values": [
+      {
+        "key": "font-sans",
+        "name": "sans"
+      },
+      {
+        "key": "font-serif",
+        "name": "serif"
+      },
+      {
+        "key": "font-mono",
+        "name": "mono"
+      },
+      {
+        "key": "font-(family-name:<custom-property>)",
+        "name": "(family-name:<custom-property>)"
+      },
+      {
+        "key": "font-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "font-size": {
+    "description": "Utilities for controlling the font size of an element.",
+    "values": [
+      {
+        "key": "text-xs",
+        "name": "xs"
+      },
+      {
+        "key": "text-sm",
+        "name": "sm"
+      },
+      {
+        "key": "text-base",
+        "name": "base"
+      },
+      {
+        "key": "text-lg",
+        "name": "lg"
+      },
+      {
+        "key": "text-xl",
+        "name": "xl"
+      },
+      {
+        "key": "text-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "text-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "text-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "text-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "text-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "text-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "text-8xl",
+        "name": "8xl"
+      },
+      {
+        "key": "text-9xl",
+        "name": "9xl"
+      },
+      {
+        "key": "text-(length:<custom-property>)",
+        "name": "(length:<custom-property>)"
+      },
+      {
+        "key": "text-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "font-smoothing": {
+    "description": "Utilities for controlling the font smoothing of an element.",
+    "values": [
+      {
+        "key": "antialiased",
+        "name": "antialiased"
+      },
+      {
+        "key": "subpixel-antialiased",
+        "name": "subpixel-antialiased"
+      }
+    ]
+  },
+  "font-stretch": {
+    "description": "Utilities for selecting the width of a font face.",
+    "values": [
+      {
+        "key": "font-stretch-ultra-condensed",
+        "name": "ultra-condensed"
+      },
+      {
+        "key": "font-stretch-extra-condensed",
+        "name": "extra-condensed"
+      },
+      {
+        "key": "font-stretch-condensed",
+        "name": "condensed"
+      },
+      {
+        "key": "font-stretch-semi-condensed",
+        "name": "semi-condensed"
+      },
+      {
+        "key": "font-stretch-normal",
+        "name": "normal"
+      },
+      {
+        "key": "font-stretch-semi-expanded",
+        "name": "semi-expanded"
+      },
+      {
+        "key": "font-stretch-expanded",
+        "name": "expanded"
+      },
+      {
+        "key": "font-stretch-extra-expanded",
+        "name": "extra-expanded"
+      },
+      {
+        "key": "font-stretch-ultra-expanded",
+        "name": "ultra-expanded"
+      },
+      {
+        "key": "font-stretch-<percentage>",
+        "name": "<percentage>"
+      },
+      {
+        "key": "font-stretch-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "font-stretch-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "font-style": {
+    "description": "Utilities for controlling the style of text.",
+    "values": [
+      {
+        "key": "italic",
+        "name": "italic"
+      },
+      {
+        "key": "not-italic",
+        "name": "not-italic"
+      }
+    ]
+  },
+  "font-variant-numeric": {
+    "description": "Utilities for controlling the variant of numbers.",
+    "values": [
+      {
+        "key": "normal-nums",
+        "name": "normal"
+      },
+      {
+        "key": "ordinal",
+        "name": "ordinal"
+      },
+      {
+        "key": "slashed-zero",
+        "name": "slashed-zero"
+      },
+      {
+        "key": "lining-nums",
+        "name": "lining-nums"
+      },
+      {
+        "key": "oldstyle-nums",
+        "name": "oldstyle-nums"
+      },
+      {
+        "key": "proportional-nums",
+        "name": "proportional-nums"
+      },
+      {
+        "key": "tabular-nums",
+        "name": "tabular-nums"
+      },
+      {
+        "key": "diagonal-fractions",
+        "name": "diagonal-fractions"
+      },
+      {
+        "key": "stacked-fractions",
+        "name": "stacked-fractions"
+      }
+    ]
+  },
+  "font-weight": {
+    "description": "Utilities for controlling the font weight of an element.",
+    "values": [
+      {
+        "key": "font-thin",
+        "name": "thin"
+      },
+      {
+        "key": "font-extralight",
+        "name": "extralight"
+      },
+      {
+        "key": "font-light",
+        "name": "light"
+      },
+      {
+        "key": "font-normal",
+        "name": "normal"
+      },
+      {
+        "key": "font-medium",
+        "name": "medium"
+      },
+      {
+        "key": "font-semibold",
+        "name": "semibold"
+      },
+      {
+        "key": "font-bold",
+        "name": "bold"
+      },
+      {
+        "key": "font-extrabold",
+        "name": "extrabold"
+      },
+      {
+        "key": "font-black",
+        "name": "black"
+      },
+      {
+        "key": "font-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "font-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "forced-color-adjust": {
+    "description": "Utilities for opting in and out of forced colors.",
+    "values": [
+      {
+        "key": "forced-color-adjust-auto",
+        "name": "auto"
+      },
+      {
+        "key": "forced-color-adjust-none",
+        "name": "none"
+      }
+    ]
+  },
+  "gap": {
+    "description": "Utilities for controlling gutters between grid and flexbox items.",
+    "values": [
+      {
+        "key": "gap-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "gap-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "gap-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "gap-x-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "gap-x-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "gap-x-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "gap-y-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "gap-y-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "gap-y-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "grid-auto-columns": {
+    "description": "Utilities for controlling the size of implicitly-created grid columns.",
+    "values": [
+      {
+        "key": "auto-cols-auto",
+        "name": "auto"
+      },
+      {
+        "key": "auto-cols-min",
+        "name": "min-content"
+      },
+      {
+        "key": "auto-cols-max",
+        "name": "max-content"
+      },
+      {
+        "key": "auto-cols-fr",
+        "name": "minmax(0, 1fr)"
+      },
+      {
+        "key": "auto-cols-(<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "auto-cols-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "grid-auto-flow": {
+    "description": "Utilities for controlling how elements in a grid are auto-placed.",
+    "values": [
+      {
+        "key": "grid-flow-row",
+        "name": "row"
+      },
+      {
+        "key": "grid-flow-col",
+        "name": "column"
+      },
+      {
+        "key": "grid-flow-dense",
+        "name": "dense"
+      },
+      {
+        "key": "grid-flow-row-dense",
+        "name": "row dense"
+      },
+      {
+        "key": "grid-flow-col-dense",
+        "name": "column dense"
+      }
+    ]
+  },
+  "grid-auto-rows": {
+    "description": "Utilities for controlling the size of implicitly-created grid rows.",
+    "values": [
+      {
+        "key": "auto-rows-auto",
+        "name": "auto"
+      },
+      {
+        "key": "auto-rows-min",
+        "name": "min-content"
+      },
+      {
+        "key": "auto-rows-max",
+        "name": "max-content"
+      },
+      {
+        "key": "auto-rows-fr",
+        "name": "minmax(0, 1fr)"
+      },
+      {
+        "key": "auto-rows-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "auto-rows-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "grid-column": {
+    "description": "Utilities for controlling how elements are sized and placed across grid columns.",
+    "values": [
+      {
+        "key": "col-span-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "col-span-full",
+        "name": "full"
+      },
+      {
+        "key": "col-span-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "col-span-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "col-start-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-col-start-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "col-start-auto",
+        "name": "auto"
+      },
+      {
+        "key": "col-start-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "col-start-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "col-end-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-col-end-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "col-end-auto",
+        "name": "auto"
+      },
+      {
+        "key": "col-end-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "col-end-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "col-auto",
+        "name": "auto"
+      },
+      {
+        "key": "col-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "col-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "grid-row": {
+    "description": "Utilities for controlling how elements are sized and placed across grid rows.",
+    "values": [
+      {
+        "key": "row-span-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "row-span-full",
+        "name": "full"
+      },
+      {
+        "key": "row-span-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "row-span-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "row-start-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-row-start-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "row-start-auto",
+        "name": "auto"
+      },
+      {
+        "key": "row-start-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "row-start-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "row-end-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-row-end-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "row-end-auto",
+        "name": "auto"
+      },
+      {
+        "key": "row-end-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "row-end-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "row-auto",
+        "name": "auto"
+      },
+      {
+        "key": "row-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "row-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "grid-template-columns": {
+    "description": "Utilities for specifying the columns in a grid layout.",
+    "values": [
+      {
+        "key": "grid-cols-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "grid-cols-none",
+        "name": "none"
+      },
+      {
+        "key": "grid-cols-subgrid",
+        "name": "subgrid"
+      },
+      {
+        "key": "grid-cols-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "grid-cols-(<custom-property>)",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "grid-template-rows": {
+    "description": "Utilities for specifying the rows in a grid layout.",
+    "values": [
+      {
+        "key": "grid-rows-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "grid-rows-none",
+        "name": "none"
+      },
+      {
+        "key": "grid-rows-subgrid",
+        "name": "subgrid"
+      },
+      {
+        "key": "grid-rows-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "grid-rows-(<custom-property>)",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "height": {
+    "description": "Utilities for setting the height of an element.",
+    "values": [
+      {
+        "key": "h-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "h-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "h-auto",
+        "name": "auto"
+      },
+      {
+        "key": "h-px",
+        "name": "px"
+      },
+      {
+        "key": "h-full",
+        "name": "full"
+      },
+      {
+        "key": "h-screen",
+        "name": "screen"
+      },
+      {
+        "key": "h-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "h-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "h-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "h-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "h-svh",
+        "name": "svh"
+      },
+      {
+        "key": "h-svw",
+        "name": "svw"
+      },
+      {
+        "key": "h-min",
+        "name": "min"
+      },
+      {
+        "key": "h-max",
+        "name": "max"
+      },
+      {
+        "key": "h-fit",
+        "name": "fit"
+      },
+      {
+        "key": "h-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "h-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "size": {
+    "description": "Utilities for setting both the width and height of an element simultaneously.",
+    "values": [
+      {
+        "key": "size-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "size-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "size-auto",
+        "name": "auto"
+      },
+      {
+        "key": "size-px",
+        "name": "px"
+      },
+      {
+        "key": "size-full",
+        "name": "full"
+      },
+      {
+        "key": "size-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "size-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "size-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "size-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "size-svw",
+        "name": "svw"
+      },
+      {
+        "key": "size-svh",
+        "name": "svh"
+      },
+      {
+        "key": "size-min",
+        "name": "min"
+      },
+      {
+        "key": "size-max",
+        "name": "max"
+      },
+      {
+        "key": "size-fit",
+        "name": "fit"
+      },
+      {
+        "key": "size-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "size-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "hyphens": {
+    "description": "Utilities for controlling how words should be hyphenated.",
+    "values": [
+      {
+        "key": "hyphens-none",
+        "name": "none"
+      },
+      {
+        "key": "hyphens-manual",
+        "name": "manual"
+      },
+      {
+        "key": "hyphens-auto",
+        "name": "auto"
+      }
+    ]
+  },
+  "isolation": {
+    "description": "Utilities for controlling whether an element should explicitly create a new stacking context.",
+    "values": [
+      {
+        "key": "isolate",
+        "name": "isolate"
+      },
+      {
+        "key": "isolation-auto",
+        "name": "auto"
+      }
+    ]
+  },
+  "justify-content": {
+    "description": "Utilities for controlling how flex and grid items are positioned along a container's main axis.",
+    "values": [
+      {
+        "key": "justify-start",
+        "name": "start"
+      },
+      {
+        "key": "justify-end",
+        "name": "end"
+      },
+      {
+        "key": "justify-center",
+        "name": "center"
+      },
+      {
+        "key": "justify-between",
+        "name": "between"
+      },
+      {
+        "key": "justify-around",
+        "name": "around"
+      },
+      {
+        "key": "justify-evenly",
+        "name": "evenly"
+      },
+      {
+        "key": "justify-stretch",
+        "name": "stretch"
+      },
+      {
+        "key": "justify-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "justify-normal",
+        "name": "normal"
+      }
+    ]
+  },
+  "justify-items": {
+    "description": "Utilities for controlling how grid items are aligned along their inline axis.",
+    "values": [
+      {
+        "key": "justify-items-start",
+        "name": "start"
+      },
+      {
+        "key": "justify-items-end",
+        "name": "end"
+      },
+      {
+        "key": "justify-items-center",
+        "name": "center"
+      },
+      {
+        "key": "justify-items-stretch",
+        "name": "stretch"
+      },
+      {
+        "key": "justify-items-normal",
+        "name": "normal"
+      }
+    ]
+  },
+  "justify-self": {
+    "description": "Utilities for controlling how an individual grid item is aligned along its inline axis.",
+    "values": [
+      {
+        "key": "justify-self-auto",
+        "name": "auto"
+      },
+      {
+        "key": "justify-self-start",
+        "name": "start"
+      },
+      {
+        "key": "justify-self-end",
+        "name": "end"
+      },
+      {
+        "key": "justify-self-center",
+        "name": "center"
+      },
+      {
+        "key": "justify-self-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "letter-spacing": {
+    "description": "Utilities for controlling the tracking, or letter spacing, of an element.",
+    "values": [
+      {
+        "key": "tracking-tighter",
+        "name": "tighter"
+      },
+      {
+        "key": "tracking-tight",
+        "name": "tight"
+      },
+      {
+        "key": "tracking-normal",
+        "name": "normal"
+      },
+      {
+        "key": "tracking-wide",
+        "name": "wide"
+      },
+      {
+        "key": "tracking-wider",
+        "name": "wider"
+      },
+      {
+        "key": "tracking-widest",
+        "name": "widest"
+      },
+      {
+        "key": "tracking-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "tracking-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "line-clamp": {
+    "description": "Utilities for clamping text to a specific number of lines.",
+    "values": [
+      {
+        "key": "line-clamp-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "line-clamp-none",
+        "name": "none"
+      },
+      {
+        "key": "line-clamp-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "line-clamp-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "line-height": {
+    "description": "Utilities for controlling the leading, or line height, of an element.",
+    "values": [
+      {
+        "key": "text-<size>/<number>",
+        "name": "<size>/<number>"
+      },
+      {
+        "key": "text-<size>/(<custom-property>)",
+        "name": "<size>/(<custom-property>)"
+      },
+      {
+        "key": "text-<size>/[<value>]",
+        "name": "<size>/[<value>]"
+      },
+      {
+        "key": "leading-none",
+        "name": "none"
+      },
+      {
+        "key": "leading-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "leading-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "leading-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "list-style-image": {
+    "description": "Utilities for controlling the marker images for list items.",
+    "values": [
+      {
+        "key": "list-image-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "list-image-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "list-image-none",
+        "name": "none"
+      }
+    ]
+  },
+  "list-style-position": {
+    "description": "Utilities for controlling the position of bullets and numbers in lists.",
+    "values": [
+      {
+        "key": "list-inside",
+        "name": "inside"
+      },
+      {
+        "key": "list-outside",
+        "name": "outside"
+      }
+    ]
+  },
+  "list-style-type": {
+    "description": "Utilities for controlling the marker style of a list.",
+    "values": [
+      {
+        "key": "list-disc",
+        "name": "disc"
+      },
+      {
+        "key": "list-decimal",
+        "name": "decimal"
+      },
+      {
+        "key": "list-none",
+        "name": "none"
+      },
+      {
+        "key": "list-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "list-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "max-height": {
+    "description": "Utilities for setting the maximum height of an element.",
+    "values": [
+      {
+        "key": "max-h-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "max-h-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "max-h-auto",
+        "name": "auto"
+      },
+      {
+        "key": "max-h-none",
+        "name": "none"
+      },
+      {
+        "key": "max-h-px",
+        "name": "1px"
+      },
+      {
+        "key": "max-h-full",
+        "name": "100%"
+      },
+      {
+        "key": "max-h-screen",
+        "name": "100vh"
+      },
+      {
+        "key": "max-h-dvh",
+        "name": "100dvh"
+      },
+      {
+        "key": "max-h-dvw",
+        "name": "100dvw"
+      },
+      {
+        "key": "max-h-lvh",
+        "name": "100lvh"
+      },
+      {
+        "key": "max-h-lvw",
+        "name": "100lvw"
+      },
+      {
+        "key": "max-h-svh",
+        "name": "100svh"
+      },
+      {
+        "key": "max-h-svw",
+        "name": "100svw"
+      },
+      {
+        "key": "max-h-min",
+        "name": "min-content"
+      },
+      {
+        "key": "max-h-max",
+        "name": "max-content"
+      },
+      {
+        "key": "max-h-fit",
+        "name": "fit-content"
+      },
+      {
+        "key": "max-h-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "max-h-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "max-width": {
+    "description": "Utilities for setting the maximum width of an element.",
+    "values": [
+      {
+        "key": "max-w-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "max-w-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "max-w-3xs",
+        "name": "3xs"
+      },
+      {
+        "key": "max-w-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "max-w-xs",
+        "name": "xs"
+      },
+      {
+        "key": "max-w-sm",
+        "name": "sm"
+      },
+      {
+        "key": "max-w-md",
+        "name": "md"
+      },
+      {
+        "key": "max-w-lg",
+        "name": "lg"
+      },
+      {
+        "key": "max-w-xl",
+        "name": "xl"
+      },
+      {
+        "key": "max-w-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "max-w-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "max-w-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "max-w-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "max-w-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "max-w-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "max-w-auto",
+        "name": "auto"
+      },
+      {
+        "key": "max-w-none",
+        "name": "none"
+      },
+      {
+        "key": "max-w-px",
+        "name": "px"
+      },
+      {
+        "key": "max-w-full",
+        "name": "full"
+      },
+      {
+        "key": "max-w-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "max-w-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "max-w-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "max-w-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "max-w-svw",
+        "name": "svw"
+      },
+      {
+        "key": "max-w-svh",
+        "name": "svh"
+      },
+      {
+        "key": "max-w-screen",
+        "name": "screen"
+      },
+      {
+        "key": "max-w-min",
+        "name": "min"
+      },
+      {
+        "key": "max-w-max",
+        "name": "max"
+      },
+      {
+        "key": "max-w-fit",
+        "name": "fit"
+      },
+      {
+        "key": "container",
+        "name": "container"
+      },
+      {
+        "key": "max-w-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "max-w-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "min-height": {
+    "description": "Utilities for setting the minimum height of an element.",
+    "values": [
+      {
+        "key": "min-h-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "min-h-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "min-h-auto",
+        "name": "auto"
+      },
+      {
+        "key": "min-h-px",
+        "name": "px"
+      },
+      {
+        "key": "min-h-full",
+        "name": "full"
+      },
+      {
+        "key": "min-h-screen",
+        "name": "screen"
+      },
+      {
+        "key": "min-h-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "min-h-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "min-h-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "min-h-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "min-h-svw",
+        "name": "svw"
+      },
+      {
+        "key": "min-h-svh",
+        "name": "svh"
+      },
+      {
+        "key": "min-h-min",
+        "name": "min"
+      },
+      {
+        "key": "min-h-max",
+        "name": "max"
+      },
+      {
+        "key": "min-h-fit",
+        "name": "fit"
+      },
+      {
+        "key": "min-h-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "min-h-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "min-width": {
+    "description": "Utilities for setting the minimum width of an element.",
+    "values": [
+      {
+        "key": "min-w-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "min-w-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "min-w-3xs",
+        "name": "3xs"
+      },
+      {
+        "key": "min-w-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "min-w-xs",
+        "name": "xs"
+      },
+      {
+        "key": "min-w-sm",
+        "name": "sm"
+      },
+      {
+        "key": "min-w-md",
+        "name": "md"
+      },
+      {
+        "key": "min-w-lg",
+        "name": "lg"
+      },
+      {
+        "key": "min-w-xl",
+        "name": "xl"
+      },
+      {
+        "key": "min-w-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "min-w-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "min-w-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "min-w-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "min-w-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "min-w-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "min-w-auto",
+        "name": "auto"
+      },
+      {
+        "key": "min-w-px",
+        "name": "px"
+      },
+      {
+        "key": "min-w-full",
+        "name": "full"
+      },
+      {
+        "key": "min-w-screen",
+        "name": "screen"
+      },
+      {
+        "key": "min-w-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "min-w-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "min-w-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "min-w-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "min-w-svw",
+        "name": "svw"
+      },
+      {
+        "key": "min-w-svh",
+        "name": "svh"
+      },
+      {
+        "key": "min-w-min",
+        "name": "min"
+      },
+      {
+        "key": "min-w-max",
+        "name": "max"
+      },
+      {
+        "key": "min-w-fit",
+        "name": "fit"
+      },
+      {
+        "key": "min-w-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "min-w-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "mix-blend-mode": {
+    "description": "Utilities for controlling how an element should blend with the background.",
+    "values": [
+      {
+        "key": "mix-blend-normal",
+        "name": "normal"
+      },
+      {
+        "key": "mix-blend-multiply",
+        "name": "multiply"
+      },
+      {
+        "key": "mix-blend-screen",
+        "name": "screen"
+      },
+      {
+        "key": "mix-blend-overlay",
+        "name": "overlay"
+      },
+      {
+        "key": "mix-blend-darken",
+        "name": "darken"
+      },
+      {
+        "key": "mix-blend-lighten",
+        "name": "lighten"
+      },
+      {
+        "key": "mix-blend-color-dodge",
+        "name": "color-dodge"
+      },
+      {
+        "key": "mix-blend-color-burn",
+        "name": "color-burn"
+      },
+      {
+        "key": "mix-blend-hard-light",
+        "name": "hard-light"
+      },
+      {
+        "key": "mix-blend-soft-light",
+        "name": "soft-light"
+      },
+      {
+        "key": "mix-blend-difference",
+        "name": "difference"
+      },
+      {
+        "key": "mix-blend-exclusion",
+        "name": "exclusion"
+      },
+      {
+        "key": "mix-blend-hue",
+        "name": "hue"
+      },
+      {
+        "key": "mix-blend-saturation",
+        "name": "saturation"
+      },
+      {
+        "key": "mix-blend-color",
+        "name": "color"
+      },
+      {
+        "key": "mix-blend-luminosity",
+        "name": "luminosity"
+      },
+      {
+        "key": "mix-blend-plus-darker",
+        "name": "plus-darker"
+      },
+      {
+        "key": "mix-blend-plus-lighter",
+        "name": "plus-lighter"
+      }
+    ]
+  },
+  "object-fit": {
+    "description": "Utilities for controlling how a replaced element's content should be resized.",
+    "values": [
+      {
+        "key": "object-contain",
+        "name": "contain"
+      },
+      {
+        "key": "object-cover",
+        "name": "cover"
+      },
+      {
+        "key": "object-fill",
+        "name": "fill"
+      },
+      {
+        "key": "object-none",
+        "name": "none"
+      },
+      {
+        "key": "object-scale-down",
+        "name": "scale-down"
+      }
+    ]
+  },
+  "object-position": {
+    "description": "Utilities for controlling how a replaced element's content should be positioned within its container.",
+    "values": [
+      {
+        "key": "object-bottom",
+        "name": "bottom"
+      },
+      {
+        "key": "object-center",
+        "name": "center"
+      },
+      {
+        "key": "object-left",
+        "name": "left"
+      },
+      {
+        "key": "object-left-bottom",
+        "name": "left bottom"
+      },
+      {
+        "key": "object-left-top",
+        "name": "left top"
+      },
+      {
+        "key": "object-right",
+        "name": "right"
+      },
+      {
+        "key": "object-right-bottom",
+        "name": "right bottom"
+      },
+      {
+        "key": "object-right-top",
+        "name": "right top"
+      },
+      {
+        "key": "object-top",
+        "name": "top"
+      },
+      {
+        "key": "object-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "object-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "opacity": {
+    "description": "Utilities for controlling the opacity of an element.",
+    "values": [
+      {
+        "key": "opacity-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "opacity-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "opacity-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "order": {
+    "description": "Utilities for controlling the order of flex and grid items.",
+    "values": [
+      {
+        "key": "order-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-order-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "order-first",
+        "name": "first"
+      },
+      {
+        "key": "order-last",
+        "name": "last"
+      },
+      {
+        "key": "order-none",
+        "name": "none"
+      },
+      {
+        "key": "order-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "order-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "outline-color": {
+    "description": "Utilities for controlling the color of an element's outline.",
+    "values": [
+      {
+        "key": "outline-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "outline-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "outline-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "outline-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "outline-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "outline-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "outline-offset": {
+    "description": "Utilities for controlling the offset of an element's outline.",
+    "values": [
+      {
+        "key": "outline-offset-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-outline-offset-<number>",
+        "name": "<number> (negative)"
+      },
+      {
+        "key": "outline-offset-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "outline-offset-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "outline-style": {
+    "description": "Utilities for controlling the style of an element's outline.",
+    "values": [
+      {
+        "key": "outline-solid",
+        "name": "solid"
+      },
+      {
+        "key": "outline-dashed",
+        "name": "dashed"
+      },
+      {
+        "key": "outline-dotted",
+        "name": "dotted"
+      },
+      {
+        "key": "outline-double",
+        "name": "double"
+      },
+      {
+        "key": "outline-none",
+        "name": "none"
+      },
+      {
+        "key": "outline-hidden",
+        "name": "hidden"
+      }
+    ]
+  },
+  "outline-width": {
+    "description": "Utilities for controlling the width of an element's outline.",
+    "values": [
+      {
+        "key": "outline",
+        "name": "1px"
+      },
+      {
+        "key": "outline-<number>",
+        "name": "<number>px"
+      },
+      {
+        "key": "outline-(length:<custom-property>)",
+        "name": "var(<custom-property>)"
+      },
+      {
+        "key": "outline-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "overflow": {
+    "description": "Utilities for controlling how an element handles content that is too large for the container.",
+    "values": [
+      {
+        "key": "overflow-auto",
+        "name": "auto"
+      },
+      {
+        "key": "overflow-hidden",
+        "name": "hidden"
+      },
+      {
+        "key": "overflow-clip",
+        "name": "clip"
+      },
+      {
+        "key": "overflow-visible",
+        "name": "visible"
+      },
+      {
+        "key": "overflow-scroll",
+        "name": "scroll"
+      },
+      {
+        "key": "overflow-x-auto",
+        "name": "x-auto"
+      },
+      {
+        "key": "overflow-y-auto",
+        "name": "y-auto"
+      },
+      {
+        "key": "overflow-x-hidden",
+        "name": "x-hidden"
+      },
+      {
+        "key": "overflow-y-hidden",
+        "name": "y-hidden"
+      },
+      {
+        "key": "overflow-x-clip",
+        "name": "x-clip"
+      },
+      {
+        "key": "overflow-y-clip",
+        "name": "y-clip"
+      },
+      {
+        "key": "overflow-x-visible",
+        "name": "x-visible"
+      },
+      {
+        "key": "overflow-y-visible",
+        "name": "y-visible"
+      },
+      {
+        "key": "overflow-x-scroll",
+        "name": "x-scroll"
+      },
+      {
+        "key": "overflow-y-scroll",
+        "name": "y-scroll"
+      }
+    ]
+  },
+  "overscroll-behavior": {
+    "description": "Utilities for controlling how the browser behaves when reaching the boundary of a scrolling area.",
+    "values": [
+      {
+        "key": "overscroll-auto",
+        "name": "auto"
+      },
+      {
+        "key": "overscroll-contain",
+        "name": "contain"
+      },
+      {
+        "key": "overscroll-none",
+        "name": "none"
+      },
+      {
+        "key": "overscroll-x-auto",
+        "name": "x-auto"
+      },
+      {
+        "key": "overscroll-x-contain",
+        "name": "x-contain"
+      },
+      {
+        "key": "overscroll-x-none",
+        "name": "x-none"
+      },
+      {
+        "key": "overscroll-y-auto",
+        "name": "y-auto"
+      },
+      {
+        "key": "overscroll-y-contain",
+        "name": "y-contain"
+      },
+      {
+        "key": "overscroll-y-none",
+        "name": "y-none"
+      }
+    ]
+  },
+  "perspective-origin": {
+    "description": "Utilities for controlling an element's perspective origin when placed in 3D space.",
+    "values": [
+      {
+        "key": "perspective-origin-center",
+        "name": "center"
+      },
+      {
+        "key": "perspective-origin-top",
+        "name": "top"
+      },
+      {
+        "key": "perspective-origin-top-right",
+        "name": "top right"
+      },
+      {
+        "key": "perspective-origin-right",
+        "name": "right"
+      },
+      {
+        "key": "perspective-origin-bottom-right",
+        "name": "bottom right"
+      },
+      {
+        "key": "perspective-origin-bottom",
+        "name": "bottom"
+      },
+      {
+        "key": "perspective-origin-bottom-left",
+        "name": "bottom left"
+      },
+      {
+        "key": "perspective-origin-left",
+        "name": "left"
+      },
+      {
+        "key": "perspective-origin-top-left",
+        "name": "top left"
+      },
+      {
+        "key": "perspective-origin-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "perspective-origin-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "perspective": {
+    "description": "Utilities for controlling an element'ss perspective when placed in 3D space.",
+    "values": [
+      {
+        "key": "perspective-dramatic",
+        "name": "dramatic"
+      },
+      {
+        "key": "perspective-near",
+        "name": "near"
+      },
+      {
+        "key": "perspective-normal",
+        "name": "normal"
+      },
+      {
+        "key": "perspective-midrange",
+        "name": "midrange"
+      },
+      {
+        "key": "perspective-distant",
+        "name": "distant"
+      },
+      {
+        "key": "perspective-none",
+        "name": "none"
+      },
+      {
+        "key": "perspective-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "perspective-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "place-content": {
+    "description": "Utilities for controlling how content is justified and aligned at the same time.",
+    "values": [
+      {
+        "key": "place-content-center",
+        "name": "center"
+      },
+      {
+        "key": "place-content-start",
+        "name": "start"
+      },
+      {
+        "key": "place-content-end",
+        "name": "end"
+      },
+      {
+        "key": "place-content-between",
+        "name": "space-between"
+      },
+      {
+        "key": "place-content-around",
+        "name": "space-around"
+      },
+      {
+        "key": "place-content-evenly",
+        "name": "space-evenly"
+      },
+      {
+        "key": "place-content-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "place-content-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "place-items": {
+    "description": "Utilities for controlling how items are justified and aligned at the same time.",
+    "values": [
+      {
+        "key": "place-items-start",
+        "name": "start"
+      },
+      {
+        "key": "place-items-end",
+        "name": "end"
+      },
+      {
+        "key": "place-items-center",
+        "name": "center"
+      },
+      {
+        "key": "place-items-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "place-items-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "place-self": {
+    "description": "Utilities for controlling how an individual item is justified and aligned at the same time.",
+    "values": [
+      {
+        "key": "place-self-auto",
+        "name": "auto"
+      },
+      {
+        "key": "place-self-start",
+        "name": "start"
+      },
+      {
+        "key": "place-self-end",
+        "name": "end"
+      },
+      {
+        "key": "place-self-center",
+        "name": "center"
+      },
+      {
+        "key": "place-self-stretch",
+        "name": "stretch"
+      }
+    ]
+  },
+  "pointer-events": {
+    "description": "Utilities for controlling whether an element responds to pointer events.",
+    "values": [
+      {
+        "key": "pointer-events-auto",
+        "name": "auto"
+      },
+      {
+        "key": "pointer-events-none",
+        "name": "none"
+      }
+    ]
+  },
+  "position": {
+    "description": "Utilities for controlling how an element is positioned in the document.",
+    "values": [
+      {
+        "key": "static",
+        "name": "static"
+      },
+      {
+        "key": "fixed",
+        "name": "fixed"
+      },
+      {
+        "key": "absolute",
+        "name": "absolute"
+      },
+      {
+        "key": "relative",
+        "name": "relative"
+      },
+      {
+        "key": "sticky",
+        "name": "sticky"
+      }
+    ]
+  },
+  "resize": {
+    "description": "Utilities for controlling how an element can be resized.",
+    "values": [
+      {
+        "key": "resize-none",
+        "name": "none"
+      },
+      {
+        "key": "resize",
+        "name": "both"
+      },
+      {
+        "key": "resize-y",
+        "name": "vertical"
+      },
+      {
+        "key": "resize-x",
+        "name": "horizontal"
+      }
+    ]
+  },
+  "rotate": {
+    "description": "Utilities for rotating elements.",
+    "values": [
+      {
+        "key": "rotate-none",
+        "name": "none"
+      },
+      {
+        "key": "rotate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-rotate-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "rotate-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "rotate-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "rotate-x-<number>",
+        "name": "x-<number>"
+      },
+      {
+        "key": "-rotate-x-<number>",
+        "name": "x-<number>"
+      },
+      {
+        "key": "rotate-x-(<custom-property>)",
+        "name": "x-(<custom-property>)"
+      },
+      {
+        "key": "rotate-x-[<value>]",
+        "name": "x-[<value>]"
+      },
+      {
+        "key": "rotate-y-<number>",
+        "name": "y-<number>"
+      },
+      {
+        "key": "-rotate-y-<number>",
+        "name": "y-<number>"
+      },
+      {
+        "key": "rotate-y-(<custom-property>)",
+        "name": "y-(<custom-property>)"
+      },
+      {
+        "key": "rotate-y-[<value>]",
+        "name": "y-[<value>]"
+      },
+      {
+        "key": "rotate-z-<number>",
+        "name": "z-<number>"
+      },
+      {
+        "key": "-rotate-z-<number>",
+        "name": "z-<number>"
+      },
+      {
+        "key": "rotate-z-(<custom-property>)",
+        "name": "z-(<custom-property>)"
+      },
+      {
+        "key": "rotate-z-[<value>]",
+        "name": "z-[<value>]"
+      }
+    ]
+  },
+  "scale": {
+    "description": "Utilities for scaling elements.",
+    "values": [
+      {
+        "key": "scale-none",
+        "name": "none"
+      },
+      {
+        "key": "scale-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scale-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scale-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scale-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "scale-x-<number>",
+        "name": "x-<number>"
+      },
+      {
+        "key": "-scale-x-<number>",
+        "name": "-x-<number>"
+      },
+      {
+        "key": "scale-x-(<custom-property>)",
+        "name": "x-(<custom-property>)"
+      },
+      {
+        "key": "scale-x-[<value>]",
+        "name": "x-[<value>]"
+      },
+      {
+        "key": "scale-y-<number>",
+        "name": "y-<number>"
+      },
+      {
+        "key": "-scale-y-<number>",
+        "name": "-y-<number>"
+      },
+      {
+        "key": "scale-y-(<custom-property>)",
+        "name": "y-(<custom-property>)"
+      },
+      {
+        "key": "scale-y-[<value>]",
+        "name": "y-[<value>]"
+      },
+      {
+        "key": "scale-z-<number>",
+        "name": "z-<number>"
+      },
+      {
+        "key": "-scale-z-<number>",
+        "name": "-z-<number>"
+      },
+      {
+        "key": "scale-z-(<custom-property>)",
+        "name": "z-(<custom-property>)"
+      },
+      {
+        "key": "scale-z-[<value>]",
+        "name": "z-[<value>]"
+      },
+      {
+        "key": "scale-3d",
+        "name": "3d"
+      }
+    ]
+  },
+  "scroll-behavior": {
+    "description": "Utilities for controlling the scroll behavior of an element.",
+    "values": [
+      {
+        "key": "scroll-auto",
+        "name": "auto"
+      },
+      {
+        "key": "scroll-smooth",
+        "name": "smooth"
+      }
+    ]
+  },
+  "scroll-margin": {
+    "description": "Utilities for controlling the scroll offset around items in a snap container.",
+    "values": [
+      {
+        "key": "scroll-m-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-m-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-m-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-m-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-mx-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-mx-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-mx-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-mx-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-my-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-my-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-my-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-my-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-ms-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-ms-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-ms-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-ms-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-me-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-me-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-me-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-me-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-mt-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-mt-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-mt-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-mt-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-mr-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-mr-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-mr-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-mr-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-mb-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-mb-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-mb-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-mb-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-ml-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-ml-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-ml-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-ml-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "scroll-padding": {
+    "description": "Utilities for controlling an element's scroll offset within a snap container.",
+    "values": [
+      {
+        "key": "scroll-p-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-p-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-p-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-p-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-px-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-px-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-px-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-px-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-py-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-py-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-py-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-py-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-ps-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-ps-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-ps-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-ps-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-pe-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-pe-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-pe-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-pe-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-pt-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-pt-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-pt-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-pt-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-pr-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-pr-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-pr-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-pr-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-pb-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-pb-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-pb-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-pb-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "scroll-pl-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-scroll-pl-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "scroll-pl-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "scroll-pl-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "scroll-snap-align": {
+    "description": "Utilities for controlling the scroll snap alignment of an element.",
+    "values": [
+      {
+        "key": "snap-start",
+        "name": "start"
+      },
+      {
+        "key": "snap-end",
+        "name": "end"
+      },
+      {
+        "key": "snap-center",
+        "name": "center"
+      },
+      {
+        "key": "snap-align-none",
+        "name": "none"
+      }
+    ]
+  },
+  "scroll-snap-stop": {
+    "description": "Utilities for controlling whether you can skip past possible snap positions.",
+    "values": [
+      {
+        "key": "snap-normal",
+        "name": "normal"
+      },
+      {
+        "key": "snap-always",
+        "name": "always"
+      }
+    ]
+  },
+  "scroll-snap-type": {
+    "description": "Utilities for controlling how strictly snap points are enforced in a snap container.",
+    "values": [
+      {
+        "key": "snap-none",
+        "name": "none"
+      },
+      {
+        "key": "snap-x",
+        "name": "x"
+      },
+      {
+        "key": "snap-y",
+        "name": "y"
+      },
+      {
+        "key": "snap-both",
+        "name": "both"
+      },
+      {
+        "key": "snap-mandatory",
+        "name": "mandatory"
+      },
+      {
+        "key": "snap-proximity",
+        "name": "proximity"
+      }
+    ]
+  },
+  "skew": {
+    "description": "Utilities for skewing elements with transform.",
+    "values": [
+      {
+        "key": "skew-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-skew-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "skew-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "skew-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "skew-x-<number>",
+        "name": "x-<number>"
+      },
+      {
+        "key": "-skew-x-<number>",
+        "name": "-x-<number>"
+      },
+      {
+        "key": "skew-x-(<custom-property>)",
+        "name": "x-(<custom-property>)"
+      },
+      {
+        "key": "skew-x-[<value>]",
+        "name": "x-[<value>]"
+      },
+      {
+        "key": "skew-y-<number>",
+        "name": "y-<number>"
+      },
+      {
+        "key": "-skew-y-<number>",
+        "name": "-y-<number>"
+      },
+      {
+        "key": "skew-y-(<custom-property>)",
+        "name": "y-(<custom-property>)"
+      },
+      {
+        "key": "skew-y-[<value>]",
+        "name": "y-[<value>]"
+      }
+    ]
+  },
+  "stroke-width": {
+    "description": "Utilities for styling the stroke width of SVG elements.",
+    "values": [
+      {
+        "key": "stroke-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "stroke-(length:<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "stroke-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "stroke": {
+    "description": "Utilities for styling the stroke of SVG elements.",
+    "values": [
+      {
+        "key": "stroke-none",
+        "name": "none"
+      },
+      {
+        "key": "stroke-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "stroke-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "stroke-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "stroke-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "stroke-<custom-property>",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "table-layout": {
+    "description": "Utilities for controlling the table layout algorithm.",
+    "values": [
+      {
+        "key": "table-auto",
+        "name": "auto"
+      },
+      {
+        "key": "table-fixed",
+        "name": "fixed"
+      }
+    ]
+  },
+  "text-align": {
+    "description": "Utilities for controlling the alignment of text.",
+    "values": [
+      {
+        "key": "text-left",
+        "name": "left"
+      },
+      {
+        "key": "text-center",
+        "name": "center"
+      },
+      {
+        "key": "text-right",
+        "name": "right"
+      },
+      {
+        "key": "text-justify",
+        "name": "justify"
+      },
+      {
+        "key": "text-start",
+        "name": "start"
+      },
+      {
+        "key": "text-end",
+        "name": "end"
+      }
+    ]
+  },
+  "text-decoration-color": {
+    "description": "Utilities for controlling the color of text decorations.",
+    "values": [
+      {
+        "key": "decoration-inherit",
+        "name": "inherit"
+      },
+      {
+        "key": "decoration-current",
+        "name": "currentColor"
+      },
+      {
+        "key": "decoration-transparent",
+        "name": "transparent"
+      },
+      {
+        "key": "decoration-<color>",
+        "name": "<color>"
+      },
+      {
+        "key": "decoration-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "decoration-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "text-decoration-line": {
+    "description": "Utilities for controlling the decoration of text.",
+    "values": [
+      {
+        "key": "underline",
+        "name": "underline"
+      },
+      {
+        "key": "overline",
+        "name": "overline"
+      },
+      {
+        "key": "line-through",
+        "name": "line-through"
+      },
+      {
+        "key": "no-underline",
+        "name": "no-underline"
+      }
+    ]
+  },
+  "text-decoration-style": {
+    "description": "Utilities for controlling the style of text decorations.",
+    "values": [
+      {
+        "key": "decoration-solid",
+        "name": "solid"
+      },
+      {
+        "key": "decoration-double",
+        "name": "double"
+      },
+      {
+        "key": "decoration-dotted",
+        "name": "dotted"
+      },
+      {
+        "key": "decoration-dashed",
+        "name": "dashed"
+      },
+      {
+        "key": "decoration-wavy",
+        "name": "wavy"
+      }
+    ]
+  },
+  "text-decoration-thickness": {
+    "description": "Utilities for controlling the thickness of text decorations.",
+    "values": [
+      {
+        "key": "decoration-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "decoration-from-font",
+        "name": "from-font"
+      },
+      {
+        "key": "decoration-auto",
+        "name": "auto"
+      },
+      {
+        "key": "decoration-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "decoration-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "text-indent": {
+    "description": "Utilities for controlling the amount of empty space shown before text in a block.",
+    "values": [
+      {
+        "key": "indent-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-indent-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "indent-px",
+        "name": "px"
+      },
+      {
+        "key": "-indent-px",
+        "name": "-px"
+      },
+      {
+        "key": "indent-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "indent-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "text-overflow": {
+    "description": "Utilities for controlling how the text of an element overflows.",
+    "values": [
+      {
+        "key": "truncate",
+        "name": "truncate"
+      },
+      {
+        "key": "text-ellipsis",
+        "name": "ellipsis"
+      },
+      {
+        "key": "text-clip",
+        "name": "clip"
+      }
+    ]
+  },
+  "text-transform": {
+    "description": "Utilities for controlling the capitalization of text.",
+    "values": [
+      {
+        "key": "uppercase",
+        "name": "uppercase"
+      },
+      {
+        "key": "lowercase",
+        "name": "lowercase"
+      },
+      {
+        "key": "capitalize",
+        "name": "capitalize"
+      },
+      {
+        "key": "normal-case",
+        "name": "none"
+      }
+    ]
+  },
+  "text-underline-offset": {
+    "description": "Utilities for controlling the offset of a text underline.",
+    "values": [
+      {
+        "key": "underline-offset-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-underline-offset-<number>",
+        "name": "<number> (negative)"
+      },
+      {
+        "key": "underline-offset-auto",
+        "name": "auto"
+      },
+      {
+        "key": "underline-offset-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "underline-offset-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "text-wrap": {
+    "description": "Utilities for controlling how text wraps within an element.",
+    "values": [
+      {
+        "key": "text-wrap",
+        "name": "wrap"
+      },
+      {
+        "key": "text-nowrap",
+        "name": "nowrap"
+      },
+      {
+        "key": "text-balance",
+        "name": "balance"
+      },
+      {
+        "key": "text-pretty",
+        "name": "pretty"
+      }
+    ]
+  },
+  "top": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "top-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-top-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "top-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-top-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "top-px",
+        "name": "px"
+      },
+      {
+        "key": "-top-px",
+        "name": "-px"
+      },
+      {
+        "key": "top-full",
+        "name": "full"
+      },
+      {
+        "key": "-top-full",
+        "name": "-full"
+      },
+      {
+        "key": "top-auto",
+        "name": "auto"
+      },
+      {
+        "key": "top-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "top-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "right": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "right-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-right-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "right-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-right-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "right-px",
+        "name": "px"
+      },
+      {
+        "key": "-right-px",
+        "name": "-px"
+      },
+      {
+        "key": "right-full",
+        "name": "full"
+      },
+      {
+        "key": "-right-full",
+        "name": "-full"
+      },
+      {
+        "key": "right-auto",
+        "name": "auto"
+      },
+      {
+        "key": "right-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "right-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "bottom": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "bottom-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-bottom-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "bottom-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-bottom-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "bottom-px",
+        "name": "px"
+      },
+      {
+        "key": "-bottom-px",
+        "name": "-px"
+      },
+      {
+        "key": "bottom-full",
+        "name": "full"
+      },
+      {
+        "key": "-bottom-full",
+        "name": "-full"
+      },
+      {
+        "key": "bottom-auto",
+        "name": "auto"
+      },
+      {
+        "key": "bottom-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "bottom-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "left": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "left-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-left-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "left-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-left-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "left-px",
+        "name": "px"
+      },
+      {
+        "key": "-left-px",
+        "name": "-px"
+      },
+      {
+        "key": "left-full",
+        "name": "full"
+      },
+      {
+        "key": "-left-full",
+        "name": "-full"
+      },
+      {
+        "key": "left-auto",
+        "name": "auto"
+      },
+      {
+        "key": "left-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "left-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "inset": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "inset-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-inset-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "inset-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-inset-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "inset-px",
+        "name": "px"
+      },
+      {
+        "key": "-inset-px",
+        "name": "-px"
+      },
+      {
+        "key": "inset-full",
+        "name": "full"
+      },
+      {
+        "key": "-inset-full",
+        "name": "-full"
+      },
+      {
+        "key": "inset-auto",
+        "name": "auto"
+      },
+      {
+        "key": "inset-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "inset-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "inset-x": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "inset-x-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-inset-x-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "inset-x-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-inset-x-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "inset-x-px",
+        "name": "px"
+      },
+      {
+        "key": "-inset-x-px",
+        "name": "-px"
+      },
+      {
+        "key": "inset-x-full",
+        "name": "full"
+      },
+      {
+        "key": "-inset-x-full",
+        "name": "-full"
+      },
+      {
+        "key": "inset-x-auto",
+        "name": "auto"
+      },
+      {
+        "key": "inset-x-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "inset-x-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "inset-y": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "inset-y-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-inset-y-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "inset-y-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-inset-y-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "inset-y-px",
+        "name": "px"
+      },
+      {
+        "key": "-inset-y-px",
+        "name": "-px"
+      },
+      {
+        "key": "inset-y-full",
+        "name": "full"
+      },
+      {
+        "key": "-inset-y-full",
+        "name": "-full"
+      },
+      {
+        "key": "inset-y-auto",
+        "name": "auto"
+      },
+      {
+        "key": "inset-y-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "inset-y-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "start": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "start-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-start-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "start-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-start-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "start-px",
+        "name": "px"
+      },
+      {
+        "key": "-start-px",
+        "name": "-px"
+      },
+      {
+        "key": "start-full",
+        "name": "full"
+      },
+      {
+        "key": "-start-full",
+        "name": "-full"
+      },
+      {
+        "key": "start-auto",
+        "name": "auto"
+      },
+      {
+        "key": "start-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "start-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "end": {
+    "description": "Utilities for controlling the placement of positioned elements.",
+    "values": [
+      {
+        "key": "end-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-end-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "end-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-end-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "end-px",
+        "name": "px"
+      },
+      {
+        "key": "-end-px",
+        "name": "-px"
+      },
+      {
+        "key": "end-full",
+        "name": "full"
+      },
+      {
+        "key": "-end-full",
+        "name": "-full"
+      },
+      {
+        "key": "end-auto",
+        "name": "auto"
+      },
+      {
+        "key": "end-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "end-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "touch-action": {
+    "description": "Utilities for controlling how an element can be scrolled and zoomed on touchscreens.",
+    "values": [
+      {
+        "key": "touch-auto",
+        "name": "auto"
+      },
+      {
+        "key": "touch-none",
+        "name": "none"
+      },
+      {
+        "key": "touch-pan-x",
+        "name": "pan-x"
+      },
+      {
+        "key": "touch-pan-left",
+        "name": "pan-left"
+      },
+      {
+        "key": "touch-pan-right",
+        "name": "pan-right"
+      },
+      {
+        "key": "touch-pan-y",
+        "name": "pan-y"
+      },
+      {
+        "key": "touch-pan-up",
+        "name": "pan-up"
+      },
+      {
+        "key": "touch-pan-down",
+        "name": "pan-down"
+      },
+      {
+        "key": "touch-pinch-zoom",
+        "name": "pinch-zoom"
+      },
+      {
+        "key": "touch-manipulation",
+        "name": "manipulation"
+      }
+    ]
+  },
+  "transform-origin": {
+    "description": "Utilities for specifying the origin for an element's transformations.",
+    "values": [
+      {
+        "key": "origin-center",
+        "name": "center"
+      },
+      {
+        "key": "origin-top",
+        "name": "top"
+      },
+      {
+        "key": "origin-top-right",
+        "name": "top right"
+      },
+      {
+        "key": "origin-right",
+        "name": "right"
+      },
+      {
+        "key": "origin-bottom-right",
+        "name": "bottom right"
+      },
+      {
+        "key": "origin-bottom",
+        "name": "bottom"
+      },
+      {
+        "key": "origin-bottom-left",
+        "name": "bottom left"
+      },
+      {
+        "key": "origin-left",
+        "name": "left"
+      },
+      {
+        "key": "origin-top-left",
+        "name": "top left"
+      },
+      {
+        "key": "origin-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "origin-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "transform-style": {
+    "description": "Utilities for controlling if an elements children are placed in 3D space.",
+    "values": [
+      {
+        "key": "transform-3d",
+        "name": "preserve-3d"
+      },
+      {
+        "key": "transform-flat",
+        "name": "flat"
+      }
+    ]
+  },
+  "transform": {
+    "description": "Utilities for transforming elements.",
+    "values": [
+      {
+        "key": "transform-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "transform-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "transform-none",
+        "name": "none"
+      },
+      {
+        "key": "transform-gpu",
+        "name": "gpu"
+      },
+      {
+        "key": "transform-cpu",
+        "name": "cpu"
+      }
+    ]
+  },
+  "transition-behavior": {
+    "description": "Utilities to control the behavior of CSS transitions.",
+    "values": [
+      {
+        "key": "transition-normal",
+        "name": "normal"
+      },
+      {
+        "key": "transition-discrete",
+        "name": "allow-discrete"
+      }
+    ]
+  },
+  "transition-delay": {
+    "description": "Utilities for controlling the delay of CSS transitions.",
+    "values": [
+      {
+        "key": "delay-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "delay-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "delay-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "transition-duration": {
+    "description": "Utilities for controlling the duration of CSS transitions.",
+    "values": [
+      {
+        "key": "duration-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "duration-initial",
+        "name": "initial"
+      },
+      {
+        "key": "duration-(<custom-property>)",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "duration-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "transition-property": {
+    "description": "Utilities for controlling which CSS properties transition.",
+    "values": [
+      {
+        "key": "transition",
+        "name": "transition"
+      },
+      {
+        "key": "transition-all",
+        "name": "all"
+      },
+      {
+        "key": "transition-colors",
+        "name": "colors"
+      },
+      {
+        "key": "transition-opacity",
+        "name": "opacity"
+      },
+      {
+        "key": "transition-shadow",
+        "name": "shadow"
+      },
+      {
+        "key": "transition-transform",
+        "name": "transform"
+      },
+      {
+        "key": "transition-none",
+        "name": "none"
+      },
+      {
+        "key": "transition-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "transition-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "transition-timing-function": {
+    "description": "Utilities for controlling the easing of CSS transitions.",
+    "values": [
+      {
+        "key": "ease-linear",
+        "name": "linear"
+      },
+      {
+        "key": "ease-in",
+        "name": "in"
+      },
+      {
+        "key": "ease-out",
+        "name": "out"
+      },
+      {
+        "key": "ease-in-out",
+        "name": "in-out"
+      },
+      {
+        "key": "ease-initial",
+        "name": "initial"
+      },
+      {
+        "key": "ease-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "ease-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "translate": {
+    "description": "Utilities for translating elements.",
+    "values": [
+      {
+        "key": "translate-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-translate-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "translate-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-translate-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "translate-full",
+        "name": "full"
+      },
+      {
+        "key": "-translate-full",
+        "name": "-full"
+      },
+      {
+        "key": "translate-px",
+        "name": "px"
+      },
+      {
+        "key": "-translate-px",
+        "name": "-px"
+      },
+      {
+        "key": "translate-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "translate-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "translate-x-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-translate-x-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "translate-x-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-translate-x-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "translate-x-full",
+        "name": "full"
+      },
+      {
+        "key": "-translate-x-full",
+        "name": "-full"
+      },
+      {
+        "key": "translate-x-px",
+        "name": "px"
+      },
+      {
+        "key": "-translate-x-px",
+        "name": "-px"
+      },
+      {
+        "key": "translate-x-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "translate-x-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "translate-y-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-translate-y-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "translate-y-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "-translate-y-<fraction>",
+        "name": "-<fraction>"
+      },
+      {
+        "key": "translate-y-full",
+        "name": "full"
+      },
+      {
+        "key": "-translate-y-full",
+        "name": "-full"
+      },
+      {
+        "key": "translate-y-px",
+        "name": "px"
+      },
+      {
+        "key": "-translate-y-px",
+        "name": "-px"
+      },
+      {
+        "key": "translate-y-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "translate-y-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "translate-z-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "-translate-z-<number>",
+        "name": "-<number>"
+      },
+      {
+        "key": "translate-z-px",
+        "name": "px"
+      },
+      {
+        "key": "-translate-z-px",
+        "name": "-px"
+      },
+      {
+        "key": "translate-z-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "translate-z-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "translate-none",
+        "name": "none"
+      }
+    ]
+  },
+  "user-select": {
+    "description": "Utilities for controlling whether the user can select text in an element.",
+    "values": [
+      {
+        "key": "select-none",
+        "name": "none"
+      },
+      {
+        "key": "select-text",
+        "name": "text"
+      },
+      {
+        "key": "select-all",
+        "name": "all"
+      },
+      {
+        "key": "select-auto",
+        "name": "auto"
+      }
+    ]
+  },
+  "vertical-align": {
+    "description": "Utilities for controlling the vertical alignment of an inline or table-cell box.",
+    "values": [
+      {
+        "key": "align-baseline",
+        "name": "baseline"
+      },
+      {
+        "key": "align-top",
+        "name": "top"
+      },
+      {
+        "key": "align-middle",
+        "name": "middle"
+      },
+      {
+        "key": "align-bottom",
+        "name": "bottom"
+      },
+      {
+        "key": "align-text-top",
+        "name": "text-top"
+      },
+      {
+        "key": "align-text-bottom",
+        "name": "text-bottom"
+      },
+      {
+        "key": "align-sub",
+        "name": "sub"
+      },
+      {
+        "key": "align-super",
+        "name": "super"
+      },
+      {
+        "key": "align-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "align-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "visibility": {
+    "description": "Utilities for controlling the visibility of an element.",
+    "values": [
+      {
+        "key": "visible",
+        "name": "visible"
+      },
+      {
+        "key": "invisible",
+        "name": "invisible"
+      },
+      {
+        "key": "collapse",
+        "name": "collapse"
+      }
+    ]
+  },
+  "white-space": {
+    "description": "Utilities for controlling an element's white-space property.",
+    "values": [
+      {
+        "key": "whitespace-normal",
+        "name": "normal"
+      },
+      {
+        "key": "whitespace-nowrap",
+        "name": "nowrap"
+      },
+      {
+        "key": "whitespace-pre",
+        "name": "pre"
+      },
+      {
+        "key": "whitespace-pre-line",
+        "name": "pre-line"
+      },
+      {
+        "key": "whitespace-pre-wrap",
+        "name": "pre-wrap"
+      },
+      {
+        "key": "whitespace-break-spaces",
+        "name": "break-spaces"
+      }
+    ]
+  },
+  "width": {
+    "description": "Utilities for setting the width of an element.",
+    "values": [
+      {
+        "key": "w-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "w-<fraction>",
+        "name": "<fraction>"
+      },
+      {
+        "key": "w-3xs",
+        "name": "3xs"
+      },
+      {
+        "key": "w-2xs",
+        "name": "2xs"
+      },
+      {
+        "key": "w-xs",
+        "name": "xs"
+      },
+      {
+        "key": "w-sm",
+        "name": "sm"
+      },
+      {
+        "key": "w-md",
+        "name": "md"
+      },
+      {
+        "key": "w-lg",
+        "name": "lg"
+      },
+      {
+        "key": "w-xl",
+        "name": "xl"
+      },
+      {
+        "key": "w-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "w-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "w-4xl",
+        "name": "4xl"
+      },
+      {
+        "key": "w-5xl",
+        "name": "5xl"
+      },
+      {
+        "key": "w-6xl",
+        "name": "6xl"
+      },
+      {
+        "key": "w-7xl",
+        "name": "7xl"
+      },
+      {
+        "key": "w-auto",
+        "name": "auto"
+      },
+      {
+        "key": "w-px",
+        "name": "px"
+      },
+      {
+        "key": "w-full",
+        "name": "full"
+      },
+      {
+        "key": "w-screen",
+        "name": "screen"
+      },
+      {
+        "key": "w-dvw",
+        "name": "dvw"
+      },
+      {
+        "key": "w-dvh",
+        "name": "dvh"
+      },
+      {
+        "key": "w-lvw",
+        "name": "lvw"
+      },
+      {
+        "key": "w-lvh",
+        "name": "lvh"
+      },
+      {
+        "key": "w-svw",
+        "name": "svw"
+      },
+      {
+        "key": "w-svh",
+        "name": "svh"
+      },
+      {
+        "key": "w-min",
+        "name": "min"
+      },
+      {
+        "key": "w-max",
+        "name": "max"
+      },
+      {
+        "key": "w-fit",
+        "name": "fit"
+      },
+      {
+        "key": "w-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "w-[<value>]",
+        "name": "[<value>]"
+      }
+    ]
+  },
+  "will-change": {
+    "description": "Utilities for optimizing upcoming animations of elements that are expected to change.",
+    "values": [
+      {
+        "key": "will-change-auto",
+        "name": "auto"
+      },
+      {
+        "key": "will-change-scroll",
+        "name": "scroll-position"
+      },
+      {
+        "key": "will-change-contents",
+        "name": "contents"
+      },
+      {
+        "key": "will-change-transform",
+        "name": "transform"
+      },
+      {
+        "key": "will-change-<custom-property>",
+        "name": "<custom-property>"
+      },
+      {
+        "key": "will-change-[<value>]",
+        "name": "<value>"
+      }
+    ]
+  },
+  "word-break": {
+    "description": "Utilities for controlling word breaks in an element.",
+    "values": [
+      {
+        "key": "break-normal",
+        "name": "normal"
+      },
+      {
+        "key": "break-words",
+        "name": "words"
+      },
+      {
+        "key": "break-all",
+        "name": "all"
+      },
+      {
+        "key": "break-keep",
+        "name": "keep"
+      }
+    ]
+  },
+  "z-index": {
+    "description": "Utilities for controlling the stack order of an element.",
+    "values": [
+      {
+        "key": "z-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "z-auto",
+        "name": "auto"
+      },
+      {
+        "key": "z-[<value>]",
+        "name": "<value>"
+      },
+      {
+        "key": "z-(<custom-property>)",
+        "name": "<custom-property>"
+      }
+    ]
+  },
+  "border-radius": {
+    "description": "Utilities for controlling the border radius of an element.",
+    "values": [
+      {
+        "key": "rounded-xs",
+        "name": "xs"
+      },
+      {
+        "key": "rounded-sm",
+        "name": "sm"
+      },
+      {
+        "key": "rounded-md",
+        "name": "md"
+      },
+      {
+        "key": "rounded-lg",
+        "name": "lg"
+      },
+      {
+        "key": "rounded-xl",
+        "name": "xl"
+      },
+      {
+        "key": "rounded-2xl",
+        "name": "2xl"
+      },
+      {
+        "key": "rounded-3xl",
+        "name": "3xl"
+      },
+      {
+        "key": "rounded-none",
+        "name": "none"
+      },
+      {
+        "key": "rounded-full",
+        "name": "full"
+      },
+      {
+        "key": "rounded-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "rounded-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "rounded-s-xs",
+        "name": "s-xs"
+      },
+      {
+        "key": "rounded-s-sm",
+        "name": "s-sm"
+      },
+      {
+        "key": "rounded-s-md",
+        "name": "s-md"
+      },
+      {
+        "key": "rounded-s-lg",
+        "name": "s-lg"
+      },
+      {
+        "key": "rounded-s-xl",
+        "name": "s-xl"
+      },
+      {
+        "key": "rounded-s-2xl",
+        "name": "s-2xl"
+      },
+      {
+        "key": "rounded-s-3xl",
+        "name": "s-3xl"
+      },
+      {
+        "key": "rounded-s-none",
+        "name": "s-none"
+      },
+      {
+        "key": "rounded-s-full",
+        "name": "s-full"
+      },
+      {
+        "key": "rounded-s-(<custom-property>)",
+        "name": "s-(<custom-property>)"
+      },
+      {
+        "key": "rounded-s-[<value>]",
+        "name": "s-[<value>]"
+      },
+      {
+        "key": "rounded-e-xs",
+        "name": "e-xs"
+      },
+      {
+        "key": "rounded-e-sm",
+        "name": "e-sm"
+      },
+      {
+        "key": "rounded-e-md",
+        "name": "e-md"
+      },
+      {
+        "key": "rounded-e-lg",
+        "name": "e-lg"
+      },
+      {
+        "key": "rounded-e-xl",
+        "name": "e-xl"
+      },
+      {
+        "key": "rounded-e-2xl",
+        "name": "e-2xl"
+      },
+      {
+        "key": "rounded-e-3xl",
+        "name": "e-3xl"
+      },
+      {
+        "key": "rounded-e-none",
+        "name": "e-none"
+      },
+      {
+        "key": "rounded-e-full",
+        "name": "e-full"
+      },
+      {
+        "key": "rounded-e-(<custom-property>)",
+        "name": "e-(<custom-property>)"
+      },
+      {
+        "key": "rounded-e-[<value>]",
+        "name": "e-[<value>]"
+      },
+      {
+        "key": "rounded-t-xs",
+        "name": "t-xs"
+      },
+      {
+        "key": "rounded-t-sm",
+        "name": "t-sm"
+      },
+      {
+        "key": "rounded-t-md",
+        "name": "t-md"
+      },
+      {
+        "key": "rounded-t-lg",
+        "name": "t-lg"
+      },
+      {
+        "key": "rounded-t-xl",
+        "name": "t-xl"
+      },
+      {
+        "key": "rounded-t-2xl",
+        "name": "t-2xl"
+      },
+      {
+        "key": "rounded-t-3xl",
+        "name": "t-3xl"
+      },
+      {
+        "key": "rounded-t-none",
+        "name": "t-none"
+      },
+      {
+        "key": "rounded-t-full",
+        "name": "t-full"
+      },
+      {
+        "key": "rounded-t-(<custom-property>)",
+        "name": "t-(<custom-property>)"
+      },
+      {
+        "key": "rounded-t-[<value>]",
+        "name": "t-[<value>]"
+      },
+      {
+        "key": "rounded-r-xs",
+        "name": "r-xs"
+      },
+      {
+        "key": "rounded-r-sm",
+        "name": "r-sm"
+      },
+      {
+        "key": "rounded-r-md",
+        "name": "r-md"
+      },
+      {
+        "key": "rounded-r-lg",
+        "name": "r-lg"
+      },
+      {
+        "key": "rounded-r-xl",
+        "name": "r-xl"
+      },
+      {
+        "key": "rounded-r-2xl",
+        "name": "r-2xl"
+      },
+      {
+        "key": "rounded-r-3xl",
+        "name": "r-3xl"
+      },
+      {
+        "key": "rounded-r-none",
+        "name": "r-none"
+      },
+      {
+        "key": "rounded-r-full",
+        "name": "r-full"
+      },
+      {
+        "key": "rounded-r-(<custom-property>)",
+        "name": "r-(<custom-property>)"
+      },
+      {
+        "key": "rounded-r-[<value>]",
+        "name": "r-[<value>]"
+      },
+      {
+        "key": "rounded-b-xs",
+        "name": "b-xs"
+      },
+      {
+        "key": "rounded-b-sm",
+        "name": "b-sm"
+      },
+      {
+        "key": "rounded-b-md",
+        "name": "b-md"
+      },
+      {
+        "key": "rounded-b-lg",
+        "name": "b-lg"
+      },
+      {
+        "key": "rounded-b-xl",
+        "name": "b-xl"
+      },
+      {
+        "key": "rounded-b-2xl",
+        "name": "b-2xl"
+      },
+      {
+        "key": "rounded-b-3xl",
+        "name": "b-3xl"
+      },
+      {
+        "key": "rounded-b-none",
+        "name": "b-none"
+      },
+      {
+        "key": "rounded-b-full",
+        "name": "b-full"
+      },
+      {
+        "key": "rounded-b-(<custom-property>)",
+        "name": "b-(<custom-property>)"
+      },
+      {
+        "key": "rounded-b-[<value>]",
+        "name": "b-[<value>]"
+      },
+      {
+        "key": "rounded-l-xs",
+        "name": "l-xs"
+      },
+      {
+        "key": "rounded-l-sm",
+        "name": "l-sm"
+      },
+      {
+        "key": "rounded-l-md",
+        "name": "l-md"
+      },
+      {
+        "key": "rounded-l-lg",
+        "name": "l-lg"
+      },
+      {
+        "key": "rounded-l-xl",
+        "name": "l-xl"
+      },
+      {
+        "key": "rounded-l-2xl",
+        "name": "l-2xl"
+      },
+      {
+        "key": "rounded-l-3xl",
+        "name": "l-3xl"
+      },
+      {
+        "key": "rounded-l-none",
+        "name": "l-none"
+      },
+      {
+        "key": "rounded-l-full",
+        "name": "l-full"
+      },
+      {
+        "key": "rounded-l-(<custom-property>)",
+        "name": "l-(<custom-property>)"
+      },
+      {
+        "key": "rounded-l-[<value>]",
+        "name": "l-[<value>]"
+      },
+      {
+        "key": "rounded-ss-xs",
+        "name": "ss-xs"
+      },
+      {
+        "key": "rounded-ss-sm",
+        "name": "ss-sm"
+      },
+      {
+        "key": "rounded-ss-md",
+        "name": "ss-md"
+      },
+      {
+        "key": "rounded-ss-lg",
+        "name": "ss-lg"
+      },
+      {
+        "key": "rounded-ss-xl",
+        "name": "ss-xl"
+      },
+      {
+        "key": "rounded-ss-2xl",
+        "name": "ss-2xl"
+      },
+      {
+        "key": "rounded-ss-3xl",
+        "name": "ss-3xl"
+      },
+      {
+        "key": "rounded-ss-none",
+        "name": "ss-none"
+      },
+      {
+        "key": "rounded-ss-full",
+        "name": "ss-full"
+      },
+      {
+        "key": "rounded-ss-(<custom-property>)",
+        "name": "ss-(<custom-property>)"
+      },
+      {
+        "key": "rounded-ss-[<value>]",
+        "name": "ss-[<value>]"
+      },
+      {
+        "key": "rounded-se-xs",
+        "name": "se-xs"
+      },
+      {
+        "key": "rounded-se-sm",
+        "name": "se-sm"
+      },
+      {
+        "key": "rounded-se-md",
+        "name": "se-md"
+      },
+      {
+        "key": "rounded-se-lg",
+        "name": "se-lg"
+      },
+      {
+        "key": "rounded-se-xl",
+        "name": "se-xl"
+      },
+      {
+        "key": "rounded-se-2xl",
+        "name": "se-2xl"
+      },
+      {
+        "key": "rounded-se-3xl",
+        "name": "se-3xl"
+      },
+      {
+        "key": "rounded-se-none",
+        "name": "se-none"
+      },
+      {
+        "key": "rounded-se-full",
+        "name": "se-full"
+      },
+      {
+        "key": "rounded-se-(<custom-property>)",
+        "name": "se-(<custom-property>)"
+      },
+      {
+        "key": "rounded-se-[<value>]",
+        "name": "se-[<value>]"
+      },
+      {
+        "key": "rounded-ee-xs",
+        "name": "ee-xs"
+      },
+      {
+        "key": "rounded-ee-sm",
+        "name": "ee-sm"
+      },
+      {
+        "key": "rounded-ee-md",
+        "name": "ee-md"
+      },
+      {
+        "key": "rounded-ee-lg",
+        "name": "ee-lg"
+      },
+      {
+        "key": "rounded-ee-xl",
+        "name": "ee-xl"
+      },
+      {
+        "key": "rounded-ee-2xl",
+        "name": "ee-2xl"
+      },
+      {
+        "key": "rounded-ee-3xl",
+        "name": "ee-3xl"
+      },
+      {
+        "key": "rounded-ee-none",
+        "name": "ee-none"
+      },
+      {
+        "key": "rounded-ee-full",
+        "name": "ee-full"
+      },
+      {
+        "key": "rounded-ee-(<custom-property>)",
+        "name": "ee-(<custom-property>)"
+      },
+      {
+        "key": "rounded-ee-[<value>]",
+        "name": "ee-[<value>]"
+      },
+      {
+        "key": "rounded-es-xs",
+        "name": "es-xs"
+      },
+      {
+        "key": "rounded-es-sm",
+        "name": "es-sm"
+      },
+      {
+        "key": "rounded-es-md",
+        "name": "es-md"
+      },
+      {
+        "key": "rounded-es-lg",
+        "name": "es-lg"
+      },
+      {
+        "key": "rounded-es-xl",
+        "name": "es-xl"
+      },
+      {
+        "key": "rounded-es-2xl",
+        "name": "es-2xl"
+      },
+      {
+        "key": "rounded-es-3xl",
+        "name": "es-3xl"
+      },
+      {
+        "key": "rounded-es-none",
+        "name": "es-none"
+      },
+      {
+        "key": "rounded-es-full",
+        "name": "es-full"
+      },
+      {
+        "key": "rounded-es-(<custom-property>)",
+        "name": "es-(<custom-property>)"
+      },
+      {
+        "key": "rounded-es-[<value>]",
+        "name": "es-[<value>]"
+      },
+      {
+        "key": "rounded-tl-xs",
+        "name": "tl-xs"
+      },
+      {
+        "key": "rounded-tl-sm",
+        "name": "tl-sm"
+      },
+      {
+        "key": "rounded-tl-md",
+        "name": "tl-md"
+      },
+      {
+        "key": "rounded-tl-lg",
+        "name": "tl-lg"
+      },
+      {
+        "key": "rounded-tl-xl",
+        "name": "tl-xl"
+      },
+      {
+        "key": "rounded-tl-2xl",
+        "name": "tl-2xl"
+      },
+      {
+        "key": "rounded-tl-3xl",
+        "name": "tl-3xl"
+      },
+      {
+        "key": "rounded-tl-none",
+        "name": "tl-none"
+      },
+      {
+        "key": "rounded-tl-full",
+        "name": "tl-full"
+      },
+      {
+        "key": "rounded-tl-(<custom-property>)",
+        "name": "tl-(<custom-property>)"
+      },
+      {
+        "key": "rounded-tl-[<value>]",
+        "name": "tl-[<value>]"
+      },
+      {
+        "key": "rounded-tr-xs",
+        "name": "tr-xs"
+      },
+      {
+        "key": "rounded-tr-sm",
+        "name": "tr-sm"
+      },
+      {
+        "key": "rounded-tr-md",
+        "name": "tr-md"
+      },
+      {
+        "key": "rounded-tr-lg",
+        "name": "tr-lg"
+      },
+      {
+        "key": "rounded-tr-xl",
+        "name": "tr-xl"
+      },
+      {
+        "key": "rounded-tr-2xl",
+        "name": "tr-2xl"
+      },
+      {
+        "key": "rounded-tr-3xl",
+        "name": "tr-3xl"
+      },
+      {
+        "key": "rounded-tr-none",
+        "name": "tr-none"
+      },
+      {
+        "key": "rounded-tr-full",
+        "name": "tr-full"
+      },
+      {
+        "key": "rounded-tr-(<custom-property>)",
+        "name": "tr-(<custom-property>)"
+      },
+      {
+        "key": "rounded-tr-[<value>]",
+        "name": "tr-[<value>]"
+      },
+      {
+        "key": "rounded-br-xs",
+        "name": "br-xs"
+      },
+      {
+        "key": "rounded-br-sm",
+        "name": "br-sm"
+      },
+      {
+        "key": "rounded-br-md",
+        "name": "br-md"
+      },
+      {
+        "key": "rounded-br-lg",
+        "name": "br-lg"
+      },
+      {
+        "key": "rounded-br-xl",
+        "name": "br-xl"
+      },
+      {
+        "key": "rounded-br-2xl",
+        "name": "br-2xl"
+      },
+      {
+        "key": "rounded-br-3xl",
+        "name": "br-3xl"
+      },
+      {
+        "key": "rounded-br-none",
+        "name": "br-none"
+      },
+      {
+        "key": "rounded-br-full",
+        "name": "br-full"
+      },
+      {
+        "key": "rounded-br-(<custom-property>)",
+        "name": "br-(<custom-property>)"
+      },
+      {
+        "key": "rounded-br-[<value>]",
+        "name": "br-[<value>]"
+      },
+      {
+        "key": "rounded-bl-xs",
+        "name": "bl-xs"
+      },
+      {
+        "key": "rounded-bl-sm",
+        "name": "bl-sm"
+      },
+      {
+        "key": "rounded-bl-md",
+        "name": "bl-md"
+      },
+      {
+        "key": "rounded-bl-lg",
+        "name": "bl-lg"
+      },
+      {
+        "key": "rounded-bl-xl",
+        "name": "bl-xl"
+      },
+      {
+        "key": "rounded-bl-2xl",
+        "name": "bl-2xl"
+      },
+      {
+        "key": "rounded-bl-3xl",
+        "name": "bl-3xl"
+      },
+      {
+        "key": "rounded-bl-none",
+        "name": "bl-none"
+      },
+      {
+        "key": "rounded-bl-full",
+        "name": "bl-full"
+      },
+      {
+        "key": "rounded-bl-(<custom-property>)",
+        "name": "bl-(<custom-property>)"
+      },
+      {
+        "key": "rounded-bl-[<value>]",
+        "name": "bl-[<value>]"
+      }
+    ]
+  },
+  "margin": {
+    "description": "Utilities for controlling an element's margin.",
+    "values": [
+      {
+        "key": "m-<number>",
+        "name": "margin: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-m-<number>",
+        "name": "margin: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "m-auto",
+        "name": "margin: auto;"
+      },
+      {
+        "key": "m-px",
+        "name": "margin: 1px;"
+      },
+      {
+        "key": "-m-px",
+        "name": "margin: -1px;"
+      },
+      {
+        "key": "m-(<custom-property>)",
+        "name": "margin: var(<custom-property>);"
+      },
+      {
+        "key": "m-[<value>]",
+        "name": "margin: <value>;"
+      },
+      {
+        "key": "mx-<number>",
+        "name": "margin-inline: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-mx-<number>",
+        "name": "margin-inline: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "mx-auto",
+        "name": "margin-inline: auto;"
+      },
+      {
+        "key": "mx-px",
+        "name": "margin-inline: 1px;"
+      },
+      {
+        "key": "-mx-px",
+        "name": "margin-inline: -1px;"
+      },
+      {
+        "key": "mx-(<custom-property>)",
+        "name": "margin-inline: var(<custom-property>);"
+      },
+      {
+        "key": "mx-[<value>]",
+        "name": "margin-inline: <value>;"
+      },
+      {
+        "key": "my-<number>",
+        "name": "margin-block: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-my-<number>",
+        "name": "margin-block: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "my-auto",
+        "name": "margin-block: auto;"
+      },
+      {
+        "key": "my-px",
+        "name": "margin-block: 1px;"
+      },
+      {
+        "key": "-my-px",
+        "name": "margin-block: -1px;"
+      },
+      {
+        "key": "my-(<custom-property>)",
+        "name": "margin-block: var(<custom-property>);"
+      },
+      {
+        "key": "my-[<value>]",
+        "name": "margin-block: <value>;"
+      },
+      {
+        "key": "ms-<number>",
+        "name": "margin-inline-start: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-ms-<number>",
+        "name": "margin-inline-start: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "ms-auto",
+        "name": "margin-inline-start: auto;"
+      },
+      {
+        "key": "ms-px",
+        "name": "margin-inline-start: 1px;"
+      },
+      {
+        "key": "-ms-px",
+        "name": "margin-inline-start: -1px;"
+      },
+      {
+        "key": "ms-(<custom-property>)",
+        "name": "margin-inline-start: var(<custom-property>);"
+      },
+      {
+        "key": "ms-[<value>]",
+        "name": "margin-inline-start: <value>;"
+      },
+      {
+        "key": "me-<number>",
+        "name": "margin-inline-end: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-me-<number>",
+        "name": "margin-inline-end: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "me-auto",
+        "name": "margin-inline-end: auto;"
+      },
+      {
+        "key": "me-px",
+        "name": "margin-inline-end: 1px;"
+      },
+      {
+        "key": "-me-px",
+        "name": "margin-inline-end: -1px;"
+      },
+      {
+        "key": "me-(<custom-property>)",
+        "name": "margin-inline-end: var(<custom-property>);"
+      },
+      {
+        "key": "me-[<value>]",
+        "name": "margin-inline-end: <value>;"
+      },
+      {
+        "key": "mt-<number>",
+        "name": "margin-top: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-mt-<number>",
+        "name": "margin-top: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "mt-auto",
+        "name": "margin-top: auto;"
+      },
+      {
+        "key": "mt-px",
+        "name": "margin-top: 1px;"
+      },
+      {
+        "key": "-mt-px",
+        "name": "margin-top: -1px;"
+      },
+      {
+        "key": "mt-(<custom-property>)",
+        "name": "margin-top: var(<custom-property>);"
+      },
+      {
+        "key": "mt-[<value>]",
+        "name": "margin-top: <value>;"
+      },
+      {
+        "key": "mr-<number>",
+        "name": "margin-right: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-mr-<number>",
+        "name": "margin-right: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "mr-auto",
+        "name": "margin-right: auto;"
+      },
+      {
+        "key": "mr-px",
+        "name": "margin-right: 1px;"
+      },
+      {
+        "key": "-mr-px",
+        "name": "margin-right: -1px;"
+      },
+      {
+        "key": "mr-(<custom-property>)",
+        "name": "margin-right: var(<custom-property>);"
+      },
+      {
+        "key": "mr-[<value>]",
+        "name": "margin-right: <value>;"
+      },
+      {
+        "key": "mb-<number>",
+        "name": "margin-bottom: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-mb-<number>",
+        "name": "margin-bottom: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "mb-auto",
+        "name": "margin-bottom: auto;"
+      },
+      {
+        "key": "mb-px",
+        "name": "margin-bottom: 1px;"
+      },
+      {
+        "key": "-mb-px",
+        "name": "margin-bottom: -1px;"
+      },
+      {
+        "key": "mb-(<custom-property>)",
+        "name": "margin-bottom: var(<custom-property>);"
+      },
+      {
+        "key": "mb-[<value>]",
+        "name": "margin-bottom: <value>;"
+      },
+      {
+        "key": "ml-<number>",
+        "name": "margin-left: calc(var(--spacing) * <number>);"
+      },
+      {
+        "key": "-ml-<number>",
+        "name": "margin-left: calc(var(--spacing) * -<number>);"
+      },
+      {
+        "key": "ml-auto",
+        "name": "margin-left: auto;"
+      },
+      {
+        "key": "ml-px",
+        "name": "margin-left: 1px;"
+      },
+      {
+        "key": "-ml-px",
+        "name": "margin-left: -1px;"
+      },
+      {
+        "key": "ml-(<custom-property>)",
+        "name": "margin-left: var(<custom-property>);"
+      },
+      {
+        "key": "ml-[<value>]",
+        "name": "margin-left: <value>;"
+      },
+      {
+        "key": "space-x-<number>",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(calc(var(--spacing) * <number>) * var(--tw-space-x-reverse)); margin-inline-end: calc(calc(var(--spacing) * <number>) * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "-space-x-<number>",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(calc(var(--spacing) * -<number>) * var(--tw-space-x-reverse)); margin-inline-end: calc(calc(var(--spacing) * -<number>) * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "space-x-px",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(1px * var(--tw-space-x-reverse)); margin-inline-end: calc(1px * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "-space-x-px",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(-1px * var(--tw-space-x-reverse)); margin-inline-end: calc(-1px * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "space-x-(<custom-property>)",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(var(<custom-property>) * var(--tw-space-x-reverse)); margin-inline-end: calc(var(<custom-property>) * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "space-x-[<value>]",
+        "name": "& > :not(:last-child) { --tw-space-x-reverse: 0; margin-inline-start: calc(<value> * var(--tw-space-x-reverse)); margin-inline-end: calc(<value> * calc(1 - var(--tw-space-x-reverse))); };"
+      },
+      {
+        "key": "space-y-<number>",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(calc(var(--spacing) * <number>) * var(--tw-space-y-reverse)); margin-block-end: calc(calc(var(--spacing) * <number>) * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "-space-y-<number>",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(calc(var(--spacing) * -<number>) * var(--tw-space-y-reverse)); margin-block-end: calc(calc(var(--spacing) * -<number>) * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "space-y-px",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(1px * var(--tw-space-y-reverse)); margin-block-end: calc(1px * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "-space-y-px",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(-1px * var(--tw-space-y-reverse)); margin-block-end: calc(-1px * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "space-y-(<custom-property>)",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(var(<custom-property>) * var(--tw-space-y-reverse)); margin-block-end: calc(var(<custom-property>) * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "space-y-[<value>]",
+        "name": "& > :not(:last-child) { --tw-space-y-reverse: 0; margin-block-start: calc(<value> * var(--tw-space-y-reverse)); margin-block-end: calc(<value> * calc(1 - var(--tw-space-y-reverse))); };"
+      },
+      {
+        "key": "space-x-reverse",
+        "name": "& > :not(:last-child)) { --tw-space-x-reverse: 1; }"
+      },
+      {
+        "key": "space-y-reverse",
+        "name": "& > :not(:last-child)) { --tw-space-y-reverse: 1; }"
+      }
+    ]
+  },
+  "padding": {
+    "description": "Utilities for controlling an element's padding.",
+    "values": [
+      {
+        "key": "p-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "p-px",
+        "name": "px"
+      },
+      {
+        "key": "p-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "p-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "px-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "px-px",
+        "name": "px"
+      },
+      {
+        "key": "px-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "px-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "py-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "py-px",
+        "name": "px"
+      },
+      {
+        "key": "py-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "py-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "ps-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "ps-px",
+        "name": "px"
+      },
+      {
+        "key": "ps-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "ps-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "pe-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "pe-px",
+        "name": "px"
+      },
+      {
+        "key": "pe-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "pe-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "pt-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "pt-px",
+        "name": "px"
+      },
+      {
+        "key": "pt-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "pt-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "pr-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "pr-px",
+        "name": "px"
+      },
+      {
+        "key": "pr-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "pr-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "pb-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "pb-px",
+        "name": "px"
+      },
+      {
+        "key": "pb-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "pb-[<value>]",
+        "name": "[<value>]"
+      },
+      {
+        "key": "pl-<number>",
+        "name": "<number>"
+      },
+      {
+        "key": "pl-px",
+        "name": "px"
+      },
+      {
+        "key": "pl-(<custom-property>)",
+        "name": "(<custom-property>)"
+      },
+      {
+        "key": "pl-[<value>]",
+        "name": "[<value>"
+      }
+    ]
+  }
+}
