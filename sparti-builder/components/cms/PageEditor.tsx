@@ -31,6 +31,7 @@ export const PageEditor: React.FC = () => {
   const [sections, setSections] = useState<PageSection[]>([]);
   const [groupedSections, setGroupedSections] = useState<GroupedSections>({});
   const [currentSlides, setCurrentSlides] = useState<Record<string, number>>({});
+  const [currentTabs, setCurrentTabs] = useState<Record<string, number>>({});
   const [mediaFiles, setMediaFiles] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -292,8 +293,13 @@ export const PageEditor: React.FC = () => {
     );
   };
 
-  const renderTabsEditor = (section: PageSection, tabs: any[]) => {
-    const [currentTab, setCurrentTab] = useState(0);
+  const renderTabsEditor = (section: PageSection, tabs: any[], currentTab: number) => {
+    const setCurrentTab = (index: number) => {
+      setCurrentTabs(prev => ({
+        ...prev,
+        [section.id]: index
+      }));
+    };
     
     const addTab = () => {
       const newTabs = [...tabs, { 
@@ -1021,6 +1027,7 @@ export const PageEditor: React.FC = () => {
     const hasCards = content.cards && Array.isArray(content.cards) && content.cards.length > 0;
     const hasTabs = content.tabs && Array.isArray(content.tabs) && content.tabs.length > 0;
     const hasImages = content.images && Array.isArray(content.images) && content.images.length > 0;
+    const currentTab = currentTabs[section.id] || 0;
     
     // Determine section type for smart defaults
     const isTabSection = section.section_type?.toLowerCase().includes('competition') || 
@@ -1182,7 +1189,7 @@ export const PageEditor: React.FC = () => {
                 <ChevronRight className="w-4 h-4 mr-1" />
                 Tabs Editor
               </h4>
-              {renderTabsEditor(section, content.tabs)}
+              {renderTabsEditor(section, content.tabs, currentTab)}
             </div>
           ) : hasImages && isGallerySection ? (
             <div>
