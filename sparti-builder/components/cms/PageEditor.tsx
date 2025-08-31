@@ -4,7 +4,7 @@ import { Button } from '../../../src/components/ui/button';
 import { Card } from '../../../src/components/ui/card';
 import { Input } from '../../../src/components/ui/input';
 import { Textarea } from '../../../src/components/ui/textarea';
-import { ArrowLeft, Save, ChevronLeft, ChevronRight, Upload, Plus, Trash2, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Save, ChevronLeft, ChevronRight, Upload, Plus, Trash2, Image as ImageIcon, List, Eye } from 'lucide-react';
 import { useToast } from '../../../src/hooks/use-toast';
 import { PagesService, type Page } from '../../services/PagesService';
 import { MediaService } from '../../services/MediaService';
@@ -36,6 +36,7 @@ export const PageEditor: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [selectedImageSection, setSelectedImageSection] = useState<string | null>(null);
+  const [showOutlines, setShowOutlines] = useState(true);
 
   useEffect(() => {
     if (id) {
@@ -130,7 +131,179 @@ export const PageEditor: React.FC = () => {
     }
   };
 
-  const fixSlideContent = async (sectionId: string) => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(`section-${sectionId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const getSectionDisplayName = (section: PageSection) => {
+    // Create user-friendly display names
+    const nameMap: Record<string, string> = {
+      'hero': 'Hero',
+      'trials': 'Begin Your Dance Journey', 
+      'about': 'About Us',
+      'vision-mission': 'Vision & Mission',
+      'programmes': 'Programmes & Examinations',
+      'competition': 'Competition Excellence',
+      'events': 'Events',
+      'achievements': 'Achievements',
+      'teachers': 'Our Teachers',
+      'reviews': 'Reviews',
+      'locations': 'Locations',
+      'gallery': 'Gallery'
+    };
+    
+    return nameMap[section.section_id] || section.section_type?.replace(/([A-Z])/g, ' $1').trim() || section.section_id;
+  };
+
+  const getSectionIcon = (section: PageSection) => {
+    const iconMap: Record<string, string> = {
+      'hero': '🎭',
+      'trials': '✨', 
+      'about': '📖',
+      'vision-mission': '🎯',
+      'programmes': '📚',
+      'competition': '🏆',
+      'events': '🎪',
+      'achievements': '🌟',
+      'teachers': '👩‍🏫',
+      'reviews': '💬',
+      'locations': '📍',
+      'gallery': '🖼️'
+    };
+    
+    return iconMap[section.section_id] || '📄';
+  };
+
+  const renderOutlinesSidebar = () => {
+    return (
+      <div className={`fixed left-0 top-0 h-full z-50 transition-transform duration-300 ${
+        showOutlines ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="bg-white border-r border-gray-200 shadow-lg h-full w-80 flex flex-col">
+          {/* Header */}
+          <div className="p-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <List className="w-5 h-5 text-blue-600" />
+                <h3 className="font-semibold text-gray-800">Page Outlines</h3>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowOutlines(false)}
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600 mt-1">
+              {sections.length} sections • Click to navigate
+            </p>
+          </div>
+
+          {/* Sections List */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-2">
+              {sections.map((section, index) => {
+                const hasContent = section.content && Object.keys(section.content).length > 0;
+                const hasSlides = section.content?.slides?.length > 0;
+                const hasTabs = section.content?.tabs?.length > 0;
+                const hasCards = section.content?.cards?.length > 0;
+                const hasImages = section.content?.images?.length > 0;
+                
+                return (
+                  <div
+                    key={section.id}
+                    className="group cursor-pointer p-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all"
+                    onClick={() => scrollToSection(section.id)}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="text-lg">{getSectionIcon(section)}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-medium text-gray-800 truncate">
+                            {getSectionDisplayName(section)}
+                          </h4>
+                          <span className="text-xs text-gray-400 ml-2">
+                            #{index + 1}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {section.section_id}
+                        </p>
+                        
+                        {/* Content Indicators */}
+                        <div className="flex items-center gap-1 mt-2">
+                          {hasSlides && (
+                            <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">
+                              {section.content.slides.length} slides
+                            </span>
+                          )}
+                          {hasTabs && (
+                            <span className="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded">
+                              {section.content.tabs.length} tabs
+                            </span>
+                          )}
+                          {hasCards && (
+                            <span className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">
+                              {section.content.cards.length} cards
+                            </span>
+                          )}
+                          {hasImages && (
+                            <span className="px-2 py-1 text-xs bg-orange-100 text-orange-700 rounded">
+                              {section.content.images.length} images
+                            </span>
+                          )}
+                          {!hasContent && (
+                            <span className="px-2 py-1 text-xs bg-gray-100 text-gray-500 rounded">
+                              empty
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-gray-100 bg-gray-50">
+            <div className="flex justify-between items-center text-sm text-gray-600">
+              <span>Page: {page?.title}</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/')}
+                className="text-xs"
+              >
+                <Eye className="w-3 h-3 mr-1" />
+                Preview
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderToggleButton = () => {
+    if (showOutlines) return null;
+    
+    return (
+      <Button
+        onClick={() => setShowOutlines(true)}
+        className="fixed left-4 top-4 z-50 bg-blue-600 hover:bg-blue-700 shadow-lg"
+        size="sm"
+      >
+        <List className="w-4 h-4 mr-1" />
+        Outlines
+      </Button>
+    );
+  };
     const correctSlides = [
       {
         title: "Where Dreams",
@@ -1500,47 +1673,65 @@ export const PageEditor: React.FC = () => {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="outline"
-              onClick={() => navigate('/admin/dashboard')}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Dashboard
-            </Button>
-            <div>
-              <h1 className="text-2xl font-bold">Edit Page: {page.title}</h1>
-              <p className="text-muted-foreground">/{page.slug}</p>
+    return (
+      <div className="min-h-screen bg-background">
+        {renderOutlinesSidebar()}
+        {renderToggleButton()}
+        
+        <div className={`transition-all duration-300 ${showOutlines ? 'ml-80' : 'ml-0'} p-6`}>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/admin/dashboard')}
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Dashboard
+                </Button>
+                <div>
+                  <h1 className="text-2xl font-bold">Edit Page: {page.title}</h1>
+                  <p className="text-muted-foreground">/{page.slug}</p>
+                </div>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowOutlines(!showOutlines)}
+                className="text-sm"
+              >
+                <List className="w-4 h-4 mr-1" />
+                {showOutlines ? 'Hide' : 'Show'} Outlines
+              </Button>
             </div>
+
+            {sections.length === 0 ? (
+              <Card className="p-8 text-center">
+                <p className="text-muted-foreground">No sections found for this page</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Sections will appear here once content is added to the page
+                </p>
+              </Card>
+            ) : (
+              <div className="space-y-6">
+                {Object.entries(groupedSections).map(([sectionType, sectionList]) => (
+                  <div key={sectionType} className="space-y-4">
+                    <h2 className="text-xl font-semibold border-b pb-2">
+                      {sectionType} ({sectionList.length} section{sectionList.length !== 1 ? 's' : ''})
+                    </h2>
+                    {sectionList.map((section) => (
+                      <div key={section.id} id={`section-${section.id}`}>
+                        {renderSectionEditor(section)}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
-
-        {sections.length === 0 ? (
-          <Card className="p-8 text-center">
-            <p className="text-muted-foreground">No sections found for this page</p>
-            <p className="text-sm text-muted-foreground mt-2">
-              Sections will appear here once content is added to the page
-            </p>
-          </Card>
-        ) : (
-          <div className="space-y-6">
-            {Object.entries(groupedSections).map(([sectionType, sectionList]) => (
-              <div key={sectionType} className="space-y-4">
-                <h2 className="text-xl font-semibold border-b pb-2">
-                  {sectionType} ({sectionList.length} section{sectionList.length !== 1 ? 's' : ''})
-                </h2>
-                {sectionList.map(renderSectionEditor)}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
-    </div>
-  );
+    );
 };
 
 export default PageEditor;
