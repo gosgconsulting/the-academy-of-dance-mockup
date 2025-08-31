@@ -14,69 +14,47 @@ export const SpartiToolbar: React.FC = () => {
   const handleSave = async () => {
     setIsSaving(true);
     setSaveMessage(null);
-    
+
     try {
+      // Extract modifications from the current DOM state
       const modifications = ContentExtractor.extractModifiedContent();
       
       if (modifications.size === 0) {
-        setSaveMessage({ type: 'error', text: 'No changes to save' });
+        setSaveMessage({ type: 'error', text: 'No changes detected to save.' });
         return;
       }
 
-      // Group modifications by section/component
-      const sectionChanges = new Map<string, any[]>();
-      
+      console.log(`Found ${modifications.size} modifications to save:`, modifications);
+
+      // Convert modifications to the format expected by FileSaveService
+      const modificationsList: any[] = [];
       modifications.forEach((change, elementId) => {
-        const mapping = SectionMappingService.findMappingByComponentId(elementId);
-        if (mapping) {
-          if (!sectionChanges.has(mapping.filePath)) {
-            sectionChanges.set(mapping.filePath, []);
-          }
-          sectionChanges.get(mapping.filePath)!.push(change);
+        const sectionMapping = SectionMappingService.findMappingByComponentId(elementId);
+        if (sectionMapping) {
+          modificationsList.push({
+            filePath: sectionMapping.filePath,
+            elements: [{
+              type: change.type || 'text',
+              newText: change.newText || change.value,
+              element: change.element
+            }]
+          });
         }
       });
 
-      // Save each modified section
-      let saveCount = 0;
-      for (const [filePath, changes] of sectionChanges) {
-        try {
-          // In a real implementation, you'd read the original file content first
-          // For demo purposes, we'll use a placeholder
-          const originalContent = '// Original component content would be loaded here';
-          
-          const componentData = ReactCodeGenerator.generateComponentCode(
-            originalContent, 
-            new Map(changes.map(change => [change.elementId, change]))
-          );
-          
-          const result = await FileSaveService.saveComponent(filePath, componentData, true);
-          
-          if (result.success) {
-            saveCount++;
-          } else {
-            console.error('Save failed for', filePath, result.message);
-          }
-        } catch (error) {
-          console.error('Error saving section:', filePath, error);
-        }
-      }
+      // Save modifications to Supabase database
+      const result = await FileSaveService.saveModifications(modificationsList);
 
-      if (saveCount > 0) {
-        setSaveMessage({ 
-          type: 'success', 
-          text: `Saved ${saveCount} section${saveCount > 1 ? 's' : ''} successfully` 
-        });
+      if (result.success) {
+        setSaveMessage({ type: 'success', text: result.message });
         ContentExtractor.clearHistory();
       } else {
-        setSaveMessage({ type: 'error', text: 'No sections could be saved' });
+        setSaveMessage({ type: 'error', text: `${result.message}${result.error ? ': ' + result.error : ''}` });
       }
 
     } catch (error) {
-      console.error('Save error:', error);
-      setSaveMessage({ 
-        type: 'error', 
-        text: 'Failed to save changes' 
-      });
+      console.error('Save operation failed:', error);
+      setSaveMessage({ type: 'error', text: `Save failed: ${error instanceof Error ? error.message : 'Unknown error'}` });
     } finally {
       setIsSaving(false);
       

@@ -9,6 +9,20 @@ export interface ContentChange {
   attributes?: Record<string, string>;
   oldValue?: any;
   newValue?: any;
+  newText?: string; // Added for compatibility
+  value?: string; // Added for compatibility
+}
+
+export interface ModificationSummary {
+  filePath: string;
+  originalContent: string;
+  elements: Array<{
+    type: string;
+    element?: HTMLElement;
+    newText?: string;
+    newImageUrl?: string;
+    newAltText?: string;
+  }>;
 }
 
 export class ContentExtractor {

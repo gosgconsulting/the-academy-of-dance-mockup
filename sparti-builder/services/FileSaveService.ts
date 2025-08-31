@@ -1,158 +1,195 @@
-import { ReactComponentData } from './ReactCodeGenerator';
+import { ModificationSummary } from './ContentExtractor';
+import { SupabaseContentService } from './SupabaseContentService';
 
 export interface SaveResult {
   success: boolean;
   message: string;
-  backupCreated?: string;
+  modifiedSections: string[];
+  error?: string;
 }
 
 export class FileSaveService {
-  private static readonly BACKUP_DIR = 'backups';
-
-  static async saveToFile(filePath: string, content: string): Promise<SaveResult> {
+  /**
+   * Save modifications to Supabase database
+   */
+  static async saveModifications(
+    modifications: ModificationSummary[]
+  ): Promise<SaveResult> {
+    const modifiedSections: string[] = [];
+    
     try {
-      // Check if File System Access API is available
-      if ('showSaveFilePicker' in window) {
-        return await this.saveWithFileSystemAPI(filePath, content);
-      } else {
-        // Fallback to download
-        return this.saveAsDownload(filePath, content);
+      // Group modifications by section for bulk save
+      const sectionUpdates: Array<{ sectionId: string; content: Record<string, any> }> = [];
+
+      for (const modification of modifications) {
+        // Extract section content from modifications
+        const sectionContent = this.extractSectionContent(modification);
+        if (sectionContent) {
+          sectionUpdates.push(sectionContent);
+          modifiedSections.push(sectionContent.sectionId);
+        }
       }
-    } catch (error) {
-      console.error('Error saving file:', error);
-      return {
-        success: false,
-        message: `Failed to save file: ${error instanceof Error ? error.message : 'Unknown error'}`
-      };
-    }
-  }
 
-  private static async saveWithFileSystemAPI(filePath: string, content: string): Promise<SaveResult> {
-    try {
-      const fileHandle = await (window as any).showSaveFilePicker({
-        suggestedName: filePath.split('/').pop(),
-        types: [
-          {
-            description: 'TypeScript React files',
-            accept: {
-              'text/typescript': ['.tsx', '.ts'],
-            },
-          },
-        ],
-      });
-
-      const writable = await fileHandle.createWritable();
-      await writable.write(content);
-      await writable.close();
-
-      return {
-        success: true,
-        message: 'File saved successfully'
-      };
-    } catch (error) {
-      if ((error as Error).name === 'AbortError') {
+      if (sectionUpdates.length === 0) {
         return {
           success: false,
-          message: 'Save operation cancelled by user'
+          message: 'No valid content modifications found',
+          modifiedSections,
+          error: 'No content to save'
         };
       }
-      throw error;
-    }
-  }
 
-  private static saveAsDownload(filePath: string, content: string): SaveResult {
-    const blob = new Blob([content], { type: 'text/typescript' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filePath.split('/').pop() || 'component.tsx';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+      // Save to Supabase
+      const result = await SupabaseContentService.saveBulkContent('index', sectionUpdates);
 
-    return {
-      success: true,
-      message: 'File downloaded successfully'
-    };
-  }
-
-  static async createBackup(filePath: string, originalContent: string): Promise<string> {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const fileName = filePath.split('/').pop()?.replace('.tsx', '') || 'component';
-    const backupFileName = `${fileName}-backup-${timestamp}.tsx`;
-    
-    try {
-      await this.saveToFile(`${this.BACKUP_DIR}/${backupFileName}`, originalContent);
-      return backupFileName;
-    } catch (error) {
-      console.warn('Could not create backup file:', error);
-      return '';
-    }
-  }
-
-  static async saveComponent(
-    filePath: string, 
-    componentData: ReactComponentData, 
-    createBackup: boolean = true
-  ): Promise<SaveResult> {
-    try {
-      const fullContent = this.assembleFullComponent(componentData);
-      
-      let backupFile = '';
-      if (createBackup) {
-        // In a real implementation, you'd read the existing file first
-        // For now, we'll skip backup creation
-        console.log('Backup would be created for:', filePath);
+      if (result.success) {
+        return {
+          success: true,
+          message: `Successfully updated ${modifiedSections.length} section(s) in database`,
+          modifiedSections
+        };
+      } else {
+        return {
+          success: false,
+          message: 'Failed to save to database',
+          modifiedSections,
+          error: result.error
+        };
       }
-
-      const saveResult = await this.saveToFile(filePath, fullContent);
-      
-      if (saveResult.success && backupFile) {
-        saveResult.backupCreated = backupFile;
-      }
-
-      return saveResult;
     } catch (error) {
+      console.error('Save operation failed:', error);
       return {
         success: false,
-        message: `Failed to save component: ${error instanceof Error ? error.message : 'Unknown error'}`
+        message: 'Failed to save modifications',
+        modifiedSections,
+        error: error instanceof Error ? error.message : 'Unknown error'
       };
     }
   }
 
-  private static assembleFullComponent(componentData: ReactComponentData): string {
-    return `${componentData.imports.join('\n')}
-
-${componentData.content}
-
-${componentData.exportLine}`;
-  }
-
-  static async saveImage(imageBlob: Blob, fileName: string): Promise<string> {
+  /**
+   * Extract section content from modification data
+   */
+  private static extractSectionContent(modification: ModificationSummary): {
+    sectionId: string;
+    content: Record<string, any>;
+  } | null {
     try {
-      // Create a data URL for the image
-      const dataUrl = await this.blobToDataUrl(imageBlob);
-      
-      // In a real implementation, you'd save to public/lovable-uploads/
-      // For now, we'll store in localStorage and return a path
-      const imagePath = `/lovable-uploads/${fileName}`;
-      localStorage.setItem(`image_${fileName}`, dataUrl);
-      
-      return imagePath;
+      // Look for section identifier in the modification
+      const sectionId = this.getSectionIdFromModification(modification);
+      if (!sectionId) return null;
+
+      // Build content object from modifications
+      const content: Record<string, any> = {};
+
+      modification.elements.forEach(element => {
+        if (element.type === 'text' && element.newText) {
+          // Determine the content property based on element attributes or position
+          const contentKey = this.getContentKey(element, sectionId);
+          content[contentKey] = element.newText;
+        } else if (element.type === 'image' && element.newImageUrl) {
+          content.imageUrl = element.newImageUrl;
+          if (element.newAltText) {
+            content.imageAlt = element.newAltText;
+          }
+        }
+      });
+
+      return { sectionId, content };
     } catch (error) {
-      console.error('Error saving image:', error);
-      throw new Error('Failed to save image');
+      console.error('Error extracting section content:', error);
+      return null;
     }
   }
 
-  private static blobToDataUrl(blob: Blob): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
+  /**
+   * Get section ID from modification data
+   */
+  private static getSectionIdFromModification(modification: ModificationSummary): string | null {
+    // Extract from file path (e.g., HeroSection.tsx -> hero)
+    if (modification.filePath.includes('HeroSection')) return 'hero';
+    if (modification.filePath.includes('AboutUsSection')) return 'about';
+    if (modification.filePath.includes('TrialsSection')) return 'trials';
+    if (modification.filePath.includes('VisionMissionSection')) return 'vision-mission';
+    if (modification.filePath.includes('ProgrammesAndExamsSection')) return 'programmes';
+    if (modification.filePath.includes('CompetitionExcellenceSection')) return 'competition';
+    if (modification.filePath.includes('EventsSection')) return 'events';
+    if (modification.filePath.includes('AchievementsSection')) return 'achievements';
+    if (modification.filePath.includes('TeachersSection')) return 'teachers';
+    if (modification.filePath.includes('ReviewsSection')) return 'reviews';
+    if (modification.filePath.includes('LocationsSection')) return 'locations';
+    if (modification.filePath.includes('GallerySection')) return 'gallery';
+
+    // Try to extract from element data-sparti-section attributes
+    for (const element of modification.elements) {
+      const sectionAttr = element.element?.getAttribute?.('data-sparti-section');
+      if (sectionAttr) return sectionAttr;
+      
+      // Look in parent elements
+      let parent = element.element?.parentElement;
+      while (parent) {
+        const parentSection = parent.getAttribute?.('data-sparti-section');
+        if (parentSection) return parentSection;
+        parent = parent.parentElement;
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Determine content key based on element and section
+   */
+  private static getContentKey(element: any, sectionId: string): string {
+    // Check for specific content attributes
+    const contentAttr = element.element?.getAttribute?.('data-content-key');
+    if (contentAttr) return contentAttr;
+
+    // Default mappings based on element type and section
+    const tagName = element.element?.tagName?.toLowerCase();
+    const className = element.element?.className || '';
+
+    if (tagName === 'h1' || className.includes('title')) return 'title';
+    if (tagName === 'h2' || className.includes('subtitle')) return 'subtitle';
+    if (className.includes('description') || tagName === 'p') return 'description';
+    if (className.includes('vision')) return 'vision';
+    if (className.includes('mission')) return 'mission';
+
+    // Fallback
+    return 'content';
+  }
+
+  /**
+   * Save individual section content
+   */
+  static async saveSectionContent(
+    sectionId: string,
+    content: Record<string, any>
+  ): Promise<SaveResult> {
+    try {
+      const result = await SupabaseContentService.saveSectionContent('index', sectionId, content);
+
+      if (result.success) {
+        return {
+          success: true,
+          message: `Successfully updated ${sectionId} section`,
+          modifiedSections: [sectionId]
+        };
+      } else {
+        return {
+          success: false,
+          message: 'Failed to save section content',
+          modifiedSections: [],
+          error: result.error
+        };
+      }
+    } catch (error) {
+      return {
+        success: false,
+        message: 'Failed to save section content',
+        modifiedSections: [],
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
   }
 }
