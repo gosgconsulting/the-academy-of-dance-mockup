@@ -17,7 +17,7 @@ const SpartiCMSWrapperContent: React.FC<SpartiCMSWrapperProps> = ({ children }) 
     return (
       <SpartiBuilder config={{ 
         enabled: true, 
-        toolbar: !isAdminArea, 
+        toolbar: false, // Remove toolbar for cleaner experience
         autoDetect: true,
         aiAgentAlwaysOpen: true // Always show AI Agent for authenticated users
       }}>
