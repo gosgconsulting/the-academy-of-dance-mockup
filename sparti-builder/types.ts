@@ -2,7 +2,6 @@ export interface SpartiBuilderConfig {
   enabled?: boolean;
   toolbar?: boolean;
   autoDetect?: boolean;
-  aiAgentAlwaysOpen?: boolean;
 }
 
 export type ElementType = 

@@ -1,12 +1,11 @@
 // Universal Sparti Builder Plugin - Works on any website
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { SpartiBuilderProvider } from './SpartiBuilderProvider';
 import { SpartiToolbar } from './SpartiToolbar';
 import { EditingOverlay } from './EditingOverlay';
 import { ElementSelector } from './ElementSelector';
 import { ContentEditPanel } from './ContentEditPanel';
-import { AIAgentInterface } from '../ai-agent/components/AIAgentInterface';
-import { AIAgentToggle } from '../ai-agent/components/AIAgentToggle';
+import { AIElementEditor } from './AIElementEditor';
 import { SpartiBuilderConfig } from '../types';
 import { UniversalElementDetector } from '../core/universal-detector';
 import { SpartiStyleManager } from '../styles/sparti-styles';
@@ -22,7 +21,6 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
   config = { enabled: true, toolbar: true, autoDetect: true }
 }) => {
   console.log('SpartiBuilder rendering with config:', config);
-  const [isAIAgentOpen, setIsAIAgentOpen] = useState(config.aiAgentAlwaysOpen || false);
   
   useEffect(() => {
     try {
@@ -34,11 +32,6 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
       SpartiStyleManager.injectStyles();
       console.log('Sparti styles injected successfully');
 
-      // Auto-open AI Agent if configured
-      if (config.aiAgentAlwaysOpen) {
-        setIsAIAgentOpen(true);
-      }
-
       // Cleanup on unmount
       return () => {
         SpartiStyleManager.removeStyles();
@@ -46,7 +39,7 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
     } catch (error) {
       console.error('Error initializing Sparti Builder:', error);
     }
-  }, [config.aiAgentAlwaysOpen]);
+  }, []);
 
   if (!config.enabled) {
     return <>{children}</>;
@@ -62,16 +55,7 @@ export const SpartiBuilder: React.FC<SpartiBuilderProps> = ({
           </ElementSelector>
           <EditingOverlay />
           <ContentEditPanel />
-          <AIAgentInterface 
-            isOpen={isAIAgentOpen}
-            onClose={() => setIsAIAgentOpen(false)}
-          />
-          
-          {/* AI Agent Toggle Button */}
-          <AIAgentToggle 
-            isOpen={isAIAgentOpen}
-            onClick={() => setIsAIAgentOpen(true)}
-          />
+          <AIElementEditor />
         </div>
       </div>
     </SpartiBuilderProvider>
