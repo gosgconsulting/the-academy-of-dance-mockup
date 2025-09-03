@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env
+wordpress-content/plugins/akismet
+wordpress-content/plugins/hello.php
+wordpress-content/plugins/index.php
+wordpress-content/themes
+wordpress-content/index.php
