@@ -1,0 +1,42 @@
+{
+  "slug": "terms-conditions",
+  "title": "Terms & Conditions",
+  "content": {
+    "text": {
+      "terms.title": "Terms & Conditions",
+      "terms.lastUpdatedLabel": "Last updated:",
+      "terms.toc.title": "Table of Contents",
+      "terms.toc.item1": "1. General Terms",
+      "terms.toc.item2": "2. Dance Classes & Services",
+      "terms.toc.item3": "3. Payment Terms",
+      "terms.toc.item4": "4. Health & Safety",
+      "terms.toc.item5": "5. Intellectual Property",
+      "terms.toc.item6": "6. Liability & Insurance",
+      "terms.toc.item7": "7. Termination",
+      "terms.section1.title": "1. General Terms",
+      "terms.section2.title": "2. Dance Classes & Services",
+      "terms.section3.title": "3. Payment Terms",
+      "terms.section4.title": "4. Health & Safety",
+      "terms.section5.title": "5. Intellectual Property",
+      "terms.section6.title": "6. Liability & Insurance",
+      "terms.section7.title": "7. Termination",
+      "terms.contactLaw.title": "Contact Information & Governing Law",
+
+      "nav.menu.home": "Home",
+      "nav.menu.trials": "Trials",
+      "nav.menu.about": "About Us",
+      "nav.menu.programmes": "Programmes",
+      "nav.menu.reviews": "Reviews",
+      "nav.menu.teachers": "Teachers",
+      "nav.menu.gallery": "Gallery",
+      "nav.menu.blog": "Blog",
+      "nav.cta": "Book Now!",
+      "footer.tagline": "Where dreams take flight through the art of dance",
+      "footer.copyright": "© 2024 The Academy of Dance. All rights reserved."
+    },
+    "images": {
+      "nav.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png",
+      "footer.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png"
+    }
+  }
+}

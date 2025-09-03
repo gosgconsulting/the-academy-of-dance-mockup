@@ -9,30 +9,30 @@ const PrivacyPolicy = () => {
       
       <div className="container mx-auto px-6 py-12 pt-24 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Privacy Policy</h1>
-          <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+          <h1 data-key="privacy.title" className="text-4xl font-bold text-foreground mb-4">Privacy Policy</h1>
+          <p className="text-muted-foreground"><span data-key="privacy.lastUpdatedLabel">Last updated:</span> {new Date().toLocaleDateString()}</p>
         </div>
 
         <ScrollArea className="h-auto">
           <div className="space-y-8">
             {/* Table of Contents */}
             <div className="bg-card p-6 rounded-lg border">
-              <h2 className="text-xl font-semibold mb-4">Table of Contents</h2>
+              <h2 data-key="privacy.toc.title" className="text-xl font-semibold mb-4">Table of Contents</h2>
               <ul className="space-y-2 text-sm">
-                <li><a href="#information-collection" className="text-primary hover:underline">1. Information Collection</a></li>
-                <li><a href="#use-of-information" className="text-primary hover:underline">2. Use of Information</a></li>
-                <li><a href="#information-sharing" className="text-primary hover:underline">3. Information Sharing</a></li>
-                <li><a href="#data-security" className="text-primary hover:underline">4. Data Security</a></li>
-                <li><a href="#user-rights" className="text-primary hover:underline">5. Your Rights</a></li>
-                <li><a href="#cookies-analytics" className="text-primary hover:underline">6. Cookies & Analytics</a></li>
-                <li><a href="#contact-information" className="text-primary hover:underline">7. Contact Information</a></li>
+                <li><a data-key="privacy.toc.item1" href="#information-collection" className="text-primary hover:underline">1. Information Collection</a></li>
+                <li><a data-key="privacy.toc.item2" href="#use-of-information" className="text-primary hover:underline">2. Use of Information</a></li>
+                <li><a data-key="privacy.toc.item3" href="#information-sharing" className="text-primary hover:underline">3. Information Sharing</a></li>
+                <li><a data-key="privacy.toc.item4" href="#data-security" className="text-primary hover:underline">4. Data Security</a></li>
+                <li><a data-key="privacy.toc.item5" href="#user-rights" className="text-primary hover:underline">5. Your Rights</a></li>
+                <li><a data-key="privacy.toc.item6" href="#cookies-analytics" className="text-primary hover:underline">6. Cookies & Analytics</a></li>
+                <li><a data-key="privacy.toc.item7" href="#contact-information" className="text-primary hover:underline">7. Contact Information</a></li>
               </ul>
             </div>
 
             {/* Introduction */}
             <div className="bg-primary/5 p-6 rounded-lg border">
-              <h2 className="text-xl font-semibold mb-4">Our Commitment to Your Privacy</h2>
-              <p className="text-muted-foreground">
+              <h2 data-key="privacy.intro.title" className="text-xl font-semibold mb-4">Our Commitment to Your Privacy</h2>
+              <p data-key="privacy.intro.body" className="text-muted-foreground">
                 The Academy of Dance is committed to protecting your personal data in compliance with Singapore's Personal Data Protection Act (PDPA) 2012. 
                 This Privacy Policy explains how we collect, use, protect, and share your personal information when you use our services.
               </p>
@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
 
             {/* Information Collection */}
             <section id="information-collection">
-              <h2 className="text-2xl font-semibold mb-4">1. Information Collection</h2>
+              <h2 data-key="privacy.section1.title" className="text-2xl font-semibold mb-4">1. Information Collection</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Personal Data We Collect</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
 
             {/* Use of Information */}
             <section id="use-of-information">
-              <h2 className="text-2xl font-semibold mb-4">2. Use of Information</h2>
+              <h2 data-key="privacy.section2.title" className="text-2xl font-semibold mb-4">2. Use of Information</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Primary Uses</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
 
             {/* Information Sharing */}
             <section id="information-sharing">
-              <h2 className="text-2xl font-semibold mb-4">3. Information Sharing</h2>
+              <h2 data-key="privacy.section3.title" className="text-2xl font-semibold mb-4">3. Information Sharing</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Third Parties We Share Data With</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -130,7 +130,7 @@ const PrivacyPolicy = () => {
 
             {/* Data Security */}
             <section id="data-security">
-              <h2 className="text-2xl font-semibold mb-4">4. Data Security</h2>
+              <h2 data-key="privacy.section4.title" className="text-2xl font-semibold mb-4">4. Data Security</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Security Measures</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -160,7 +160,7 @@ const PrivacyPolicy = () => {
 
             {/* User Rights */}
             <section id="user-rights">
-              <h2 className="text-2xl font-semibold mb-4">5. Your Rights Under Singapore PDPA</h2>
+              <h2 data-key="privacy.section5.title" className="text-2xl font-semibold mb-4">5. Your Rights Under Singapore PDPA</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Your Rights Include</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -190,7 +190,7 @@ const PrivacyPolicy = () => {
 
             {/* Cookies & Analytics */}
             <section id="cookies-analytics">
-              <h2 className="text-2xl font-semibold mb-4">6. Cookies & Website Analytics</h2>
+              <h2 data-key="privacy.section6.title" className="text-2xl font-semibold mb-4">6. Cookies & Website Analytics</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Types of Cookies We Use</h3>
                 <ul className="list-disc pl-6 space-y-2">
@@ -222,7 +222,7 @@ const PrivacyPolicy = () => {
 
             {/* Contact Information */}
             <section id="contact-information">
-              <h2 className="text-2xl font-semibold mb-4">7. Contact Information & Complaints</h2>
+              <h2 data-key="privacy.section7.title" className="text-2xl font-semibold mb-4">7. Contact Information & Complaints</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Data Protection Officer</h3>
                 <div className="bg-card p-4 rounded border">
@@ -254,7 +254,7 @@ const PrivacyPolicy = () => {
 
             {/* Final Notes */}
             <div className="bg-primary/5 p-6 rounded-lg border mt-8">
-              <h2 className="text-xl font-semibold mb-4">Additional Information</h2>
+              <h2 data-key="privacy.additional.title" className="text-xl font-semibold mb-4">Additional Information</h2>
               <div className="space-y-2 text-muted-foreground">
                 <p>
                   <strong>Children's Privacy:</strong> We take special care with children's personal data. 

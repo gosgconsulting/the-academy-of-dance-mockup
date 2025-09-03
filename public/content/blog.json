@@ -1,0 +1,25 @@
+{
+  "slug": "blog",
+  "title": "Blog",
+  "content": {
+    "text": {
+      "blog.hero.title": "Our Blogs",
+      "blog.hero.subtitle": "Insights, Tips, and Stories from the World of Dance",
+      "nav.menu.home": "Home",
+      "nav.menu.trials": "Trials",
+      "nav.menu.about": "About Us",
+      "nav.menu.programmes": "Programmes",
+      "nav.menu.reviews": "Reviews",
+      "nav.menu.teachers": "Teachers",
+      "nav.menu.gallery": "Gallery",
+      "nav.menu.blog": "Blog",
+      "nav.cta": "Book Now!",
+      "footer.tagline": "Where dreams take flight through the art of dance",
+      "footer.copyright": "© 2024 The Academy of Dance. All rights reserved."
+    },
+    "images": {
+      "nav.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png",
+      "footer.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "privacy-policy",
+  "title": "Privacy Policy",
+  "content": {
+    "text": {
+      "privacy.title": "Privacy Policy",
+      "privacy.lastUpdatedLabel": "Last updated:",
+      "privacy.toc.title": "Table of Contents",
+      "privacy.toc.item1": "1. Information Collection",
+      "privacy.toc.item2": "2. Use of Information",
+      "privacy.toc.item3": "3. Information Sharing",
+      "privacy.toc.item4": "4. Data Security",
+      "privacy.toc.item5": "5. Your Rights",
+      "privacy.toc.item6": "6. Cookies & Analytics",
+      "privacy.toc.item7": "7. Contact Information",
+      "privacy.intro.title": "Our Commitment to Your Privacy",
+      "privacy.intro.body": "The Academy of Dance is committed to protecting your personal data in compliance with Singapore's Personal Data Protection Act (PDPA) 2012. This Privacy Policy explains how we collect, use, protect, and share your personal information when you use our services.",
+      "privacy.section1.title": "1. Information Collection",
+      "privacy.section2.title": "2. Use of Information",
+      "privacy.section3.title": "3. Information Sharing",
+      "privacy.section4.title": "4. Data Security",
+      "privacy.section5.title": "5. Your Rights Under Singapore PDPA",
+      "privacy.section6.title": "6. Cookies & Website Analytics",
+      "privacy.section7.title": "7. Contact Information & Complaints",
+      "privacy.additional.title": "Additional Information",
+
+      "nav.menu.home": "Home",
+      "nav.menu.trials": "Trials",
+      "nav.menu.about": "About Us",
+      "nav.menu.programmes": "Programmes",
+      "nav.menu.reviews": "Reviews",
+      "nav.menu.teachers": "Teachers",
+      "nav.menu.gallery": "Gallery",
+      "nav.menu.blog": "Blog",
+      "nav.cta": "Book Now!",
+      "footer.tagline": "Where dreams take flight through the art of dance",
+      "footer.copyright": "© 2024 The Academy of Dance. All rights reserved."
+    },
+    "images": {
+      "nav.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png",
+      "footer.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png"
+    }
+  }
+}

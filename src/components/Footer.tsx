@@ -9,12 +9,13 @@ const Footer = () => {
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <img 
+                data-key="footer.logo"
                 src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
                 alt="The Academy of Dance" 
                 className="h-12 md:h-16 w-auto object-contain" 
               />
             </div>
-            <p className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
+            <p data-key="footer.tagline" className="text-gray-300 mb-6">Where dreams take flight through the art of dance</p>
             
             <div className="flex justify-center space-x-4">
               <a href="https://www.facebook.com/theacademyofdancesg" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
@@ -38,7 +39,7 @@ const Footer = () => {
             <a href="/terms-conditions" className="hover:text-secondary transition-colors">Terms & Conditions</a>
             <a href="/privacy-policy" className="hover:text-secondary transition-colors">Privacy Policy</a>
           </div>
-          <div className="text-gray-400 text-sm">
+          <div className="text-gray-400 text-sm" data-key="footer.copyright">
             © 2024 The Academy of Dance. All rights reserved.
           </div>
         </div>

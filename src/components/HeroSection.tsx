@@ -18,19 +18,19 @@ const HeroSection = ({
   return <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         {heroImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
-            <img src={image} alt={`Dance performance ${index + 1}`} className="w-full h-full object-cover" />
+            <img data-key={`home.hero.images.${index}`} src={image} alt={`Dance performance ${index + 1}`} className="w-full h-full object-cover" />
           </div>)}
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
       
       <div className="relative z-10 text-center px-6 animate-fade-up flex flex-col items-center">
         <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 text-center">
-          Where Dreams
-          <span className="text-secondary block text-center">Take Flight</span>
+          <span data-key="home.hero.title1">Where Dreams</span>
+          <span data-key="home.hero.title2" className="text-secondary block text-center">Take Flight</span>
         </h1>
-        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">Singapore’s premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.</p>
+        <p data-key="home.hero.description" className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">Singapore’s premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.</p>
         <div className="flex justify-center items-center">
-          <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
+          <Button data-key="home.hero.ctaText" onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
             Start Your Journey
           </Button>
         </div>

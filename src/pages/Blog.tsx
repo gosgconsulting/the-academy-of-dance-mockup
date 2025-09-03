@@ -119,8 +119,8 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-12">
         <div className="container mx-auto px-4 text-center text-foreground">
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0 text-dance-bronze">Our Blogs</h1>
-          <p className="text-lg md:text-xl mb-0 max-w-2xl mx-auto font-inter text-gray-600">
+          <h1 data-key="blog.hero.title" className="text-4xl md:text-5xl font-playfair font-bold mb-4 mx-[4px] my-0 text-dance-bronze">Our Blogs</h1>
+          <p data-key="blog.hero.subtitle" className="text-lg md:text-xl mb-0 max-w-2xl mx-auto font-inter text-gray-600">
             Insights, Tips, and Stories from the World of Dance
           </p>
         </div>

@@ -9,29 +9,29 @@ const TermsConditions = () => {
       
       <div className="container mx-auto px-6 py-12 pt-24 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Terms & Conditions</h1>
-          <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+          <h1 data-key="terms.title" className="text-4xl font-bold text-foreground mb-4">Terms & Conditions</h1>
+          <p className="text-muted-foreground"><span data-key="terms.lastUpdatedLabel">Last updated:</span> {new Date().toLocaleDateString()}</p>
         </div>
 
         <ScrollArea className="h-auto">
           <div className="space-y-8">
             {/* Table of Contents */}
             <div className="bg-card p-6 rounded-lg border">
-              <h2 className="text-xl font-semibold mb-4">Table of Contents</h2>
+              <h2 data-key="terms.toc.title" className="text-xl font-semibold mb-4">Table of Contents</h2>
               <ul className="space-y-2 text-sm">
-                <li><a href="#general-terms" className="text-primary hover:underline">1. General Terms</a></li>
-                <li><a href="#dance-classes" className="text-primary hover:underline">2. Dance Classes & Services</a></li>
-                <li><a href="#payment-terms" className="text-primary hover:underline">3. Payment Terms</a></li>
-                <li><a href="#health-safety" className="text-primary hover:underline">4. Health & Safety</a></li>
-                <li><a href="#intellectual-property" className="text-primary hover:underline">5. Intellectual Property</a></li>
-                <li><a href="#liability-insurance" className="text-primary hover:underline">6. Liability & Insurance</a></li>
-                <li><a href="#termination" className="text-primary hover:underline">7. Termination</a></li>
+                <li><a data-key="terms.toc.item1" href="#general-terms" className="text-primary hover:underline">1. General Terms</a></li>
+                <li><a data-key="terms.toc.item2" href="#dance-classes" className="text-primary hover:underline">2. Dance Classes & Services</a></li>
+                <li><a data-key="terms.toc.item3" href="#payment-terms" className="text-primary hover:underline">3. Payment Terms</a></li>
+                <li><a data-key="terms.toc.item4" href="#health-safety" className="text-primary hover:underline">4. Health & Safety</a></li>
+                <li><a data-key="terms.toc.item5" href="#intellectual-property" className="text-primary hover:underline">5. Intellectual Property</a></li>
+                <li><a data-key="terms.toc.item6" href="#liability-insurance" className="text-primary hover:underline">6. Liability & Insurance</a></li>
+                <li><a data-key="terms.toc.item7" href="#termination" className="text-primary hover:underline">7. Termination</a></li>
               </ul>
             </div>
 
             {/* General Terms */}
             <section id="general-terms">
-              <h2 className="text-2xl font-semibold mb-4">1. General Terms</h2>
+              <h2 data-key="terms.section1.title" className="text-2xl font-semibold mb-4">1. General Terms</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   By accessing and using The Academy of Dance's services, website, and facilities, you agree to be bound by these Terms and Conditions. These terms constitute a legally binding agreement between you and The Academy of Dance.
@@ -47,7 +47,7 @@ const TermsConditions = () => {
 
             {/* Dance Classes & Services */}
             <section id="dance-classes">
-              <h2 className="text-2xl font-semibold mb-4">2. Dance Classes & Services</h2>
+              <h2 data-key="terms.section2.title" className="text-2xl font-semibold mb-4">2. Dance Classes & Services</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Class Enrollment</h3>
                 <p>
@@ -88,7 +88,7 @@ const TermsConditions = () => {
 
             {/* Payment Terms */}
             <section id="payment-terms">
-              <h2 className="text-2xl font-semibold mb-4">3. Payment Terms</h2>
+              <h2 data-key="terms.section3.title" className="text-2xl font-semibold mb-4">3. Payment Terms</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Registration and Deposits</h3>
                 <p>
@@ -114,7 +114,7 @@ const TermsConditions = () => {
 
             {/* Health & Safety */}
             <section id="health-safety">
-              <h2 className="text-2xl font-semibold mb-4">4. Health & Safety</h2>
+              <h2 data-key="terms.section4.title" className="text-2xl font-semibold mb-4">4. Health & Safety</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Medical Clearance</h3>
                 <p>
@@ -140,7 +140,7 @@ const TermsConditions = () => {
 
             {/* Intellectual Property */}
             <section id="intellectual-property">
-              <h2 className="text-2xl font-semibold mb-4">5. Intellectual Property</h2>
+              <h2 data-key="terms.section5.title" className="text-2xl font-semibold mb-4">5. Intellectual Property</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Photography and Videography</h3>
                 <p>
@@ -161,7 +161,7 @@ const TermsConditions = () => {
 
             {/* Liability & Insurance */}
             <section id="liability-insurance">
-              <h2 className="text-2xl font-semibold mb-4">6. Liability & Insurance</h2>
+              <h2 data-key="terms.section6.title" className="text-2xl font-semibold mb-4">6. Liability & Insurance</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Limitation of Liability</h3>
                 <p>
@@ -182,7 +182,7 @@ const TermsConditions = () => {
 
             {/* Termination */}
             <section id="termination">
-              <h2 className="text-2xl font-semibold mb-4">7. Termination</h2>
+              <h2 data-key="terms.section7.title" className="text-2xl font-semibold mb-4">7. Termination</h2>
               <div className="space-y-4 text-muted-foreground">
                 <h3 className="text-lg font-medium text-foreground">Withdrawal Notice</h3>
                 <p>
@@ -203,7 +203,7 @@ const TermsConditions = () => {
 
             {/* Contact and Governing Law */}
             <div className="bg-card p-6 rounded-lg border mt-8">
-              <h2 className="text-xl font-semibold mb-4">Contact Information & Governing Law</h2>
+              <h2 data-key="terms.contactLaw.title" className="text-xl font-semibold mb-4">Contact Information & Governing Law</h2>
               <div className="space-y-2 text-muted-foreground">
                 <p><strong>The Academy of Dance</strong></p>
                 <p>Email: info@theacademyofdance.com.sg</p>

@@ -1,0 +1,32 @@
+{
+  "slug": "index",
+  "title": "Home",
+  "content": {
+    "text": {
+      "home.hero.title1": "Where Dreams",
+      "home.hero.title2": "Take Flight",
+      "home.hero.description": "Singapore’s premium ballet and dance academy, nurturing artistic excellence and inspiring confidence through the transformative power of dance.",
+      "home.hero.ctaText": "Start Your Journey",
+      "nav.menu.home": "Home",
+      "nav.menu.trials": "Trials",
+      "nav.menu.about": "About Us",
+      "nav.menu.programmes": "Programmes",
+      "nav.menu.reviews": "Reviews",
+      "nav.menu.teachers": "Teachers",
+      "nav.menu.gallery": "Gallery",
+      "nav.menu.blog": "Blog",
+      "nav.cta": "Book Now!",
+      "footer.tagline": "Where dreams take flight through the art of dance",
+      "footer.copyright": "© 2024 The Academy of Dance. All rights reserved."
+    },
+    "images": {
+      "home.hero.images.0": "/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png",
+      "home.hero.images.1": "/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png",
+      "home.hero.images.2": "/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png",
+      "home.hero.images.3": "/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png",
+      "home.hero.images.4": "/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png",
+      "nav.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png",
+      "footer.logo": "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png"
+    }
+  }
+}
