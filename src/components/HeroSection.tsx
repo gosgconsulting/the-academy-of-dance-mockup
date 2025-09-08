@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Import images
-import image1 from "../assets/hero-banner/AAL_5683.jpg";
-import image2 from "../assets/hero-banner/IMG_4268.jpg";
-import image3 from "../assets/hero-banner/_MRB1729-2.jpg";
+// Define image paths
+const heroImagePaths = {
+  image1: new URL('../assets/hero-banner/AAL_5683.jpg', import.meta.url).href,
+  image2: new URL('../assets/hero-banner/IMG_4268.jpg', import.meta.url).href,
+  image3: new URL('../assets/hero-banner/_MRB1729-2.jpg', import.meta.url).href
+};
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
@@ -16,9 +18,9 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
-    image1,
-    image2,
-    image3
+    heroImagePaths.image1,
+    heroImagePaths.image2,
+    heroImagePaths.image3
   ];
   useEffect(() => {
     const interval = setInterval(() => {
