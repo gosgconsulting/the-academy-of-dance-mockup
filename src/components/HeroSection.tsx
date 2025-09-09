@@ -8,7 +8,11 @@ const HeroSection = ({
   scrollToSection
 }: HeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = ['/lovable-uploads/f8f4ebc7-577a-4261-840b-20a866629516.png', '/lovable-uploads/fafdb3ad-f058-4c32-9065-7d540d362cd7.png', '/lovable-uploads/0b3fd9e6-e4f5-4482-9171-5515f1985ac2.png', '/lovable-uploads/78398105-9a05-4e07-883b-b8b742deb89f.png', '/lovable-uploads/21352692-5e60-425a-9355-ba3fc13af268.png'];
+  const heroImages = [
+    '/src/assets/hero-banner/AAL_5683.jpg',
+    '/src/assets/hero-banner/IMG_4268.jpg',
+    '/src/assets/hero-banner/_MRB1729-2.jpg'
+  ];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);

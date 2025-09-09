@@ -56,49 +56,111 @@ const EventsSection = () => {
                   <CarouselContent>
                     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                       <EventCard
-                        title="Melbourne Dance Exchange"
-                        subtitle="International Competition"
-                        description="Our students participated in the prestigious Melbourne Dance Exchange, showcasing their talent on an international stage."
+                        title="Ballet Masterclass 2025"
+                        subtitle="With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila"
+                        description="An exceptional opportunity for our dancers to learn from world-class ballet professionals. This masterclass featured technical workshops, artistic development sessions, and personalized feedback from renowned principal dancers."
                         images={[
-                          "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
-                          "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png",
-                          "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png",
+                          "/src/assets/past-events/Ballet Masterclass 2025 (With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila)/6D4A9100.JPG",
+                          "/src/assets/past-events/Ballet Masterclass 2025 (With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila)/6D4A9145.JPG",
+                          "/src/assets/past-events/Ballet Masterclass 2025 (With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila)/6D4A9160.JPG",
+                          "/src/assets/past-events/Ballet Masterclass 2025 (With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila)/6D4A9165.JPG"
                         ]}
                       />
                     </CarouselItem>
                     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                       <EventCard
-                        title="Annual Recital"
-                        subtitle="December 2024"
-                        description="Our biggest event of the year where all our students showcase their progress and talent in a professional theater setting."
+                        title="Hong Kong Disneyland Performance"
+                        subtitle="International Performance Tour"
+                        description="Our talented dancers had the incredible opportunity to perform at Hong Kong Disneyland, showcasing their skills on an international stage and representing Singapore with pride and excellence."
                         images={[
-                          "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/2-457.JPEG",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/2-463.JPEG",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/2-478.JPEG",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/IMG_4270.JPG",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/IMG_4273.JPG",
+                          "/src/assets/past-events/Hong Kong Disneyland Performance/IMG_4300.JPG"
+                        ]}
+                      />
+                    </CarouselItem>
+                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                        title="Mother's Day"
+                        subtitle="Special Celebration Performance"
+                        description="A heartwarming celebration honoring the incredible mothers in our dance community. Our students prepared special performances to express gratitude for the endless support and love they receive."
+                        images={[
+                          "/src/assets/past-events/Mother's Day/2f4b926e-1ad0-4088-9cdc-9dcc7434b68b.JPG",
+                          "/src/assets/past-events/Mother's Day/37c10229-3599-4e31-a727-13af7973486b.JPG",
+                          "/src/assets/past-events/Mother's Day/667dfab3-7559-4e64-847c-ed5fd272de21.JPG",
+                          "/src/assets/past-events/Mother's Day/e690cbe0-2f64-4a1f-821c-39e0c9c3c232.JPG"
+                        ]}
+                      />
+                    </CarouselItem>
+                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                        title="NDP 2025"
+                        subtitle="National Day Parade Performance"
+                        description="Our dancers proudly participated in Singapore's National Day Parade 2025, contributing to the celebration of our nation's independence with spectacular choreography and patriotic performances."
+                        images={[
+                          "/src/assets/past-events/NDP 2025/29c71469-deed-4ca9-9bda-854f08077920.JPG",
+                          "/src/assets/past-events/NDP 2025/2eecb583-62c9-45dc-81db-7128fd03b7d1 2.JPG",
+                          "/src/assets/past-events/NDP 2025/466fc6d1-73dc-4007-abc4-445a87ae293b.JPG",
+                          "/src/assets/past-events/NDP 2025/86e69525-8979-4d39-bff0-03ecf5bd29f7.JPG",
+                          "/src/assets/past-events/NDP 2025/8ebe72d2-eae0-44ba-ab36-2c45d3180554.JPG",
+                          "/src/assets/past-events/NDP 2025/b213052b-409d-4558-b371-bfd53de08d79.JPG"
+                        ]}
+                      />
+                    </CarouselItem>
+                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                        title="The Nutcracker (Concert) 2024"
+                        subtitle="Annual Holiday Performance"
+                        description="Our annual production of the beloved holiday classic, featuring our students in a magical journey through the Land of Sweets. This professional-quality performance showcased the technical skill and artistic growth of our dancers."
+                        images={[
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/AAL_3737.JPG",
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/AAL_5949.jpg",
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/AAL_6072.jpg",
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/DNJ04315.JPG",
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/DNJ04553.JPG",
+                          "/src/assets/past-events/The Nutcracker (Concert) 2024/DNJ05227.JPG"
+                        ]}
+                      />
+                    </CarouselItem>
+                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                        title="Chingay 2025"
+                        subtitle="National Cultural Parade"
+                        description="Our dancers participated in Singapore's iconic Chingay Parade, showcasing vibrant choreography and cultural fusion in this prestigious national event celebrating Singapore's multicultural heritage."
+                        images={[
+                          "/src/assets/past-events/Chingay 2025/Photo 17-1-25, 5 33 53 PM.jpg",
+                          "/src/assets/past-events/Chingay 2025/WhatsApp Image 2025-02-08 at 00.38.28 (1) (1).jpeg",
+                          "/src/assets/past-events/Chingay 2025/WhatsApp Image 2025-02-08 at 00.38.29 (1) (1).jpeg",
+                          "/src/assets/past-events/Chingay 2025/WhatsApp Image 2025-02-08 at 00.38.30 (1) (1).jpeg",
+                          "/src/assets/past-events/Chingay 2025/WhatsApp Image 2025-02-08 at 00.38.30 (2) (1).jpeg",
+                          "/src/assets/past-events/Chingay 2025/WhatsApp Image 2025-02-13 at 19.09.57 (1).jpeg"
+                        ]}
+                      />
+                    </CarouselItem>
+                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                        title="Bangkok Dance Exchange 2025"
+                        subtitle="International Cultural Exchange"
+                        description="Our dancers traveled to Bangkok for an enriching cultural exchange program, collaborating with Thai dancers and showcasing Singaporean dance styles while learning traditional Thai dance forms."
+                        images={[
+                          "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
                           "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png",
-                          "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png",
+                          "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png"
                         ]}
                       />
                     </CarouselItem>
                     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                       <EventCard
-                        title="Summer Dance Intensive"
-                        subtitle="June - July 2024"
-                        description="Intensive summer program for serious dancers looking to elevate their skills with masterclasses and guest instructors."
+                        title="GTB 2025"
+                        subtitle="Global Talent Ballet Competition"
+                        description="Our elite dancers competed in the prestigious Global Talent Ballet competition, demonstrating exceptional technical skill and artistic expression on an international stage against top dance academies worldwide."
                         images={[
                           "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png",
                           "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png",
-                          "/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png",
-                        ]}
-                      />
-                    </CarouselItem>
-                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                      <EventCard
-                        title="International Dance Festival"
-                        subtitle="March 2024"
-                        description="Participation in international dance festivals, giving our students exposure to global dance communities."
-                        images={[
-                          "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png",
-                          "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png",
-                          "/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png",
+                          "/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png"
                         ]}
                       />
                     </CarouselItem>

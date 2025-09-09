@@ -14,9 +14,11 @@ const ProgrammesAndExamsSection = () => {
   const [modalTitle, setModalTitle] = useState('');
 
   const radImages = [
-    "/lovable-uploads/5c8d3ad4-fac2-4255-8c25-231c28b272da.png",
-    "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png",
-    "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png"
+    "/src/assets/rad-exam/Photo 13-4-25, 2 00 35 PM.jpg",
+    "/src/assets/rad-exam/Photo 13-4-25, 2 00 38 PM.jpg",
+    "/src/assets/rad-exam/Photo 14-4-25, 8 37 39 PM (1).jpg",
+    "/src/assets/rad-exam/Photo 17-4-25, 10 44 06 PM (1).jpg",
+    "/src/assets/rad-exam/Photo 17-4-25, 10 44 09 PM (1).jpg"
   ];
 
   const cstdImages = [
