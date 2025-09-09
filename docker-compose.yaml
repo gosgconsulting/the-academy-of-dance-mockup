@@ -32,8 +32,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      # Live-edit plugins/themes without rebuilding
-      - ./wordpress-content:/var/www/html/wp-content
+      # Live-edit plugins without rebuilding
+      - ./wordpress-content/plugins:/var/www/html/wp-content/plugins
       # Allow the plugin to scan pages in the repo
       - ./src:/var/www/html/src:ro
     restart: unless-stopped
