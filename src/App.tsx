@@ -16,7 +16,20 @@ import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: (failureCount, error: any) => {
+        // Don't retry on GraphQL errors (4xx status codes)
+        if (error?.response?.status >= 400 && error?.response?.status < 500) {
+          return false;
+        }
+        return failureCount < 3;
+      },
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
