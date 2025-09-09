@@ -2,11 +2,6 @@ import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Import hero banner images
-import heroImage1 from "../assets/hero-banner/AAL_5683.jpg";
-import heroImage2 from "../assets/hero-banner/IMG_4268.jpg";
-import heroImage3 from "../assets/hero-banner/_MRB1729-2.jpg";
-
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
 }
@@ -15,11 +10,10 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Use imported images that work in both development and production
   const heroImages = [
-    heroImage1,
-    heroImage2,
-    heroImage3
+    "/assets/hero-banner/AAL_5683.jpg",
+    "/assets/hero-banner/IMG_4268.jpg",
+    "/assets/hero-banner/_MRB1729-2.jpg"
   ];
   useEffect(() => {
     const interval = setInterval(() => {

@@ -4,51 +4,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import EventCard from "../EventCard";
 
-// Import past events images using ES6 imports like hero banner
-// Ballet Masterclass 2025
-import balletMasterclass1 from "../../assets/past-events/ballet-masterclass-2025/6D4A9100.jpg";
-import balletMasterclass2 from "../../assets/past-events/ballet-masterclass-2025/6D4A9145.jpg";
-import balletMasterclass3 from "../../assets/past-events/ballet-masterclass-2025/6D4A9160.jpg";
-import balletMasterclass4 from "../../assets/past-events/ballet-masterclass-2025/6D4A9165.jpg";
-
-// Hong Kong Disneyland Performance
-import hkDisney1 from "../../assets/past-events/hong-kong-disneyland-performance/2-457.jpg";
-import hkDisney2 from "../../assets/past-events/hong-kong-disneyland-performance/2-463.jpg";
-import hkDisney3 from "../../assets/past-events/hong-kong-disneyland-performance/2-478.jpg";
-import hkDisney4 from "../../assets/past-events/hong-kong-disneyland-performance/IMG_4270.jpg";
-import hkDisney5 from "../../assets/past-events/hong-kong-disneyland-performance/IMG_4273.jpg";
-import hkDisney6 from "../../assets/past-events/hong-kong-disneyland-performance/IMG_4300.jpg";
-
-// Mother's Day 2024
-import mothersDay1 from "../../assets/past-events/mother's-day/2f4b926e-1ad0-4088-9cdc-9dcc7434b68b.jpg";
-import mothersDay2 from "../../assets/past-events/mother's-day/37c10229-3599-4e31-a727-13af7973486b.jpg";
-import mothersDay3 from "../../assets/past-events/mother's-day/667dfab3-7559-4e64-847c-ed5fd272de21.jpg";
-import mothersDay4 from "../../assets/past-events/mother's-day/e690cbe0-2f64-4a1f-821c-39e0c9c3c232.jpg";
-
-// NDP 2025
-import ndp1 from "../../assets/past-events/ndp-2025/29c71469-deed-4ca9-9bda-854f08077920.jpg";
-import ndp2 from "../../assets/past-events/ndp-2025/466fc6d1-73dc-4007-abc4-445a87ae293b.jpg";
-import ndp3 from "../../assets/past-events/ndp-2025/86e69525-8979-4d39-bff0-03ecf5bd29f7.jpg";
-import ndp4 from "../../assets/past-events/ndp-2025/8ebe72d2-eae0-44ba-ab36-2c45d3180554.jpg";
-import ndp5 from "../../assets/past-events/ndp-2025/b213052b-409d-4558-b371-bfd53de08d79.jpg";
-import ndp6 from "../../assets/past-events/ndp-2025/b760196c-707c-482c-a499-b90a5f95bf82.jpg";
-
-// The Nutcracker 2024
-import nutcracker1 from "../../assets/past-events/the-nutcracker-2024/AAL_3737.jpg";
-import nutcracker2 from "../../assets/past-events/the-nutcracker-2024/AAL_5949.jpg";
-import nutcracker3 from "../../assets/past-events/the-nutcracker-2024/AAL_6072.jpg";
-import nutcracker4 from "../../assets/past-events/the-nutcracker-2024/DNJ04315.jpg";
-import nutcracker5 from "../../assets/past-events/the-nutcracker-2024/DNJ04553.jpg";
-import nutcracker6 from "../../assets/past-events/the-nutcracker-2024/DNJ05227.jpg";
-
-// Chingay 2025
-import chingay1 from "../../assets/past-events/chingay-2025/Photo17-1-25.jpg";
-import chingay2 from "../../assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.28.jpg";
-import chingay3 from "../../assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.29.jpg";
-import chingay4 from "../../assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.30.jpg";
-import chingay5 from "../../assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08 at 00.38.3.jpg";
-import chingay6 from "../../assets/past-events/chingay-2025/WhatsApp-Image-2025-02-13-at-19.09.57.jpg";
-
 const EventsSection = () => {
   return (
     <section
@@ -99,10 +54,10 @@ const EventsSection = () => {
                         subtitle="With Principal Dancers Ms Abigail & Mr Mark Sumaylo, and Soloists Mr John Ralp from Ballet Manila"
                         description="An exceptional opportunity for our dancers to learn from world-class ballet professionals. This masterclass featured technical workshops, artistic development sessions, and personalized feedback from renowned principal dancers."
                         images={[
-                          balletMasterclass1,
-                          balletMasterclass2,
-                          balletMasterclass3,
-                          balletMasterclass4
+                          "/assets/past-events/ballet-masterclass-2025/6D4A9100.jpg",
+                          "/assets/past-events/ballet-masterclass-2025/6D4A9145.jpg",
+                          "/assets/past-events/ballet-masterclass-2025/6D4A9160.jpg",
+                          "/assets/past-events/ballet-masterclass-2025/6D4A9165.jpg"
                         ]}
                       />
                     </CarouselItem>
@@ -112,12 +67,12 @@ const EventsSection = () => {
                         subtitle="International Performance Tour"
                         description="Our talented dancers had the incredible opportunity to perform at Hong Kong Disneyland, showcasing their skills on an international stage and representing Singapore with pride and excellence."
                         images={[
-                          hkDisney1,
-                          hkDisney2,
-                          hkDisney3,
-                          hkDisney4,
-                          hkDisney5,
-                          hkDisney6
+                          "/assets/past-events/hong-kong-disneyland-performance/2-457.jpg",
+                          "/assets/past-events/hong-kong-disneyland-performance/2-463.jpg",
+                          "/assets/past-events/hong-kong-disneyland-performance/2-478.jpg",
+                          "/assets/past-events/hong-kong-disneyland-performance/IMG_4270.jpg",
+                          "/assets/past-events/hong-kong-disneyland-performance/IMG_4273.jpg",
+                          "/assets/past-events/hong-kong-disneyland-performance/IMG_4300.jpg"
                         ]}
                       />
                     </CarouselItem>
@@ -127,10 +82,10 @@ const EventsSection = () => {
                         subtitle="Special Celebration Performance"
                         description="A heartwarming celebration honoring the incredible mothers in our dance community. Our students prepared special performances to express gratitude for the endless support and love they receive."
                         images={[
-                          mothersDay1,
-                          mothersDay2,
-                          mothersDay3,
-                          mothersDay4
+                          "/assets/past-events/mother's-day/2f4b926e-1ad0-4088-9cdc-9dcc7434b68b.jpg",
+                          "/assets/past-events/mother's-day/37c10229-3599-4e31-a727-13af7973486b.jpg",
+                          "/assets/past-events/mother's-day/667dfab3-7559-4e64-847c-ed5fd272de21.jpg",
+                          "/assets/past-events/mother's-day/e690cbe0-2f64-4a1f-821c-39e0c9c3c232.jpg"
                         ]}
                       />
                     </CarouselItem>
@@ -140,12 +95,12 @@ const EventsSection = () => {
                         subtitle="National Day Parade Performance"
                         description="Our dancers proudly participated in Singapore's National Day Parade 2025, contributing to the celebration of our nation's independence with spectacular choreography and patriotic performances."
                         images={[
-                          ndp1,
-                          ndp2,
-                          ndp3,
-                          ndp4,
-                          ndp5,
-                          ndp6
+                          "/assets/past-events/ndp-2025/29c71469-deed-4ca9-9bda-854f08077920.jpg",
+                          "/assets/past-events/ndp-2025/466fc6d1-73dc-4007-abc4-445a87ae293b.jpg",
+                          "/assets/past-events/ndp-2025/86e69525-8979-4d39-bff0-03ecf5bd29f7.jpg",
+                          "/assets/past-events/ndp-2025/8ebe72d2-eae0-44ba-ab36-2c45d3180554.jpg",
+                          "/assets/past-events/ndp-2025/b213052b-409d-4558-b371-bfd53de08d79.jpg",
+                          "/assets/past-events/ndp-2025/b760196c-707c-482c-a499-b90a5f95bf82.jpg"
                         ]}
                       />
                     </CarouselItem>
@@ -155,12 +110,12 @@ const EventsSection = () => {
                         subtitle="Annual Holiday Performance"
                         description="Our annual production of the beloved holiday classic, featuring our students in a magical journey through the Land of Sweets. This professional-quality performance showcased the technical skill and artistic growth of our dancers."
                         images={[
-                          nutcracker1,
-                          nutcracker2,
-                          nutcracker3,
-                          nutcracker4,
-                          nutcracker5,
-                          nutcracker6
+                          "/assets/past-events/the-nutcracker-2024/AAL_3737.jpg",
+                          "/assets/past-events/the-nutcracker-2024/AAL_5949.jpg",
+                          "/assets/past-events/the-nutcracker-2024/AAL_6072.jpg",
+                          "/assets/past-events/the-nutcracker-2024/DNJ04315.jpg",
+                          "/assets/past-events/the-nutcracker-2024/DNJ04553.jpg",
+                          "/assets/past-events/the-nutcracker-2024/DNJ05227.jpg"
                         ]}
                       />
                     </CarouselItem>
@@ -170,12 +125,12 @@ const EventsSection = () => {
                         subtitle="National Cultural Parade"
                         description="Our dancers participated in Singapore's iconic Chingay Parade, showcasing vibrant choreography and cultural fusion in this prestigious national event celebrating Singapore's multicultural heritage."
                         images={[
-                          chingay1,
-                          chingay2,
-                          chingay3,
-                          chingay4,
-                          chingay5,
-                          chingay6
+                          "/assets/past-events/chingay-2025/Photo17-1-25.jpg",
+                          "/assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.28.jpg",
+                          "/assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.29.jpg",
+                          "/assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08-at-00.38.30.jpg",
+                          "/assets/past-events/chingay-2025/WhatsApp-Image-2025-02-08 at 00.38.3.jpg",
+                          "/assets/past-events/chingay-2025/WhatsApp-Image-2025-02-13-at-19.09.57.jpg"
                         ]}
                       />
                     </CarouselItem>

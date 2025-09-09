@@ -4,12 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-// Import RAD exam images
-import radImage1 from "../../assets/rad-exam/Photo 13-4-25, 2 00 35 PM.jpg";
-import radImage2 from "../../assets/rad-exam/Photo 13-4-25, 2 00 38 PM.jpg";
-import radImage3 from "../../assets/rad-exam/Photo 14-4-25, 8 37 39 PM (1).jpg";
-import radImage4 from "../../assets/rad-exam/Photo 17-4-25, 10 44 06 PM (1).jpg";
-import radImage5 from "../../assets/rad-exam/Photo 17-4-25, 10 44 09 PM (1).jpg";
+
 const ProgrammesAndExamsSection = () => {
   const [radImageIndex, setRadImageIndex] = useState(0);
   const [cstdImageIndex, setCstdImageIndex] = useState(0);
@@ -19,11 +14,11 @@ const ProgrammesAndExamsSection = () => {
   const [modalTitle, setModalTitle] = useState('');
 
   const radImages = [
-    radImage1,
-    radImage2,
-    radImage3,
-    radImage4,
-    radImage5
+    "/assets/rad-exam/Photo 13-4-25, 2 00 35 PM.jpg",
+    "/assets/rad-exam/Photo 13-4-25, 2 00 38 PM.jpg",
+    "/assets/rad-exam/Photo 14-4-25, 8 37 39 PM (1).jpg",
+    "/assets/rad-exam/Photo 17-4-25, 10 44 06 PM (1).jpg",
+    "/assets/rad-exam/Photo 17-4-25, 10 44 09 PM (1).jpg"
   ];
 
   const cstdImages = [
