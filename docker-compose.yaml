@@ -32,10 +32,12 @@ services:
     ports:
       - "8080:80"
     volumes:
-      # Live-edit plugins/themes without rebuilding
-      - ./wordpress-content:/var/www/html/wp-content
+      # Live-edit plugins without rebuilding
+      - ./wordpress-content/plugins:/var/www/html/wp-content/plugins
       # Allow the plugin to scan pages in the repo
       - ./src:/var/www/html/src:ro
+      # PHP configuration for large file uploads (1GB)
+      - ./php-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     restart: unless-stopped
 
 volumes:
