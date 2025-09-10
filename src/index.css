@@ -3,6 +3,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Vision Mission Card Shadow Colors */
+@layer utilities {
+  .shadow-vision-purple {
+    box-shadow: 0 0 20px rgba(139, 69, 193, 0.3);
+  }
+  
+  .shadow-vision-purple:hover {
+    box-shadow: 0 0 30px rgba(139, 69, 193, 0.5);
+  }
+  
+  .shadow-vision-green {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+  
+  .shadow-vision-green:hover {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+  }
+  
+  .shadow-vision-orange {
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+  }
+  
+  .shadow-vision-orange:hover {
+    box-shadow: 0 0 30px rgba(251, 146, 60, 0.5);
+  }
+  
+  .shadow-vision-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  .shadow-vision-blue:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+  
+  .shadow-vision-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  
+  .shadow-vision-red:hover {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+  }
+  
+  .shadow-vision-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+  
+  .shadow-vision-pink:hover {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+  }
+  
+  .shadow-vision-teal {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+  
+  .shadow-vision-teal:hover {
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
+  }
+  
+  .shadow-vision-indigo {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  
+  .shadow-vision-indigo:hover {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  }
+  
+  .shadow-vision-yellow {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  
+  .shadow-vision-yellow:hover {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @layer base {

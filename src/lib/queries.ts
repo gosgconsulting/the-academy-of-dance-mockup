@@ -46,6 +46,12 @@ export const HOME_PAGE_QUERY = gql`
           value
         }
       }
+      homePageVisionMission {
+        items {
+          title
+          description
+        }
+      }
     }
   }
 `;

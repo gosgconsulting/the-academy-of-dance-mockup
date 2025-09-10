@@ -64,11 +64,21 @@ export interface HomePageAboutUs {
   points: AboutUsPoint[];
 }
 
+export interface VisionMissionItem {
+  title: string;
+  description: string;
+}
+
+export interface HomePageVisionMission {
+  items: VisionMissionItem[];
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
   homePageTrialSection: HomePageTrialSection;
   homePageAboutUs: HomePageAboutUs;
+  homePageVisionMission: HomePageVisionMission;
 }
 
 export interface HomePageQueryResponse {
