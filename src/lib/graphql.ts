@@ -24,9 +24,37 @@ export interface HomePageHero {
   };
 }
 
+export interface TrialClass {
+  className: string;
+}
+
+export interface TrialStatistics {
+  awardsWon: string;
+  awardsWonValue: string;
+  yearsExperience: string;
+  yearsExperienceValue: string;
+  successRate: string;
+  successRateValue: string;
+  studentsTrained: string;
+  studentsTrainedValue: string;
+}
+
+export interface TrialSection {
+  statistics: TrialStatistics;
+  title: string;
+  subTitle: string;
+  joinLabel: string;
+  classes: TrialClass[];
+  contactInformation: string;
+  contactName: string;
+  contactPhone: string;
+  contactAddress: string;
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
+  trialSection: TrialSection;
 }
 
 export interface HomePageQueryResponse {

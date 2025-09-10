@@ -59,7 +59,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} data={homeData?.pageBy?.homePageHero} />
-      <TrialsSection />
+      <TrialsSection data={homeData?.pageBy?.trialSection} />
       <AboutUsSection />
       <VisionMissionSection />
       <ProgrammesAndExamsSection />
