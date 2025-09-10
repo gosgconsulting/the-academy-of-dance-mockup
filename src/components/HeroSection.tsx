@@ -69,8 +69,8 @@ const HeroSection = ({
         </div>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer flex justify-center items-center" onClick={() => scrollToSection('trials')}>
-        <ArrowDown className="w-6 h-6 text-white" />
+      <div className="absolute bottom-8 left-1/2 animate-bounce cursor-pointer flex justify-center items-center" onClick={() => scrollToSection('trials')}>
+        <ArrowDown className="w-6 h-6 text-white transform -translate-x-1/2" />
       </div>
 
       <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2 justify-center items-center">
