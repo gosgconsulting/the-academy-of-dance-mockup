@@ -59,9 +59,7 @@ const HeroSection = ({
           className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 text-center"
           dangerouslySetInnerHTML={{ __html: heroData.heroHeadline }}
         />
-        <p className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center">
-          {heroData.heroTagline}
-        </p>
+        <div className="font-inter text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed md:text-xl text-center" dangerouslySetInnerHTML={{ __html: heroData.heroTagline }} />
         <div className="flex justify-center items-center">
           <Button onClick={() => scrollToSection('trials')} size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
             {heroData.heroButton}
