@@ -78,7 +78,7 @@ const EventsSection = () => {
                     </CarouselItem>
                     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                       <EventCard
-                        title="Mother's Day 2024"
+                        title="Mother's Day 2025"
                         subtitle="Special Celebration Performance"
                         description="A heartwarming celebration honoring the incredible mothers in our dance community. Our students prepared special performances to express gratitude for the endless support and love they receive."
                         images={[
@@ -121,7 +121,7 @@ const EventsSection = () => {
                     </CarouselItem>
                     <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                       <EventCard
-                        title="Chingay 2024"
+                        title="Chingay 2025"
                         subtitle="National Cultural Parade"
                         description="Our dancers participated in Singapore's iconic Chingay Parade, showcasing vibrant choreography and cultural fusion in this prestigious national event celebrating Singapore's multicultural heritage."
                         images={[
