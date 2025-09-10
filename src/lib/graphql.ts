@@ -51,10 +51,24 @@ export interface HomePageTrialSection {
   contactAddress: string;
 }
 
+export interface AboutUsPoint {
+  icon: string[];
+  label: string;
+  value: string;
+}
+
+export interface HomePageAboutUs {
+  title: string;
+  label: string;
+  content: string;
+  points: AboutUsPoint[];
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
   homePageTrialSection: HomePageTrialSection;
+  homePageAboutUs: HomePageAboutUs;
 }
 
 export interface HomePageQueryResponse {

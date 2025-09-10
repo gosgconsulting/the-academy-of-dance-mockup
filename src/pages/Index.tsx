@@ -60,7 +60,7 @@ const Index = () => {
       <Navigation scrollToSection={scrollToSection} />
       <HeroSection scrollToSection={scrollToSection} data={homeData?.pageBy?.homePageHero} />
       <TrialsSection data={homeData?.pageBy?.homePageTrialSection} />
-      <AboutUsSection />
+      <AboutUsSection data={homeData?.pageBy?.homePageAboutUs} />
       <VisionMissionSection />
       <ProgrammesAndExamsSection />
       <CompetitionExcellenceSection />

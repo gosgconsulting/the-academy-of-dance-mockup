@@ -36,6 +36,16 @@ export const HOME_PAGE_QUERY = gql`
         contactPhone
         contactAddress
       }
+      homePageAboutUs {
+        title
+        label
+        content
+        points {
+          icon
+          label
+          value
+        }
+      }
     }
   }
 `;
