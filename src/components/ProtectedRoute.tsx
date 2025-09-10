@@ -8,9 +8,10 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
-  if (!isAuthenticated) {
-    return <ComingSoon />;
-  }
+  // Coming soon page disabled - uncomment the lines below to re-enable
+  // if (!isAuthenticated) {
+  //   return <ComingSoon />;
+  // }
 
   return <>{children}</>;
 };
