@@ -5,9 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { TrialSection } from "@/lib/graphql";
+import { HomePageTrialSection } from "@/lib/graphql";
 
-const DEFAULT_DATA: TrialSection = {
+const DEFAULT_DATA: HomePageTrialSection = {
   statistics: {
     studentsTrained: "Students Trained",
     studentsTrainedValue: "10,000+",
@@ -36,7 +36,7 @@ const DEFAULT_DATA: TrialSection = {
 };
 
 interface TrialsSectionProps {
-  data?: TrialSection;
+  data?: HomePageTrialSection;
 }
 
 const TrialsSection = ({ data: trialData = DEFAULT_DATA }: TrialsSectionProps) => {
@@ -70,7 +70,7 @@ Please contact me to schedule my trial class. Thank you!`;
 
     // Send to WhatsApp
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    const phoneNumber = trialData.contactPhone.replace(/\D/g, ''); // Remove non-digits
+    const phoneNumber = trialData.contactPhone.replace(/\D/g, '');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
     toast({

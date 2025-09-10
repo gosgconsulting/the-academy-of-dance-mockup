@@ -39,7 +39,7 @@ export interface TrialStatistics {
   studentsTrainedValue: string;
 }
 
-export interface TrialSection {
+export interface HomePageTrialSection {
   statistics: TrialStatistics;
   title: string;
   subTitle: string;
@@ -54,7 +54,7 @@ export interface TrialSection {
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
-  trialSection: TrialSection;
+  homePageTrialSection: HomePageTrialSection;
 }
 
 export interface HomePageQueryResponse {

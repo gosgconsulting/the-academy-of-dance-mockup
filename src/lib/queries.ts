@@ -14,7 +14,7 @@ export const HOME_PAGE_QUERY = gql`
           }
         }
       }
-      trialSection {
+      homePageTrialSection {
         statistics {
           awardsWon
           awardsWonValue
