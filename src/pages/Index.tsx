@@ -62,7 +62,7 @@ const Index = () => {
       <TrialsSection data={homeData?.pageBy?.homePageTrialSection} />
       <AboutUsSection data={homeData?.pageBy?.homePageAboutUs} />
       <VisionMissionSection data={homeData?.pageBy?.homePageVisionMission?.items} />
-      <ProgrammesAndExamsSection />
+      <ProgrammesAndExamsSection data={homeData?.pageBy?.homePageProgrammesAndExams} />
       <CompetitionExcellenceSection />
       <EventsSection />
       <AchievementsSection />

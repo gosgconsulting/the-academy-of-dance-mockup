@@ -73,12 +73,52 @@ export interface HomePageVisionMission {
   items: VisionMissionItem[];
 }
 
+export interface ProgrammeImage {
+  node: {
+    link: string;
+  };
+}
+
+export interface Programme {
+  title: string;
+  description: string;
+  image: ProgrammeImage;
+}
+
+export interface ExamFeature {
+  featureName: string;
+}
+
+export interface ExamImage {
+  nodes: {
+    mediaItemUrl: string;
+    altText: string;
+  }[];
+}
+
+export interface Exam {
+  title: string;
+  description: string;
+  features: ExamFeature[];
+  images: ExamImage;
+}
+
+export interface HomePageProgrammesAndExams {
+  title: string;
+  subtitle: string;
+  programmesTabLabel: string;
+  examinationsTabLabel: string;
+  programmes: Programme[];
+  examinations: Exam[];
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
   homePageTrialSection: HomePageTrialSection;
   homePageAboutUs: HomePageAboutUs;
   homePageVisionMission: HomePageVisionMission;
+  homePageProgrammesAndExams: HomePageProgrammesAndExams;
 }
 
 export interface HomePageQueryResponse {

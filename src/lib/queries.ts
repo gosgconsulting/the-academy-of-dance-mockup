@@ -52,6 +52,34 @@ export const HOME_PAGE_QUERY = gql`
           description
         }
       }
+      homePageProgrammesAndExams {
+        title
+        subtitle
+        programmesTabLabel
+        examinationsTabLabel
+        programmes {
+          title
+          description
+          image {
+            node {
+              link
+            }
+          }
+        }
+        examinations {
+          title
+          description
+          features {
+            featureName
+          }
+          images {
+            nodes {
+              mediaItemUrl
+              altText
+            }
+          }
+        }
+      }
     }
   }
 `;
