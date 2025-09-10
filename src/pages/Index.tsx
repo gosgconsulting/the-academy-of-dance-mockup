@@ -17,11 +17,15 @@ import AchievementsSection from "@/components/sections/AchievementsSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import LocationsSection from "@/components/sections/LocationsSection";
+import { useHomeData } from "@/hooks/useHomeData";
 
 const Index = () => {
   const [isWhatsAppChatOpen, setIsWhatsAppChatOpen] = useState(false);
   const location = useLocation();
 
+  // Fetch home page data from WordPress GraphQL API
+  const { data: homeData, isLoading, error } = useHomeData();
+  
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: "smooth",
@@ -40,11 +44,21 @@ const Index = () => {
       return () => clearTimeout(timer);
     }
   }, [location.state]);
+  
+  // Don't render anything until we have data or there's an error
+  if (isLoading) {
+    return null;
+  }
+  
+  // If there's an error or no data, don't render anything
+  if (error || !homeData?.pageBy?.homePageHero) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation scrollToSection={scrollToSection} />
-      <HeroSection scrollToSection={scrollToSection} />
+      <HeroSection scrollToSection={scrollToSection} data={homeData?.pageBy?.homePageHero} />
       <TrialsSection />
       <AboutUsSection />
       <VisionMissionSection />

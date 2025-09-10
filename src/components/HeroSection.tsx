@@ -1,42 +1,40 @@
 import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useHeroData } from "@/hooks/useHeroData";
+import { HomePageHero } from "@/lib/graphql";
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
+  data: HomePageHero;
 }
+const DEFAULT_DATA: HomePageHero = {
+  heroButton: "Start Your Journey",
+  heroHeadline: "Where Dreams<br />\r\n<span className=\"text-secondary block text-center\" style=\"color: hsl(var(--secondary))\">Take Flight</span>",
+  heroTagline: "Discover the joy of movement through our comprehensive dance programs. From classical ballet to contemporary styles, we nurture dancers of all ages and abilities.",
+  heroImages: {
+    nodes: [
+      {
+        mediaItemUrl: "https://wordpress-production-abdc.up.railway.app/wp-content/uploads/2025/09/MRB1729-2-scaled.jpg"
+      },
+      {
+        mediaItemUrl: "https://wordpress-production-abdc.up.railway.app/wp-content/uploads/2025/09/IMG_4268-scaled.jpg"
+      },
+      {
+        mediaItemUrl: "https://wordpress-production-abdc.up.railway.app/wp-content/uploads/2025/09/AAL_5683-scaled.jpg"
+      }
+    ]
+  },
+};
+
 const HeroSection = ({
-  scrollToSection
+  scrollToSection,
+  data: heroData = DEFAULT_DATA,
 }: HeroSectionProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Fetch hero data from WordPress GraphQL API
-  const { data: heroData, isLoading, error } = useHeroData();
-  
   // Extract data from GraphQL response (with fallback for useEffect)
-  const heroImages = heroData?.pageBy?.homePageHero?.heroImages?.nodes?.map(img => img.mediaItemUrl) || [];
-  const heroHeadline = heroData?.pageBy?.homePageHero?.heroHeadline || "";
-  const heroTagline = heroData?.pageBy?.homePageHero?.heroTagline || "";
-  const heroButton = heroData?.pageBy?.homePageHero?.heroButton || "";
+  const heroImages = heroData?.heroImages?.nodes?.map(img => img.mediaItemUrl) || [];
   
-  // Fallback data when API is unavailable
-  const fallbackImages = [
-    "/assets/hero-banner/_MRB1729-2.jpg",
-    "/assets/hero-banner/AAL_5683.jpg",
-    "/assets/hero-banner/IMG_4268.jpg"
-  ];
-  
-  const fallbackHeadline = "Welcome to <span class='text-secondary'>The Academy of Dance</span>";
-  const fallbackTagline = "Discover the joy of movement through our comprehensive dance programs. From classical ballet to contemporary styles, we nurture dancers of all ages and abilities.";
-  const fallbackButton = "Start Your Journey";
-  
-  // Use API data if available, otherwise use fallback
-  const displayImages = heroImages.length > 0 ? heroImages : fallbackImages;
-  const displayHeadline = heroHeadline || fallbackHeadline;
-  const displayTagline = heroTagline || fallbackTagline;
-  const displayButton = heroButton || fallbackButton;
-
   useEffect(() => {
     if (displayImages.length > 0) {
       const interval = setInterval(() => {
@@ -44,8 +42,7 @@ const HeroSection = ({
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [displayImages.length]);
-  
+  }, [heroImages.length]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">

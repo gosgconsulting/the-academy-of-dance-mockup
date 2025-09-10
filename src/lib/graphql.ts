@@ -16,7 +16,6 @@ export interface HeroImage {
 }
 
 export interface HomePageHero {
-  fieldGroupName: string;
   heroButton: string;
   heroHeadline: string;
   heroTagline: string;

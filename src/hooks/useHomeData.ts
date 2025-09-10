@@ -3,12 +3,12 @@ import { graphqlClient, HomePageQueryResponse } from '@/lib/graphql';
 import { HOME_PAGE_HERO_QUERY } from '@/lib/queries';
 
 /**
- * Custom hook to fetch hero data from WordPress GraphQL API
- * @returns Query result with hero data, loading state, and error handling
+ * Custom hook to fetch home page data from WordPress GraphQL API
+ * @returns Query result with home page data, loading state, and error handling
  */
-export const useHeroData = () => {
+export const useHomeData = () => {
   return useQuery({
-    queryKey: ['homePageHero'],
+    queryKey: ['homePageData'],
     queryFn: async (): Promise<HomePageQueryResponse> => {
       const data = await graphqlClient.request(HOME_PAGE_HERO_QUERY);
       return data;
