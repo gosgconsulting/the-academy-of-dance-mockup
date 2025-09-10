@@ -3,10 +3,6 @@ import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HomePageHero } from "@/lib/graphql";
 
-interface HeroSectionProps {
-  scrollToSection: (sectionId: string) => void;
-  data: HomePageHero;
-}
 const DEFAULT_DATA: HomePageHero = {
   heroButton: "Start Your Journey",
   heroHeadline: "Where Dreams<br />\r\n<span className=\"text-secondary block text-center\" style=\"color: hsl(var(--secondary))\">Take Flight</span>",
@@ -25,6 +21,11 @@ const DEFAULT_DATA: HomePageHero = {
     ]
   },
 };
+
+interface HeroSectionProps {
+  scrollToSection: (sectionId: string) => void;
+  data: HomePageHero;
+}
 
 const HeroSection = ({
   scrollToSection,
