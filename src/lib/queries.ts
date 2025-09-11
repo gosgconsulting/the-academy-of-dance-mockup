@@ -94,6 +94,29 @@ export const HOME_PAGE_QUERY = gql`
           }
         }
       }
+      homePageEvents {
+        title
+        subtitle
+        pastEventsLabel
+        upcomingEventsLabel
+      }
+    }
+    eventsOptions {
+      events {
+        eventItems {
+          title
+          subtitle
+          description
+          date
+          images {
+            edges {
+              node {
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

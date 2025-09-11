@@ -131,6 +131,49 @@ export interface HomePageCompetitionExcellence {
   items: CompetitionProgram[];
 }
 
+export interface EventImage {
+  mediaItemUrl: string;
+  altText: string;
+}
+
+export interface Event {
+  title: string;
+  subtitle: string;
+  description: string;
+  date: string; // Required date field for filtering
+  images: {
+    nodes: EventImage[];
+  };
+}
+
+export interface HomePageEvents {
+  title: string;
+  subtitle: string;
+  pastEventsLabel: string;
+  upcomingEventsLabel: string;
+  events: Event[]; // Single events array to be filtered by date
+}
+
+export interface EventItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  date: string;
+  images: {
+    edges: {
+      node: {
+        mediaItemUrl: string;
+      };
+    }[];
+  };
+}
+
+export interface EventsOptions {
+  events: {
+    eventItems: EventItem[];
+  };
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
@@ -139,8 +182,10 @@ export interface PageBy {
   homePageVisionMission: HomePageVisionMission;
   homePageProgrammesAndExams: HomePageProgrammesAndExams;
   homePageCompetitionExcellence: HomePageCompetitionExcellence;
+  homePageEvents: HomePageEvents;
 }
 
 export interface HomePageQueryResponse {
   pageBy: PageBy;
+  eventsOptions: EventsOptions;
 }

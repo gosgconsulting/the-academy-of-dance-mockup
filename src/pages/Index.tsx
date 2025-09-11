@@ -64,7 +64,18 @@ const Index = () => {
       <VisionMissionSection data={homeData?.pageBy?.homePageVisionMission?.items} />
       <ProgrammesAndExamsSection data={homeData?.pageBy?.homePageProgrammesAndExams} />
       <CompetitionExcellenceSection data={homeData?.pageBy?.homePageCompetitionExcellence} />
-      <EventsSection />
+      <EventsSection data={{ 
+        ...homeData?.pageBy?.homePageEvents, 
+        events: homeData?.eventsOptions?.events?.eventItems?.map(item => ({
+          ...item,
+          images: {
+            nodes: item.images.edges.map(edge => ({
+              mediaItemUrl: edge.node.mediaItemUrl,
+              altText: `${item.title} - Image`
+            }))
+          }
+        })) || []
+      }} />
       <AchievementsSection />
       <TeachersSection />
       <ReviewsSection />
