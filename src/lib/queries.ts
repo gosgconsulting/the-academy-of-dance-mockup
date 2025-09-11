@@ -80,6 +80,20 @@ export const HOME_PAGE_QUERY = gql`
           }
         }
       }
+      homePageCompetitionExcellence {
+        title
+        subtitle
+        items {
+          title
+          description
+          images {
+            nodes {
+              mediaItemUrl
+              altText
+            }
+          }
+        }
+      }
     }
   }
 `;

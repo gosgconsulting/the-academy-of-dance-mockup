@@ -112,6 +112,25 @@ export interface HomePageProgrammesAndExams {
   examinations: Exam[];
 }
 
+export interface CompetitionImage {
+  mediaItemUrl: string;
+  altText: string;
+}
+
+export interface CompetitionProgram {
+  title: string;
+  description: string;
+  images: {
+    nodes: CompetitionImage[];
+  };
+}
+
+export interface HomePageCompetitionExcellence {
+  title: string;
+  subtitle: string;
+  items: CompetitionProgram[];
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
@@ -119,6 +138,7 @@ export interface PageBy {
   homePageAboutUs: HomePageAboutUs;
   homePageVisionMission: HomePageVisionMission;
   homePageProgrammesAndExams: HomePageProgrammesAndExams;
+  homePageCompetitionExcellence: HomePageCompetitionExcellence;
 }
 
 export interface HomePageQueryResponse {
