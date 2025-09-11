@@ -135,7 +135,7 @@ Please contact me to schedule my trial class. Thank you!`;
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
             {trialData.title}
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-xl">{trialData.subTitle}</p>
+          <div className="font-inter text-gray-600 max-w-2xl mx-auto text-xl" dangerouslySetInnerHTML={{ __html: trialData.subTitle }} />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -143,7 +143,7 @@ Please contact me to schedule my trial class. Thank you!`;
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="font-playfair text-2xl font-bold text-primary mb-4">{trialData.joinLabel}</h3>
               <ul className="space-y-4 text-gray-700">
-                {trialData.classes.map((trialClass, index) => (
+                {trialData.classes?.map((trialClass, index) => (
                   <li key={index} className="flex items-center">
                     <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
                     {trialClass.className}

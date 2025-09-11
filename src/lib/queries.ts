@@ -62,7 +62,7 @@ export const HOME_PAGE_QUERY = gql`
           description
           image {
             node {
-              link
+              mediaItemUrl
             }
           }
         }
@@ -107,7 +107,6 @@ export const HOME_PAGE_QUERY = gql`
           title
           subtitle
           description
-          date
           images {
             edges {
               node {
@@ -115,6 +114,7 @@ export const HOME_PAGE_QUERY = gql`
               }
             }
           }
+          isUpcomingEvent
         }
       }
     }

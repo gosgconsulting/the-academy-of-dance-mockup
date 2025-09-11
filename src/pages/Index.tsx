@@ -69,7 +69,7 @@ const Index = () => {
         events: homeData?.eventsOptions?.events?.eventItems?.map(item => ({
           ...item,
           images: {
-            nodes: item.images.edges.map(edge => ({
+            nodes: item.images?.edges?.map(edge => ({
               mediaItemUrl: edge.node.mediaItemUrl,
               altText: `${item.title} - Image`
             }))

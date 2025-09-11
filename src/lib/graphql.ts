@@ -75,7 +75,7 @@ export interface HomePageVisionMission {
 
 export interface ProgrammeImage {
   node: {
-    link: string;
+    mediaItemUrl: string;
   };
 }
 
@@ -140,7 +140,7 @@ export interface Event {
   title: string;
   subtitle: string;
   description: string;
-  date: string; // Required date field for filtering
+  isUpcomingEvent: boolean; // Boolean field to determine if event is upcoming
   images: {
     nodes: EventImage[];
   };
@@ -158,7 +158,7 @@ export interface EventItem {
   title: string;
   subtitle: string;
   description: string;
-  date: string;
+  isUpcomingEvent: boolean;
   images: {
     edges: {
       node: {

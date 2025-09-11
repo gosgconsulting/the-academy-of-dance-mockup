@@ -21,7 +21,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "At TAD, ballet is taught with a strong foundation in classical technique, combined with a deep respect for each dancer's unique journey. Our approach emphasizes both discipline and encouragement, creating an environment where students feel supported as they grow in strength, grace, and confidence.\n\nWe follow a structured syllabus that builds progressively from beginner to advanced levels, ensuring that students develop proper alignment, musicality, coordination, and artistry at every stage. Classes are tailored to age and ability, with clear goals and consistent feedback to help each dancer reach their personal best.\n\nOur experienced instructors bring passion and professionalism to every class, fostering a love for ballet while also instilling valuable life skills like perseverance, focus, and self-expression. Whether a student dreams of a professional career or simply wants to experience the beauty of ballet, we aim to nurture both the dancer and the individual.",
       image: {
         node: {
-          link: "/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png"
+          mediaItemUrl: "/lovable-uploads/da5c9831-e15c-4c80-bf8c-169e3bb472fc.png"
         }
       }
     },
@@ -30,7 +30,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "A program like no other, our Baby Gems program is created for our youngest dancers, aged 3 to 4 years old, to develop musicality, coordination and basic dance fundamentals using nursery rhymes and timeless Disney classics. Promoting the use of their imagination, it takes the child to a land of make believe, something critical to their dance training. TAD prides herself in her very own Baby Gems program, which was carefully written and curated by our Principal Ms June Lee. It is a one-year dance program comprising a series of exercises that are both enjoyable and technically beneficial to children aged 3-4 years old.",
       image: {
         node: {
-          link: "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png"
+          mediaItemUrl: "/lovable-uploads/61794c77-dac5-451f-b02e-054573c38b7c.png"
         }
       }
     },
@@ -39,7 +39,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Our Adult Keep Fit Ballet classes at The Academy of Dance are the perfect blend of elegance, fitness, and fun—no previous dance experience required!\nThese classes are designed to improve posture, flexibility, core strength, and overall body tone, all while enjoying the grace and discipline of classical ballet. Set to beautiful music, each session offers a gentle yet effective workout that leaves you feeling energized, uplifted, and more connected to your body.\nWhether you're returning to dance or trying ballet for the first time, our welcoming and supportive environment ensures everyone feels comfortable. It's a wonderful way to stay active, reduce stress, and enjoy a bit of \"me time\" in the midst of a busy week.\nCome move, stretch, and smile with us—ballet has no age limit!",
       image: {
         node: {
-          link: "/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png"
+          mediaItemUrl: "/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png"
         }
       }
     },
@@ -48,7 +48,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Dynamic and energetic, our jazz classes focus on sharp movements, isolations, and performance quality. Students develop rhythm, coordination, and stage presence while learning classic jazz techniques and contemporary commercial styles.",
       image: {
         node: {
-          link: "/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png"
+          mediaItemUrl: "/lovable-uploads/3f806d09-71f1-4c34-8591-8c2dd21fe346.png"
         }
       }
     },
@@ -57,7 +57,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "A beautiful fusion of ballet technique with emotional storytelling. Lyrical dance emphasizes the connection between music and movement, allowing dancers to express deep emotions through flowing, graceful choreography that tells a story.",
       image: {
         node: {
-          link: "/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png"
+          mediaItemUrl: "/lovable-uploads/a31c7571-fdc6-46c2-9f33-cfbf3bfb239f.png"
         }
       }
     },
@@ -66,7 +66,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Modern movement that breaks traditional dance boundaries. Contemporary dance incorporates elements from various dance styles, focusing on versatility, creativity, and personal expression through innovative choreography and technique.",
       image: {
         node: {
-          link: "/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png"
+          mediaItemUrl: "/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png"
         }
       }
     },
@@ -75,7 +75,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Street-style dance that emphasizes personal expression and creativity. Our hip hop classes teach foundational moves, freestyle techniques, and urban choreography while building confidence, rhythm, and individual style.",
       image: {
         node: {
-          link: "/lovable-uploads/3e19f9a6-1e4b-40f4-9c80-638142fb2bf5.png"
+          mediaItemUrl: "/lovable-uploads/3e19f9a6-1e4b-40f4-9c80-638142fb2bf5.png"
         }
       }
     },
@@ -84,7 +84,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Create music with your feet! Our tap programme develops rhythm, coordination, and musicality through traditional tap techniques. Students learn basic steps, combinations, and improvisation while building strong rhythmic foundations.",
       image: {
         node: {
-          link: "/lovable-uploads/026cddda-e890-486d-be1e-8052ff34515e.png"
+          mediaItemUrl: "/lovable-uploads/026cddda-e890-486d-be1e-8052ff34515e.png"
         }
       }
     },
@@ -93,7 +93,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "Our newest programme! Build strength, flexibility, and acrobatic skills in a safe, progressive environment. Students learn rolls, cartwheels, handstands, and more advanced tumbling skills that enhance their overall dance performance.",
       image: {
         node: {
-          link: "/lovable-uploads/96dbee1c-cdd5-4735-a8ab-21e83d6f99c2.png"
+          mediaItemUrl: "/lovable-uploads/96dbee1c-cdd5-4735-a8ab-21e83d6f99c2.png"
         }
       }
     },
@@ -102,7 +102,7 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       description: "We take pride in preparing students for the Direct School Admission (DSA) scheme, offering a unique pathway for young talents to gain direct entry into esteemed Secondary Schools and Junior Colleges.\nThrough specialized training, mentorship, guiding them for interviews and their portfolios, we equip our dancers with the skills and confidence needed to excel in auditions and interviews.\n95% of our students have successfully gained admission to their desired secondary schools. This accomplishment serves as evidence of our dedication to excellence and our proficiency in nurturing talent.",
       image: {
         node: {
-          link: "/lovable-uploads/7a4ccb94-8ec9-4b6d-b752-7c91c6c547c4.png"
+          mediaItemUrl: "/lovable-uploads/7a4ccb94-8ec9-4b6d-b752-7c91c6c547c4.png"
         }
       }
     }
@@ -138,9 +138,9 @@ const DEFAULT_DATA: HomePageProgrammesAndExams = {
       ],
       images: {
         nodes: [
-          { uri: "/lovable-uploads/7d91482b-17c3-45fc-9917-f502af760568.png", altText: "CSTD Jazz and Tap Examination - Image 1" },
-          { uri: "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png", altText: "CSTD Jazz and Tap Examination - Image 2" },
-          { uri: "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png", altText: "CSTD Jazz and Tap Examination - Image 3" }
+          { mediaItemUrl: "/lovable-uploads/7d91482b-17c3-45fc-9917-f502af760568.png", altText: "CSTD Jazz and Tap Examination - Image 1" },
+          { mediaItemUrl: "/lovable-uploads/7e239828-13dd-4df8-8124-cd525e80369c.png", altText: "CSTD Jazz and Tap Examination - Image 2" },
+          { mediaItemUrl: "/lovable-uploads/4ac15b36-88be-402a-b290-d345ee972ebb.png", altText: "CSTD Jazz and Tap Examination - Image 3" }
         ]
       }
     }
@@ -234,7 +234,7 @@ const ProgrammesAndExamsSection = ({ data: sectionData = DEFAULT_DATA }: Program
                   <Card key={titleToId(programme.title)} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div className="relative">
                       <img 
-                        src={programme.image.node.link} 
+                        src={programme.image.node.mediaItemUrl} 
                         alt={programme.title} 
                         className="w-full h-64 object-cover" 
                       />
@@ -259,7 +259,7 @@ const ProgrammesAndExamsSection = ({ data: sectionData = DEFAULT_DATA }: Program
                         <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
                           <div className="relative">
                             <img 
-                              src={programme.image.node.link} 
+                              src={programme.image.node.mediaItemUrl} 
                               alt={programme.title} 
                               className="w-full h-48 object-cover" 
                             />
