@@ -104,23 +104,33 @@ export const HOME_PAGE_QUERY = gql`
         title
         subtitle
       }
-      homePageTeachers {
-        title
-        subtitle
-        teachers {
-          name
-          specialty
-          credentials
-          experience
-          image {
-            node {
-              mediaItemUrl
-              altText
-            }
-          }
-          isFounder
-        }
-      }
+       homePageTeachers {
+         title
+         subtitle
+         teachers {
+           name
+           specialty
+           credentials
+           experience
+           image {
+             node {
+               mediaItemUrl
+               altText
+             }
+           }
+           isFounder
+         }
+       }
+       homePageReviews {
+         title
+         subtitle
+         reviews {
+           name
+           role
+           content
+           rating
+         }
+       }
     }
     eventsOptions {
       events {

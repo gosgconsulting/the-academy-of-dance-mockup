@@ -8,9 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { HomePageReviews } from "@/lib/graphql";
 
-const ReviewsSection = () => {
-  const reviews = [
+// Default data fallback
+const DEFAULT_DATA: HomePageReviews = {
+  title: "What Parents Say",
+  subtitle: "Discover why families trust us with their children's dance education and artistic development.",
+  reviews: [
     {
       name: "Sarah Chen",
       role: "Parent of Emma, Age 8",
@@ -67,7 +71,16 @@ const ReviewsSection = () => {
         "Starting dance at such a young age here was the best decision. The Baby Gems program is perfect for little ones - creative, fun and educational.",
       rating: 5,
     },
-  ];
+  ]
+};
+
+interface ReviewsSectionProps {
+  data?: HomePageReviews;
+}
+
+const ReviewsSection = ({ data }: ReviewsSectionProps) => {
+  // Use data from props or fallback to default data
+  const reviewsData = data || DEFAULT_DATA;
 
   return (
     <section
@@ -77,12 +90,9 @@ const ReviewsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            What Parents Say
+            {reviewsData.title}
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Discover why families trust us with their children's dance
-            education and artistic development.
-          </p>
+          <div className="font-inter text-gray-600 max-w-2xl mx-auto text-lg" dangerouslySetInnerHTML={{ __html: reviewsData.subtitle }} />
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -94,7 +104,7 @@ const ReviewsSection = () => {
             }}
           >
             <CarouselContent>
-              {reviews.map((review, index) => (
+              {reviewsData.reviews.map((review, index) => (
                 <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/3">
                   <Card className="p-6 hover:shadow-lg transition-shadow duration-300 h-full">
                     <CardContent className="space-y-4 p-0 flex flex-col h-full">
@@ -106,9 +116,7 @@ const ReviewsSection = () => {
                           />
                         ))}
                       </div>
-                      <p className="text-gray-700 italic flex-1">
-                        "{review.content}"
-                      </p>
+                      <div className="text-gray-700 italic flex-1" dangerouslySetInnerHTML={{ __html: `"${review.content}"` }} />
                       <div>
                         <p className="font-semibold text-primary">
                           {review.name}

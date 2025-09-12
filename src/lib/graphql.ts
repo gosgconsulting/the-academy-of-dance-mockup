@@ -206,6 +206,19 @@ export interface HomePageTeachers {
   teachers: Teacher[];
 }
 
+export interface Review {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+}
+
+export interface HomePageReviews {
+  title: string;
+  subtitle: string;
+  reviews: Review[];
+}
+
 export interface AchievementResult {
   name: string;
   placement: string;
@@ -235,6 +248,7 @@ export interface PageBy {
   homePageEvents: HomePageEvents;
   homePageAchievements: HomePageAchievements;
   homePageTeachers: HomePageTeachers;
+  homePageReviews: HomePageReviews;
 }
 
 export interface HomePageQueryResponse {

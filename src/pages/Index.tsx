@@ -81,7 +81,7 @@ const Index = () => {
         achievementItems: homeData?.achievementsOptions?.achievements?.achievementItems || []
       }} />
       <TeachersSection data={homeData?.pageBy?.homePageTeachers} />
-      <ReviewsSection />
+      <ReviewsSection data={homeData?.pageBy?.homePageReviews} />
       <LocationsSection />
       <GallerySection />
       <Footer />
