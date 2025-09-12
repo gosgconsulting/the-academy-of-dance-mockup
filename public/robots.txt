@@ -12,3 +12,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://www.theacademyofdance.sg/sitemap.xml
+Sitemap: https://www.theacademyofdance.sg/sitemap-index.xml

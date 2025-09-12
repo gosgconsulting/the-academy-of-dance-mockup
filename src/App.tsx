@@ -12,6 +12,7 @@ import BlogTag from "./pages/BlogTag";
 import BlogAuthor from "./pages/BlogAuthor";
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -81,6 +82,7 @@ const App = () => (
                   <PrivacyPolicy />
                 </ProtectedRoute>
               } />
+              <Route path="/sitemap.xml" element={<Sitemap />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={
                 <ProtectedRoute>
