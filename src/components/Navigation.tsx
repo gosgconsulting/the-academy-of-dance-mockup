@@ -3,22 +3,58 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { HeaderFooterSettings } from "@/lib/graphql";
+
+// Default data fallback
+const DEFAULT_NAVIGATION_DATA = {
+  navigation: {
+    logo: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png",
+        altText: "The Academy of Dance"
+      }
+    },
+    navigationItems: [
+      { label: "Home", sectionId: "hero" },
+      { label: "Trials", sectionId: "trials" },
+      { label: "About Us", sectionId: "about" },
+      { label: "Programmes", sectionId: "programmes" },
+      { label: "Reviews", sectionId: "reviews" },
+      { label: "Teachers", sectionId: "teachers" },
+      { label: "Gallery", sectionId: "gallery" },
+      { label: "Blog", sectionId: "blog", isExternal: true, externalUrl: "/blog" }
+    ],
+    bookNowButton: {
+      label: "Book Now!",
+      sectionId: "trials"
+    }
+  }
+};
 
 interface NavigationProps {
   scrollToSection: (sectionId: string) => void;
+  data?: HeaderFooterSettings;
 }
 
-const Navigation = ({ scrollToSection }: NavigationProps) => {
+const Navigation = ({ scrollToSection, data }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
+  // Use data from props or fallback to default data
+  const navigationData = data?.navigation || DEFAULT_NAVIGATION_DATA.navigation;
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleNavigation = (sectionId: string) => {
+  const handleNavigation = (sectionId: string, isExternal?: boolean, externalUrl?: string) => {
+    if (isExternal && externalUrl) {
+      window.open(externalUrl, '_blank');
+      return;
+    }
+    
     if (isHomePage) {
       scrollToSection(sectionId);
     } else {
@@ -26,8 +62,8 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
     }
   };
 
-  const handleMobileNavClick = (sectionId: string) => {
-    handleNavigation(sectionId);
+  const handleMobileNavClick = (sectionId: string, isExternal?: boolean, externalUrl?: string) => {
+    handleNavigation(sectionId, isExternal, externalUrl);
     setIsMobileMenuOpen(false);
   };
 
@@ -38,26 +74,39 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/007de019-e0b0-490d-90cd-cced1de404b8.png" 
-                alt="The Academy of Dance" 
+                src={navigationData.logo.node.mediaItemUrl} 
+                alt={navigationData.logo.node.altText || "The Academy of Dance"} 
                 className="h-8 md:h-12 w-auto object-contain hover:opacity-80 transition-opacity" 
               />
             </Link>
           </div>
           
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => handleNavigation('hero')} className="text-white hover:text-secondary transition-colors">Home</button>
-            <button onClick={() => handleNavigation('trials')} className="text-white hover:text-secondary transition-colors">Trials</button>
-            <button onClick={() => handleNavigation('about')} className="text-white hover:text-secondary transition-colors">About Us</button>
-            <button onClick={() => handleNavigation('programmes')} className="text-white hover:text-secondary transition-colors">Programmes</button>
-            <button onClick={() => handleNavigation('reviews')} className="text-white hover:text-secondary transition-colors">Reviews</button>
-            <button onClick={() => handleNavigation('teachers')} className="text-white hover:text-secondary transition-colors">Teachers</button>
-            <button onClick={() => handleNavigation('gallery')} className="text-white hover:text-secondary transition-colors">Gallery</button>
-            <Link to="/blog" className="text-white hover:text-secondary transition-colors">Blog</Link>
+            {navigationData.navigationItems.map((item, index) => (
+              item.isExternal ? (
+                <button 
+                  key={index}
+                  onClick={() => handleNavigation(item.sectionId, item.isExternal, item.externalUrl)} 
+                  className="text-white hover:text-secondary transition-colors"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <button 
+                  key={index}
+                  onClick={() => handleNavigation(item.sectionId)} 
+                  className="text-white hover:text-secondary transition-colors"
+                >
+                  {item.label}
+                </button>
+              )
+            ))}
           </div>
           
           {/* Desktop Book Now Button */}
-          <Button onClick={() => handleNavigation('trials')} className="hidden md:block bg-primary hover:bg-primary/90 text-white">Book Now!</Button>
+          <Button onClick={() => handleNavigation(navigationData.bookNowButton.sectionId)} className="hidden md:block bg-primary hover:bg-primary/90 text-white">
+            {navigationData.bookNowButton.label}
+          </Button>
           
           {/* Mobile Menu Button */}
           <button 
@@ -73,14 +122,25 @@ const Navigation = ({ scrollToSection }: NavigationProps) => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => handleMobileNavClick('hero')} className="text-white hover:text-secondary transition-colors text-left">Home</button>
-              <button onClick={() => handleMobileNavClick('trials')} className="text-white hover:text-secondary transition-colors text-left">Trials</button>
-              <button onClick={() => handleMobileNavClick('about')} className="text-white hover:text-secondary transition-colors text-left">About Us</button>
-              <button onClick={() => handleMobileNavClick('programmes')} className="text-white hover:text-secondary transition-colors text-left">Programmes</button>
-              <button onClick={() => handleMobileNavClick('reviews')} className="text-white hover:text-secondary transition-colors text-left">Reviews</button>
-              <button onClick={() => handleMobileNavClick('teachers')} className="text-white hover:text-secondary transition-colors text-left">Teachers</button>
-              <button onClick={() => handleMobileNavClick('gallery')} className="text-white hover:text-secondary transition-colors text-left">Gallery</button>
-              <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-secondary transition-colors text-left">Blog</Link>
+              {navigationData.navigationItems.map((item, index) => (
+                item.isExternal ? (
+                  <button 
+                    key={index}
+                    onClick={() => handleMobileNavClick(item.sectionId, item.isExternal, item.externalUrl)} 
+                    className="text-white hover:text-secondary transition-colors text-left"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <button 
+                    key={index}
+                    onClick={() => handleMobileNavClick(item.sectionId)} 
+                    className="text-white hover:text-secondary transition-colors text-left"
+                  >
+                    {item.label}
+                  </button>
+                )
+              ))}
             </div>
           </div>
         )}

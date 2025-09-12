@@ -290,8 +290,52 @@ export interface PageBy {
   homePageGallery: HomePageGallery;
 }
 
+export interface NavigationItem {
+  label: string;
+  sectionId: string;
+  isExternal?: boolean;
+  externalUrl?: string;
+}
+
+export interface SocialMediaLink {
+  platform: string;
+  url: string;
+}
+
+export interface HeaderFooterSettings {
+  navigation: {
+    logo: {
+      node: {
+        mediaItemUrl: string;
+        altText?: string;
+      };
+    };
+    navigationItems: NavigationItem[];
+    bookNowButton: {
+      label: string;
+      sectionId: string;
+    };
+  };
+  footer: {
+    logo: {
+      node: {
+        mediaItemUrl: string;
+        altText?: string;
+      };
+    };
+    tagline: string;
+    socialMediaLinks: SocialMediaLink[];
+    legalLinks: {
+      label: string;
+      url: string;
+    }[];
+    copyright: string;
+  };
+}
+
 export interface HomePageQueryResponse {
   pageBy: PageBy;
   eventsOptions: EventsOptions;
   achievementsOptions: AchievementsOptions;
+  headerFooterSettings: HeaderFooterSettings;
 }

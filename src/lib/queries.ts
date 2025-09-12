@@ -193,5 +193,43 @@ export const HOME_PAGE_QUERY = gql`
         }
       }
     }
+    headerFooterSettings {
+      navigation {
+        logo {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+        navigationItems {
+          label
+          sectionId
+          isExternal
+          externalUrl
+        }
+        bookNowButton {
+          label
+          sectionId
+        }
+      }
+      footer {
+        logo {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+        tagline
+        socialMediaLinks {
+          platform
+          url
+        }
+        legalLinks {
+          label
+          url
+        }
+        copyright
+      }
+    }
   }
 `;

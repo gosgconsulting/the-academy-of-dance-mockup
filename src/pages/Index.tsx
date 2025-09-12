@@ -57,7 +57,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation scrollToSection={scrollToSection} />
+      <Navigation scrollToSection={scrollToSection} data={homeData?.headerFooterSettings} />
       <HeroSection scrollToSection={scrollToSection} data={homeData?.pageBy?.homePageHero} />
       <TrialsSection data={homeData?.pageBy?.homePageTrialSection} />
       <AboutUsSection data={homeData?.pageBy?.homePageAboutUs} />
@@ -84,7 +84,7 @@ const Index = () => {
       <ReviewsSection data={homeData?.pageBy?.homePageReviews} />
       <LocationsSection data={homeData?.pageBy?.homePageLocations} />
       <GallerySection data={homeData?.pageBy?.homePageGallery} />
-      <Footer />
+      <Footer data={homeData?.headerFooterSettings} />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />
       <WhatsAppChat
         isOpen={isWhatsAppChatOpen}
