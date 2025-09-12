@@ -82,7 +82,7 @@ const Index = () => {
       }} />
       <TeachersSection data={homeData?.pageBy?.homePageTeachers} />
       <ReviewsSection data={homeData?.pageBy?.homePageReviews} />
-      <LocationsSection />
+      <LocationsSection data={homeData?.pageBy?.homePageLocations} />
       <GallerySection />
       <Footer />
       <WhatsAppButton onClick={() => setIsWhatsAppChatOpen(!isWhatsAppChatOpen)} />

@@ -131,6 +131,24 @@ export const HOME_PAGE_QUERY = gql`
            rating
          }
        }
+       homePageLocations {
+         title
+         subtitle
+         locations {
+           name
+           address
+           unit
+           postalCode
+           phone
+           googleMapsUrl
+           image {
+             node {
+               mediaItemUrl
+               altText
+             }
+           }
+         }
+       }
     }
     eventsOptions {
       events {

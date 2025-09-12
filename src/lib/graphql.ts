@@ -219,6 +219,27 @@ export interface HomePageReviews {
   reviews: Review[];
 }
 
+export interface Location {
+  name: string;
+  address: string;
+  unit: string;
+  postalCode: string;
+  phone: string;
+  googleMapsUrl: string;
+  image: {
+    node: {
+      mediaItemUrl: string;
+      altText?: string;
+    };
+  };
+}
+
+export interface HomePageLocations {
+  title: string;
+  subtitle: string;
+  locations: Location[];
+}
+
 export interface AchievementResult {
   name: string;
   placement: string;
@@ -249,6 +270,7 @@ export interface PageBy {
   homePageAchievements: HomePageAchievements;
   homePageTeachers: HomePageTeachers;
   homePageReviews: HomePageReviews;
+  homePageLocations: HomePageLocations;
 }
 
 export interface HomePageQueryResponse {
