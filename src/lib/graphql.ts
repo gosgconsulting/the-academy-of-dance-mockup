@@ -317,11 +317,6 @@ export interface LegalSection {
 
 export interface TermsConditions {
   sections: LegalSection[];
-  contactInfo: {
-    email: string;
-    phone: string;
-    governingLaw: string;
-  };
 }
 
 export interface PrivacyPolicy {

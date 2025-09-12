@@ -6,19 +6,10 @@ const TERMS_CONDITIONS_QUERY = `
     pageBy(uri: "/terms-conditions") {
       title
       modified
-        termsConditions {
-          sections {
-            title
-            content
-            subsections {
-              title
-              content
-            }
-          }
-        contactInfo {
-          email
-          phone
-          governingLaw
+      termsCondition {
+        sections {
+          title
+          content
         }
       }
     }
@@ -29,20 +20,20 @@ interface TermsConditionsQueryResponse {
   pageBy: {
     title: string;
     modified: string;
-    termsConditions: TermsConditionsPage;
+    termsCondition: TermsConditions;
   };
 }
 
 export const useTermsConditions = () => {
   return useQuery({
     queryKey: ['termsConditionsPage'],
-    queryFn: async (): Promise<{ pageData: TermsConditionsPage; title: string; lastUpdated: string } | null> => {
+    queryFn: async (): Promise<{ pageData: TermsConditions; title: string; lastUpdated: string } | null> => {
       try {
         const data = await graphqlClient.request<TermsConditionsQueryResponse>(TERMS_CONDITIONS_QUERY);
-        if (!data.pageBy?.termsConditions) return null;
+        if (!data.pageBy?.termsCondition) return null;
         
         return {
-          pageData: data.pageBy.termsConditions,
+          pageData: data.pageBy.termsCondition,
           title: data.pageBy.title,
           lastUpdated: new Date(data.pageBy.modified).toLocaleDateString()
         };
