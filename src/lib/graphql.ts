@@ -306,6 +306,28 @@ export interface WhatsAppSettings {
   whatsappNumber: string;
 }
 
+export interface LegalSection {
+  title: string;
+  content: string;
+  subsections?: {
+    title: string;
+    content: string;
+  }[];
+}
+
+export interface TermsConditions {
+  sections: LegalSection[];
+  contactInfo: {
+    email: string;
+    phone: string;
+    governingLaw: string;
+  };
+}
+
+export interface PrivacyPolicy {
+  sections: LegalSection[];
+}
+
 export interface HeaderFooterSettings {
   navigation: {
     logo: {
