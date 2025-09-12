@@ -149,6 +149,19 @@ export const HOME_PAGE_QUERY = gql`
            }
          }
        }
+       homePageGallery {
+         title
+         subtitle
+         galleryItems {
+           title
+           image {
+             node {
+               mediaItemUrl
+               altText
+             }
+           }
+         }
+       }
     }
     eventsOptions {
       events {

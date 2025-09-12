@@ -240,6 +240,22 @@ export interface HomePageLocations {
   locations: Location[];
 }
 
+export interface GalleryItem {
+  title: string;
+  image: {
+    node: {
+      mediaItemUrl: string;
+      altText?: string;
+    };
+  };
+}
+
+export interface HomePageGallery {
+  title: string;
+  subtitle: string;
+  galleryItems: GalleryItem[];
+}
+
 export interface AchievementResult {
   name: string;
   placement: string;
@@ -271,6 +287,7 @@ export interface PageBy {
   homePageTeachers: HomePageTeachers;
   homePageReviews: HomePageReviews;
   homePageLocations: HomePageLocations;
+  homePageGallery: HomePageGallery;
 }
 
 export interface HomePageQueryResponse {

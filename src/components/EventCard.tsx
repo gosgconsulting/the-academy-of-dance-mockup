@@ -13,7 +13,6 @@ interface EventCardProps {
 }
 
 const EventCard = ({ title, subtitle, description, images }: EventCardProps) => {
-  console.log('images:', images);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
