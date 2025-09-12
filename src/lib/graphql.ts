@@ -186,6 +186,26 @@ export interface AchievementsOptions {
   };
 }
 
+export interface Teacher {
+  name: string;
+  specialty: string;
+  credentials: string;
+  experience: string;
+  image: {
+    node: {
+      mediaItemUrl: string;
+      altText?: string;
+    };
+  };
+  isFounder?: boolean;
+}
+
+export interface HomePageTeachers {
+  title: string;
+  subtitle: string;
+  teachers: Teacher[];
+}
+
 export interface AchievementResult {
   name: string;
   placement: string;
@@ -214,6 +234,7 @@ export interface PageBy {
   homePageCompetitionExcellence: HomePageCompetitionExcellence;
   homePageEvents: HomePageEvents;
   homePageAchievements: HomePageAchievements;
+  homePageTeachers: HomePageTeachers;
 }
 
 export interface HomePageQueryResponse {

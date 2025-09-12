@@ -289,51 +289,51 @@ const ProgrammesAndExamsSection = ({ data: sectionData = DEFAULT_DATA }: Program
                   
                   return (
                     <Card key={titleToId(exam.title)} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                      <div className="relative">
-                        <div className="relative h-64 overflow-hidden">
+                  <div className="relative">
+                    <div className="relative h-64 overflow-hidden">
                           {examImages.map((image, index) => (
-                            <img
-                              key={index}
-                              src={image}
+                        <img
+                          key={index}
+                          src={image}
                               alt={exam.images.nodes[index]?.altText || `${exam.title} - Image ${index + 1}`}
-                              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
+                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
                                 index === getExamImageIndex(exam.title) ? 'opacity-100' : 'opacity-0'
-                              }`}
+                          }`}
                               onClick={() => openModal(examImages, index, exam.title)}
-                            />
-                          ))}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-                        </div>
-                        
-                        {/* Pagination dots */}
+                        />
+                      ))}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                    </div>
+                    
+                    {/* Pagination dots */}
                         {examImages.length > 1 && (
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                             {examImages.map((_, index) => (
-                              <button
-                                key={index}
+                          <button
+                            key={index}
                                 onClick={() => goToExamImage(exam.title, index)}
-                                className={`w-2 h-2 rounded-full transition-colors ${
+                            className={`w-2 h-2 rounded-full transition-colors ${
                                   index === getExamImageIndex(exam.title) 
-                                    ? 'bg-white' 
-                                    : 'bg-white/50 hover:bg-white/70'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        )}
+                                ? 'bg-white' 
+                                : 'bg-white/50 hover:bg-white/70'
+                            }`}
+                          />
+                        ))}
                       </div>
-                      <CardContent className="p-8">
-                        <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
+                    )}
+                  </div>
+                  <CardContent className="p-8">
+                    <h3 className="font-playfair text-2xl font-bold text-primary mb-4">
                           {exam.title}
-                        </h3>
+                    </h3>
                         <div className="text-gray-700 leading-relaxed mb-6 text-base" dangerouslySetInnerHTML={{ __html: exam.description }} />
-                        <div className="space-y-2 text-sm text-gray-600">
+                    <div className="space-y-2 text-sm text-gray-600">
                           {exam.features.map((feature, index) => (
                             <p key={index}>✓ {feature.featureName}</p>
                           ))}
-                        </div>
-                      </CardContent>
-                    </Card>
+                    </div>
+                  </CardContent>
+                </Card>
                   );
                 })}
               </div>
@@ -347,53 +347,53 @@ const ProgrammesAndExamsSection = ({ data: sectionData = DEFAULT_DATA }: Program
                       
                       return (
                         <CarouselItem key={titleToId(exam.title)}>
-                          <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div className="relative">
-                              <div className="relative h-48 overflow-hidden">
+                      <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div className="relative">
+                          <div className="relative h-48 overflow-hidden">
                                 {examImages.map((image, index) => (
-                                  <img
-                                    key={index}
-                                    src={image}
+                              <img
+                                key={index}
+                                src={image}
                                     alt={exam.images.nodes[index]?.altText || `${exam.title} - Image ${index + 1}`}
-                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
                                       index === getExamImageIndex(exam.title) ? 'opacity-100' : 'opacity-0'
-                                    }`}
+                                }`}
                                     onClick={() => openModal(examImages, index, exam.title)}
-                                  />
-                                ))}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-                              </div>
-                              
-                              {/* Pagination dots */}
+                              />
+                            ))}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                          </div>
+                          
+                          {/* Pagination dots */}
                               {examImages.length > 1 && (
-                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                                   {examImages.map((_, index) => (
-                                    <button
-                                      key={index}
+                                <button
+                                  key={index}
                                       onClick={() => goToExamImage(exam.title, index)}
-                                      className={`w-2 h-2 rounded-full transition-colors ${
+                                  className={`w-2 h-2 rounded-full transition-colors ${
                                         index === getExamImageIndex(exam.title) 
-                                          ? 'bg-white' 
-                                          : 'bg-white/50 hover:bg-white/70'
-                                      }`}
-                                    />
-                                  ))}
-                                </div>
-                              )}
+                                      ? 'bg-white' 
+                                      : 'bg-white/50 hover:bg-white/70'
+                                  }`}
+                                />
+                              ))}
                             </div>
-                            <CardContent className="p-4">
-                              <h3 className="font-playfair text-lg font-bold text-primary mb-3">
+                          )}
+                        </div>
+                        <CardContent className="p-4">
+                          <h3 className="font-playfair text-lg font-bold text-primary mb-3">
                                 {exam.title}
-                              </h3>
+                          </h3>
                               <div className="text-gray-700 leading-relaxed mb-4 text-xs line-clamp-3" dangerouslySetInnerHTML={{ __html: exam.description }} />
-                              <div className="space-y-1 text-xs text-gray-600">
+                          <div className="space-y-1 text-xs text-gray-600">
                                 {exam.features.slice(0, 2).map((feature, index) => (
                                   <p key={index}>✓ {feature.featureName}</p>
                                 ))}
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </CarouselItem>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
                       );
                     })}
                   </CarouselContent>

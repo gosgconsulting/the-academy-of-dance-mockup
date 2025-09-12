@@ -7,18 +7,25 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { HomePageTeachers } from "@/lib/graphql";
 
-const TeachersSection = () => {
-
-  const teachers = [
+// Default data fallback
+const DEFAULT_DATA: HomePageTeachers = {
+  title: "Our Instructors",
+  subtitle: "Learn from internationally trained professionals who bring decades of experience and genuine passion for dance education.",
+  teachers: [
     {
       name: "Ms June Lee",
       specialty: "Founder",
       credentials: "41 years of experience",
       experience:
         "Ms. June Lee is a veteran dance educator and choreographer whose 41-year career has inspired students, earned international awards, and featured in prestigious global events.",
-      image:
-        "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png",
+      image: {
+        node: {
+          mediaItemUrl: "/lovable-uploads/07de0001-b755-433d-8b27-b1d01335b772.png",
+          altText: "Ms June Lee - Founder"
+        }
+      },
       isFounder: true,
     },
     {
@@ -27,8 +34,12 @@ const TeachersSection = () => {
       credentials: "International exposure & competitive track record",
       experience:
         "Ms. Tan Jia Jia is an experienced, versatile dance educator with international exposure and a strong competitive track record.",
-      image:
-        "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png",
+      image: {
+        node: {
+          mediaItemUrl: "/lovable-uploads/996fb449-b3aa-4ec3-acca-2dad9c8a5ac4.png",
+          altText: "Ms Tan Jia Jia - Yishun Head"
+        }
+      },
     },
     {
       name: "Ms Jasmine Koh",
@@ -36,8 +47,12 @@ const TeachersSection = () => {
       credentials: "25 years experience, RAD & CSTD certified",
       experience:
         "Ms. Jasmine Koh is a passionate dancer and educator with 25 years of experience, trained in ballet, jazz, and tap, and certified under RAD and CSTD.",
-      image:
-        "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png",
+      image: {
+        node: {
+          mediaItemUrl: "/lovable-uploads/444d487e-9e10-4a56-9e2a-409250051960.png",
+          altText: "Ms Jasmine Koh - Classical Ballet Expert"
+        }
+      },
     },
     {
       name: "Ms Annabelle Ong",
@@ -45,8 +60,12 @@ const TeachersSection = () => {
       credentials: "Started at 17, full-time design career",
       experience:
         "Ms. Annabelle Ong is a dedicated dancer and teacher who, despite starting at 17, has performed widely and now inspires young dancers while balancing a full-time design career.",
-      image:
-        "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png",
+      image: {
+        node: {
+          mediaItemUrl: "/lovable-uploads/8850b256-158e-4e7c-852c-d736bb723229.png",
+          altText: "Ms Annabelle Ong - Inspirational Educator"
+        }
+      },
     },
     {
       name: "Ms Jacqueline Macpherson",
@@ -54,10 +73,23 @@ const TeachersSection = () => {
       credentials: "International performance experience",
       experience:
         "Ms. Jacqueline Macpherson is an award-winning dancer with international performance experience who now aims to share her passion for dance through teaching.",
-      image:
-        "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png",
+      image: {
+        node: {
+          mediaItemUrl: "/lovable-uploads/58297713-194b-4e3b-bea0-554b437b8af0.png",
+          altText: "Ms Jacqueline Macpherson - Award-Winning Performer"
+        }
+      },
     },
-  ];
+  ]
+};
+
+interface TeachersSectionProps {
+  data?: HomePageTeachers;
+}
+
+const TeachersSection = ({ data }: TeachersSectionProps) => {
+  // Use data from props or fallback to default data
+  const teachersData = data || DEFAULT_DATA;
 
   return (
     <section id="teachers" className="py-20 bg-white">
@@ -65,12 +97,9 @@ const TeachersSection = () => {
         {/* Teachers Section */}
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Instructors
+            {teachersData.title}
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Learn from internationally trained professionals who bring decades
-            of experience and genuine passion for dance education.
-          </p>
+          <div className="font-inter text-gray-600 max-w-2xl mx-auto text-lg" dangerouslySetInnerHTML={{ __html: teachersData.subtitle }} />
         </div>
 
         <div className="max-w-6xl mx-auto mb-16">
@@ -82,7 +111,7 @@ const TeachersSection = () => {
             }}
           >
             <CarouselContent>
-              {teachers.map((teacher, index) => (
+              {teachersData.teachers.map((teacher, index) => (
                 <CarouselItem
                   key={index}
                   className="md:basis-1/2 lg:basis-1/3"
@@ -90,8 +119,8 @@ const TeachersSection = () => {
                   <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                     <div className="relative">
                       <img
-                        src={teacher.image}
-                        alt={teacher.name}
+                        src={teacher.image.node.mediaItemUrl}
+                        alt={teacher.image.node.altText || teacher.name}
                         className={`w-full h-72 object-cover ${
                           teacher.isFounder
                             ? "object-[center_30%]"
@@ -110,9 +139,7 @@ const TeachersSection = () => {
                       <p className="text-gray-600 text-sm mb-2">
                         {teacher.credentials}
                       </p>
-                      <p className="text-gray-500 text-sm flex-1">
-                        {teacher.experience}
-                      </p>
+                      <div className="text-gray-500 text-sm flex-1" dangerouslySetInnerHTML={{ __html: teacher.experience }} />
                     </CardContent>
                   </Card>
                 </CarouselItem>
