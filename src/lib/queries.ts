@@ -230,6 +230,9 @@ export const HOME_PAGE_QUERY = gql`
         }
         copyright
       }
+      whatsappSettings {
+        whatsappNumber
+      }
     }
   }
 `;

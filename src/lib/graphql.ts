@@ -298,8 +298,12 @@ export interface NavigationItem {
 }
 
 export interface SocialMediaLink {
-  platform: string;
+  platform: string[];
   url: string;
+}
+
+export interface WhatsAppSettings {
+  whatsappNumber: string;
 }
 
 export interface HeaderFooterSettings {
@@ -331,6 +335,7 @@ export interface HeaderFooterSettings {
     }[];
     copyright: string;
   };
+  whatsappSettings: WhatsAppSettings;
 }
 
 export interface HomePageQueryResponse {

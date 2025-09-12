@@ -89,6 +89,7 @@ const Index = () => {
       <WhatsAppChat
         isOpen={isWhatsAppChatOpen}
         onClose={() => setIsWhatsAppChatOpen(false)}
+        data={homeData?.headerFooterSettings?.whatsappSettings}
       />
     </div>
   );

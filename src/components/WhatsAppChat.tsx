@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import { X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { WhatsAppSettings } from '@/lib/graphql';
+
 interface WhatsAppChatProps {
   isOpen: boolean;
   onClose: () => void;
-  phoneNumber?: string;
+  data?: WhatsAppSettings;
 }
 const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
   isOpen,
   onClose,
-  phoneNumber = "6598372670"
+  data
 }) => {
   const [message, setMessage] = useState('');
+  
+  // Use data from props or fallback to default phone number
+  const phoneNumber = data?.whatsappNumber || "6598372670";
   const handleSendMessage = () => {
     if (message.trim()) {
       const encodedMessage = encodeURIComponent(message);
