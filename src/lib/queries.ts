@@ -100,6 +100,10 @@ export const HOME_PAGE_QUERY = gql`
         pastEventsLabel
         upcomingEventsLabel
       }
+      homePageAchievements {
+        title
+        subtitle
+      }
     }
     eventsOptions {
       events {
@@ -115,6 +119,19 @@ export const HOME_PAGE_QUERY = gql`
             }
           }
           isUpcomingEvent
+        }
+      }
+    }
+    achievementsOptions {
+      achievements {
+        achievementItems {
+          icon
+          title
+          results {
+            name
+            placement
+            category
+          }
         }
       }
     }

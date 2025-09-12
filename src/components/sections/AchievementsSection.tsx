@@ -2,23 +2,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Trophy, Award, Medal, Star, Calendar, Users, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { HomePageAchievements } from "@/lib/graphql";
 
-const AchievementsSection = () => {
-  const [expandedCards, setExpandedCards] = useState<number[]>([]);
-  const [showAllCompetitions, setShowAllCompetitions] = useState(false);
-  
-  const toggleCard = (index: number) => {
-    setExpandedCards(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
-  };
-
-  const competitions = [
+// Default data fallback
+const DEFAULT_DATA: HomePageAchievements = {
+  title: "Our Dance Competition Achievements",
+  subtitle: "Celebrating our students' excellence and remarkable success in prestigious dance competitions across Asia.",
+  achievementItems: [
     {
-      icon: Trophy,
       title: "Get The Beat (GTB) 2025",
+      icon: "Trophy",
       results: [
         { name: "Grace Khaw", placement: "4th", category: "My First Solo Classical (Ballet + Demi) Pre Junior (9-10)" },
         { name: "Vanessa Yew", placement: "4th", category: "Intermediate Jazz Solo (14&U)" },
@@ -71,12 +64,12 @@ const AchievementsSection = () => {
         { name: "Hot Chocolate", placement: "3rd", category: "Group Open Age Classical Large" },
         { name: "Bastion", placement: "3rd", category: "Group Open Age Any Other Style Large" },
         { name: "Candyman", placement: "3rd", category: "Group Open Age Jazz Large" },
-        { name: "Nakshathra Sandilya", placement: <>Outstanding Group<br/>Dancer Award</>, category: "Special Recognition" }
+        { name: "Nakshathra Sandilya", placement: "Outstanding Group Dancer Award", category: "Special Recognition" }
       ]
     },
     {
-      icon: Medal,
       title: "Get The Beat (GTB) 2024",
+      icon: "Medal",
       results: [
         { name: "Gretchen Lee", placement: "4th", category: "My First Solo Junior (11-12)" },
         { name: "Group Any Other Style (6&U)", placement: "1st", category: "Group Competition" },
@@ -86,7 +79,7 @@ const AchievementsSection = () => {
         { name: "Group Any Other Style 8&U", placement: "2nd", category: "Group Competition" },
         { name: "Group Any Other Style 12&U", placement: "Judges Choice Award", category: "Special Award" },
         { name: "Group Any Other Style 12&U", placement: "Gala Finalist", category: "Special Award" },
-        { name: "Group Any Other Style 12&U", placement: <>Judges Award<br/>for Choreography</>, category: "Special Award" },
+        { name: "Group Any Other Style 12&U", placement: "Judges Award for Choreography", category: "Special Award" },
         { name: "Melanie Ng", placement: "4th", category: "Intermediate Ballet Solo 15&U" },
         { name: "Elysia Low", placement: "1st", category: "Intermediate Tap Solo 13&U" },
         { name: "Juliet Lee", placement: "2nd", category: "Intermediate Tap Solo 15&U" },
@@ -95,8 +88,8 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Award,
       title: "Asia Pacific Dance Competition (APDC) Bangkok 2024",
+      icon: "Award",
       results: [
         { name: "Group 6&U", placement: "2nd", category: "Group Competition" },
         { name: "Group Open Contemporary", placement: "Honorable Mention", category: "Group Competition" },
@@ -106,8 +99,8 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Star,
       title: "Singapore Regional Competitions (SRC) CSTD 2024",
+      icon: "Star",
       results: [
         { name: "Group Any Other Style 13&U", placement: "1st", category: "Group Competition" },
         { name: "Group Acrobatics, Tap, Musical Theatre Open", placement: "1st", category: "Group Competition" },
@@ -120,8 +113,8 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Calendar,
       title: "Get The Beat (GTB) 2023",
+      icon: "Calendar",
       results: [
         { name: "Group (Open Age Classical)", placement: "1st", category: "Group Competition" },
         { name: "Group (Open Age Classical)", placement: "2nd", category: "Group Competition" },
@@ -134,8 +127,8 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Users,
       title: "Singapore Regional Competitions (SRC) CSTD 2023",
+      icon: "Users",
       results: [
         { name: "Groups 13&U Jazz", placement: "1st", category: "Group Competition" },
         { name: "Groups Open Age Lyrical and Classical", placement: "2nd", category: "Group Competition" },
@@ -147,8 +140,8 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Trophy,
       title: "Get The Beat (GTB) 2022",
+      icon: "Trophy",
       results: [
         { name: "Ashley Tan", placement: "5th", category: "My First Solo Teen (13-14)" },
         { name: "Angela Yang", placement: "2nd", category: "My First Solo (20+ yrs Open)" },
@@ -163,20 +156,20 @@ const AchievementsSection = () => {
         { name: "Group (Open Any Other Style)", placement: "1st", category: "Group Competition" },
         { name: "Special Award", placement: "Judges Choice Award", category: "Recognition" },
         { name: "Special Award", placement: "Gala Finalist", category: "Recognition" },
-        { name: "Special Award", placement: <>Judges Award for<br/>Musicality and Performance</>, category: "Recognition" },
+        { name: "Special Award", placement: "Judges Award for Musicality and Performance", category: "Recognition" },
         { name: "Group (Open Lyrical)", placement: "3rd", category: "Group Competition" }
       ]
     },
     {
-      icon: Award,
       title: "Singapore Cup Challenge 2022",
+      icon: "Award",
       results: [
         { name: "Group Open Age Lyrical", placement: "1st", category: "Group Competition" }
       ]
     },
     {
-      icon: Star,
       title: "Chingay Parade Performances",
+      icon: "Star",
       results: [
         { name: "2020 Performance", placement: "Most Lively Contingent Award", category: "Special Recognition" },
         { name: "2021 Performance", placement: "Performed", category: "Cultural Showcase" },
@@ -187,13 +180,46 @@ const AchievementsSection = () => {
       ]
     },
     {
-      icon: Medal,
       title: "National Day Parade (NDP)",
+      icon: "Medal",
       results: [
         { name: "2025 National Day Parade", placement: "Performing", category: "National Celebration" }
       ]
     }
-  ];
+  ]
+};
+
+interface AchievementsSectionProps {
+  data?: HomePageAchievements;
+}
+
+const AchievementsSection = ({ data: achievementsData = DEFAULT_DATA }: AchievementsSectionProps) => {
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
+  const [showAllCompetitions, setShowAllCompetitions] = useState(false);
+  
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
+  // Helper function to get icon component by name
+  const getIconComponent = (iconName: string) => {
+    const iconMap: { [key: string]: any } = {
+      Trophy,
+      Award,
+      Medal,
+      Star,
+      Calendar,
+      Users
+    };
+    return iconMap[iconName] || Trophy; // Default to Trophy if icon not found
+  };
+
+  // Use data from props
+  const competitions = achievementsData.achievementItems;
 
   // Function to sort results by placement order
   const sortResultsByPlacement = (results: any[]) => {
@@ -224,18 +250,17 @@ const AchievementsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Dance Competition Achievements
+            {achievementsData?.title || "Our Dance Competition Achievements"}
           </h2>
-          <p className="font-inter text-gray-600 max-w-2xl mx-auto text-lg">
-            Celebrating our students' excellence and remarkable success in prestigious dance competitions across Asia.
-          </p>
+          <div className="font-inter text-gray-600 max-w-2xl mx-auto text-lg" 
+               dangerouslySetInnerHTML={{ __html: achievementsData?.subtitle || "Celebrating our students' excellence and remarkable success in prestigious dance competitions across Asia." }} />
         </div>
 
         {/* Desktop: Grid Layout with View All/Show Less buttons */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {(showAllCompetitions ? competitions : competitions.slice(0, 6)).map((comp, index) => {
-              const IconComponent = comp.icon;
+              const IconComponent = getIconComponent(comp.icon);
               const isExpanded = expandedCards.includes(index);
               const initialDisplayCount = 2;
               const sortedResults = sortResultsByPlacement(comp.results);
@@ -332,7 +357,7 @@ const AchievementsSection = () => {
           <Carousel className="w-full max-w-sm sm:max-w-lg mx-auto">
             <CarouselContent className="-ml-2 md:-ml-4">
               {competitions.map((comp, index) => {
-                const IconComponent = comp.icon;
+                const IconComponent = getIconComponent(comp.icon);
                 const isExpanded = expandedCards.includes(index);
                 const sortedResults = sortResultsByPlacement(comp.results);
                 const initialDisplayCount = 3;

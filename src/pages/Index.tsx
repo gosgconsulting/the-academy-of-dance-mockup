@@ -76,7 +76,10 @@ const Index = () => {
           }
         })) || []
       }} />
-      <AchievementsSection />
+      <AchievementsSection data={{
+        ...homeData?.pageBy?.homePageAchievements,
+        achievementItems: homeData?.achievementsOptions?.achievements?.achievementItems || []
+      }} />
       <TeachersSection />
       <ReviewsSection />
       <LocationsSection />

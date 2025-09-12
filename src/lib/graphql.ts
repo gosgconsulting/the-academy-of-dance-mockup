@@ -174,6 +174,36 @@ export interface EventsOptions {
   };
 }
 
+export interface AchievementItem {
+  icon: string;
+  title: string;
+  results: AchievementResult[];
+}
+
+export interface AchievementsOptions {
+  achievements: {
+    achievementItems: AchievementItem[];
+  };
+}
+
+export interface AchievementResult {
+  name: string;
+  placement: string;
+  category: string;
+}
+
+export interface Achievement {
+  title: string;
+  icon: string; // Icon name for dynamic icon selection
+  results: AchievementResult[];
+}
+
+export interface HomePageAchievements {
+  title: string;
+  subtitle: string;
+  achievementItems: Achievement[];
+}
+
 export interface PageBy {
   uri: string;
   homePageHero: HomePageHero;
@@ -183,9 +213,11 @@ export interface PageBy {
   homePageProgrammesAndExams: HomePageProgrammesAndExams;
   homePageCompetitionExcellence: HomePageCompetitionExcellence;
   homePageEvents: HomePageEvents;
+  homePageAchievements: HomePageAchievements;
 }
 
 export interface HomePageQueryResponse {
   pageBy: PageBy;
   eventsOptions: EventsOptions;
+  achievementsOptions: AchievementsOptions;
 }
