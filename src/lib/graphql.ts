@@ -323,6 +323,48 @@ export interface PrivacyPolicy {
   sections: LegalSection[];
 }
 
+// Blog-related interfaces
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  image: {
+    node: {
+      mediaItemUrl: string;
+      altText?: string;
+    };
+  };
+}
+
+export interface BlogCategory {
+  name: string;
+  count: number;
+}
+
+export interface BlogTag {
+  name: string;
+  count: number;
+}
+
+export interface BlogAuthor {
+  name: string;
+  posts: number;
+}
+
+export interface BlogPageData {
+  posts: BlogPost[];
+  categories: BlogCategory[];
+  tags: BlogTag[];
+  authors: BlogAuthor[];
+}
+
 export interface HeaderFooterSettings {
   navigation: {
     logo: {

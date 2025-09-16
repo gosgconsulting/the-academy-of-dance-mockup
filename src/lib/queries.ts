@@ -236,3 +236,62 @@ export const HOME_PAGE_QUERY = gql`
     }
   }
 `;
+
+// GraphQL query for blog page data
+export const BLOG_PAGE_QUERY = gql`
+  query GetBlogPage {
+    posts(first: 10, where: { status: PUBLISH }) {
+      nodes {
+        id
+        slug
+        title
+        excerpt
+        content
+        date
+        author {
+          node {
+            name
+          }
+        }
+        categories {
+          nodes {
+            name
+          }
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
+        featuredImage {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+      }
+    }
+    categories(first: 20) {
+      nodes {
+        name
+        count
+      }
+    }
+    tags(first: 20) {
+      nodes {
+        name
+        count
+      }
+    }
+    users(first: 10) {
+      nodes {
+        name
+        posts {
+          nodes {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
