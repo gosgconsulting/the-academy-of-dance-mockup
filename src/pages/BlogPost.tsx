@@ -5,11 +5,13 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User, Clock, ArrowLeft, Tag } from "lucide-react";
+import { useBlogPost } from "@/hooks/useBlogPost";
+import { BlogPost as BlogPostType } from "@/lib/graphql";
 
-// Demo blog data (same as in Blog.tsx - in a real app this would come from an API)
-const blogPosts = [
+// Default blog post data fallback
+const DEFAULT_BLOG_POSTS: BlogPostType[] = [
   {
-    id: 1,
+    id: "1",
     slug: "mastering-ballet-fundamentals",
     title: "Mastering Ballet Fundamentals: A Beginner's Journey",
     excerpt: "Discover the essential techniques and positions that form the foundation of classical ballet. From plié to grand jeté, learn how to build strength and grace.",
@@ -35,10 +37,15 @@ const blogPosts = [
     readTime: "8 min read",
     category: "Ballet",
     tags: ["Beginner", "Technique", "Classical"],
-    image: "/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png"
+    image: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/f883c8a8-3f19-4bce-871e-2f48e153c2f9.png",
+        altText: "Mastering Ballet Fundamentals"
+      }
+    }
   },
   {
-    id: 2,
+    id: "2",
     slug: "hip-hop-evolution",
     title: "Hip-Hop Evolution: From Streets to Studio",
     excerpt: "Explore the rich history of hip-hop dance and how it has evolved from urban street culture to mainstream dance studios worldwide.",
@@ -65,10 +72,15 @@ const blogPosts = [
     readTime: "6 min read",
     category: "Hip-Hop",
     tags: ["History", "Urban", "Culture"],
-    image: "/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png"
+    image: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/cc1b8cc0-3767-4760-9f8a-3015d9e2a2f6.png",
+        altText: "Hip-Hop Evolution"
+      }
+    }
   },
   {
-    id: 3,
+    id: "3",
     slug: "contemporary-dance-expression",
     title: "Contemporary Dance: Expressing Emotion Through Movement",
     excerpt: "Learn how contemporary dance combines elements from various genres to create powerful emotional storytelling through fluid, expressive movements.",
@@ -94,10 +106,15 @@ const blogPosts = [
     readTime: "7 min read",
     category: "Contemporary",
     tags: ["Expression", "Modern", "Emotion"],
-    image: "/lovable-uploads/80e4bd9a-27a2-46c2-879c-2384503deb4a.png"
+    image: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/80e4bd9a-27a2-46c2-879c-2384503deb4a.png",
+        altText: "Contemporary Dance Expression"
+      }
+    }
   },
   {
-    id: 4,
+    id: "4",
     slug: "competition-preparation",
     title: "Competition Preparation: Mental and Physical Training",
     excerpt: "Discover the secrets to successful dance competition preparation, from physical conditioning to mental resilience and performance confidence.",
@@ -130,10 +147,15 @@ const blogPosts = [
     readTime: "10 min read",
     category: "Competition",
     tags: ["Training", "Performance", "Mindset"],
-    image: "/lovable-uploads/787ef26d-968d-4441-a7e6-d177b26e1dc1.png"
+    image: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/787ef26d-968d-4441-a7e6-d177b26e1dc1.png",
+        altText: "Competition Preparation"
+      }
+    }
   },
   {
-    id: 5,
+    id: "5",
     slug: "dance-nutrition",
     title: "Dance Nutrition: Fueling Your Performance",
     excerpt: "Understanding proper nutrition for dancers is crucial for maintaining energy, preventing injuries, and optimizing performance throughout training and competitions.",
@@ -169,7 +191,12 @@ const blogPosts = [
     readTime: "5 min read",
     category: "Health",
     tags: ["Nutrition", "Performance", "Wellness"],
-    image: "/lovable-uploads/9b23aa52-1bb4-4e41-b2c0-f26892b6aa20.png"
+    image: {
+      node: {
+        mediaItemUrl: "/lovable-uploads/9b23aa52-1bb4-4e41-b2c0-f26892b6aa20.png",
+        altText: "Dance Nutrition"
+      }
+    }
   }
 ];
 
@@ -177,13 +204,51 @@ export default function BlogPost() {
   const { slug } = useParams();
   const navigate = useNavigate();
   
+  // Fetch blog post data from GraphQL
+  const { data: postData, isLoading, error } = useBlogPost(slug || '');
+  
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   
-  const post = blogPosts.find(p => p.slug === slug);
+  // Use GraphQL data or fallback to default data
+  const post = postData || DEFAULT_BLOG_POSTS.find(p => p.slug === slug);
   
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation scrollToSection={() => {}} />
+        <div className="bg-gradient-to-br from-primary via-primary/90 to-secondary pt-32 pb-16">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-4xl mx-auto">
+              <div className="h-8 bg-white/20 rounded animate-pulse mb-4 mx-auto w-48" />
+              <div className="h-12 bg-white/20 rounded animate-pulse mb-6 mx-auto w-3/4" />
+              <div className="h-4 bg-white/20 rounded animate-pulse mb-8 mx-auto w-1/2" />
+            </div>
+          </div>
+        </div>
+        <div className="py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="aspect-video bg-gray-200 rounded-lg mb-8 animate-pulse" />
+            <Card>
+              <CardContent className="p-8">
+                <div className="space-y-4">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse" />
+                  <div className="h-4 bg-gray-200 rounded animate-pulse" />
+                  <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4" />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  // Show not found if no post data
   if (!post) {
     return (
       <div className="min-h-screen bg-background">
@@ -195,6 +260,7 @@ export default function BlogPost() {
             ← Back to Blog
           </Link>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -253,8 +319,8 @@ export default function BlogPost() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="aspect-video overflow-hidden rounded-lg mb-8">
             <img 
-              src={post.image} 
-              alt={post.title}
+              src={post.image.node.mediaItemUrl} 
+              alt={post.image.node.altText || post.title}
               className="w-full h-full object-cover"
             />
           </div>
@@ -262,8 +328,58 @@ export default function BlogPost() {
           <Card>
             <CardContent className="p-8">
               <div 
-                className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                className="space-y-6"
+                style={{
+                  lineHeight: '1.7'
+                }}
+                dangerouslySetInnerHTML={{ 
+                  __html: post.content.replace(
+                    /<h1>/g, 
+                    '<h1 class="text-4xl font-semibold text-dance-bronze mb-6 mt-8">'
+                  ).replace(
+                    /<h2>/g, 
+                    '<h2 class="text-3xl font-semibold text-dance-bronze mb-4 mt-6">'
+                  ).replace(
+                    /<h3>/g, 
+                    '<h3 class="text-2xl font-semibold text-dance-bronze mb-3 mt-5">'
+                  ).replace(
+                    /<h4>/g, 
+                    '<h4 class="text-xl font-semibold text-dance-bronze mb-3 mt-4">'
+                  ).replace(
+                    /<h5>/g, 
+                    '<h5 class="text-lg font-semibold text-dance-bronze mb-2 mt-3">'
+                  ).replace(
+                    /<h6>/g, 
+                    '<h6 class="text-base font-semibold text-dance-bronze mb-2 mt-3">'
+                  ).replace(
+                    /<p>/g, 
+                    '<p class="text-muted-foreground font-inter leading-relaxed mb-4">'
+                  ).replace(
+                    /<strong>/g, 
+                    '<strong class="text-foreground font-semibold">'
+                  ).replace(
+                    /<em>/g, 
+                    '<em class="text-foreground italic">'
+                  ).replace(
+                    /<ul>/g, 
+                    '<ul class="my-4 pl-6 list-disc">'
+                  ).replace(
+                    /<ol>/g, 
+                    '<ol class="my-4 pl-6 list-decimal">'
+                  ).replace(
+                    /<li>/g, 
+                    '<li class="text-muted-foreground font-inter mb-2">'
+                  ).replace(
+                    /<blockquote>/g, 
+                    '<blockquote class="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">'
+                  ).replace(
+                    /<code>/g, 
+                    '<code class="text-sm bg-muted px-1 py-0.5 rounded">'
+                  ).replace(
+                    /<pre>/g, 
+                    '<pre class="bg-muted p-4 rounded-lg overflow-x-auto my-4">'
+                  )
+                }}
               />
               
               <div className="mt-12 pt-8 border-t border-border">

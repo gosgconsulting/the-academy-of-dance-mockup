@@ -295,3 +295,38 @@ export const BLOG_PAGE_QUERY = gql`
     }
   }
 `;
+
+// GraphQL query for individual blog post by slug
+export const BLOG_POST_QUERY = gql`
+  query GetBlogPost($slug: String!) {
+    postBy(slug: $slug) {
+      id
+      slug
+      title
+      excerpt
+      content
+      date
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      tags {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          mediaItemUrl
+          altText
+        }
+      }
+    }
+  }
+`;
