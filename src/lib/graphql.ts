@@ -62,6 +62,11 @@ export interface HomePageAboutUs {
   label: string;
   content: string;
   points: AboutUsPoint[];
+  video?: {
+    node?: {
+      mediaItemUrl: string;
+    };
+  };
 }
 
 export interface VisionMissionItem {

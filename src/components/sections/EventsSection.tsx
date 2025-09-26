@@ -133,30 +133,42 @@ const DEFAULT_DATA: HomePageEvents = {
     },
     // Upcoming Events
     {
-      title: "Singapore Youth Festival",
-      subtitle: "April 2025",
-      description: "Our competitive teams will be participating in SYF Arts Presentation, showcasing contemporary and jazz pieces.",
+      title: "P6 Open Dance Classes",
+      subtitle: "Wednesdays 8th, 15th, 22nd, 29th Oct & 5th, 12th Nov",
+      description: "A special series of three Lyrical classes and three Hip Hop choreography classes designed specifically for our P6 dancers.",
       isUpcomingEvent: true,
       images: {
-        nodes: []
+        nodes: [
+          { mediaItemUrl: "/assets/past-events/ballet-masterclass-2025/6D4A9100.jpg", altText: "P6 Open Dance Classes - Image 1" },
+          { mediaItemUrl: "/assets/past-events/ballet-masterclass-2025/6D4A9145.jpg", altText: "P6 Open Dance Classes - Image 2" },
+          { mediaItemUrl: "/assets/past-events/ballet-masterclass-2025/6D4A9160.jpg", altText: "P6 Open Dance Classes - Image 3" }
+        ]
       }
     },
     {
-      title: "Mid-Year Showcase",
-      subtitle: "June 2025",
-      description: "A special mid-year performance featuring our recreational and competitive students in various dance styles.",
+      title: "CSTD Exams 2025",
+      subtitle: "Nov 2025",
+      description: "Our yearly CSTD Exams are around the corner. The dancers are working extremely hard to perfect their routines!",
       isUpcomingEvent: true,
       images: {
-        nodes: []
+        nodes: [
+          { mediaItemUrl: "/assets/rad-exam/Photo 13-4-25, 2 00 35 PM.jpg", altText: "CSTD Exams - Image 1" },
+          { mediaItemUrl: "/assets/rad-exam/Photo 13-4-25, 2 00 38 PM.jpg", altText: "CSTD Exams - Image 2" },
+          { mediaItemUrl: "/assets/rad-exam/Photo 14-4-25, 8 37 39 PM (1).jpg", altText: "CSTD Exams - Image 3" }
+        ]
       }
     },
     {
-      title: "International Guest Teacher Workshop",
-      subtitle: "August 2025",
-      description: "Special masterclasses with renowned international dance instructors covering ballet, contemporary, and jazz techniques.",
+      title: "The Artistic Dream",
+      subtitle: "7th & 8th Dec 2025, ACJC Auditorium",
+      description: "Our inaugural internal competition gives students the chance to showcase their talent, hard work, and passion on stage in a supportive environment.",
       isUpcomingEvent: true,
       images: {
-        nodes: []
+        nodes: [
+          { mediaItemUrl: "/lovable-uploads/08117ced-f7b0-4045-9bd4-3e5bd0309238.png", altText: "The Artistic Dream - Image 1" },
+          { mediaItemUrl: "/lovable-uploads/f07ceee7-3742-4ddb-829b-9abae14d5a11.png", altText: "The Artistic Dream - Image 2" },
+          { mediaItemUrl: "/lovable-uploads/11b84a73-9ab2-490c-b020-9540e34bdd6a.png", altText: "The Artistic Dream - Image 3" }
+        ]
       }
     },
     {
@@ -165,7 +177,11 @@ const DEFAULT_DATA: HomePageEvents = {
       description: "Our grand finale of the year featuring all students in a spectacular theatrical production.",
       isUpcomingEvent: true,
       images: {
-        nodes: []
+        nodes: [
+          { mediaItemUrl: "/assets/past-events/the-nutcracker-2024/AAL_3737.jpg", altText: "Annual Recital - Image 1" },
+          { mediaItemUrl: "/assets/past-events/the-nutcracker-2024/AAL_5949.jpg", altText: "Annual Recital - Image 2" },
+          { mediaItemUrl: "/assets/past-events/the-nutcracker-2024/AAL_6072.jpg", altText: "Annual Recital - Image 3" }
+        ]
       }
     }
   ]
@@ -196,19 +212,19 @@ const EventsSection = ({ data: eventsData = DEFAULT_DATA }: EventsSectionProps) 
 
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <Tabs defaultValue="past" className="w-full">
+            <Tabs defaultValue="upcoming" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8 bg-gray-50 p-1 rounded-xl h-14 max-w-md mx-auto">
-                <TabsTrigger 
-                  value="past"
-                  className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
-                >
-                  {eventsData.pastEventsLabel}
-                </TabsTrigger>
                 <TabsTrigger 
                   value="upcoming"
                   className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
                 >
                   {eventsData.upcomingEventsLabel}
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="past"
+                  className="text-base font-medium px-4 py-2 rounded-lg transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-md data-[state=inactive]:text-gray-500 data-[state=inactive]:hover:text-gray-700 data-[state=inactive]:hover:bg-white/50"
+                >
+                  {eventsData.pastEventsLabel}
                 </TabsTrigger>
               </TabsList>
 
@@ -238,19 +254,28 @@ const EventsSection = ({ data: eventsData = DEFAULT_DATA }: EventsSectionProps) 
               </TabsContent>
 
               <TabsContent value="upcoming" className="mt-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {upcomingEvents.map((event, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6">
-                      <h3 className="font-playfair text-xl font-bold text-primary mb-2">
-                        {event.title}
-                      </h3>
-                      <div className="text-gray-600 text-sm mb-2" dangerouslySetInnerHTML={{ __html: event.subtitle }} />
-                      <div className="text-gray-500 text-sm mb-4" dangerouslySetInnerHTML={{ __html: event.description }} />
-                    </CardContent>
-                  </Card>
-                  ))}
-                </div>
+                <Carousel
+                  className="w-full"
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                >
+                  <CarouselContent>
+                    {upcomingEvents.map((event, index) => (
+                      <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <EventCard
+                          title={event.title}
+                          subtitle={event.subtitle}
+                          description={event.description}
+                          images={event.images?.nodes?.map(img => img.mediaItemUrl) || []}
+                      />
+                    </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </TabsContent>
             </Tabs>
           </div>

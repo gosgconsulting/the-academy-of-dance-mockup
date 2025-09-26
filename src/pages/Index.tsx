@@ -6,7 +6,6 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import TrialsSection from "@/components/TrialsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
-import VisionMissionSection from "@/components/VisionMissionSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ProgrammesAndExamsSection from "@/components/sections/ProgrammesAndExamsSection";
@@ -61,7 +60,6 @@ const Index = () => {
       <HeroSection scrollToSection={scrollToSection} data={homeData?.pageBy?.homePageHero} />
       <TrialsSection data={homeData?.pageBy?.homePageTrialSection} />
       <AboutUsSection data={homeData?.pageBy?.homePageAboutUs} />
-      <VisionMissionSection data={homeData?.pageBy?.homePageVisionMission?.items} />
       <ProgrammesAndExamsSection data={homeData?.pageBy?.homePageProgrammesAndExams} />
       <CompetitionExcellenceSection data={homeData?.pageBy?.homePageCompetitionExcellence} />
       <EventsSection data={{ 

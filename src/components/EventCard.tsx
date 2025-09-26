@@ -43,18 +43,26 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
       <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
         <div className="relative">
           <div className="relative h-64 overflow-hidden">
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`${title} - Image ${index + 1}`}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
-                  index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-                onClick={() => openModal(index)}
-              />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+            {images.length > 0 ? (
+              <>
+                {images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${title} - Image ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${
+                      index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onClick={() => openModal(index)}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+              </>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500">
+                Images will be displayed here
+              </div>
+            )}
           </div>
           
           {/* Pagination dots */}

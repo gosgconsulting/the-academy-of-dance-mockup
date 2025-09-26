@@ -40,10 +40,10 @@ export const HOME_PAGE_QUERY = gql`
         title
         label
         content
-        points {
-          icon
-          label
-          value
+        video {
+          node {
+            mediaItemUrl
+          }
         }
       }
       homePageVisionMission {
