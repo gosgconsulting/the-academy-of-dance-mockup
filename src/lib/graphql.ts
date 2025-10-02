@@ -146,6 +146,7 @@ export interface Event {
   subtitle: string;
   description: string;
   isUpcomingEvent: boolean; // Boolean field to determine if event is upcoming
+  learnMoreUrl?: string;
   images: {
     nodes: EventImage[];
   };
@@ -164,6 +165,7 @@ export interface EventItem {
   subtitle: string;
   description: string;
   isUpcomingEvent: boolean;
+  learnMoreUrl?: string;
   images: {
     edges: {
       node: {

@@ -177,6 +177,7 @@ export const HOME_PAGE_QUERY = gql`
             }
           }
           isUpcomingEvent
+          learnMoreUrl
         }
       }
     }

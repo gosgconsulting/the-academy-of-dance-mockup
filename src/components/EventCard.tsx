@@ -10,9 +10,11 @@ interface EventCardProps {
   subtitle: string;
   description: string;
   images: string[];
+  isUpcomingEvent?: boolean;
+  learnMoreUrl?: string;
 }
 
-const EventCard = ({ title, subtitle, description, images }: EventCardProps) => {
+const EventCard = ({ title, subtitle, description, images, isUpcomingEvent, learnMoreUrl }: EventCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
@@ -87,9 +89,14 @@ const EventCard = ({ title, subtitle, description, images }: EventCardProps) => 
           <h3 className="font-playfair text-xl font-bold text-primary mb-2">{title}</h3>
           <div className="text-gray-600 text-sm mb-2" dangerouslySetInnerHTML={{ __html: subtitle }} />
           <div className="text-gray-500 text-sm mb-4 flex-1" dangerouslySetInnerHTML={{ __html: description }} />
-          <Button onClick={() => window.open('https://wa.me/6598372670', '_blank')} className="bg-primary hover:bg-primary/90 text-white w-full">
-            Learn More
-          </Button>
+          {isUpcomingEvent && (
+            <Button 
+              onClick={() => learnMoreUrl ? window.open(learnMoreUrl, '_blank') : undefined} 
+              className="bg-primary hover:bg-primary/90 text-white w-full"
+            >
+              Learn More
+            </Button>
+          )}
         </CardContent>
       </Card>
 
